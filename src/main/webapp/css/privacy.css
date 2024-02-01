@@ -1,0 +1,58 @@
+@charset "UTF-8";
+
+#privacy_wrap{
+	width: 100%;
+	background: rgb(244, 244, 244);
+	display: flex;
+}
+
+	#privacy_wrap .privacy_subWrap {
+		width: 1000px;
+		margin: auto;
+		margin-top:100px;
+	}
+	
+	#privacy_wrap .privacy_titleArea {
+		margin:0;
+		text-align: center;
+	}
+	#privacy_wrap .privacy_titleArea h2 {
+	    text-align: center;
+	    font-size: 34px;
+	    color: #222;
+	    margin-bottom: 50px;
+	    font-weight: bold;
+	    line-height: 20px;
+	    cursor: pointer;
+	}
+	#privacybox_wrap{
+		padding: 20px;
+		margin: 0 auto 80px auto;
+	    color: #404040;
+	    background: #666;
+	}
+	.privacybox_subwrap {
+		padding: 20px;
+	    background: #fff;
+	}
+	
+	#privacyBox p{
+		padding: 0 0 17px;
+	}
+	#privacyBox p:not([class]){
+		margin: 0;
+    	line-height: 1.5;
+	}
+	#privacyBox strong{
+		font-weight: bolder;
+	}
+	#privacyBox ul{
+		list-style-type: disc;
+		padding-left: 40px;
+	}
+	#privacyBox li{
+		display: list-item;
+    	list-style-type: inherit;
+    	list-style-position: inherit;
+    	line-height: 1.5;
+	}

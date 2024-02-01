@@ -1,11 +1,11 @@
 # member section
-#meLogin=com.eattogether.controller.member.MemeberLoginController
-#meLogout=com.eattogether.controller.member.MemeberLogoutController
-#meInsert=com.eattogether.controller.member.MemeberInsertController
-#meUpdate=com.eattogether.controller.member.MemeberUpdateController
-#meList=com.eattogether.controller.member.MemeberListController
-#meDelete=com.eattogether.controller.member.MemeberDeleteController
-#meDetail=com.eattogether.controller.member.MemeberDetailController
+#meLogin=com.eattogether.controller.member.MemberLoginController
+#meLogout=com.eattogether.controller.member.MemberLogoutController
+#meInsert=com.eattogether.controller.member.MemberInsertController
+#meUpdate=com.eattogether.controller.member.MemberUpdateController
+#meList=com.eattogether.controller.member.MemberListController
+#meDelete=com.eattogether.controller.member.MemberDeleteController
+#meDetail=com.eattogether.controller.member.MemberDetailController
 # recipe section
 #reInsert=com.eattogether.controller.recipe.RecipeInsertController
 #reUpdate=com.eattogether.controller.recipe.RecipeUpdateController

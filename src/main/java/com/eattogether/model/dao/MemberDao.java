@@ -6,7 +6,7 @@ public class MemberDao {
 
 	public int insertData(Member bean) {
 		System.out.println(bean);
-		//진행중
+		//진행중입니다.
 		return 0;
 	}
 

@@ -1,0 +1,56 @@
+# member section
+#meLogin=com.eattogether.controller.member.MemeberLoginController
+#meLogout=com.eattogether.controller.member.MemeberLogoutController
+#meInsert=com.eattogether.controller.member.MemeberInsertController
+#meUpdate=com.eattogether.controller.member.MemeberUpdateController
+#meList=com.eattogether.controller.member.MemeberListController
+#meDelete=com.eattogether.controller.member.MemeberDeleteController
+#meDetail=com.eattogether.controller.member.MemeberDetailController
+# recipe section
+#reInsert=com.eattogether.controller.recipe.RecipeInsertController
+#reUpdate=com.eattogether.controller.recipe.RecipeUpdateController
+#reList=com.eattogether.controller.recipe.RecipeListController
+#reDelete=com.eattogether.controller.recipe.RecipeDeleteController
+#reDetail=com.eattogether.controller.recipe.RecipeDetailController
+# files section
+#fiInsert=com.eattogether.controller.files.FilesInsertController
+#fiUpdate=com.eattogether.controller.files.FilesUpdateController
+#fiList=com.eattogether.controller.files.FilesListController
+#fiDelete=com.eattogether.controller.files.FilesDeleteController
+#fiDetail=com.eattogether.controller.files.FilesDetailController
+# bookmark section
+#boInsert=com.eattogether.controller.bookmark.BookmarkInsertController
+#boUpdate=com.eattogether.controller.bookmark.BookmarkUpdateController
+#boList=com.eattogether.controller.bookmark.BookmarkListController
+#boDelete=com.eattogether.controller.bookmark.BookmarkDeleteController
+#boDetail=com.eattogether.controller.bookmark.BookmarkDetailController
+# manager section
+#manInsert=com.eattogether.controller.manager.ManagerInsertController
+#manUpdate=com.eattogether.controller.manager.ManagerUpdateController
+#manList=com.eattogether.controller.manager.ManagerListController
+#manDelete=com.eattogether.controller.manager.ManagerDeleteController
+#manDetail=com.eattogether.controller.manager.ManagerDetailController
+# notice section
+#notiInsert=com.eattogether.controller.notice.NoticeInsertController
+#notiUpdate=com.eattogether.controller.notice.NoticeUpdateController
+#notiList=com.eattogether.controller.notice.NoticeListController
+#notiDelete=com.eattogether.controller.notice.NoticeDeleteController
+#notiDetail=com.eattogether.controller.notice.NoticeDetailController
+# inquiry section
+#inquInsert=com.eattogether.controller.inquiry.InquiryInsertController
+#inquUpdate=com.eattogether.controller.inquiry.InquiryUpdateController
+#inquList=com.eattogether.controller.inquiry.InquiryListController
+#inquDelete=com.eattogether.controller.inquiry.InquiryDeleteController
+#inquDetail=com.eattogether.controller.inquiry.InquiryDetailController
+# category section
+#caInsert=com.eattogether.controller.category.CategoryInsertController
+#caUpdate=com.eattogether.controller.category.CategoryUpdateController
+#caList=com.eattogether.controller.category.CategoryListController
+#caDelete=com.eattogether.controller.category.CategoryDeleteController
+#caDetail=com.eattogether.controller.category.CategoryDetailController
+# material section
+#matquInsert=com.eattogether.controller.material.MaterialInsertController
+#matquUpdate=com.eattogether.controller.material.MaterialUpdateController
+#matquList=com.eattogether.controller.material.MaterialListController
+#matquDelete=com.eattogether.controller.material.MaterialDeleteController
+#matquDetail=com.eattogether.controller.material.MaterialDetailController

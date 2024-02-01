@@ -1,0 +1,96 @@
+@charset "UTF-8";
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #F8EBCE;
+  justify-content: center;
+  align-items: center;
+}
+
+#body {
+  display: flex;
+  align-items: center; /* 세로 중앙 정렬 */
+  margin: 50px;
+}
+
+#box1,#box2 {
+  border: 3px solid #000;
+  box-sizing: border-box;
+  display: flex;
+}
+
+#box1 {
+  background-color: #FFCD1D;
+  width: 250px;
+  height: 600px;
+  border-radius: 30px;
+  flex-direction: column; /* 버튼들을 세로로 나열 */
+  align-items: center; /* 버튼들을 가운데 정렬 */
+
+}
+#ma_memberbt,#ma_announbt,#ma_inquirybt{
+	background-color: #fff;
+	border: 3px solid #000;
+	  margin: 15px;
+	  width: 150px;
+	  height: 50px;
+	  border-radius: 15px;
+}
+
+#box2 {
+	flex: 1;
+  background-color: #fff;
+  margin: 150px;
+  height: 600px;
+    border-radius: 30px;
+    justify-content: space-around; 
+    display: flex;
+  flex-direction: row;
+
+}
+#section-box {
+	flex: 1;
+  border: 3px solid #000; /* 테두리를 보기 위한 임시 스타일 */
+  padding: 10px; /* 내부 여백 추가 */
+  height: 60px;
+  margin: 10px;
+  border-radius: 30px;
+  background-color: #FFCD1D;
+  display: flex;
+  justify-content: center; 
+	    align-items: center;
+
+}
+#ma_sequence p{
+	margin-top: 10px;
+}
+#ma_search p{
+	margin-top: 10px;
+}
+#ma_sequence,#ma_search{
+	width: 130px;
+	  margin: 0 auto;
+  text-align: center; 
+  justify-content: center; 
+  align-items: center;
+  border-radius: 30px;
+}
+#ma_sequence{
+	height: 40px;
+		border: 3px solid #000;
+		 margin-right: 10px;
+		 background-color: #fff;
+}
+
+#ma_search{
+	height: 40px;
+		border: 3px solid #000;
+		 margin-right: 10px;
+		 background-color: #fff;
+}
+#ma_criteria_input,#ma_condition_input{
+	flex: 1;
+	background-color: #fff;
+	border: 3px solid #000;
+	height: 40px;
+}

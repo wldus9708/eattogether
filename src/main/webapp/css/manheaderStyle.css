@@ -1,0 +1,84 @@
+@charset "UTF-8";
+@media screen and (max-width: 1050px) {
+    #logo_a {
+        display: none;
+    }
+}
+#gr {
+  background-color:#FFCD1D; /* 네비게이션 바 배경색 설정 */
+  width: 100%;
+height: 120px;
+border-radius: 0px 0px 50px 50px;
+justify-content: space-between; 
+ display: flex;
+ align-items: center; 
+}
+#logo{
+	margin : 0 auto;
+	
+}
+
+#logo_a{
+  color: #000; /* 로고 텍스트 색상 설정 */
+  font-weight: bold; /* 로고 s텍스트 굵게 설정 */
+  text-decoration: none; /* 밑줄 제거 */
+  font-size: 30px;
+  text-align: center;
+  
+  justify-content: center; 
+  position: absolute;
+  top:52px;/* 가로 방향으로 가운데 정렬 */
+}
+#manheader_f {
+  margin-right: 50px;
+   margin-top: 150px;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 17px;  
+  border: 3px solid #fff;
+   border-radius: 15px;
+   width: 25px;
+   background-color: #fff;
+
+}
+
+#manheader {
+  display: flex;
+  align-items: center; /* 세로 중앙 정렬 */
+}
+
+#manheader_a {
+  list-style: none; /* 리스트 스타일 제거 */
+  margin: 0; /* 리스트 외부 여백 제거 */
+  padding: 0; /* 리스트 내부 여백 제거 */
+  display: flex;
+  align-items: center; /* 세로 중앙 정렬 */
+}
+
+/* 드롭다운 메뉴 스타일링 */
+#manheader_c {
+  display: none; /* 초기에는 드롭다운 메뉴 감추기 */
+  position: absolute; /* 드롭다운 메뉴 배경색 설정 */
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 10px;
+}
+#manheader_c button {
+  color: #000;
+  text-decoration: none;
+  display: block;
+  padding: 8px 16px;
+  background-color: transparent;
+  text-align: left; /* 텍스트 왼쪽 정렬 */
+  width: 100%; /* 버튼을 100% 너비로 설정하여 부모 너비에 맞춤 */
+  
+}
+#manheader_d{
+	color: #000;
+}
+#manheader_f:focus + #manheader_c {
+  display: block;
+}
+#manheader_d:hover {
+  background-color: #FFCD1D; /* 아이템에 호버 시 배경색 변경 */
+}

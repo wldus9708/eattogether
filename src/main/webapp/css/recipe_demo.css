@@ -1,0 +1,147 @@
+@charset "UTF-8";
+	body {/*배경색 설정*/
+		background-color: #F8EBCE;
+	}
+	td{
+		background-color: #F8EBCE !important;
+	}
+	
+	#recipe {
+		margin-top :5px;/*사이드 메뉴 레시피 글자 중앙 정렬*/
+		width: 200px;/* 원하는 가로 길이로 설정 */
+	}
+	
+    .ui-accordion-header {/* 사이드바 안 아코디언 헤더 스타일 */
+        background-color: #E86A33;
+        padding: 10px;
+        cursor: default;
+        border: 2px solid black;
+        border-radius: 10px;
+        font-weight: bold;
+    }
+
+    .ui-accordion-content {/* 사이드바 안에 아코디언 콘텐츠 스타일 */
+        background-color: #fff;
+        padding: 15px;
+        border: 2px solid black;
+        border-radius: 10px;
+        font-weight: bold;
+    }
+	
+	.recipe_sidebar {/*사이드바 스타일*/
+		background-color: #FFCD1D;
+		border-radius: 10px;
+		width: 230px;
+		float: left;
+		border: 3px solid black;
+		padding: 10px;
+		margin-left:30px;
+	}
+	
+	#inner-grid {
+		display:grid;
+		grid-template-columns: 12fr 1fr 1fr;
+	}
+	
+	.recipe_count{/*게시물 갯수 알려주는 div태그*/
+		border: 2px solid #BCBCBC; /* 테두리 스타일과 색상을 설정 */
+		background-color: white;
+      	padding: 5px; /* 텍스트와 테두리 사이의 간격을 조절 */
+      	width: 250px; /* 원하는 너비로 조절 */
+      	border-radius: 10px;
+      	text-align: center;
+      	color : black;
+	}
+	.recipe_latest, .recipe_re {/*추천순 최신순 정렬 나타내는 div태그*/
+		border: 2px solid #BCBCBC; /* 테두리 스타일과 색상을 설정 */
+		background-color: white;
+		color : black;
+      	padding: 5px; /* 텍스트와 테두리 사이의 간격을 조절 */
+      	width: 75px; /* 원하는 너비로 조절 */
+      	text-align: center;
+	}
+	
+	.image-container {
+	  	position: relative;
+	}
+
+	.overlay-image {
+		position: absolute;
+		top: 5px;
+		right: 5px;
+		width: 10%;
+		height: 10%;
+		z-index: 1; /* 더 위에 표시되도록 설정 */
+	}
+	
+	.recipe_side0 {
+		margin:auto;
+		text-align : center;
+		background-color: #E86A33;
+		border-radius: 35px;
+		width: 200px;
+		height: 50px;
+		text-align: center;
+		color: #FFFFFF;
+		border: 3px solid black;
+	}
+	
+	#recipe_sidebar{
+		position : relative;
+		padding: 600px;
+		
+	}
+	.container {
+		margin-top: 10px;
+	}
+
+	/* 테이블 셀의 수평 정렬을 가운데로 지정합니다. */
+	.card {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.card-img-top {
+		width: 300px;
+		height: 300px;
+	}
+
+	.removeUnderLine {
+		text-decoration: none;
+	}
+
+	.card-body {
+	    background-color: #F8EBCE; /* 검은색 + 0.5의 투명도 */
+	}
+
+	/* 테이블 셀의 수평 정렬을 가운데로 지정합니다. */
+	.card {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.card-img-top {
+		width: 300px;
+		height: 300px;
+	}
+
+	.removeUnderLine {
+		text-decoration: none;
+	}
+
+	.recipe_prlist {
+		background-color: #F8EBCE;
+	}
+
+	.btn-primary{
+		width: 265px;
+	}
+
+	.--bs-body-bg{
+		background-color:  #F8EBCE!important;
+	}
+	@media screen and (max-width: 1050px) {
+			.products {
+			display: none;
+		}
+	}

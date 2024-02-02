@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="./../common/common.jsp"%>
+<%@ include file="./../common/mangerheader.jsp"%>	
 <!DOCTYPE html>
 <html>
 <head>
@@ -143,7 +144,7 @@
 			return false;
 		}
 		// 체크박스 하나는 선택되게 alert
-	    var checkedBoxes = $('input[name="join_favorite_food"]:checked');
+	    var checkedBoxes = $('input[name="taste"]:checked');
 	    if (checkedBoxes.length === 0) {
 	        alert('좋아하는 음식을 하나 이상 선택해주세요.');
 	        return false;
@@ -189,7 +190,7 @@
 <!-- 중복확인 Modal 끝 -->	
 	<div id="join_wrap">
 		<div id="join_box">
-			<form action="joinSucces.jsp" method="post" name="joinForm">
+			<form action="joinSuccess.jsp" method="post" name="joinForm">
 				<div id="join_form_wrap">
 					<div class="join_form_container">
 						<label class="join_label" for="userid">아이디:</label> <input

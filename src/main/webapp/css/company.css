@@ -1,0 +1,26 @@
+@charset "UTF-8";
+body{
+	margin: 0 auto;
+	text-align: center;
+	background: #F8EBCE;
+}
+#company_wrap{
+	margin-top: 100px;
+    margin-bottom: 100px;
+}
+#company_map {
+	width: 800px;
+	height: 700px;
+	display: inline-block; 
+    vertical-align: middle;
+}
+#company_title{
+	font-size: 45px;
+	font-weight:bold;
+	margin-bottom: 100px;
+}
+#company_content{
+	margin-top: 50px;
+	font-size: 25px;
+	font-weight:bold;
+}

@@ -17,6 +17,7 @@
 <!-- jQuery section -->
 <!-- bootstrap은 jquery를 기반으로 구동이 되므로 반드시 jquery 선언이 먼저 되어야 합니다. -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
 <!-- bootstrap section -->
 <script

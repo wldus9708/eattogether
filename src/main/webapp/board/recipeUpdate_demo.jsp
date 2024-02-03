@@ -40,7 +40,7 @@
             reader.readAsDataURL(file);
         } else {
             // 파일이 선택되지 않았을 때 기본 이미지로 설정
-            imagePreview.src = './../image/pizza_01.jpg';
+            imagePreview.src = '';
         }
     });
 </script>
@@ -60,7 +60,7 @@
 		</div>
 		<div>
 			<input type="file" id="image-input" accept="image/*">
-    		<img id="image-preview" alt="사진을 등록하세요">
+    		<img src="./../image/basicicon.png" id="image-preview" alt="사진">
 		</div>
 		<div class="row">
 			<div class="col-sm-3">

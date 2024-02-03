@@ -1,0 +1,125 @@
+@charset "UTF-8";
+     body {
+            /* 페이지 너비를 조절 */
+            margin: 0 auto; /* 페이지를 가운데 정렬 */
+            background-color:#F8EBCE;
+            display:flex;
+            justify-content: center;
+            align-items: center;   
+            width: 100%;
+            height: 100%;
+                     
+        }
+         a{
+color: black; /* 링크 텍스트 색상을 검정색으로 설정 */
+  text-decoration: none;
+}
+#submypage00{
+	top: 0;
+	left: 10%;
+	height: 10%;
+display: flex;	
+justify-content: space-between;
+    width: 80%;
+}
+        .subexit{
+		left: 0;	
+         margin-left: 20px;
+         width:10%;
+         height:auto;
+      }
+      .subhome{
+		  right: 0;
+         margin-right: 20px;
+         width:10%;
+         height:auto;      }
+         
+          #submypage_box00{
+          display:flex;
+            justify-content: center;
+            align-items: center;
+            bottom: 0;
+            position: absolute;
+            left: 20%;
+            width: 60%;
+            height: 90%;
+      }     
+    
+        
+          #submyicon {
+         top:0;
+            width: 25%; /* 도형의 너비 */
+            height: 38%; /* 도형의 높이 */
+            background-color:wihte; /* 도형의 배경색 */
+            position: absolute; /* 절대 위치로 지정 */
+            border-radius: 50%; 
+            border: 5px solid;
+            margin: 10px; 
+            
+        }
+        .submypage_icon{
+          width: 98%; /* 도형의 너비 */
+            height: 98%;
+           transform: translate(1%, 1%); 
+           position: absolute;
+           border-radius: 50%; 
+        } 
+                #submypage_box10{
+      position: absolute;
+      left: 20%;
+         bottom: 0;
+         height: 65%;
+         width: 100%;}
+      .submypage_box03{
+         
+         background-color: #FFCD1D;
+         border-radius: 30px;
+         border:3px solid black;
+         width: 60%;
+         height: 10%;
+         margin-top:5%;
+         
+      }
+      
+       .submypage_box03 span{
+         
+         background-color:white;
+         border-radius: 20px;
+         margin-left: 5%;
+         width: 20%;
+         height: 100%;
+      }
+      .submypage_box03 input{
+         right: 0;
+         width:80%;         
+         height: 100%;
+         background-color: white;
+         
+         border-radius: 30px;
+      }
+      .submypage_box02{
+		  border: 1px solid black;
+         display: flex;
+         flex-wrap: wrap;
+          justify-content: space-evenly;
+          align-content: space-between;
+        right: 30%;
+          margin-top: 5%; 
+          box-sizing: border-box;    
+          position: absolute;
+          width: 80%;
+          height: 35%;
+          background-color: #FFCD1D;
+          border-radius: 50px;
+	  }
+      .submypage_box02 div{
+		  display: flex;
+		  justify-content: space-evenly;
+	  }
+     .subima{
+		width: 18%;
+        height: auto;
+        margin: 0 2%;
+     }
+
+      

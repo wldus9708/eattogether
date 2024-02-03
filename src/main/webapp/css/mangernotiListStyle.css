@@ -40,6 +40,7 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 15px;
+  color: #000;
 }
 #ma_memberbt:active, #ma_announbt:active, #ma_inquirybt:active,
 #ma_memberbt:focus, #ma_announbt:focus, #ma_inquirybt:focus {
@@ -63,6 +64,10 @@ body {
 	margin-bottom: 20px;
 
 }
+.inquiries a{
+	font-size: 14px;
+				font-weight: bold;
+}
 
 .inquiries ul {
 	list-style: none;
@@ -72,6 +77,7 @@ body {
 
 .inquiries li {
 	margin-bottom: 10px;
+	 white-space: nowrap;
 }
 .inquiryDetails {
 	display: none; /* 추가: 초기에 숨김 */
@@ -105,9 +111,10 @@ text-decoration: none;
     text-decoration: none;
     font-size: 14px;
 }
-
+#manger_contents{
+	margin-right: 80px;
+}
 #manger_modify{
-		border: 1px solid #000;
 			border-radius: 5px;
 			text-decoration: none;
 }

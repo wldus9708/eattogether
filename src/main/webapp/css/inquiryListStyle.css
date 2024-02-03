@@ -41,6 +41,7 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 15px;
+    color: #000;
 }
 
 
@@ -54,6 +55,7 @@ body {
       flex-direction: column;
       padding: 20px;
       box-sizing: border-box;
+      
       
     }
     #ma_memberbt:active, #ma_announbt:active, #ma_inquirybt:active,
@@ -69,10 +71,13 @@ body {
                   border-radius: 30px 30px 0 0;
 
     }
-
+ .in-Information{
+      white-space: nowrap;
+    }
     #box2 th{
       padding: 15px;
      text-align: left; 
+     white-space: nowrap;
     }
 
     #textAreaContainer {

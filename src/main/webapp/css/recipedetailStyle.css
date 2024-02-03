@@ -1,0 +1,58 @@
+@charset "UTF-8";
+body{
+	  margin: 0;
+  padding: 0;
+  background-color: #F8EBCE;
+  justify-content: center;
+  align-items: center;
+}
+
+#recipedetail_box01 {
+            display: flex;
+  align-items: center; /* 세로 중앙 정렬 */
+  margin: 50px;
+    justify-content: center;
+            justify-content: space-between; /* 좌우 정렬 */
+             box-sizing: border-box;
+        }
+        #recipedetail_box02 {
+			 flex: 1;
+			}
+			#recipedetail1{ flex-direction: row;  display: flex;}
+#recipedetail1, #recipedetail2 {
+            display: flex;
+            padding: 10px;
+            margin: 0; 
+        }
+
+        #recipedetail2 {
+            flex: 1; /* recipedetail2가 recipedetail1보다 2배 넓게 차지하도록 함 */
+        
+        }
+        #recipetitle{
+				  border: 3px solid #000;
+		}
+       th, td {
+            border: 1px solid black;}
+    
+#recipe_container {
+            text-align: center; /* recipe_image를 가운데로 정렬 */
+        }
+
+        .recipe_image {
+            display: inline-block; /* 가운데 정렬을 위해 inline-block 설정 */
+        }
+
+        .removeUnderLine {
+            text-decoration: none; /* 링크 밑줄 제거 */
+        }
+
+        #recipetitle {
+         
+            margin: auto; /* 가운데 정렬을 위해 auto 설정 */
+            border-collapse: collapse; /* 테이블 셀 간의 간격 제거 */
+        }
+
+        #re_title {
+            text-align: center; /* 테이블 제목 가운데 정렬 */
+        }

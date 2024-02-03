@@ -8,6 +8,7 @@ section{/* 섹션*/
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	padding-bottom: 270px;
 }
 
 #image-preview {

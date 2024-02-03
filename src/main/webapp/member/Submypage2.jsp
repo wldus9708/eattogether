@@ -1,20 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="./../common/common.jsp"%>
-<link rel="stylesheet" type="text/css" href="./submypage2.css">
+<%@ include file="./../common/top.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="./../css/submypage2.css">
 <style>
 </style>
 </head>
 <body>
-	<div id="submypage00">
-		<img src="./../img/cooker.png" id="subexit" alt="Cinque Terre">
-		<img src="./../img/user.png" id="subhome" alt="Cinque Terre">
-	</div>
 	<div id="submypage_box00">
 		<div class="custom-shape" id="submyicon">
 			<img src="./../image/juice01.png" class="submypage_icon"

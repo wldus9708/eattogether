@@ -1,14 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="./../common/common.jsp"%>
-<link rel="stylesheet" type="text/css" href="./dlete_message.css">
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
-</style>
+<link rel="stylesheet" type="text/css" href="./../css/dlete_message.css">
 </head>
 <body>
 	<div class="delete_message">

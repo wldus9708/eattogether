@@ -12,9 +12,9 @@
 <body>
 	<div id="contain">
 		<div id="box1">
-			<a href="./../manager/manList.jsp" id="ma_memberbt">회원조회</a> 
-			<a href="./../inquiry/inquList.jsp" id="ma_announbt">공지사항</a>
-			<a href="./../notice/mangernotiList.jsp" id="ma_inquirybt">문의사항</a>
+			<a href="./../manager/manList.jsp" id="ma_memberbt">회원조회</a> <a
+				href="./../inquiry/inquList.jsp" id="ma_announbt">공지사항</a> <a
+				href="./../notice/mangernotiList.jsp" id="ma_inquirybt">문의사항</a>
 		</div>
 		<div id="box2">
 			<section class="inquiries">
@@ -22,8 +22,12 @@
 				<ul id="inquiryList">
 					<li><a href="#" class="toggleInquiry">공지사항</a>
 						<div class="inquiryDetails">
-							<p>서비스향상을위해 전체적으로업데이트가 있을예정입니다.</p>
-							<a href="https://www.naver.com/" id="editInquiry">수정하기</a>
+							<div id="manger_contents">
+								<p>서비스향상을위해 전체적으로업데이트가 있을예정입니다.</p>
+							</div>
+							<div id="manger_modify">
+								<a href="https://www.naver.com/" id="editInquiry">수정하기</a>
+							</div>
 						</div></li>
 				</ul>
 			</section>

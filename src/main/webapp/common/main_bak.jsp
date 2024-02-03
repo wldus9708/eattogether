@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="./../common/common.jsp"%>	
+<%@ include file="./../common/mangerheader.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="../css/main.css">	
+<link rel="stylesheet" type="text/css" href="../css/main_bak.css">	
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>

@@ -11,6 +11,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" href="../image/cooker.png">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 

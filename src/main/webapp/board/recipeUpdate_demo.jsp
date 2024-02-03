@@ -53,6 +53,8 @@
 			</a>
 		</div>
 	</header>
+	<h2>레시피 등록</h2>
+	<p>레시피를 등록하는 페이지 입니다.</p>
 	<section>
 		<div class="recipe_Update_title">
 			<input type="text" class="recipe_Update_title02" id="title"

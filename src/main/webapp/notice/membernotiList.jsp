@@ -53,4 +53,5 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 </script>
+<%@include file="./../common/footer.jsp" %>
 </html>

@@ -1,19 +1,22 @@
 @charset "UTF-8";
+
 body {
 	margin: 0 auto;
-	
+
 	background: #F8EBCE;
 }
 
 #main_wrap {
-	margin-top: 150px;
+	display: flex;
+	margin-top: 50px;
 	margin-bottom: 150px;
+	margin-left: 33px;
 }
 
 #main_materialBox {
 	margin: 0 auto;
-    width: 1225px;
-    height: 870px;
+	width: 925px;
+	height: 570px;
 	border-radius: 50%;
 	border: 5px solid #000;
 	background: #FFCD1D;
@@ -22,22 +25,24 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	height: 570px;
+	border-radius: 50%;
 }
 
 #main_materialBox_left {
-    width: 1120px;
-    height: 800px;
+	width: 840px;
+	height: 500px;
 	border-radius: 50%;
 	background: #FFF;
 	display: flex;
 }
 
 #main_materialBox_left_1 {
-    width: 320px;
-    height: 365px;
+	width: 300px;
+	height: 340px;
 	border-radius: 50%;
 	border: 5px solid #000;
-    margin: 210px 130px;
+	margin: 65px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -48,49 +53,50 @@ body {
 }
 
 #main_materialBox_left_2 {
-	width: 210px;
-    height: 250px;
+	width: 190px;
+	height: 220px;
 	border-radius: 50%;
 	background-color: #FFCD1D;
 	margin: 10px;
 }
 
 #main_materialBox_right_1 {
-    margin-top: 240px;
-    margin-left: -70px;
-    margin-bottom: 30px;
+	margin-top: 103px;
+	margin-left: -50px;
 }
 
 #main_materialBox_right_1 p {
 	font-family: Inter;
-	font-size: 30px;
+	font-size: 24px;
 	font-style: normal;
+	font-weight: 400;
 	line-height: normal;
 	font-weight: bold;
 }
 
 .main_materialBox_input {
-	width: 345px;
-    height: 85px;
+	width: 329px;
+	height: 77px;
 	border-radius: 30px;
 	border: 2px solid #000;
 	background: #0B4619;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin-bottom: 20px;
+	margin-bottom: 5px;
 	margin-left: -15px;
 }
 
 .main_materialBox_input2 {
-    width: 320px;
-    height: 70px;
+	width: 304px;
+	height: 59px;
 	border-radius: 30px;
 	border: 2px solid #000;
 	background: #FFF;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	 flex-grow: 1;
 }
 
 .main_materialBox_input2 input {
@@ -98,14 +104,64 @@ body {
 	height: 100%;
 	border: none;
 	background: transparent;
-	font-size: 20px;
+	font-size: 16px;
+	font-weight: 400;
+	border-radius: 30px;
+	 outline: none;
+}
+
+#main_materialBox_search {
+	display: flex;
+	align-items: center;
+}
+
+#main_materialBox_search img {
+	width: 50px;
+	margin-left: 20px;
+}
+
+.inline-block-item {
+    font-size: 11px;
+    font-weight: bold;
+	position: relative;
+	display: inline-block;
+	margin-right: 10px;
+	border: 1px solid #ddd;
+	padding: 5px;
+	border-radius: 5px;
+	background-color: #f5f5f5;
+	color: #333;
+ 	white-space: nowrap; /* 입력값이 width를 초과하면 줄바꿈 방지 */
+    overflow: hidden; /* 입력값이 width를 초과하면 숨김 처리 */
+    text-overflow: ellipsis;
+}
+
+.close-icon {
+	position: absolute;
+	top: 0;
+	right: 0;
+	cursor: pointer;
+	color: red;
+	font-size: 18px;
+	line-height: 1;
 	font-weight: bold;
 }
-#main_materialBox_search {
-    display: flex;
-    align-items: center;
-}
-#main_materialBox_search img {
-    width: 50px;
+.main_selectbox {
+        height: 35px;
+        margin-bottom: 5px;
+    }
+.main_addButton {
     margin-left: 10px;
+    border-radius: 15px;
+    font-size: 15px;
+    font-weight: bold;
+    background: #ED6D35;
 }
+.main_selectbox .upper-item,
+    #main_materialBox_right .lower-item {
+        margin-bottom: 10px;
+    }
+
+    .main_materialBox_input {
+        margin-top: 10px;
+    }

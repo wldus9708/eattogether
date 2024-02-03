@@ -11,12 +11,33 @@
 <body>
 	<div id="contain">
 		<div id="box1">
-			<a href="./../manager/manList.jsp" id="ma_memberbt">회원조회</a> 
-			<a href="./../inquiry/inquList.jsp" id="ma_announbt">공지사항</a>
-			<a href="./../notice/mangernotiList.jsp" id="ma_inquirybt">문의사항</a>
+			<a href="./../manager/manList.jsp" id="ma_memberbt">회원조회</a> <a
+				href="./../inquiry/inquList.jsp" id="ma_announbt">공지사항</a> <a
+				href="./../notice/mangernotiList.jsp" id="ma_inquirybt">문의사항</a>
 		</div>
 		<div id="box2">
-			<div>
+			<div class="manger_searchbox">
+				<div id="mansearch_conditions">검색조건</div>
+				<div class="mansearch_search">
+					<div>
+						<input id="mansearch_idsearch" placeholder="아이디">
+					</div>
+					<div>
+						<button id="mansearch_button">
+							<img src="./../image/mangersearch.png" alt="찾기">
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="manger_member">
+				<table>
+				<tr>
+				<td>아이디</td>
+				<td>이름</td>
+				<td>전화번호</td>
+				<td><button>탈퇴</button></td>
+				</tr>
+				</table>
 			</div>
 		</div>
 	</div>

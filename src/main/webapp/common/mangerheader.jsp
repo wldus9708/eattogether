@@ -21,7 +21,7 @@
 			<div id="manheader">
 				<ul>
 					<li class="header">
-					<a class="header-toggle"  role="button" href="#" sdata-bs-toggle="dropdown">관리자▼</a>
+					<a class="header-toggle"  role="button" href="#" sdata-bs-toggle="dropdown" id="manger">관리자▼</a>
 						<ul class="dropdown-menu">
 							<li><a class="dropdown-item" href="./../manager/manList.jsp">회원관리</a></li>
 							<li><a class="dropdown-item" href="./../inquiry/inquList.jsp">문의사항</a></li>

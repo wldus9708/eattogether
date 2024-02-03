@@ -1,3 +1,4 @@
+@charset "UTF-8";
 body {
   margin: 0;
   padding: 0;
@@ -62,6 +63,7 @@ body {
 
  .inquiries {
 	margin-bottom: 20px;
+	white-space: nowrap;
 
 }
 .inquiries a{
@@ -87,6 +89,7 @@ body {
 	margin-top: 10px;
 	background-color: #fff;
 	position: relative;
+	white-space: nowrap;
 }
 .toggleInquiry{
 background-color: #FFCD1D;
@@ -99,8 +102,11 @@ text-decoration: none;
 	border-radius: 5px;
 	transition: background-color 0.3s ease;
 	cursor: pointer; /* 추가: 포인터 모양으로 변경 */
+	white-space: nowrap;
 }
-
+#inquiryList p {
+  white-space: normal;
+}
 #editInquiry {
 	position: absolute;
     top: 0;
@@ -113,4 +119,10 @@ text-decoration: none;
 }
 #manger_contents{
 	margin-right: 80px;
+	white-space: nowrap;
+}
+@media screen and (max-width: 1000px) {
+	#inquiries {
+		display: none;
+	}
 }

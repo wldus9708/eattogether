@@ -18,6 +18,7 @@ body {
 
 #recipedetail_box02 {
 	flex: 1;
+	margin-left: 25%;
 }
 #myImage {
     width: 50px; /* 원하는 크기로 조절 (예: 50px) */

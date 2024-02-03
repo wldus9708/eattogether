@@ -1,0 +1,50 @@
+@charset "UTF-8";
+#recipe {
+	margin-top :5px;/*사이드 메뉴 레시피 글자 중앙 정렬*/
+	width: 200px;/* 원하는 가로 길이로 설정 */
+}
+	
+.ui-accordion-header {/* 사이드바 안 아코디언 헤더 스타일 */
+    background-color: #E86A33;
+    padding: 10px;
+    cursor: default;
+    border: 2px solid black;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.ui-accordion-content {/* 사이드바 안에 아코디언 콘텐츠 스타일 */
+    background-color: #fff;
+    padding: 15px;
+    border: 2px solid black;
+    border-radius: 10px;
+    font-weight: bold;
+}
+	
+.recipe_sidebar {/*사이드바 스타일*/
+	background-color: #FFCD1D;
+	border-radius: 10px;
+	width: 230px;
+	float: left;
+	border: 3px solid black;
+	padding: 10px;
+	margin-left:50px;
+}
+
+.recipe_side0 {
+	margin:auto;
+	text-align : center;
+	background-color: #E86A33;
+	border-radius: 35px;
+	width: 200px;
+	height: 50px;
+	text-align: center;
+	color: #FFFFFF;
+	border: 3px solid black;
+}
+	
+#recipe_sidebar{
+	position : relative;
+	padding: 600px;
+	
+}

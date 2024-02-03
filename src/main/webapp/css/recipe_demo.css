@@ -136,10 +136,6 @@
 	.btn-primary{
 		width: 265px;
 	}
-
-	.--bs-body-bg{
-		background-color:  #F8EBCE!important;
-	}
 	@media screen and (max-width: 1050px) {
 			.products {
 			display: none;

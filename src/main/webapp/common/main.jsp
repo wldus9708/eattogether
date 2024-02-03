@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="./../common/common.jsp"%>
-<%@ include file="./../common/mangerheader.jsp"%>
+<%@ include file="./../common/top.jsp"%>
 <%@include file ="./../common/sidebar.jsp" %>
 <!DOCTYPE html>
 <html>

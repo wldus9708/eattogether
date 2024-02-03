@@ -44,8 +44,11 @@
 		<div class="footer_right">
 			<div id="footer_box">
 				<span>문의하기</span>
+				<button id="footer_butt">전송</button>
 				<textarea id=footer_messagebox></textarea>
-	
+			</div>
+			<div>
+			
 			</div>
 		</div>
 

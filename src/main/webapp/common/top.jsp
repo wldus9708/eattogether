@@ -35,11 +35,11 @@
 							href="#" sdata-bs-toggle="dropdown" id="manger">관리자▼</a>
 							<ul class="dropdown-menu">
 								<li><a class="dropdown-item"
-									href="./../manager/manList.jsp">회원관리</a></li>
+									href="#">회원관리</a></li>
 								<li><a class="dropdown-item"
-									href="./../inquiry/inquList.jsp">문의사항</a></li>
+									href="#">문의사항</a></li>
 								<li><a class="dropdown-item"
-									href="./../notice/mangernotiList.jsp">공지사항 관리</a></li>
+									href="./../notice/membernotiList.jsp">공지사항</a></li>
 								<li><a class="dropdown-item" href="#">로그아웃</a></li>
 							</ul></li>
 					</ul>

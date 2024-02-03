@@ -8,14 +8,9 @@ body {
 }
 #contain {
   display: flex;
-  align-items: center; /* 세로 중앙 정렬 */
-  margin: 50px;
-}
-
-#box1,#box2 {
-
-  box-sizing: border-box;
-
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* 화면 전체 높이를 기준으로 가운데 정렬하려면 필요합니다. */
 }
 
 #box1 {
@@ -25,6 +20,7 @@ body {
   width: 250px;
   height: 600px;
   border-radius: 30px;
+  margin-right: 30px;
   flex-direction: column; /* 버튼들을 세로로 나열 */
   align-items: center; /* 버튼들을 가운데 정렬 */
 
@@ -50,15 +46,62 @@ body {
 }
 
 #box2 {
-      flex: 1;
-      background-color: #F8EBCE;
-      width: 100%;
-      margin-left: 150px; 
-      height: 600px;
+      background-color: #fff;
+      height: 100%;
+      width: 1000px;
       display: flex;
       flex-direction: column;
       padding: 20px;
       box-sizing: border-box;
+     border: 1px solid #000;
+     margin: 0 auto;
       
     }
+.manger_searchbox {
+        display: flex;
+        align-items: center;
+        border: 1px solid #000;
+        justify-content: center; 
+        background-color: #FFCD1D;
+        width: 400px;
+        border-radius: 30px;
+        margin-left: auto;
+       
+    }
 
+    #mansearch_conditions {
+        margin-right: 10px; /* 적절한 간격으로 조정하세요 */
+         padding: 10px;
+         white-space: nowrap;
+         font-weight: bold;
+    }
+
+    .mansearch_search {
+        display: flex;
+        align-items: center;
+    }
+
+    #mansearch_idsearch {
+        margin-right: 5px; /* 적절한 간격으로 조정하세요 */
+    }
+
+    #mansearch_idsearch, #mansearch_button {
+        padding: 5px; /* 적절한 패딩 값으로 조정하세요 */
+    }
+     #mansearch_button {
+        background: none; /* 배경색 제거 */
+        border: none; /* 테두리 제거 */
+        padding: 0; /* 내부 여백 제거 */
+        cursor: pointer; /* 마우스 포인터 모양 변경 */
+    }
+    .manger_member table {
+        margin: auto; /* 테이블을 가운데 정렬 */
+        border-collapse: collapse;
+        margin-top: 20px; /* 테이블과 상단 간격 조절 */
+    }
+
+    .manger_member td {
+        border-bottom: 1px solid #FFCD1D; /* 각 셀에 밑줄 스타일 추가 */
+        padding: 8px;
+        text-align: center;
+    }

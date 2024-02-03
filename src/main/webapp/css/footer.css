@@ -1,14 +1,14 @@
 @charset "UTF-8";
+
 body{
 	background-color: #F8EBCE;
 }
 #footer_wrap{
 	background-color: #F8EBCE;
-	bottom: 0;
 	width: 100%;
-	 z-index: 10;
-	 height: 100px;
+	 height: 120px;
 }
+
 a {
 	text-decoration: none;
 	color: inherit;
@@ -19,6 +19,7 @@ a {
 }
 .footer_center{
 	position: absolute;
+	height: 100px;
 	width: 20%;
 }
 #footer_menu {
@@ -39,13 +40,14 @@ a {
 	right: 5%;
 	position: absolute;
 	width: 30%;
- flex-direction: column-reverse;
- align-items: center;
+	height: 50%;
 }
 #footer_box span{
 	position: absolute;
 	left: 0;
 	width: 20%;
+	height: 100%;
+	background: white;
 	display: flex;
     align-items: center; /* 수직 정렬을 위한 속성 */
     justify-content: center; 
@@ -53,13 +55,20 @@ a {
 }
 #footer_messagebox{
 	position: absolute;
+	right: 20%;
+	width: 60%;
+	height: 100%;
+}
+#footer_messagebox1{
+	position: absolute;
 	right: 0;
-	width: 80%;
-		 height: 50px;
-		 white-space: pre-wrap;
+	width: 15%;
+	height: 100%;
+	border: 1px;
 }
 .footer_center img {
 	position: absolute;
+	height: 100px;
 	width: auto;
 	left: 20%;
 	
@@ -74,7 +83,6 @@ a {
 
 	.footer_right{
 		display: none;
-			 height: 100px;
 	}
 	.footer_text p{
 		display: none;

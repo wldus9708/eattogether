@@ -4,6 +4,7 @@ header{
 	top: 0;
       width: 100%;
        z-index: 10;
+       height: 50px;
 }
 .container-fluid span {
 	font-style: bold;
@@ -24,17 +25,54 @@ header{
 #header_img1, #header_img2, #header_img3 {
 	width: 50px; /* 이미지 크기 조절 */
 }
-
-#header_text {
-	border-radius: 30px 0 0 30px;
+#header_img3{
+	margin-left: 10px;
 }
-
 #header_button {
 	border-radius: 0 30px 30px 0;
 }
+#manger{
+	color: #000;
+}
+#manheader {
+	position: relative;
+	min-width: 200px
+}
+.header{
+		text-decoration: none;
+	list-style: none;
+	margin:10px;
+	margin-top: 50px;
+	margin-right: 30px;
+}
+.header-toggle{
+		text-decoration: none;
+	margin-right: 55px;
+		border-bottom: 3px solid #000; 
 
-@media screen and (max-width: 1050px) {
-	#header_span1, #header_span2 {
+}
+.dropdown-menu {
+	display: none;
+	position: absolute;
+	background-color: #fff;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	z-index: 1;
+		margin-right: 30px;
+				border-radius: 15px;
+}
+ .dropdown-menu li {
+            padding: 8px;
+            
+        }
+
+.header:hover .dropdown-menu {
+	display: block;
+	background-color: #FFCD1D;
+}
+@media screen and (max-width: 1000px) {
+	#header_span1,#manheader {
 		display: none;
 	}
 }

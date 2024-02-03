@@ -5,12 +5,12 @@ header{
       width: 100%;
        z-index: 10;
 }
-span {
+.container-fluid span {
 	font-style: bold;
 	font-size: 30px;
 }
 
-a {
+.container-fluid a {
 	text-decoration: none;
 	color: inherit;
 }

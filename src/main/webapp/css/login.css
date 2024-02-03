@@ -1,0 +1,209 @@
+@charset "UTF-8";
+
+body {
+	margin: 0 auto;
+	background: #F8EBCE;
+}
+
+.login_container {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 10px;
+}
+
+.login_left-half,
+.login_right-half {
+	flex: 1;
+	padding: 10px;
+}
+.login_left-half{
+	margin: 0 auto;
+}
+
+#login_box1 {
+	margin-top: 250px;
+	margin-left: 148px;
+	width: 381px;
+	height: 610px;
+	flex-shrink: 0;
+	border-radius: 65px;
+	border: 10px solid #000;
+	background: #FFF;
+}
+
+#login_box1_text p {
+	font-size: 24px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	font-size: 24px;
+	font-style: normal;
+	text-align: center;
+	font-family: Inter;
+}
+
+#login_box1_text p:first-child {
+	text-align: center;
+	font-family: Inter;
+	font-size: 36px;
+	font-style: normal;
+	font-weight: bold;
+	line-height: normal;
+}
+
+#login_box1_text {
+	margin-top: inherit;
+}
+
+#login_text {
+	width: 283px;
+	height: 125px;
+	flex-shrink: 0;
+	color: #000;
+	text-align: center;
+	font-family: Inter;
+	font-size: 64px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	margin-top: 283px;
+	margin-left: 175px;
+	text-align: center;
+}
+
+#login_idbox1 {
+	width: 431px;
+	height: 77px;
+	flex-shrink: 0;
+	border-radius: 10px;
+	background: #FFCD1D;
+	margin-left: 110px;
+}
+
+#login_idbox2 {
+	width: 431px;
+	height: 77px;
+	flex-shrink: 0;
+	border-radius: 10px;
+	background: #FFCD1D;
+	margin-left: 110px;
+	margin-top: 20px;
+}
+#login_idbox3 {
+	width: 431px;
+	height: 77px;
+	border-radius: 10px;
+	background: #FFCD1D;
+	margin-left: 110px;
+	margin-top: 20px;
+}
+#login_button{
+	width: 431px;
+	height: 77px;
+	border-radius: 10px;
+	background: #FFCD1D;
+	margin-left: 110px;
+	margin-top: 20px;
+	border: none;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.login_hiddenbox {
+	width: 431px;
+	height: 10px;
+	margin-left: 140px;
+	margin-top: 3px;
+	display: block;
+	color: red;
+	font-size: 12px;
+}
+
+
+#login_hr {
+	margin: 20px;
+	width: 624px;
+	height: 6px;
+	background: #000;
+}
+
+.login_images {
+	display: flex;
+	justify-content: space-evenly;
+	/* 이미지 간의 간격 조절을 위해 space-evenly 사용 */
+	align-items: center;
+	width: 624px;
+}
+
+.login_image {
+	text-decoration: none;
+	/* 링크에 밑줄 제거 */
+	margin: 0;
+	/* 기본 마진 제거 */
+}
+
+.login_image img {
+	width: 50px;
+	height: auto;
+}
+
+#login_idbox_label {
+	float: left;
+	width: 139px;
+	height: 33px;
+	text-align: center;
+	font-family: Inter;
+	font-size: 28px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: normal;
+	margin: 22px
+}
+
+#login_idbox_input {
+	float: left;
+	width: 248px;
+	height: 49px;
+	border-radius: 10px;
+	background: linear-gradient(0deg, #FFF 0%, #FFF 100%),
+		linear-gradient(0deg, #FFF 0%, #FFF 100%), #FFF;
+	margin-top: 13px;
+	margin-left: -15px;
+}
+
+#login_idbox_input [type="text"] {
+	width: 248px;
+	height: 49px;
+	border-radius: 10px;
+	font-size: 18px;
+}
+
+#login_links {
+	margin-top: 15px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 18px;
+	font-family: Inter;
+	font-weight: bold;
+	width: 624px;
+}
+
+#login_links a {
+	text-decoration: none;
+	padding: 10px;
+	margin-right: 5px;
+	color: inherit;
+}
+
+#login_links a:last-child {
+	margin-right: 0;
+}
+.login_checkbtn{
+    background: #ED6D35;
+    color: black;
+}
+.login_checkbtn:hover, .login_checkbtn:active, .login_checkbtn:focus{
+    background: #ED6D35 !important;
+    color: black !important;
+}

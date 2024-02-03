@@ -10,10 +10,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/recipeUpdate_demo.css">
 <script>
-	function clearValue(input) {
-		input.value = ''; // 클릭 시 value 값을 빈 문자열로 설정
-	}
-	
 	// 파일 입력(input) 엘리먼트
     const imageInput = document.getElementById('image-input');
 
@@ -58,7 +54,7 @@
 	<section>
 		<div class="recipe_Update_title">
 			<input type="text" class="recipe_Update_title02" id="title"
-				name="title" value="제목을 입력하세요" onclick="clearValue(this)">
+				name="title" placeholder="제목을 입력하세요">
 		</div>
 		<div>
 			<input type="file" id="image-input" accept="image/*">
@@ -68,14 +64,14 @@
 			<div class="col-sm-3">
 				<div class="recipe_Update_food-basic">
 					<div class="recipe_Update_food-name">재료 : </div>
-					<div class="recipe_Update_food-name">레시피 : </div>	
+					<div class="recipe_Update_food-name">레시피 : </div>
 				</div>
 			</div>
 			<div class="col-sm-9">
 				<div class="recipe_Update_food-basic">
 					<input type="text" class="recipe_text_basic" id="basic" name="basic">
 				</div>
-				<div class="recipe_Update_food-recipe">	
+				<div class="recipe_Update_food-recipe">
 					<span class="recipe_Update_food">1</span>
 					<input type="text" class="recipe_text" id="contents" name="contents">
 				</div>

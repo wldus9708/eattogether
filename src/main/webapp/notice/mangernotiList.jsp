@@ -61,4 +61,4 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 </html>
-<%@include file="./../common/footer.jsp" %>
+<%@include file="./../common/mangerfooter.jsp" %>

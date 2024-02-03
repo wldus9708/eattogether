@@ -13,7 +13,7 @@
 <head>
 <link rel="icon" href="../image/cooker.png">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>오늘 뭐먹지?</title>
 
 <!-- jQuery section -->
 <!-- bootstrap은 jquery를 기반으로 구동이 되므로 반드시 jquery 선언이 먼저 되어야 합니다. -->
@@ -27,7 +27,4 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
 	rel="stylesheet">	
 </head>
-<body>
-
-</body>
 </html>

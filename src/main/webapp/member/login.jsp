@@ -150,3 +150,4 @@
 	});
 </script>
 </html>
+<%@ include file="./../common/footer.jsp"%>

@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="./../css/mangernotiListStyle.css">
+<link rel="stylesheet" href="./../css/membernotiListStyle.css">
 
 </head>
 <body>
@@ -24,9 +24,6 @@
 						<div class="inquiryDetails">
 							<div id="manger_contents">
 								<p>서비스향상을위해 전체적으로업데이트가 있을예정입니다.</p>
-							</div>
-							<div id="manger_modify">
-								<a href="https://www.naver.com/" id="editInquiry">수정하기</a>
 							</div>
 						</div></li>
 				</ul>

@@ -2,12 +2,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="./../common/common.jsp"%>
-<link rel="stylesheet" type="text/css" href="./mypage2.css">
+
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-</style>
+<link rel="stylesheet" type="text/css" href="./../css/mypage2.css">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
@@ -114,5 +113,5 @@
 	</div>
 	
 </body>
-<%@include file="./../pro/footer.jsp"%>
+<%@include file="./../common/footer.jsp"%>
 </html>

@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="./top.css">
+<link rel="stylesheet" type="text/css" href="./../css/top.css">
 <style type="text/css">
 
 </style>
@@ -21,13 +21,13 @@
 			<div class="d-flex" style="flex: 0 0 60%;">
 				<input class="form-control" type="text" id="header_text">
 				<button class="btn btn-light" id="header_button" type="submit">
-					<img src="./../img/search.png" alt="" id="header_img2">
+					<img src="./../image/search.png" alt="" id="header_img2">
 				</button>
 			</div>
 
 			<div class="d-flex align-items-center">
 				<a href="#" class="d-flex flex-row align-items-center"> <img
-					src="./../img/user.png" alt="" id="header_img3"> <span
+					src="./../image/user.png" alt="" id="header_img3"> <span
 					id="header_span2">가나다라</span>
 				</a>
 			</div>

@@ -39,7 +39,7 @@ section{/* 섹션*/
 	outline: none; /* 포커스 효과 없애기 */
 	font-size: 20px;
 	background-color: #FC7439;
-	color:lightslategray;
+	color:white;
 }
 
 .recipe_Update_food-name{/* 레시피, 재료 text */

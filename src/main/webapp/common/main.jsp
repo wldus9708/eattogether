@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="./../common/common.jsp"%>
 <%@ include file="./../common/mangerheader.jsp"%>
+<%@include file ="./../common/sidebar.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -102,3 +103,4 @@ $(document).ready(function() {
 
 </body>
 </html>
+<%@include file="./../common/footer.jsp" %>

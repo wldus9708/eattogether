@@ -1,4 +1,8 @@
 @charset "UTF-8";
+body {/*배경색 설정*/
+		background-color: #F8EBCE;
+	}
+
 #recipe {
 	margin-top :5px;/*사이드 메뉴 레시피 글자 중앙 정렬*/
 	width: 200px;/* 원하는 가로 길이로 설정 */
@@ -28,7 +32,7 @@
 	float: left;
 	border: 3px solid black;
 	padding: 10px;
-	margin-left:50px;
+	margin-left:400px;
 }
 
 .recipe_side0 {

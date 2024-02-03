@@ -44,11 +44,12 @@
 		<div class="footer_right">
 			<div id="footer_box">
 				<span>문의하기</span>
-				<input type="text" id=footer_messagebox>
-
+				<textarea id=footer_messagebox></textarea>
+	
 			</div>
 		</div>
 
 	</footer>
+	
 </body>
 </html>

@@ -37,7 +37,9 @@
 	top: 52px;
 	/* 가로 방향으로 가운데 정렬 */
 }
-
+#manger{
+	color: #000;
+}
 #manheader {
 	position: relative;
 }

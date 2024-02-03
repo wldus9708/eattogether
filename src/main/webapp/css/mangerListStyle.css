@@ -41,6 +41,7 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 15px;
+   color: #000;
 }
 #ma_memberbt:active, #ma_announbt:active, #ma_inquirybt:active,
 #ma_memberbt:focus, #ma_announbt:focus, #ma_inquirybt:focus {

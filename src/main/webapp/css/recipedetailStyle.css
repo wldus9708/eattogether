@@ -1,58 +1,99 @@
 @charset "UTF-8";
-body{
-	  margin: 0;
-  padding: 0;
-  background-color: #F8EBCE;
-  justify-content: center;
-  align-items: center;
+
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #F8EBCE;
+	justify-content: center;
+	align-items: center;
+}
+#recipedetail_box01 {
+	display: flex;
+	align-items: center;
+	/* 세로 중앙 정렬 */
+	justify-content: center;
+	flex-direction: row;/* 가로 정렬로 변경 */
+	box-sizing: border-box;
 }
 
-#recipedetail_box01 {
-            display: flex;
-  align-items: center; /* 세로 중앙 정렬 */
-  margin: 50px;
-    justify-content: center;
-            justify-content: space-between; /* 좌우 정렬 */
-             box-sizing: border-box;
-        }
-        #recipedetail_box02 {
-			 flex: 1;
-			}
-			#recipedetail1{ flex-direction: row;  display: flex;}
-#recipedetail1, #recipedetail2 {
-            display: flex;
-            padding: 10px;
-            margin: 0; 
-        }
+#recipedetail_box02 {
+	flex: 1;
+}
+#myImage {
+    width: 50px; /* 원하는 크기로 조절 (예: 50px) */
+    height: 50px; /* 가로 비율 유지 */
+    	margin-bottom: 250px;
+}
 
-        #recipedetail2 {
-            flex: 1; /* recipedetail2가 recipedetail1보다 2배 넓게 차지하도록 함 */
-        
-        }
-        #recipetitle{
-				  border: 3px solid #000;
-		}
-       th, td {
-            border: 1px solid black;}
-    
-#recipe_container {
-            text-align: center; /* recipe_image를 가운데로 정렬 */
-        }
+#recipedetail1 {
+	flex-direction: row;
+	display: flex;
 
-        .recipe_image {
-            display: inline-block; /* 가운데 정렬을 위해 inline-block 설정 */
-        }
+	
+}
 
-        .removeUnderLine {
-            text-decoration: none; /* 링크 밑줄 제거 */
-        }
+#recipedetail1,
+#recipedetail2 {
+	display: flex;
+	margin: 0;
+	 flex-direction: column; /* 세로로 정렬로 변경 */
+}
+table {
+    border-collapse: separate; /* 셀 간의 간격을 별도로 지정할 수 있게 함 */
+}
 
-        #recipetitle {
-         
-            margin: auto; /* 가운데 정렬을 위해 auto 설정 */
-            border-collapse: collapse; /* 테이블 셀 간의 간격 제거 */
-        }
+ th {
+    padding: 10px; /* 셀 안의 내용과 테두리 간의 간격 설정 (원하는 크기로 조절) */
+}
+#recipetitle {
+	
+	border-bottom:  3px solid #000;
+}
+#re_title {
+	border-radius: 30px 30px 0px 0px;
+	border-bottom:  3px solid #000;
+	margin: 50px;
+	font-size: 30px;
+	background-color: #FFCD1D;
+		text-align: center;
+}
+#re_mat,#re_matkind{
+	border-bottom: 3px dotted #000; 
+}
+#re_mat,#re_recipe{
+	background-color: #FFCD1D;
+	text-align: center;
+	font-weight: bold;
+	border-right: 3px dotted #000; 
+}
 
-        #re_title {
-            text-align: center; /* 테이블 제목 가운데 정렬 */
-        }
+#re_matkind,#re_number{
+	background-color: #fff;
+}
+.removeUnderLine {
+	text-decoration: none;
+	/* 링크 밑줄 제거 */
+}
+#recipe_container{
+		margin-bottom: 20px;
+}
+.card-img{
+	width:550px;
+	height:450px;
+	border: 3px solid #000;
+
+}
+#recipetitle {
+
+	margin: auto;
+	/* 가운데 정렬을 위해 auto 설정 */
+	border-collapse: collapse;
+	/* 테이블 셀 간의 간격 제거 */
+}
+#re_Sequence{
+	align-items: center;
+	}
+
+li {
+     list-style-type: decimal;
+}

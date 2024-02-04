@@ -13,6 +13,7 @@
 </style>
 </head>
 <body>
+<form>
 	<div id="main_wrap">
 		<div id="main_materialBox">
 			<div id="main_materialBox_left">
@@ -41,13 +42,14 @@
 					</div>
 				</div>
 				<div id="main_materialBox_search">
-
-					<img src="../image/search_2.png">
+					<button type="submit" id="main_searchButton">
+						<img src="../image/search_2.png">
+					</button>
 				</div>
 			</div>
 		</div>
 	</div>
-
+</form>
 <script>
 $(document).ready(function() {
     var maxElementsUpper = 3;
@@ -98,9 +100,6 @@ $(document).ready(function() {
 });
 
 </script>
-
-
-
 </body>
 </html>
 <%@include file="./../common/footer.jsp" %>

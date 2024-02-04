@@ -37,7 +37,7 @@
 								<li><a class="dropdown-item"
 									href="../member/login.jsp">로그인</a></li>
 								<li><a class="dropdown-item"
-									href="../member/meInsertForm.jsp">회원가입</a></li>
+									href="../member/memberAgreement.jsp">회원가입</a></li>
 								<li><a class="dropdown-item"
 									href="../member/MyPage2.jsp">마이페이지</a></li>
 								<li><a class="dropdown-item"

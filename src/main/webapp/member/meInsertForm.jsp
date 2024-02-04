@@ -21,8 +21,8 @@
 		return regExp.test(asValue);
 	}
 	function isPassword(asValue) {//비밀번호 첫글자는 영문 소문자, 6~8자리 특수문자 포함
-		var regExp = /^[a-z][a-z0-9!@#$%^&*()_+,-./:;<=>?@[\\\]^_`{|}~]{5,7}$/;
-
+		var regExp = /^[a-z](?=.*[!@#$%^&*()_+,-./:;<=>?@[\\\]^_`{|}~])[a-z0-9!@#$%^&*()_+,-./:;<=>?@[\\\]^_`{|}~]{5,7}$/;
+					
 		return regExp.test(asValue);
 	}
 	function isName(asValue) { //이름 한글로 2자리 이상 8자리 이하
@@ -190,7 +190,8 @@
 <!-- 중복확인 Modal 끝 -->	
 	<div id="join_wrap">
 		<div id="join_box">
-			<form action="joinSuccess.jsp" method="post" name="joinForm">
+			<form action="<%=withFormTag %>" method="post" name="joinForm">
+				<input type="hidden" name="command" value="meInsert">
 				<div id="join_form_wrap">
 					<div class="join_form_container">
 						<label class="join_label" for="userid">아이디:</label> <input

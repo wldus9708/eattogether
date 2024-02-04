@@ -52,7 +52,7 @@ public class MemberInsertController extends Superclass {
 
 		if (cnt == 1) { // 인서트 성공
 			// 가입 축하 페이지로 이동 예정
-			super.gotoPage(PREFIX + "joinSuccess.jsp");
+			new MemberSuccessController().doGet(request, response);
 		} else {// 인서트 실패
 			new MemberInsertController().doGet(request, response);
 		}

@@ -13,8 +13,8 @@ public class MemberInsertController extends Superclass {
 	
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		System.out.println("회원가입 페이지로 이동합니다.");
 		super.doGet(request, response);
-		
 		super.gotoPage(PREFIX + "meInsertForm.jsp");
 	}
 	

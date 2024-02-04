@@ -36,7 +36,7 @@
 					alt=""></a>
 			</div>
 			<div>
-				<a href="#" class="userId"><span id="recipeDetail_Id">phwoo</span></a>
+				<a href="#" class="userId"><span id="recipeDetail_Id">kimwldus97</span></a>
 			</div>
 			<div>
 				<a href="#" class="upBtn"><span id="recipeUp">4520</span> <img

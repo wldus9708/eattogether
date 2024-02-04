@@ -24,6 +24,7 @@ body {
     display: flex;
   width: 250px;
   height: 600px;
+  margin-left: 300px;
   border-radius: 30px;
   flex-direction: column; /* 버튼들을 세로로 나열 */
   align-items: center; /* 버튼들을 가운데 정렬 */
@@ -52,6 +53,7 @@ body {
       margin: 0 auto;
       height: 600px;
       display: flex;
+        margin-right: 500px;
       flex-direction: column;
       padding: 20px;
       box-sizing: border-box;
@@ -73,7 +75,7 @@ body {
         width: 400px;
         border-radius: 30px;
         margin-left: auto;
-        margin-right: 350px;
+        margin-right: 150px;
        
     }
 
@@ -105,11 +107,13 @@ body {
     .manger_member table {
         margin: auto; /* 테이블을 가운데 정렬 */
         border-collapse: collapse;
+        width: 700px;
         margin-top: 20px; /* 테이블과 상단 간격 조절 */
+        background-color: #fff;
     }
 
     .manger_member td {
-        border-bottom: 1px solid #FFCD1D; /* 각 셀에 밑줄 스타일 추가 */
+        border-bottom: 3px solid #FFCD1D; /* 각 셀에 밑줄 스타일 추가 */
         padding: 8px;
         text-align: center;
     }

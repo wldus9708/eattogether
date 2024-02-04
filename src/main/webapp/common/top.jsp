@@ -31,20 +31,20 @@ String notWithFormTag = withFormTag + "?command=";
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light" id="header_wrap">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="../common/main.jsp"> <img src="./../image/cooker.png"
+			<a class="navbar-brand" href="../common/main.jsp"> <img src="/eattogether/image/cooker.png"
 				alt="" id="header_img1"> <span id="header_span1">오늘뭐먹지?</span>
 			</a>
 
 			<div class="d-flex" style="flex: 0 0 60%;">
 				<input class="form-control" type="text" id="header_text">
 				<button class="btn btn-light" id="header_button" type="submit">
-					<img src="./../image/search.png" alt="" id="header_img2">
+					<img src="/eattogether/image/search.png" alt="" id="header_img2">
 				</button>
 			</div>
 
 			<div class="d-flex align-items-center">
 				<a href="#" class="d-flex flex-row align-items-center"> <img
-					src="./../image/user.png" alt="" id="header_img3">
+					src="/eattogether/image/user.png" alt="" id="header_img3">
 				</a>
 				<div id="manheader">
 					<ul>

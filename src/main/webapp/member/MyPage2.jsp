@@ -13,15 +13,13 @@
 </style>
 </head>
 <body>
-<
 	<div id="mypage00">
-		<img src="./../img/cooker.png" id="exit" alt="Cinque Terre"> <img
-			src="./../img/user.png" id="home" alt="Cinque Terre">
+		<a href="./../common/main.jsp"><img src="./../image/back.png"  id="exit" alt="Cinque Terre"></a>
 	</div>
 	<div id="mypage_box00">
 		<div class="custom-shape" id="myicon">
 			<img src="./../image/juice01.png" class="mypage_icon"
-				alt="Cinque Terre">
+				alt=" ">
 		</div>
 		<div class="mypage_button">
 			<a href="#">
@@ -111,6 +109,5 @@
 			</ul>
 		</div>
 	</div>
-	
 </body>
 </html>

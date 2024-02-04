@@ -95,7 +95,7 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	 flex-grow: 1;
+	flex-grow: 1;
 }
 
 .main_materialBox_input2 input {
@@ -106,7 +106,7 @@ body {
 	font-size: 16px;
 	font-weight: 400;
 	border-radius: 30px;
-	 outline: none;
+	outline: none;
 }
 
 #main_materialBox_search {
@@ -120,8 +120,8 @@ body {
 }
 
 .inline-block-item {
-    font-size: 11px;
-    font-weight: bold;
+	font-size: 11px;
+	font-weight: bold;
 	position: relative;
 	display: inline-block;
 	margin-right: 10px;
@@ -130,9 +130,11 @@ body {
 	border-radius: 5px;
 	background-color: #f5f5f5;
 	color: #333;
- 	white-space: nowrap; /* 입력값이 width를 초과하면 줄바꿈 방지 */
-    overflow: hidden; /* 입력값이 width를 초과하면 숨김 처리 */
-    text-overflow: ellipsis;
+	white-space: nowrap;
+	/* 입력값이 width를 초과하면 줄바꿈 방지 */
+	overflow: hidden;
+	/* 입력값이 width를 초과하면 숨김 처리 */
+	text-overflow: ellipsis;
 }
 
 .close-icon {
@@ -145,22 +147,29 @@ body {
 	line-height: 1;
 	font-weight: bold;
 }
-.main_selectbox {
-        height: 35px;
-        margin-bottom: 5px;
-    }
-.main_addButton {
-    margin-left: 10px;
-    border-radius: 15px;
-    font-size: 15px;
-    font-weight: bold;
-    background: #ED6D35;
-}
-.main_selectbox .upper-item,
-    #main_materialBox_right .lower-item {
-        margin-bottom: 10px;
-    }
 
-    .main_materialBox_input {
-        margin-top: 10px;
-    }
+.main_selectbox {
+	height: 35px;
+	margin-bottom: 5px;
+}
+
+.main_addButton {
+	margin-left: 10px;
+	border-radius: 15px;
+	font-size: 15px;
+	font-weight: bold;
+	background: #ED6D35;
+}
+
+.main_selectbox .upper-item,
+#main_materialBox_right .lower-item {
+	margin-bottom: 10px;
+}
+
+.main_materialBox_input {
+	margin-top: 10px;
+}
+#main_searchButton{
+	border:none;
+	background: none;	
+}

@@ -1,16 +1,16 @@
 @charset "UTF-8";
 
-      body {
-            /* 페이지 너비를 조절 */
-            margin: 0 auto; /* 페이지를 가운데 정렬 */
-            background-color:#F8EBCE;
-            display:flex;
-            justify-content: center;
-            align-items: center;   
-            width: 80%;
-            height: 100%;
-                     
-        }
+body {
+        /* 페이지 너비를 조절 */
+        margin: 0 auto; /* 페이지를 가운데 정렬 */
+        background-color:#F8EBCE;
+        display:flex;
+        justify-content: center;
+        align-items: center;   
+        width: 80%;
+        height: 100%;
+                 
+    }
          a{
 color: black; /* 링크 텍스트 색상을 검정색으로 설정 */
   text-decoration: none;
@@ -84,15 +84,15 @@ justify-content: space-between;
         top:30%;
         left: 15%;
     }
-         .mypage_button a{
+.mypage_button a{
 			 width: 50%;
 		 }
       #binselt, #bupdate{
-         background-color: #FC7439;
+        background-color: #FC7439;
         border: 3px solid;
         border-radius: 30px;
          
-            width: 80%; /* 도형의 너비 */
+        width: 80%; /* 도형의 너비 */
         height: 80%;
         margin-top: 15%;
         font-style: bold;

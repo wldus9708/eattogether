@@ -35,9 +35,11 @@
 							href="#" sdata-bs-toggle="dropdown" id="manger">닉네임▼</a>
 							<ul class="dropdown-menu">
 								<li><a class="dropdown-item"
-									href="../member/MyPage2.jsp">마이페이지</a></li>
-								<li><a class="dropdown-item"
 									href="../member/login.jsp">로그인</a></li>
+								<li><a class="dropdown-item"
+									href="../member/meInsertForm.jsp">회원가입</a></li>
+								<li><a class="dropdown-item"
+									href="../member/MyPage2.jsp">마이페이지</a></li>
 								<li><a class="dropdown-item"
 									href="./../notice/membernotiList.jsp">공지사항</a></li>
 								<li><a class="dropdown-item" href="#">로그아웃</a></li>

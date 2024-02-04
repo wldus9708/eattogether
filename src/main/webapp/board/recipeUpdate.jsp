@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@include file="./../common/common.jsp"%>
+<%@include file="./../common/top.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +10,7 @@
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<link rel="stylesheet" type="text/css" href="../css/recipeUpdate.css">
+<link rel="stylesheet" type="text/css" href="/eattogether/css/recipeUpdate.css">
 <script>
 	// 파일 입력(input) 엘리먼트
     const imageInput = document.getElementById('image-input');
@@ -42,15 +44,6 @@
 </script>
 </head>
 <body>
-	<header>
-		<div class="back-container">
-			<a href="#"> <img src="./../image/back.png" alt="뒤로가기"
-				class="recipe_Update_dack">
-			</a>
-		</div>
-	</header>
-	<h2>레시피 등록</h2>
-	<p>레시피를 등록하는 페이지 입니다.</p>
 	<section>
 		<div class="recipe_Update_title">
 			<input type="text" class="recipe_Update_title02" id="title"
@@ -58,7 +51,7 @@
 		</div>
 		<div>
 			<input type="file" id="image-input" accept="image/*">
-    		<img src="./../image/basicicon.png" id="image-preview" alt="사진">
+    		<img src="/eattogether/image/basicicon.png" id="image-preview" alt="사진">
 		</div>
 		<div class="row">
 			<div class="col-sm-3">

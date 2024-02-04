@@ -5,10 +5,6 @@ body {
 	margin: 0 auto;
 	/* 페이지를 가운데 정렬 */
 	background-color: #F8EBCE;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 80%;
 	height: 100%;
 
 }
@@ -16,7 +12,8 @@ body {
 #updateMypage_entir {
 	display: flex;
 	flex-direction: row;
-	margin-top: 40px;
+	margin-top: 150px;
+		margin-left: 650px;
 }
 
 #myupdate_box00 {

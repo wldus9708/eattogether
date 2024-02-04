@@ -59,7 +59,7 @@ String notWithFormTag = withFormTag + "?command=";
 									href="/eattogether/member/MyPage2.jsp">마이페이지</a></li>
 								<li><a class="dropdown-item"
 									href="/eattogether/notice/membernotiList.jsp">공지사항</a></li>
-								<li><a class="dropdown-item" href="#">로그아웃</a></li>
+								<li><a class="dropdown-item" href="/eattogether/common/main.jsp">로그아웃</a></li>
 							</ul></li>
 					</ul>
 				</div>

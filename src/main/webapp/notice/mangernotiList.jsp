@@ -6,21 +6,21 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="./../css/mangernotiListStyle.css">
+<link rel="stylesheet" href="/eattogether/css/mangernotiListStyle.css">
 
 </head>
 <body>
 	<div id="contain">
 		<div id="box1">
-			<a href="./../manager/manList.jsp" id="ma_memberbt">회원조회</a> <a
-				href="./../notice/mangernotiList.jsp " id="ma_announbt">공지사항</a> <a
-				href="./../inquiry/inquList.jsp" id="ma_inquirybt">문의사항</a>
+			<a href="/eattogether/manager/manList.jsp" id="ma_memberbt">회원조회</a> <a
+				href="/eattogether/notice/mangernotiList.jsp " id="ma_announbt">공지사항</a> <a
+				href="/eattogether/inquiry/inquList.jsp" id="ma_inquirybt">문의사항</a>
 		</div>
 		<div id="box2">
 			<section class="inquiries">
 				<h2>공지사항</h2>
 				<ul id="inquiryList">
-					<li><a href="#" class="toggleInquiry">공지사항</a>
+					<li><a href="/eattogether/notice/mangernotiList.jsp " class="toggleInquiry">공지사항</a>
 						<div class="inquiryDetails">
 							<div id="manger_contents">
 								<p>서비스향상을위해 전체적으로업데이트가 있을예정입니다.</p>

@@ -1,7 +1,7 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="./../common/common.jsp"%>
+<%@include file="./../common/top.jsp" %>
 
 <!DOCTYPE html>
 <html>
@@ -13,13 +13,10 @@
 </style>
 </head>
 <body>
-	<div id="mypage00">
-		<a href="./../common/main.jsp"><img src="./../image/back.png"  id="exit" alt="Cinque Terre"></a>
-	</div>
+<div class="Mypage_ntr">
 	<div id="mypage_box00">
 		<div class="custom-shape" id="myicon">
-			<img src="./../image/juice01.png" class="mypage_icon"
-				alt=" ">
+			<img src="/eattogether/image/pasta_01.jpg" id="mypage_icon" alt=" ">
 		</div>
 		<div class="mypage_button">
 			<a href="#">
@@ -33,81 +30,64 @@
 			</a>
 		</div>
 		<div id="mypage_box10">
-			<div class="mypage_box03" id="myname">
-				<span>이름</span> <input type="text" id="custom-textbox"
-					placeholder="여기에 입력하세요">
+			<table id="submypage_Input">
+				<tr>
+					<td id="submyname" style ="width:25%">이름</td>
+					<td><span>이름(나중에EL&JSTL쓸곳)</span></td>
+				<tr>
+				<tr>
+					<td id="submyid" style ="width:25%">닉네임</td>
+					<td><span>닉네임(나중에EL&JSTL쓸곳)</span></td>
+				<tr>
+				<tr>
+					<td id="submyfood" style ="width:25%">음식취향</td>
+					<td><span>음식취향(나중에EL&JSTL쓸곳)</span></td>
+				<tr>
+				<tr>
+					<td id="subcoment" style ="width:25%">코멘트</td>
+					<td><span>코멘트(나중에EL&JSTL쓸곳)</span></td>
+				<tr>
+			</table>
+		</div>
+	</div>
+	
+
+	<div id="submypage_contain02">
+		<div class="mysubpage_box01">
+			<div class="submypage_Bookmark01">
+				<div>'닉네임'의 즐겨찾기</div>
 			</div>
-			<div class="mypage_box03" id="mynname">
-				<span>닉네임</span> <input type="text" id="custom-textbox"
-					placeholder="여기에 입력하세요">
+			<div class="submypage_Bookmark02">
+				<img src="/eattogether/image/steak_02.jpg" id="subima">
+				<img src="/eattogether/image/steak_02.jpg" id="subima">
+				<img src="/eattogether/image/steak_02.jpg" id="subima">
+				<img src="/eattogether/image/steak_02.jpg" id="subima">
 			</div>
-			<div class="mypage_box03" id="myfood">
-				<span>음식취향</span> <input type="text" id="custom-textbox"
-					placeholder="여기에 입력하세요">
+		</div>
+		<div class="mysubpage_box01">
+			<div class="submypage_Bookmark01">
+				<div>내가 만든 레시피</div>
 			</div>
-			<div class="mypage_box03" id="mycomment">
-				<span>코멘트</span> <input type="text" id="custom-textbox"
-					placeholder="여기에 입력하세요">
+			<div class="submypage_Bookmark02">
+				<img src="/eattogether/image/steak_02.jpg" id="subima">
+				<img src="/eattogether/image/steak_02.jpg" id="subima">
+				<img src="/eattogether/image/steak_02.jpg" id="subima">
+				<img src="/eattogether/image/steak_02.jpg" id="subima">
+			</div>
+		</div>
+		<div class="mysubpage_box01">
+			<div class="submypage_Bookmark01">
+				<div>닉네임'의 최근본 목록</div>
+			</div>
+			<div class="submypage_Bookmark02">
+				<img src="/eattogether/image/steak_02.jpg" id="subima">
+				<img src="/eattogether/image/steak_02.jpg" id="subima">
+				<img src="/eattogether/image/steak_02.jpg" id="subima">
+				<img src="/eattogether/image/steak_02.jpg" id="subima">
 			</div>
 		</div>
 	</div>
-	<div id="mypage_box01">
-		<div class="mypage_box02" id="mypage21">
-			<span>이름</span>
-			<div>
-				<img src="./../image/juice01.png" class="ima" alt="Cinque Terre">
-				<img src="./../image/juice01.png" class="ima" alt="Cinque Terre">
-				<img src="./../image/juice01.png" class="ima" alt="Cinque Terre">
-			</div>
-			<ul class="pagination pagination-sm justify-content-center">
-				<li class="page-item"><a class="page-link"
-					href="javascript:void(0);">Previous</a></li>
-				<li class="page-item"><a class="page-link"
-					href="javascript:void(0);">1</a></li>
-				<li class="page-item"><a class="page-link"
-					href="javascript:void(0);">2</a></li>
-				<li class="page-item"><a class="page-link"
-					href="javascript:void(0);">Next</a></li>
-			</ul>
-		</div>
-		<br>
-		<div class="mypage_box02" id="mypage22">
-			<span>이름</span>
-			<div>
-				<img src="./../image/juice01.png" class="ima" alt="Cinque Terre">
-				<img src="./../image/juice01.png" class="ima" alt="Cinque Terre">
-				<img src="./../image/juice01.png" class="ima" alt="Cinque Terre">
-			</div>
-			<ul class="pagination pagination-sm justify-content-center">
-				<li class="page-item"><a class="page-link"
-					href="javascript:void(0);">Previous</a></li>
-				<li class="page-item"><a class="page-link"
-					href="javascript:void(0);">1</a></li>
-				<li class="page-item"><a class="page-link"
-					href="javascript:void(0);">2</a></li>
-				<li class="page-item"><a class="page-link"
-					href="javascript:void(0);">Next</a></li>
-			</ul>
-		</div>
-		<br>
-		<div class="mypage_box02" id="mypage23">
-			<span>이름</span>
-			<div>
-				<img src="./../image/juice01.png" class="ima" alt="Cinque Terre">
-				<img src="./../image/juice01.png" class="ima" alt="Cinque Terre">
-				<img src="./../image/juice01.png" class="ima" alt="Cinque Terre">
-			</div>
-			<ul class="pagination pagination-sm justify-content-center">
-				<li class="page-item"><a class="page-link"
-					href="javascript:void(0);">Previous</a></li>
-				<li class="page-item"><a class="page-link"
-					href="javascript:void(0);">1</a></li>
-				<li class="page-item"><a class="page-link"
-					href="javascript:void(0);">2</a></li>
-				<li class="page-item"><a class="page-link"
-					href="javascript:void(0);">Next</a></li>
-			</ul>
-		</div>
-	</div>
+</div>
 </body>
 </html>
+<%@include file="./../common/footer.jsp" %>

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="../css/memberAgreement.css">
+<link rel="stylesheet" type="text/css" href="/eattogether/css/memberAgreement.css">
 <script>
 	function checkAll() { // 전체동의 버튼 
 		var checkboxes = document.querySelectorAll('input[type="checkbox"]');
@@ -45,7 +45,7 @@
 		});
 
 		if (isAllChecked) { //전체 체크 됐을때만 페이지 이동
-			window.location.href = 'meInsertForm.jsp';
+			window.location.href = '/eattogether/Eat?command=meInsert';
 		} else {
 			alert('모든 항목에 동의해주세요.');
 		}

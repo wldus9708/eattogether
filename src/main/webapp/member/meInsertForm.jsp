@@ -7,7 +7,7 @@
 <head>
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-<link rel="stylesheet" type="text/css" href="../css/meInsertForm.css">	
+<link rel="stylesheet" type="text/css" href="/eattogether/css/meInsertForm.css">	
 <script type="text/javascript">
 	
 	function isId(asValue) { //아이디 첫글자는 영문 소문자, 3~8자리, 특수문자 제외

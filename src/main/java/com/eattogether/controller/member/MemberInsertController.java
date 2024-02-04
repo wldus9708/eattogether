@@ -14,6 +14,8 @@ public class MemberInsertController extends Superclass {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		super.doGet(request, response);
+		
+		super.gotoPage(PREFIX + "meInsertForm.jsp");
 	}
 	
 	@Override
@@ -50,6 +52,7 @@ public class MemberInsertController extends Superclass {
 
 		if (cnt == 1) { // 인서트 성공
 			// 가입 축하 페이지로 이동 예정
+			super.gotoPage(PREFIX + "joinSuccess.jsp");
 		} else {// 인서트 실패
 			new MemberInsertController().doGet(request, response);
 		}

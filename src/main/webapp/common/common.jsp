@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="icon" href="../image/cooker.png">
+<link rel="icon" href="/eattogether/image/cooker.png">
 <meta charset="UTF-8">
 <title>오늘 뭐먹지?</title>
 

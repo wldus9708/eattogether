@@ -6,9 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="../css/joinSuccess.css">
-
-
+<link rel="stylesheet" type="text/css" href="/eattogether/css/joinSuccess.css">
 </head>
 <body>
 	<div id="join_success_wrap">

@@ -14,7 +14,7 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light" id="header_wrap">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="#"> <img src="./../image/cooker.png"
+			<a class="navbar-brand" href="../common/main.jsp"> <img src="./../image/cooker.png"
 				alt="" id="header_img1"> <span id="header_span1">오늘뭐먹지?</span>
 			</a>
 
@@ -32,12 +32,12 @@
 				<div id="manheader">
 					<ul>
 						<li class="header"><a class="header-toggle" role="button"
-							href="#" sdata-bs-toggle="dropdown" id="manger">관리자▼</a>
+							href="#" sdata-bs-toggle="dropdown" id="manger">닉네임▼</a>
 							<ul class="dropdown-menu">
 								<li><a class="dropdown-item"
-									href="#">회원관리</a></li>
+									href="../member/MyPage2.jsp">마이페이지</a></li>
 								<li><a class="dropdown-item"
-									href="#">문의사항</a></li>
+									href="../member/login.jsp">로그인</a></li>
 								<li><a class="dropdown-item"
 									href="./../notice/membernotiList.jsp">공지사항</a></li>
 								<li><a class="dropdown-item" href="#">로그아웃</a></li>

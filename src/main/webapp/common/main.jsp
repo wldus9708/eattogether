@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="../css/main.css">
+<link rel="stylesheet" type="text/css" href="/eattogether/css/main.css">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>

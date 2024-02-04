@@ -45,7 +45,8 @@
 		$('#join_birth').datepicker({ // 제이쿼리 생일
 			dateFormat : "yy/mm/dd"
 		});
-
+		
+		
 		$('form[name=joinForm] #join_id').keyup(function() { // 아이디 제약조건 keyup
 			if (!isId($('form[name=joinForm] #join_id').val())) {
 				$('form[name=joinForm] #join_idError').text("첫글자는 영문 소문자, 3~8자리, 특수문자 제외해주세요").css("color", "red");
@@ -96,6 +97,12 @@
 			}
 		})
 	});
+	
+	function checkDuplicate() {
+	    var userId = $('#join_id').val(); // 사용자가 입력한 아이디 값 가져오기
+	    $('#staticBackdrop input[type="text"]').val(userId); // 모달 창의 input에 아이디 값 설정
+	}
+	
 	function validCheck() { // 제약조건 alert창 안내 
 		var id = $('#join_id').val();
 		if (!isId(id)) {

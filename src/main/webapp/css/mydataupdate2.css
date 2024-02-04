@@ -1,136 +1,119 @@
 @charset "UTF-8";
-     body {
-            /* 페이지 너비를 조절 */
-            margin: 0 auto; /* 페이지를 가운데 정렬 */
-            background-color:#F8EBCE;
-            display:flex;
-            justify-content: center;
-            align-items: center;   
-            width: 80%;
-            height: 100%;
-                     
-        }
-         a{
-color: black; /* 링크 텍스트 색상을 검정색으로 설정 */
-  text-decoration: none;
+
+body {
+	/* 페이지 너비를 조절 */
+	margin: 0 auto;
+	/* 페이지를 가운데 정렬 */
+	background-color: #F8EBCE;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 80%;
+	height: 100%;
+
 }
-#myupdate00{
-	top: 0;
-	height: 10%;
-display: flex;	
-justify-content: space-between;
-    width: 100%;
+
+#updateMypage_entir {
+	display: flex;
+	flex-direction: row;
+	margin-top: 40px;
 }
-        .updateexit{
-		left: 0;	
-         margin-left: 20px;
-         width:10%;
-         height:auto;
-      }
-      .updatehome{
-		  right: 0;
-         margin-right: 20px;
-         width:10%;
-         height:auto;      }
-         
-          #myupdate_box00{
-          display:flex;
-            justify-content: center;
-            align-items: center;
-            left: 10%;
-            position: absolute;
-            width: 35%;
-            height: 90%;
-            top: 0;
-      }     
-      
-         #myupdate_box10{
-			 display:flex;
-            justify-content: center;
-            align-items: center;
-            right: 10%;
-            width: 45%;    
-            position: absolute;
-            height: 90%;
-            top: 10%;
-            
-             display: flex;
-            flex-direction: column;
-            justify-content: space-between; /
-      }
-          #myupdateicon {
-            width: 60%; /* 도형의 너비 */
-            height: 58%; /* 도형의 높이 */
-            background-color:wihte; /* 도형의 배경색 */
-            position: absolute; /* 절대 위치로 지정 */
-            border-radius: 50%; 
-            border: 5px solid;
-            margin: 10px; 
-            
-        }
-        .myupdate_icon{
-          width: 98%; /* 도형의 너비 */
-            height: 98%;
-           transform: translate(1%, 1%); 
-           position: absolute;
-           border-radius: 50%; 
-        }
-        
-        
-        .myupdate_button{
-         height: 10%;
-    position: absolute;
-        width: 100%;
-       bottom:10%;
-        left: 15%;
-    }
-      #update_binselt, #update_bupdate{
-         background-color: #FC7439;
-        border: 3px solid;
-        border-radius: 30px;
-         
-            width: 80%; /* 도형의 너비 */
-        height: 80%;
-        margin-top: 3%;
-        font-style: bold;
-       
-        }
-        #update_od00, #update_od01{
-			width: 100%;			
-        margin: 0;
-        display:flex;
-            justify-content: center;
-            align-content: center;  
-		}
-      
-      
-         
-      .myupdate_box03{
-         
-         background-color: #FFCD1D;
-         border-radius: 30px;
-         border:3px solid black;
-         height: 10%;
-         width: 80%;
-         margin-top:2%;
-         right: 20%;
-         
-      }
-      
-       .myupdate_box03 span{
-         
-         background-color:white;
-         border-radius: 20px;
-         margin-left: 5%;
-         width: 20%;
-         height: 100%;
-      }
-      .myupdate_box03 input{
-         right: 0;
-         width:80%;         
-         height: 100%;
-         background-color: white;
-         
-         border-radius: 30px;
-      }
- 
+
+#myupdate_box00 {
+	margin: 30px;
+}
+
+#myupdate_box10 {
+	flex: 1;
+}
+
+a {
+	color: black;
+	/* 링크 텍스트 색상을 검정색으로 설정 */
+	text-decoration: none;
+}
+
+#myupdate_icon {
+	border-radius: 50%;
+	width: 350px;
+	height: 350px;
+	border: 3px solid #000;
+}
+
+#submypage_Input {
+	width: 550px;
+	/* 테이블의 너비를 100%로 설정하여 부모 컨테이너에 맞춥니다. */
+	height: 150px;
+	border-collapse: collapse;
+}
+
+#submypage_Input td {
+	border-bottom: 3px solid #000;
+
+	padding: 8px;
+}
+
+.myupdate_button {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	margin-top: 30px;
+	align-items: center;
+}
+
+
+#update_bupdate,
+#update_binselt {
+	border: 3px solid #000;
+	margin: 30px;
+	height: 50px;
+	width: 100px;
+	text-align: center;
+	border-radius: 30px;
+	background-color: #FC7439;	
+	font-weight: bold;
+	font-size: 20px;
+	padding: 10px;
+}
+
+
+#myUp01,
+#myUp02,
+#myUp03,
+#myUp04,
+#myUp05,
+#myUp06,
+#myUp07,
+#myUp08,
+#myUp09,
+#myUp10 {
+	justify-content: center;
+	/* 가운데 정렬을 위한 스타일 추가 */
+	align-items: center;
+	font-weight: bold;
+	font-size: 20px;
+	text-align: center;
+	border-radius: 30px;
+
+}
+
+#myUp01,
+#myUp03,
+#myUp05,
+#myUp07,
+#myUp09 {
+	background-color: #FFCD1D;
+}
+
+#myUp02,
+#myUp04,
+#myUp06,
+#myUp08,
+#myUp10 {
+	background-color: #fff;
+}
+
+#custom-textbox {
+	width: 400px;
+	margin-left: 20px;
+}

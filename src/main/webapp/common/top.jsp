@@ -1,13 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="./../common/common.jsp"%>
+
+<%
+// appName : 애플리케이션 컨텍스트 이름(프로젝트 이름)
+String appName = request.getContextPath();
+String mappingName = "/Eat"; //in FrontController.java file
+
+// 폼 태그에서 사용할 전역 변수
+String withFormTag = appName + mappingName;
+
+String notWithFormTag = withFormTag + "?command=";
+
+//out.print("contetxt이름 : " + appName + "<br>");
+//out.print("mappingName : " + mappingName + "<br>");
+//out.print("withFormTag : " + withFormTag + "<br>");
+//out.print("notWithFormTag : " + notWithFormTag + "<br>");
+%>
+
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="./../css/top.css">
+<link rel="stylesheet" type="text/css" href="/eattogether/css/top.css">
 <style type="text/css">
 </style>
 </head>
@@ -37,7 +54,7 @@
 								<li><a class="dropdown-item"
 									href="../member/login.jsp">로그인</a></li>
 								<li><a class="dropdown-item"
-									href="../member/memberAgreement.jsp">회원가입</a></li>
+									href="<%=notWithFormTag%>meAgree">회원가입</a></li>
 								<li><a class="dropdown-item"
 									href="../member/MyPage2.jsp">마이페이지</a></li>
 								<li><a class="dropdown-item"

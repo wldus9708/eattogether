@@ -32,6 +32,8 @@ body{
     padding: 20px;
     border-radius: 30px;
     margin-top: 30px;
+     border: 5px solid #000;
+     width: 1520px;
 }
 
 #submypage_contain01 img {
@@ -51,21 +53,37 @@ body{
     
 	  #submypage_Input td{
 		  border-bottom: 3px solid #000;
-		  
 		  padding: 8px;
 	  }
-	  #submyname,#submyid,#submyfood{
-		   justify-content: center; /* 가운데 정렬을 위한 스타일 추가 */
-    align-items: center; 
+	  #submyname,#submyid,#submyfood,#submycoment{
+		   justify-content: left; /* 가운데 정렬을 위한 스타일 추가 */
 		  font-weight: bold;
 		  font-size: 20px;
 		  text-align: center;
 		  border-radius: 30px;
+		  padding-right: 50px; 
+		  padding-right: 30px;
    
 	  }
 	  #submyname,#submyfood{
 		   background-color: #FFCD1D;
 	  }
-	  #submyid{
+	  #submyid,#submycoment{
 		   background-color: #fff;
+	  }
+	  
+	  .submypage_Bookmark01{
+		   background-color: #FFCD1D;
+		   width: 300px;
+		   text-align: center;
+		   border-radius: 30px;
+		    justify-content: center; /* 가운데 정렬을 위한 스타일 추가 */
+    align-items: center; 
+    margin-bottom:20px;
+	  }
+	  #subima{
+		   width: 350px; /* 도형의 너비 */
+            height: 200px;
+            border: 5px solid #000;
+            margin-left:5px;
 	  }

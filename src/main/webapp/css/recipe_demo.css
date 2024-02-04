@@ -12,7 +12,7 @@
 	}
 	
     .ui-accordion-header {/* 사이드바 안 아코디언 헤더 스타일 */
-        background-color: #E86A33;
+        background-color: #FFCD1D;
         padding: 10px;
         cursor: default;
         border: 2px solid black;
@@ -29,13 +29,14 @@
     }
 	
 	.recipe_sidebar {/*사이드바 스타일*/
-		background-color: #FFCD1D;
+		background-color: white;
 		border-radius: 10px;
 		width: 230px;
 		float: left;
 		border: 3px solid black;
 		padding: 10px;
 		margin-left:30px;
+		height:600px !important;
 	}
 	
 	#inner-grid {
@@ -77,7 +78,7 @@
 	.recipe_side0 {
 		margin:auto;
 		text-align : center;
-		background-color: #E86A33;
+		background-color: #FC7439;
 		border-radius: 35px;
 		width: 200px;
 		height: 50px;

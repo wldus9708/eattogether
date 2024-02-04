@@ -7,6 +7,63 @@ body {
 	justify-content: center;
 	align-items: center;
 }
+#recipedetail_entire {
+    justify-content: center; /* 가운데 정렬을 위한 스타일 추가 */
+    align-items: center; 
+    margin-top: 150px;
+}
+
+#recipe {
+		margin-top :5px;/*사이드 메뉴 레시피 글자 중앙 정렬*/
+		width: 200px;/* 원하는 가로 길이로 설정 */
+	}
+	 .ui-accordion-header {/* 사이드바 안 아코디언 헤더 스타일 */
+        background-color: #FFCD1D;
+        padding: 10px;
+        cursor: default;
+        border: 2px solid black;
+        border-radius: 10px;
+        font-weight: bold;
+    }
+
+    .ui-accordion-content {/* 사이드바 안에 아코디언 콘텐츠 스타일 */
+        background-color: #fff;
+        padding: 15px;
+        border: 2px solid black;
+        border-radius: 10px;
+        font-weight: bold;
+    }
+	
+	#recipedetail_contain01 {/*사이드바 스타일*/
+		background-color: white;
+		border-radius: 10px;
+		width: 230px;
+		float: left;
+		border: 3px solid black;
+		padding: 10px;
+		height:600px !important;
+		margin-left: 550px;
+	}
+.recipe_side0 {
+		margin:auto;
+		text-align : center;
+		background-color: #FC7439;
+		border-radius: 35px;
+		width: 200px;
+		height: 50px;
+		text-align: center;
+		color: #FFFFFF;
+		border: 3px solid black;
+	}
+	
+	#recipe_sidebar{
+		position : relative;
+		padding: 600px;
+		
+	}
+	#recipedetail_contain01{
+		margin-right: 50px;
+	}
 #recipedetail_box01 {
 	display: flex;
 	align-items: center;
@@ -14,11 +71,13 @@ body {
 	justify-content: center;
 	flex-direction: row;/* 가로 정렬로 변경 */
 	box-sizing: border-box;
+	margin-right: 450px;
 }
 
 #recipedetail_box02 {
 	flex: 1;
-	margin-left: 25%;
+	margin-right: 550px;
+	margin-bottom: 250px;
 }
 #myImage {
     width: 50px; /* 원하는 크기로 조절 (예: 50px) */

@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="../css/mangerfooter.css">
+<link rel="stylesheet" type="text/css" href="/eattogether/css/mangerfooter.css">
 <style type="text/css">
 </style>
 </head>
@@ -15,9 +15,10 @@
 
 	<footer id="footer_wrap">
 		<div id="footer_menu">
-			<a href=../company/company.jsp>회사소개</a> <a
-				href=../company/privacy.jsp target="_blank">개인정보취급방침</a> <a
-				href=../company/agreement.jsp target="_blank">이용약관</a> <a href=#>공지사항</a>
+			<a href="/eattogether/company/company.jsp">회사소개</a> <a
+				href="/eattogether/company/privacy.jsp" target="_blank">개인정보취급방침</a> <a
+				href="/eattogether/company/agreement.jsp" target="_blank">이용약관</a> 
+				<a href="/eattogether/notice/membernotiList.jsp">공지사항</a>
 		</div>
 		<div class="footer_left">
 			<div class="row">

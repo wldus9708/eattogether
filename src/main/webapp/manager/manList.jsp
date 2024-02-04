@@ -6,14 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="./../css/mangerListStyle.css">
+<link rel="stylesheet" href="/eattogether/css/mangerListStyle.css">
 </head>
 <body>
 	<div id="contain">
 		<div id="box1">
-			<a href="./../manager/manList.jsp" id="ma_memberbt">회원조회</a> <a
-				href="./../notice/mangernotiList.jsp " id="ma_announbt">공지사항</a> <a
-				href="./../inquiry/inquList.jsp" id="ma_inquirybt">문의사항</a>
+			<a href="/eattogether/manager/manList.jsp" id="ma_memberbt">회원조회</a> <a
+				href="/eattogether/notice/mangernotiList.jsp " id="ma_announbt">공지사항</a> <a
+				href="/eattogether/inquiry/inquList.jsp" id="ma_inquirybt">문의사항</a>
 		</div>
 		<div id="box2">
 			<div class="manger_searchbox">
@@ -24,7 +24,7 @@
 					</div>
 					<div>
 						<button id="mansearch_button">
-							<img src="./../image/mangersearch.png" alt="찾기">
+							<img src="/eattogether/image/mangersearch.png" alt="찾기">
 						</button>
 					</div>
 				</div>

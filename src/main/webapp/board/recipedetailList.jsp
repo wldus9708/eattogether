@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="./../css/recipedetailStyle.css">
+<link rel="stylesheet" href="/eattogether/css/recipedetailStyle.css">
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script>
@@ -88,30 +88,30 @@
 			<div id="recipedetail_box01">
 				<div id="recipedetail1">
 					<div>
-						<a href="#" class="userBtn"><img src="./../image/user.png"
+						<a href="/eattogether/member/Submypage2" class="userBtn"><img src="/eattogether/image/user.png"
 							alt=""></a>
 					</div>
 					<div>
-						<a href="#" class="userId"><span id="recipeDetail_Id">kimwldus97</span></a>
+						<a href="/eattogether/member/Submypage2" class="userId"><span id="recipeDetail_Id">kimwldus97</span></a>
 					</div>
 					<div>
 						<a href="#" class="upBtn"><span id="recipeUp">4520</span> <img
-							src="./../image/upBtn.png" alt=""> </a>
+							src="/eattogether/image/upBtn.png" alt=""> </a>
 					</div>
 					<div>
-						<a href="#" class="playBtn"><img src="./../image/likes.png"
+						<a href="#" class="playBtn"><img src="/eattogether/image/likes.png"
 							alt=""> </a>
 					</div>
 					<div>
 						<img id="myImage" class="overlay-image right-align"
-							src="./../image/emptystar.png" onclick="changeImg()" alt="즐겨찾기">
+							src="/eattogether/image/emptystar.png" onclick="changeImg()" alt="즐겨찾기">
 					</div>
 				</div>
 				<div id="recipedetail2">
 					<div id="recipe_container">
 						<div class="recipe_image">
 							<a class="removeUnderLine" href="#"> <img class="card-img"
-								src="./../image/steak_01.jpg" alt=""></a>
+								src="/eattogether/image/steak_01.jpg" alt=""></a>
 						</div>
 					</div>
 				</div>

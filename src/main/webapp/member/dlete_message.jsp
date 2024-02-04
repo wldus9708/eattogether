@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="./../css/dlete_message.css">
+<link rel="stylesheet" type="text/css" href="/eattogether/css/dlete_message.css">
 </head>
 <body>
 	<div class="delete_message">

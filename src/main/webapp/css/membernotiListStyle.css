@@ -52,7 +52,7 @@ body {
 #box2 {
       flex: 1;
       background-color: #F8EBCE;
-      width: 100%;
+      width: 950px;
       height: 600px;
       display: flex;
       flex-direction: column;

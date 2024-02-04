@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="./../css/submypage2.css">
+<link rel="stylesheet" type="text/css" href="/eattogether/css/submypage2.css">
 <style>
 </style>
 </head>
@@ -16,7 +16,7 @@
 		<div id="submypage_contain01">
 			<div id="submypage_box01">
 				<div class="custom-shape" id="submyicon">
-					<img src="./../image/steak_02.jpg" id="submypage_icon">
+					<img src="/eattogether/image/steak_02.jpg" id="submypage_icon">
 				</div>
 			</div>
 			<div id="submypage_box02">
@@ -46,10 +46,10 @@
 				<div>'닉네임'님의 레시피</div>
 			</div>
 			<div class="submypage_Bookmark02">
-				<img src="./../image/steak_02.jpg" id="subima">
-				<img src="./../image/steak_02.jpg" id="subima">
-				<img src="./../image/steak_02.jpg" id="subima">
-				<img src="./../image/steak_02.jpg" id="subima">
+				<img src="/eattogether/image/steak_02.jpg" id="subima">
+				<img src="/eattogether/image/steak_02.jpg" id="subima">
+				<img src="/eattogether/image/steak_02.jpg" id="subima">
+				<img src="/eattogether/image/steak_02.jpg" id="subima">
 			</div>
 		</div>
 	</div>

@@ -9,7 +9,7 @@
 <title>recipe_demo</title>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/resources/demos/style.css">
-<link rel="stylesheet" type="text/css" href="../css/recipe.css">
+<link rel="stylesheet" type="text/css" href="/eattogether/css/recipe.css">
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
@@ -105,8 +105,8 @@
 								<div class="card" style="width: 300px">
 									<div class="image-container">
 										<a class="removeUnderLine"  href="#"></a>
-										<img class="card-img-top" src="./../image/steak_01.jpg" alt="스테이크01">
-										<img id="myImage" class="overlay-image right-align" src="./../image/emptystar.png" onclick="changeImg()" alt="즐겨찾기">
+										<img class="card-img-top" src="/eattogether/image/steak_01.jpg" alt="스테이크01">
+										<img id="myImage" class="overlay-image right-align" src="/eattogether/image/emptystar.png" onclick="changeImg()" alt="즐겨찾기">
 									</div>
 									<div class="card-body">
 									<h4 class="card-title">
@@ -124,7 +124,7 @@
 							<td>
 								<div class="card" style="width: 300px">
 								<a class="removeUnderLine"  href="#">
-								<img class="card-img-top" src="./../image/steak_02.jpg" alt="스테이크02">
+								<img class="card-img-top" src="/eattogether/image/steak_02.jpg" alt="스테이크02">
 								<div class="card-body">
 								<h4 class="card-title">
 								<span>
@@ -141,61 +141,7 @@
 							<td>
 								<div class="card" style="width: 300px">
 								<a class="removeUnderLine"  href="#">
-								<img class="card-img-top" src="./../image/steak_03.jpg" alt="스테이크03">
-								<div class="card-body">
-								<h4 class="card-title">
-								<span>
-									<a href="#" class="btn btn-primary">제목</a>
-								</span>
-								</h4>
-								<p class="card-text">
-								<a href="#" class="btn btn-primary">아이디</a>
-								</p>
-								</div>
-								</a>
-								</div>
-							</td>
-						</tr>
-						<br/><br/>
-						<tr>
-							<td>
-								<div class="card" style="width: 300px">
-								<a class="removeUnderLine"  href="#">
-								<img class="card-img-top" src="./../image/risotto_01.jpg" alt="리조또01">
-								<div class="card-body">
-								<h4 class="card-title">
-								<span>
-									<a href="#" class="btn btn-primary">제목</a>
-								</span>
-								</h4>
-								<p class="card-text">
-								<a href="#" class="btn btn-primary">아이디</a>
-								</p>
-								</div>
-								</a>
-								</div>
-							</td>
-							<td>
-								<div class="card" style="width: 300px">
-								<a class="removeUnderLine"  href="#">
-								<img class="card-img-top" src="./../image/risotto_02.jpg" alt="리조또02">
-								<div class="card-body">
-								<h4 class="card-title">
-								<span>
-									<a href="#" class="btn btn-primary">제목</a>
-								</span>
-								</h4>
-								<p class="card-text">
-								<a href="#" class="btn btn-primary">아이디</a>
-								</p>
-								</div>
-								</a>
-								</div>
-							</td>
-							<td>
-								<div class="card" style="width: 300px">
-								<a class="removeUnderLine"  href="#">
-								<img class="card-img-top" src="./../image/risotto_03.jpg" alt="리조또03">
+								<img class="card-img-top" src="/eattogether/image/steak_03.jpg" alt="스테이크03">
 								<div class="card-body">
 								<h4 class="card-title">
 								<span>
@@ -215,7 +161,7 @@
 							<td>
 								<div class="card" style="width: 300px">
 								<a class="removeUnderLine"  href="#">
-								<img class="card-img-top" src="./../image/pizza_01.jpg" alt="피자01">
+								<img class="card-img-top" src="/eattogether/image/risotto_01.jpg" alt="리조또01">
 								<div class="card-body">
 								<h4 class="card-title">
 								<span>
@@ -232,7 +178,7 @@
 							<td>
 								<div class="card" style="width: 300px">
 								<a class="removeUnderLine"  href="#">
-								<img class="card-img-top" src="./../image/pizza_02.jpg" alt="피자02">
+								<img class="card-img-top" src="/eattogether/image/risotto_02.jpg" alt="리조또02">
 								<div class="card-body">
 								<h4 class="card-title">
 								<span>
@@ -249,7 +195,61 @@
 							<td>
 								<div class="card" style="width: 300px">
 								<a class="removeUnderLine"  href="#">
-								<img class="card-img-top" src="./../image/pizza_03.jpg" alt="피자03">
+								<img class="card-img-top" src="/eattogether/image/risotto_03.jpg" alt="리조또03">
+								<div class="card-body">
+								<h4 class="card-title">
+								<span>
+									<a href="#" class="btn btn-primary">제목</a>
+								</span>
+								</h4>
+								<p class="card-text">
+								<a href="#" class="btn btn-primary">아이디</a>
+								</p>
+								</div>
+								</a>
+								</div>
+							</td>
+						</tr>
+						<br/><br/>
+						<tr>
+							<td>
+								<div class="card" style="width: 300px">
+								<a class="removeUnderLine"  href="#">
+								<img class="card-img-top" src="/eattogether/image/pizza_01.jpg" alt="피자01">
+								<div class="card-body">
+								<h4 class="card-title">
+								<span>
+									<a href="#" class="btn btn-primary">제목</a>
+								</span>
+								</h4>
+								<p class="card-text">
+								<a href="#" class="btn btn-primary">아이디</a>
+								</p>
+								</div>
+								</a>
+								</div>
+							</td>
+							<td>
+								<div class="card" style="width: 300px">
+								<a class="removeUnderLine"  href="#">
+								<img class="card-img-top" src="/eattogether/image/pizza_02.jpg" alt="피자02">
+								<div class="card-body">
+								<h4 class="card-title">
+								<span>
+									<a href="#" class="btn btn-primary">제목</a>
+								</span>
+								</h4>
+								<p class="card-text">
+								<a href="#" class="btn btn-primary">아이디</a>
+								</p>
+								</div>
+								</a>
+								</div>
+							</td>
+							<td>
+								<div class="card" style="width: 300px">
+								<a class="removeUnderLine"  href="#">
+								<img class="card-img-top" src="/eattogether/image/pizza_03.jpg" alt="피자03">
 								<div class="card-body">
 								<h4 class="card-title">
 								<span>

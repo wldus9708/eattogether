@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="./../css/membernotiListStyle.css">
+<link rel="stylesheet" href="/eattogether/css/membernotiListStyle.css">
 
 </head>
 <body>
@@ -16,7 +16,7 @@
 			<section class="inquiries">
 				<h2>공지사항</h2>
 				<ul id="inquiryList">
-					<li><a href="#" class="toggleInquiry">공지사항</a>
+					<li><a href="/eattogether/inquiry/inquList.jsp" class="toggleInquiry">공지사항</a>
 						<div class="inquiryDetails">
 							<div id="manger_contents">
 								<p>서비스향상을위해 전체적으로업데이트가 있을예정입니다.</p>

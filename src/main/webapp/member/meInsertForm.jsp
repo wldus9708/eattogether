@@ -98,10 +98,7 @@
 		})
 	});
 	
-	function checkDuplicate() {
-	    var userId = $('#join_id').val(); // 사용자가 입력한 아이디 값 가져오기
-	    $('#staticBackdrop input[type="text"]').val(userId); // 모달 창의 input에 아이디 값 설정
-	}
+	
 	
 	function validCheck() { // 제약조건 alert창 안내 
 		var id = $('#join_id').val();
@@ -158,6 +155,21 @@
 	    }
 
 	}
+	function checkDuplicate() {
+	    var userId = $('#join_id').val(); // 사용자가 입력한 아이디 값 가져오기
+	    $('#staticBackdrop input[type="text"]').val(userId); // 모달 창의 input에 아이디 값 설정
+	    var isDuplicate = checkIfIdIsDuplicate(userId); // 여기에 실제 동기 중복 확인을 하는 로직을 추가
+
+	    if (isDuplicate) {
+	        $('.modal-body span').text('이미 사용 중인 아이디입니다.').css('color', 'red');
+	        $('#join_idCheck').val('N'); // 중복이면 다시 중복 확인을 요청하도록 설정
+	    } else {
+	        $('.modal-body span').text('사용 가능한 아이디입니다.').css('color', 'green');
+	        $('#join_idCheck').val('Y'); // 사용 가능하면 Y로 설정
+	    }
+	    
+	}
+	
 	
 </script>
 <meta charset="UTF-8">
@@ -204,7 +216,7 @@
 						<label class="join_label" for="userid">아이디:</label> <input
 							class="join_input_field" type="text" id="join_id" name="id" maxlength="8">
 							<input
-							type="hidden" id="join_idCheck" name="join_idCheck">
+							type="hidden" id="join_idCheck" name="join_idCheck" value="N">
 						<button type="button" id="join_DuplicateBtn"
 							onclick="checkDuplicate();" data-bs-toggle="modal" data-bs-target="#staticBackdrop">중복확인</button>
 						<span id="join_idError" class="join_error_next_box"></span>

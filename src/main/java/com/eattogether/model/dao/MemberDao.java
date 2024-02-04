@@ -10,7 +10,7 @@ public class MemberDao extends SuperDao {
 		System.out.println(bean);
 		String sql = "insert into members(mem_no,mem_id,mem_name,mem_alias,mem_password,mem_birth,mem_phone,mem_taste)";
 		sql += " values(seqmember.nextval,?,?,?,?,?,?,?)";
-		
+
 		PreparedStatement pstmt = null;
 		int cnt = -1;
 
@@ -52,4 +52,42 @@ public class MemberDao extends SuperDao {
 		return cnt;
 	}
 
+	public int getDataById(String id) {
+		// 아이디가 있는지 확인하기
+		String sql = "select count(*) from members ";
+		sql += " where id = ?";
+		PreparedStatement pstmt = null;
+		int cnt = -1;
+
+		try {
+			super.conn = super.getConnection();
+			conn.setAutoCommit(false);
+
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, id);
+
+			cnt = pstmt.executeUpdate();
+			conn.commit();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			try {
+				conn.rollback();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		} finally {
+			try {
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				super.closeConnection();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+
+		return cnt;
+	}
 }

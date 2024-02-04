@@ -18,6 +18,7 @@ public class MemberInsertController extends Superclass {
 		super.gotoPage(PREFIX + "meInsertForm.jsp");
 	}
 	
+	
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		super.doPost(request, response);
@@ -47,7 +48,6 @@ public class MemberInsertController extends Superclass {
 			}
 		}
 		bean.setTaste(taste);
-
 		int cnt = dao.insertData(bean);
 
 		if (cnt == 1) { // 인서트 성공

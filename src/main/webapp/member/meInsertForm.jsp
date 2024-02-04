@@ -173,7 +173,7 @@
 					</div>
 					<div class="modal-body">
 					<!-- 사용가능하면 Y값을 히든으로 넘겨주려고함	  -->
-						<input type="text">
+						<input type="text" maxlength="8">
 						<!-- <input type="text" value="Y 히든으로 숨길예정"> -->
 						<button type="button" class="btn btn-secondary join_checkbtn">중복확인</button>
 						<br> <span>사용 가능합니다.</span>
@@ -194,7 +194,7 @@
 				<div id="join_form_wrap">
 					<div class="join_form_container">
 						<label class="join_label" for="userid">아이디:</label> <input
-							class="join_input_field" type="text" id="join_id" name="id">
+							class="join_input_field" type="text" id="join_id" name="id" maxlength="8">
 							<input
 							type="hidden" id="join_idCheck" name="join_idCheck">
 						<button type="button" id="join_DuplicateBtn"
@@ -204,33 +204,33 @@
 					<div class="join_form_container">
 						<label class="join_label" for="password">비밀번호:</label> <input
 							class="join_input_field" type="password" id="join_password"
-							name="password"> <span id="join_passwordError"
+							name="password" maxlength="8"> <span id="join_passwordError"
 							class="join_error_next_box"></span>
 					</div>
 					
 					<div class="join_form_container">
 						<label class="join_label" for="username">이름:</label> <input
 							class="join_input_field" type="text" id="join_name"
-							name="name"> <span id="join_nameError"
+							name="name" maxlength="8"> <span id="join_nameError"
 							class="join_error_next_box"></span>
 					</div>
 					<div class="join_form_container">
 						<label class="join_label" for="username">닉네임:</label> <input
 							class="join_input_field" type="text" id="join_alias"
-							name="alias"> <span id="join_aliasError"
+							name="alias" maxlength="8"> <span id="join_aliasError"
 							class="join_error_next_box"></span>
 					</div>
 					
 					<div class="join_form_container">
 						<label class="join_label" for="birth">생일:</label> <input
 							class="join_input_field" type="text" id="join_birth"
-							name="birth"> <span id="join_birthError"
+							name="birth" maxlength="10"> <span id="join_birthError"
 							class="join_error_next_box"></span>
 					</div>
 					<div class="join_form_container">
 						<label class="join_label" for="phone">전화번호:</label> <input
 							class="join_input_field" type="tel" id="join_phone"
-							name="phone"> <span id="join_phoneError"
+							name="phone" maxlength="11"> <span id="join_phoneError"
 							class="join_error_next_box"></span>
 					</div>
 					<div class="join_form_container">

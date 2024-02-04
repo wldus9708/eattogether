@@ -28,7 +28,7 @@
 					</div>
 					<div class="main_materialBox_input">
 						<div class="main_materialBox_input2" id="main_input1">
-							<input type="text" placeholder="재료를 입력하세요">
+							<input type="text" placeholder="재료를 입력하세요" maxlength="7">
 							<button class="main_addButton" id="main_addButton1">+</button>
 						</div>
 					</div>
@@ -36,7 +36,7 @@
 					<div class="main_selectbox"></div>
 					<div class="main_materialBox_input">
 						<div class="main_materialBox_input2 " id="main_input2">
-							<input type="text" placeholder="원하지 않는 재료를 입력하세요">
+							<input type="text" placeholder="원하지 않는 재료를 입력하세요" maxlength="7">
 							<button class="main_addButton" id="main_addButton2">+</button>
 						</div>
 					</div>

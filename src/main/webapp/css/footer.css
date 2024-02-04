@@ -5,7 +5,11 @@ body{
 }
 #footer_wrap{
 	background-color: #F8EBCE;
-	 height: 120px;
+	bottom: 0;
+	width: 100%;
+	 z-index: 10;
+	  height: 13%;
+	 position: fixed;
 }
 
 a {

@@ -1,5 +1,5 @@
 # member section
-#meLogin=com.eattogether.controller.member.MemberLoginController
+meLogin=com.eattogether.controller.member.MemberLoginController
 #meLogout=com.eattogether.controller.member.MemberLogoutController
 meInsert=com.eattogether.controller.member.MemberInsertController
 meAgree=com.eattogether.controller.member.MemberAgreementController

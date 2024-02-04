@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="./../common/common.jsp"%>
 <%@ include file="./../common/top.jsp"%>
 
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="../css/login.css">
+<link rel="stylesheet" type="text/css" href="/eattogether/css/login.css">
 
 
 <meta charset="UTF-8">
@@ -110,15 +109,15 @@
 						<div id="login_links">
 							<a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">아이디 찾기</a> 
 							<a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">비밀번호 찾기</a> <a
-								href="memberAgreement.jsp">회원가입</a>
+								href="<%=notWithFormTag%>meAgree">회원가입</a>
 						</div>
 
 						<hr id="login_hr">
 						<div class="login_images">
 							<a class="login_image" href="#"> <img
-								src="../image/google.png" alt="구글 로그인"></a> <a
+								src="/eattogether/image/google.png" alt="구글 로그인"></a> <a
 								class="login_image" href="#"> <img
-								src="../image/kakao.png" alt="카카오 로그인"></a>
+								src="/eattogether/image/kakao.png" alt="카카오 로그인"></a>
 						</div>
 					</div>
 				</div>

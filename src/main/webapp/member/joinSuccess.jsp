@@ -24,11 +24,11 @@
 	</div>
 	<script>
         function redirectToLoginPage() {
-            window.location.href = "meInsertForm.jsp";
+            window.location.href = "/eattogether/Eat?command=meLogin";
         }
 
         function redirectToMainPage() {
-            window.location.href = "../common/main.jsp";
+            window.location.href = "/eattogether/common/main.jsp";
         }
     </script>
 </body>

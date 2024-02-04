@@ -31,7 +31,7 @@ String notWithFormTag = withFormTag + "?command=";
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light" id="header_wrap">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="../common/main.jsp"> <img src="/eattogether/image/cooker.png"
+			<a class="navbar-brand" href="/eattogether/common/main.jsp"> <img src="/eattogether/image/cooker.png"
 				alt="" id="header_img1"> <span id="header_span1">오늘뭐먹지?</span>
 			</a>
 
@@ -52,13 +52,13 @@ String notWithFormTag = withFormTag + "?command=";
 							href="#" sdata-bs-toggle="dropdown" id="manger">닉네임▼</a>
 							<ul class="dropdown-menu">
 								<li><a class="dropdown-item"
-									href="../member/login.jsp">로그인</a></li>
+									href="<%=notWithFormTag%>meLogin">로그인</a></li>
 								<li><a class="dropdown-item"
 									href="<%=notWithFormTag%>meAgree">회원가입</a></li>
 								<li><a class="dropdown-item"
-									href="../member/MyPage2.jsp">마이페이지</a></li>
+									href="/eattogether/member/MyPage2.jsp">마이페이지</a></li>
 								<li><a class="dropdown-item"
-									href="./../notice/membernotiList.jsp">공지사항</a></li>
+									href="/eattogether/notice/membernotiList.jsp">공지사항</a></li>
 								<li><a class="dropdown-item" href="#">로그아웃</a></li>
 							</ul></li>
 					</ul>

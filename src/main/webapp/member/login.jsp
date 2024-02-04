@@ -27,8 +27,8 @@
 							aria-label="Close"></button>
 					</div>
 					<div class="modal-body">
-						이름 : <input type="text"><br> 
-						전화번호 : <input type="text">
+						이름 : <input type="text" maxlength="8"><br> 
+						전화번호 : <input type="text" maxlength="11">
 						<button type="button" class="btn btn-secondary login_checkbtn">아이디 찾기</button>
 						<br> <span>아이디는 ~~~입니다.</span>
 					</div>
@@ -54,8 +54,8 @@
 							aria-label="Close"></button>
 					</div>
 					<div class="modal-body">
-						아이디 : <input type="text"><br> 
-						전화번호 : <input type="text">
+						아이디 : <input type="text" maxlength="8"><br> 
+						전화번호 : <input type="text" maxlength="11">
 						<button type="button" class="btn btn-secondary login_checkbtn">비밀번호 찾기</button>
 						<br> <span>비밀번호는 ~~~입니다.</span>
 					</div>
@@ -90,7 +90,7 @@
 								<label for="username">아이디 : </label>
 							</div>
 							<div id="login_idbox_input">
-								<input type="text" id="login_userid" name="userid">
+								<input type="text" id="login_userid" name="userid" maxlength="8">
 							</div>
 						</div>
 						<span class="login_hiddenbox"></span>
@@ -99,7 +99,7 @@
 								<label for="password">비밀번호 : </label>
 							</div>
 							<div id="login_idbox_input">
-								<input type="text" id="login_password" name="password">
+								<input type="text" id="login_password" name="password" maxlength="8">
 							</div>
 						</div>
 						<span class="login_hiddenbox"></span>

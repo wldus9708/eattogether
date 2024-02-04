@@ -203,8 +203,8 @@ body {
 	margin-right: 0;
 }
 .login_checkbtn{
-    background: #ED6D35;
-    color: black;
+    background: #ED6D35 !important;;
+    color: black !important;;
 }
 .login_checkbtn:hover, .login_checkbtn:active, .login_checkbtn:focus{
     background: #ED6D35 !important;

@@ -91,8 +91,7 @@
 				
 				<table class="table table-borderless">
 					<thead> 
-						<div id="inner-grid">
-							  <div class="recipe_count">총 ( )개의 래시피가 있습니다.</div>				  
+						<div id="lastrecommend" style="dispaly:flex" "justify-content: flex-end;">		  
 							  <div class="recipe_latest">최신순</div>
 							  <div class="recipe_re">추천순</div>
 						</div>
@@ -109,25 +108,25 @@
 										<img id="myImage" class="overlay-image right-align" src="./../image/emptystar.png" onclick="changeImg()" alt="즐겨찾기">
 									</div>
 									<div class="card-body">
-												<div class="card-body01">
-													<a href="recipeDetail.jsp" class="board_title">제목</a>
-												</div>
-												<div class="card-body02">
-													<a class="user-id" href=" ">
-														<img src="/eattogether/image/user.png">(아이디)
-													</a>
-													<a class="user-rocomend" href="">
-														(추천)<img src="/eattogether/image/likes.png">
-													</a>
-												</div>
-												<div class="card-body03">
-													<a id="sujoung" class="recipe-sujoung"  href=" ">
-														수정
-													</a>
-													<a id="sakgie" class="recipe-sakgie" href="">
-														삭제
-													</a>
-												</div>
+										<div class="card-body01">
+											<a href="recipeDetail.jsp" class="board_title">제목</a>
+										</div>
+										<div class="card-body02">
+											<a class="user-id" href=" ">
+												<img src="/eattogether/image/user.png" style="width:45px" height="45px">(아이디)
+											</a>
+											<a class="user-rocomend" href="">
+												(추천)<img src="/eattogether/image/likes.png" style="width:35px" height="35px">
+											</a>
+										</div>
+										<div class="card-body03">
+											<a id="sujoung" class="recipe-sujoung"  href=" ">
+												수정
+											</a>
+											<a id="sakgie" class="recipe-sakgie" href="">
+												삭제
+											</a>
+										</div>
 									</div>
 							</td>
 							<td>

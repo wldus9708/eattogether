@@ -39,20 +39,6 @@
 		height:600px !important;
 	}
 	
-	#inner-grid {
-		display:grid;
-		grid-template-columns: 12fr 1fr 1fr;
-	}
-	
-	.recipe_count{/*게시물 갯수 알려주는 div태그*/
-		border: 2px solid #BCBCBC; /* 테두리 스타일과 색상을 설정 */
-		background-color: white;
-      	padding: 5px; /* 텍스트와 테두리 사이의 간격을 조절 */
-      	width: 250px; /* 원하는 너비로 조절 */
-      	border-radius: 10px;
-      	text-align: center;
-      	color : black;
-	}
 	.recipe_latest, .recipe_re {/*추천순 최신순 정렬 나타내는 div태그*/
 		border: 2px solid #BCBCBC; /* 테두리 스타일과 색상을 설정 */
 		background-color: white;
@@ -145,11 +131,21 @@
 		padding: 5px 20px;
 		text-align: center;
 		font-weight: blod;
+		
 	}
 	
-	.card-body02, .card-body03{
+	.card-body02{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		margin :10px 0;
+		align-items: center;
+	}
+	
+	.card-body03{
 		display: flex;
 		flex-direction: row;
 		justify-content: space-around;
 		margin :10px 0;
+		align-items: center;
 	}

@@ -10,10 +10,8 @@
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="/eattogether/css/main.css">
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script>
-	$(function() {
+$(function() {
 		$("#accordion").accordion({
 			collapsible : true
 
@@ -28,13 +26,11 @@
 		} else {
 			imageElement.attr('src', './../image/emptystar.png');
 		}
-	}
+	} 
 </script>
-<style>
-</style>
 </head>
 <body>
-	<form>
+	
 		<div id="main_wrap">
 			<div id="main_materialBox00">
 				<div class="recipe_side0">
@@ -89,12 +85,13 @@
 					</ul>
 				</div>
 			</div>
+		<form action="">
 			<div id="main_materialBox">
 				<div id="main_materialBox_left">
 					<div id="main_materialBox_left_1">
-						<img src="../image/left.png">
+						<img src="/eattogether/image/left.png">
 						<div id="main_materialBox_left_2"></div>
-						<img src="../image/right.png">
+						<img src="/eattogether/image/right.png">
 					</div>
 					<div id="main_materialBox_right">
 						<div id="main_materialBox_right_1">
@@ -103,7 +100,8 @@
 						<div class="main_materialBox_input">
 							<div class="main_materialBox_input2" id="main_input1">
 								<input type="text" placeholder="재료를 입력하세요" maxlength="7">
-								<button class="main_addButton" id="main_addButton1">+</button>
+								<button type="button" class="main_addButton"
+									id="main_addButton1">+</button>
 							</div>
 						</div>
 
@@ -111,7 +109,8 @@
 						<div class="main_materialBox_input">
 							<div class="main_materialBox_input2 " id="main_input2">
 								<input type="text" placeholder="원하지 않는 재료를 입력하세요" maxlength="7">
-								<button class="main_addButton" id="main_addButton2">+</button>
+								<button type="button" class="main_addButton"
+									id="main_addButton2">+</button>
 							</div>
 						</div>
 					</div>
@@ -122,78 +121,69 @@
 					</div>
 				</div>
 			</div>
-		</div>
-	</form>
-	<script>
-		$(document)
-				.ready(
-						function() {
-							var maxElementsUpper = 3;
-							var maxElementsLower = 3;
-							var maxInputLength = 7;
+		</form>
+	</div>
+<script>
+    $(document).ready(function () {
+        var maxElementsUpper = 3;
+        var maxElementsLower = 3;
+        var maxInputLength = 7;
 
-							function addElement(inputSelector,
-									containerSelector, maxElements, className) {
-								var inputValue = $(inputSelector + " input")
-										.val().trim();
+        function addElement(inputSelector, containerSelector, maxElements, className) {
+            var inputValue = $(inputSelector + " input").val().trim();
 
-								if (inputValue === "") {
-									if (inputSelector === "#main_input1") {
-										alert("재료를 입력하세요.");
-									} else if (inputSelector === "#main_input2") {
-										alert("원하지 않는 재료를 입력하세요.");
-									}
-									return;
-								}
+            if (inputValue === "") {
+                if (inputSelector === "#main_input1") {
+                    alert("재료를 입력하세요.");
+                } else if (inputSelector === "#main_input2") {
+                    alert("원하지 않는 재료를 입력하세요.");
+                }
+                return;
+            }
 
-								if (inputValue.length > maxInputLength) {
-									alert("입력값은 7글자 이내로 입력하세요.");
-									return;
-								}
+            if (inputValue.length > maxInputLength) {
+                alert("입력값은 7글자 이내로 입력하세요.");
+                return;
+            }
 
-								if ($(containerSelector + " ." + className).length >= maxElements) {
-									alert("최대 " + maxElements
-											+ "개까지만 추가할 수 있습니다.");
-									return;
-								}
+            if ($(containerSelector + " ." + className).length >= maxElements) {
+                alert("최대 " + maxElements + "개까지만 추가할 수 있습니다.");
+                return;
+            }
 
-								var newItem = $("<div>").addClass(
-										"inline-block-item " + className);
-								newItem.append($("<span>").text(inputValue));
-								newItem.append($("<span>").addClass(
-										"close-icon").text("-").on("click",
-										function() {
-											$(this).parent().remove();
-										}));
+            var newItem = $("<div>").addClass("inline-block-item " + className);
+            newItem.append($("<span>").text(inputValue));
+            newItem.append($("<span>").addClass("close-icon").text("-").on("click", function () {
+                $(this).parent().remove();
+            }));
 
-								$(containerSelector).append(newItem);
-								$(inputSelector + " input").val('');
-							}
+            $(containerSelector).append(newItem);
+            $(inputSelector + " input").val('');
+        }
 
-							// 상단 버튼(main_addButton1) 클릭 시 이벤트 처리
-							$("#main_addButton1")
-									.on(
-											"click",
-											function() {
-												addElement("#main_input1",
-														".main_selectbox",
-														maxElementsUpper,
-														"upper-item");
-											});
+        // 상단 버튼(main_addButton1) 클릭 시 이벤트 처리
+        $("#main_addButton1").on("click", function () {
+            addElement("#main_input1", ".main_selectbox", maxElementsUpper, "upper-item");
+        });
 
-							// 하단 버튼(main_addButton2) 클릭 시 이벤트 처리
-							$("#main_addButton2")
-									.on(
-											"click",
-											function() {
-												addElement(
-														"#main_input2",
-														"#main_materialBox_right",
-														maxElementsLower,
-														"lower-item");
-											});
-						});
-	</script>
+        // 하단 버튼(main_addButton2) 클릭 시 이벤트 처리
+        $("#main_addButton2").on("click", function () {
+            addElement("#main_input2", "#main_materialBox_right", maxElementsLower, "lower-item");
+        });
+        
+        // 검색 버튼(main_searchButton) 클릭 시 이벤트 처리
+        $("#main_searchButton").on("click", function () {
+            var upperItemCount = $(".main_selectbox .upper-item").length;
+            var lowerItemCount = $("#main_materialBox_right .lower-item").length;
+
+            if (upperItemCount === 0 && lowerItemCount === 0) {
+                alert("재료 또는 먹고싶지않은 재료를 입력하세요.");
+            }
+        });
+   
+    });
+</script>
+
 </body>
 </html>
 <%@include file="./../common/footer.jsp"%>

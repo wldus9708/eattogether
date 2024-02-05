@@ -38,9 +38,16 @@ public class MemberLoginController extends Superclass {
 			// session 영역(scope)에 나의 로그인 정보를 저장(바인딩)합니다.
 			// loginfo 속성을 사용하여 현재 로그인 상태를 확인할 수 있습니다.
 			super.session.setAttribute("loginfo", bean);
+			System.out.println(bean.getFlag());
 			
-			// 로그인 성공 이후 메인 페이지로 이동합니다.
-			super.gotoPage("common/main.jsp");
+			if(bean.getFlag().equals("1")) {
+				System.out.println("회원 메인페이지로 이동합니다.");
+				super.gotoPage("common/main.jsp");
+				
+			}else if(bean.getFlag().equals("2")) {
+				System.out.println("관리자 메인페이지로 이동합니다.");
+				super.gotoPage("manager/manList.jsp");
+			}
 		}
 	}
 

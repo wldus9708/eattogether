@@ -21,10 +21,6 @@ String withFormTag = appName + mappingName;
 
 String notWithFormTag = withFormTag + "?command=";
 
-//out.print("contetxt이름 : " + appName + "<br>");
-//out.print("mappingName : " + mappingName + "<br>");
-//out.print("withFormTag : " + withFormTag + "<br>");
-//out.print("notWithFormTag : " + notWithFormTag + "<br>");
 %>
 
 
@@ -62,9 +58,9 @@ String notWithFormTag = withFormTag + "?command=";
 							<a class="header-toggle" role="button"
 							href="#" sdata-bs-toggle="dropdown" id="manger">로그인▼</a>
 						</c:if>
-						<c:if test="${whologin eq 1 }">
+						<c:if test="${whologin ne 0 }">
 							<a class="header-toggle" role="button"
-							href="#" sdata-bs-toggle="dropdown" id="manger">${sessionScope.loginfo.alias}▼</a>
+							href="#" sdata-bs-toggle="dropdown" id="manger">${sessionScope.loginfo.alias}님▼</a>
 						</c:if>
 							<ul class="dropdown-menu">
 								<c:if test="${whologin eq 0 }">
@@ -77,9 +73,15 @@ String notWithFormTag = withFormTag + "?command=";
 									<li><a class="dropdown-item"
 										href="/eattogether/member/MyPage2.jsp">마이페이지</a></li>
 									<li><a class="dropdown-item"
-										href="/eattogether/notice/membernotiList.jsp">레시피</a></li>
+										href="/eattogether/board/recipe.jsp">레시피</a></li>
 									<li><a class="dropdown-item"
-										href="/eattogether/common/main.jsp">로그아웃</a></li>
+										href="<%=notWithFormTag%>meLogout">로그아웃</a></li>
+								</c:if>
+								<c:if test="${whologin eq 2 }">
+									<li><a class="dropdown-item"
+										href="<%=notWithFormTag%>manList">관리자페이지</a></li>
+									<li><a class="dropdown-item"
+										href="<%=notWithFormTag%>meLogout">로그아웃</a></li>	
 								</c:if>
 							</ul>
 						</li>
@@ -88,5 +90,14 @@ String notWithFormTag = withFormTag + "?command=";
 			</div>
 		</div>
 	</nav>
+	<!-- 사용자에게 주의/경고/오류 등을 알려주기 위한 Alert Box  -->
+	<c:if test="${not empty sessionScope.alertMessage }">
+		<div class="alert alert-danger alert-dismissible">
+			<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+			<strong>경고 메시지 : </strong> ${sessionScope.alertMessage}
+		</div>
+	</c:if>
+	<c:remove var="alertMessage" scope="session" />
+	
 </body>
 </html>

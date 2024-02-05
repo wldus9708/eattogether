@@ -1,6 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@include file="./../common/common.jsp" %>
+<%@include file="./../common/common.jsp" %>
+<%
+// appName : 애플리케이션 컨텍스트 이름(프로젝트 이름)
+String appName = request.getContextPath();
+String mappingName = "/Eat"; //in FrontController.java file
+
+// 폼 태그에서 사용할 전역 변수
+String withFormTag = appName + mappingName;
+
+String notWithFormTag = withFormTag + "?command=";
+
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,12 +32,12 @@
 			<div id="manheader">
 				<ul>
 					<li class="header">
-					<a class="header-toggle"  role="button" href="#" sdata-bs-toggle="dropdown" id="manger">관리자▼</a>
+					<a class="header-toggle"  role="button" href="#" sdata-bs-toggle="dropdown" id="manger">${sessionScope.loginfo.alias}님▼</a>
 						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="/eattogether/manager/manList.jsp">회원관리</a></li>
+							<li><a class="dropdown-item" href="<%=notWithFormTag%>manList">회원관리</a></li>
 							<li><a class="dropdown-item" href="/eattogether/inquiry/inquList.jsp">문의사항</a></li>
 							<li><a class="dropdown-item" href="/eattogether/notice/mangernotiList.jsp">공지사항 관리</a></li>
-							<li><a class="dropdown-item" href="/eattogether/common/main.jsp">로그아웃</a></li>
+							<li><a class="dropdown-item" href="<%=notWithFormTag%>meLogout">로그아웃</a></li>
 						</ul></li>
 				</ul>
 			</div>

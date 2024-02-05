@@ -15,9 +15,9 @@
 
 	<footer id="footer_wrap">
 		<div id="footer_menu">
-			<a href=../company/company.jsp>회사소개</a> <a
-				href=../company/privacy.jsp target="_blank">개인정보취급방침</a> <a
-				href=../company/agreement.jsp target="_blank">이용약관</a> <a href=#>공지사항</a>
+			<a href=/eattogether/company/company.jsp>회사소개</a> <a
+				href=/eattogether/privacy.jsp target="_blank">개인정보취급방침</a> <a
+				href=/eattogether/agreement.jsp target="_blank">이용약관</a> <a href=#>공지사항</a>
 		</div>
 		<div class="footer_left">
 			<div class="row">
@@ -41,17 +41,16 @@
 		<div class="footer_center">
 			<img src="../image/macaron01.png">
 		</div>
-		<div class="footer_right">
-			<div id="footer_box">
-				<span>문의하기</span>
-				<button id="footer_butt">전송</button>
-				<textarea id=footer_messagebox></textarea>
+		<c:if test="${whologin eq 1 }">
+			<div class="footer_right">
+				<div id="footer_box">
+					<span>문의하기</span>
+					<button id="footer_butt">전송</button>
+					<textarea id=footer_messagebox></textarea>
+				</div>
+				<div></div>
 			</div>
-			<div>
-			
-			</div>
-		</div>
-
+		</c:if>
 	</footer>
 	
 </body>

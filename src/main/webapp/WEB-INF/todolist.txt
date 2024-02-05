@@ -1,6 +1,6 @@
 # member section
 meLogin=com.eattogether.controller.member.MemberLoginController
-#meLogout=com.eattogether.controller.member.MemberLogoutController
+meLogout=com.eattogether.controller.member.MemberLogoutController
 meInsert=com.eattogether.controller.member.MemberInsertController
 meAgree=com.eattogether.controller.member.MemberAgreementController
 meSuceess=com.eattogether.controller.member.MemberSuccessController
@@ -29,7 +29,7 @@ meSuceess=com.eattogether.controller.member.MemberSuccessController
 # manager section
 #manInsert=com.eattogether.controller.manager.ManagerInsertController
 #manUpdate=com.eattogether.controller.manager.ManagerUpdateController
-#manList=com.eattogether.controller.manager.ManagerListController
+manList=com.eattogether.controller.manager.ManagerListController
 #manDelete=com.eattogether.controller.manager.ManagerDeleteController
 #manDetail=com.eattogether.controller.manager.ManagerDetailController
 # notice section

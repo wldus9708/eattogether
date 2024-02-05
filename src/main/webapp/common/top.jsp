@@ -2,6 +2,15 @@
 	pageEncoding="UTF-8"%>
 <%@include file="./../common/common.jsp"%>
 
+<c:set var="whologin" value="0"/>
+<c:if test="${not empty sessionScope.loginfo}">
+	<c:if test="${sessionScope.loginfo.flag =='2'}">
+		<c:set var="whologin" value="2" />
+	</c:if>
+	<c:if test="${sessionScope.loginfo.flag !='2'}">
+		<c:set var="whologin" value="1" />
+	</c:if>
+</c:if>
 <%
 // appName : 애플리케이션 컨텍스트 이름(프로젝트 이름)
 String appName = request.getContextPath();
@@ -48,19 +57,32 @@ String notWithFormTag = withFormTag + "?command=";
 				</a>
 				<div id="manheader">
 					<ul>
-						<li class="header"><a class="header-toggle" role="button"
-							href="#" sdata-bs-toggle="dropdown" id="manger">닉네임▼</a>
+						<li class="header">
+						<c:if test="${whologin eq 0 }">
+							<a class="header-toggle" role="button"
+							href="#" sdata-bs-toggle="dropdown" id="manger">로그인▼</a>
+						</c:if>
+						<c:if test="${whologin eq 1 }">
+							<a class="header-toggle" role="button"
+							href="#" sdata-bs-toggle="dropdown" id="manger">${sessionScope.loginfo.alias}▼</a>
+						</c:if>
 							<ul class="dropdown-menu">
-								<li><a class="dropdown-item"
-									href="<%=notWithFormTag%>meLogin">로그인</a></li>
-								<li><a class="dropdown-item"
-									href="<%=notWithFormTag%>meAgree">회원가입</a></li>
-								<li><a class="dropdown-item"
-									href="/eattogether/member/MyPage2.jsp">마이페이지</a></li>
-								<li><a class="dropdown-item"
-									href="/eattogether/notice/membernotiList.jsp">상세페이지</a></li>
-								<li><a class="dropdown-item" href="/eattogether/common/main.jsp">로그아웃</a></li>
-							</ul></li>
+								<c:if test="${whologin eq 0 }">
+									<li><a class="dropdown-item"
+										href="<%=notWithFormTag%>meLogin">로그인</a></li>
+									<li><a class="dropdown-item"
+										href="<%=notWithFormTag%>meAgree">회원가입</a></li>
+								</c:if>
+								<c:if test="${whologin eq 1 }">
+									<li><a class="dropdown-item"
+										href="/eattogether/member/MyPage2.jsp">마이페이지</a></li>
+									<li><a class="dropdown-item"
+										href="/eattogether/notice/membernotiList.jsp">레시피</a></li>
+									<li><a class="dropdown-item"
+										href="/eattogether/common/main.jsp">로그아웃</a></li>
+								</c:if>
+							</ul>
+						</li>
 					</ul>
 				</div>
 			</div>

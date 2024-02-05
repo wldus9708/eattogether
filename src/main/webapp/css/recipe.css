@@ -129,16 +129,27 @@
 	.removeUnderLine {
 		text-decoration: none;
 	}
-
-	.recipe_prlist {
-		background-color: #F8EBCE;
+	
+	.board_title{
+		background-color: white;
+		border-radius: 15px;
+		border: 2px solid #FFCD1D;
+		display: flex;
+		flex-direction: row;
 	}
-
-	.btn-primary{
-		width: 265px;
+	
+	.recipe-sujoung, .recipe-sakgie {
+		background-color: #FFCD1D;
+		border-radius: 15px;
+		border: 2px solid black;
+		padding: 5px 20px;
+		text-align: center;
+		font-weight: blod;
 	}
-	@media screen and (max-width: 1050px) {
-			.products {
-			display: none;
-		}
+	
+	.card-body02, .card-body03{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		margin :10px 0;
 	}

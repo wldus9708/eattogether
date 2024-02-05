@@ -9,15 +9,16 @@ public class Member {
 	private String social_key; // 소셜로그인 키
 	private String social_host; // 소셜 로그인 호스트
 	private String birth; // 생년월일
-	private int phone; // 전화번호
+	private String phone; // 전화번호
 	private String taste; // 음식취향 
 	private String picture; // 프로필 사진
+	private String flag; // 사용자 유형(회원 : 1, 관리자 : 2)
 	
 	public Member() {
 	}
 
 	public Member(int no, String id, String name, String alias, String password, String social_key, String social_host,
-			String birth, int phone, String taste, String picture) {
+			String birth, String phone, String taste, String picture, String flag) {
 		super();
 		this.no = no;
 		this.id = id;
@@ -30,6 +31,7 @@ public class Member {
 		this.phone = phone;
 		this.taste = taste;
 		this.picture = picture;
+		this.flag = flag;
 	}
 
 	public int getNo() {
@@ -96,11 +98,11 @@ public class Member {
 		this.birth = birth;
 	}
 
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
@@ -120,10 +122,19 @@ public class Member {
 		this.picture = picture;
 	}
 
+	public String getFlag() {
+		return flag;
+	}
+
+	public void setFlag(String flag) {
+		this.flag = flag;
+	}
+
 	@Override
 	public String toString() {
 		return "Member [no=" + no + ", id=" + id + ", name=" + name + ", alias=" + alias + ", password=" + password
 				+ ", social_key=" + social_key + ", social_host=" + social_host + ", birth=" + birth + ", phone="
-				+ phone + ", taste=" + taste + ", picture=" + picture + "]";
+				+ phone + ", taste=" + taste + ", picture=" + picture + ", flag=" + flag + "]";
 	}
+	
 }

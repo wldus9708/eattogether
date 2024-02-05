@@ -31,7 +31,7 @@ public class MemberInsertController extends Superclass {
 		bean.setAlias(request.getParameter("alias"));
 		bean.setPassword(request.getParameter("password"));
 		bean.setBirth(request.getParameter("birth"));
-		bean.setPhone(Integer.parseInt(request.getParameter("phone")));
+		bean.setPhone(request.getParameter("phone"));
 		bean.setTaste(request.getParameter("taste"));
 		
 		String taste = "";

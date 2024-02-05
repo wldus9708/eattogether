@@ -8,8 +8,8 @@ public class MemberDao extends SuperDao {
 
 	public int insertData(Member bean) { // 회원 가입 insert
 		System.out.println(bean);
-		String sql = "insert into members(mem_no,mem_id,mem_name,mem_alias,mem_password,mem_birth,mem_phone,mem_taste)";
-		sql += " values(seqmember.nextval,?,?,?,?,?,?,?)";
+		String sql = "insert into members(mem_no,mem_id,mem_name,mem_alias,mem_password,mem_birth,mem_phone,mem_taste,mem_flag)";
+		sql += " values(seq_member.nextval,?,?,?,?,?,?,?,default)";
 
 		PreparedStatement pstmt = null;
 		int cnt = -1;
@@ -25,7 +25,7 @@ public class MemberDao extends SuperDao {
 			pstmt.setString(3, bean.getAlias());
 			pstmt.setString(4, bean.getPassword());
 			pstmt.setString(5, bean.getBirth());
-			pstmt.setInt(6, bean.getPhone());
+			pstmt.setString(6, bean.getPhone());
 			pstmt.setString(7, bean.getTaste());
 
 			cnt = pstmt.executeUpdate();

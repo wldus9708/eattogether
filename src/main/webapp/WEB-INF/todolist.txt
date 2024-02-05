@@ -33,9 +33,9 @@ meSuceess=com.eattogether.controller.member.MemberSuccessController
 #manDelete=com.eattogether.controller.manager.ManagerDeleteController
 #manDetail=com.eattogether.controller.manager.ManagerDetailController
 # notice section
-#notiInsert=com.eattogether.controller.notice.NoticeInsertController
+notiInsert=com.eattogether.controller.notice.NoticeInsertController
 #notiUpdate=com.eattogether.controller.notice.NoticeUpdateController
-#notiList=com.eattogether.controller.notice.NoticeListController
+notiList=com.eattogether.controller.notice.NoticeListController
 #notiDelete=com.eattogether.controller.notice.NoticeDeleteController
 #notiDetail=com.eattogether.controller.notice.NoticeDetailController
 # inquiry section

@@ -4,7 +4,8 @@ body {
 	margin: 0 auto;
 	background: #F8EBCE;
 }
-#login_wrap{
+
+#login_wrap {
 	margin-bottom: 100px;
 }
 
@@ -19,7 +20,8 @@ body {
 	flex: 1;
 	padding: 10px;
 }
-.login_left-half{
+
+.login_left-half {
 	margin: 0 auto;
 }
 
@@ -92,6 +94,7 @@ body {
 	margin-left: 110px;
 	margin-top: 20px;
 }
+
 #login_idbox3 {
 	width: 431px;
 	height: 77px;
@@ -100,7 +103,8 @@ body {
 	margin-left: 110px;
 	margin-top: 20px;
 }
-#login_button{
+
+#login_button {
 	width: 431px;
 	height: 77px;
 	border-radius: 10px;
@@ -108,8 +112,8 @@ body {
 	margin-left: 110px;
 	margin-top: 20px;
 	border: none;
-    font-size: 24px;
-    font-weight: bold;
+	font-size: 24px;
+	font-weight: bold;
 }
 
 .login_hiddenbox {
@@ -174,11 +178,20 @@ body {
 	margin-left: -15px;
 }
 
-#login_idbox_input [type="text"] {
+#login_idbox_input [type="text"],
+#login_idbox_input [type="password"] {
 	width: 248px;
 	height: 49px;
 	border-radius: 10px;
 	font-size: 18px;
+}
+
+#login_password {
+	width: 248px;
+	height: 49px;
+	border-radius: 10px;
+	font-size: 18px;
+
 }
 
 #login_links {
@@ -202,11 +215,17 @@ body {
 #login_links a:last-child {
 	margin-right: 0;
 }
-.login_checkbtn{
-    background: #ED6D35 !important;;
-    color: black !important;;
+
+.login_checkbtn {
+	background: #ED6D35 !important;
+	;
+	color: black !important;
+	;
 }
-.login_checkbtn:hover, .login_checkbtn:active, .login_checkbtn:focus{
-    background: #ED6D35 !important;
-    color: black !important;
+
+.login_checkbtn:hover,
+.login_checkbtn:active,
+.login_checkbtn:focus {
+	background: #ED6D35 !important;
+	color: black !important;
 }

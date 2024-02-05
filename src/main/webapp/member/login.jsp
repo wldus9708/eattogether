@@ -78,7 +78,8 @@
 					</div>
 				</div>
 			</div>
-			<form name="login_form" method="post" action="">
+			<form name="login_form" method="post" action="<%=withFormTag%>">
+			<input type="hidden" name="command" value="meLogin">
 				<div class="login_right-half">
 					<div id="login_box2">
 						<div id="login_text">
@@ -89,7 +90,7 @@
 								<label for="username">아이디 : </label>
 							</div>
 							<div id="login_idbox_input">
-								<input type="text" id="login_userid" name="userid" maxlength="8">
+								<input type="text" id="login_userid" name="id" maxlength="8">
 							</div>
 						</div>
 						<span class="login_hiddenbox"></span>
@@ -98,7 +99,7 @@
 								<label for="password">비밀번호 : </label>
 							</div>
 							<div id="login_idbox_input">
-								<input type="text" id="login_password" name="password" maxlength="8">
+								<input type="password" id="login_password" name="password" maxlength="8">
 							</div>
 						</div>
 						<span class="login_hiddenbox"></span>

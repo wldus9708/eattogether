@@ -104,22 +104,31 @@
 							<td>
 								<div class="card" style="width: 300px">
 									<div class="image-container">
-										<a class="removeUnderLine"  href="#"></a>
-										<img class="card-img-top" src="/eattogether/image/steak_01.jpg" alt="스테이크01">
-										<img id="myImage" class="overlay-image right-align" src="/eattogether/image/emptystar.png" onclick="changeImg()" alt="즐겨찾기">
+										<a class="removeUnderLine"  href="recipeDetail.jsp"></a>
+										<img class="card-img-top" src="./../image/steak_01.jpg" alt="스테이크01">
+										<img id="myImage" class="overlay-image right-align" src="./../image/emptystar.png" onclick="changeImg()" alt="즐겨찾기">
 									</div>
 									<div class="card-body">
-									<h4 class="card-title">
-									<span>
-										<a href="recipeDetail_demo.jsp" class="btn btn-primary">제목</a>
-									</span>
-									</h4>
-									<p class="card-text">
-									<a href="#" class="btn btn-primary">아이디</a>
-									</p>
+												<div class="card-body01">
+													<a href="recipeDetail.jsp" class="board_title">제목</a>
+												</div>
+												<div class="card-body02">
+													<a class="user-id" href=" ">
+														<img src="/eattogether/image/user.png">(아이디)
+													</a>
+													<a class="user-rocomend" href="">
+														(추천)<img src="/eattogether/image/likes.png">
+													</a>
+												</div>
+												<div class="card-body03">
+													<a id="sujoung" class="recipe-sujoung"  href=" ">
+														수정
+													</a>
+													<a id="sakgie" class="recipe-sakgie" href="">
+														삭제
+													</a>
+												</div>
 									</div>
-								
-								</div>
 							</td>
 							<td>
 								<div class="card" style="width: 300px">

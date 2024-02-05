@@ -7,7 +7,7 @@ public class Recipe extends Superclass {
 	private Integer mem_no;
 	private Integer cat_no;
 	private String rec_header;
-	private String rec_contents;
+	private String rec_content;
 	private String rec_regdate; // 등록일 날짜 형식
 	private String rec_photo;; // 사진
 	private Integer rec_hit;
@@ -52,12 +52,12 @@ public class Recipe extends Superclass {
 		this.rec_header = rec_header;
 	}
 
-	public String getRec_contents() {
-		return rec_contents;
+	public String getRec_content() {
+		return rec_content;
 	}
 
-	public void setRec_contents(String rec_contents) {
-		this.rec_contents = rec_contents;
+	public void setRec_content(String rec_content) {
+		this.rec_content = rec_content;
 	}
 
 	public String getRec_regdate() {
@@ -108,7 +108,7 @@ public class Recipe extends Superclass {
 		this.rec_material = rec_material;
 	}
 
-	public Recipe(Integer rec_no, Integer mem_no, Integer cat_no, String rec_header, String rec_contents,
+	public Recipe(Integer rec_no, Integer mem_no, Integer cat_no, String rec_header, String rec_content,
 			String rec_regdate, String rec_photo, Integer rec_hit, Integer rec_popularity, String rec_bookmark,
 			String rec_material) {
 		super();
@@ -116,7 +116,7 @@ public class Recipe extends Superclass {
 		this.mem_no = mem_no;
 		this.cat_no = cat_no;
 		this.rec_header = rec_header;
-		this.rec_contents = rec_contents;
+		this.rec_content = rec_content;
 		this.rec_regdate = rec_regdate;
 		this.rec_photo = rec_photo;
 		this.rec_hit = rec_hit;
@@ -128,7 +128,7 @@ public class Recipe extends Superclass {
 	@Override
 	public String toString() {
 		return "Recipe [rec_no=" + rec_no + ", mem_no=" + mem_no + ", cat_no=" + cat_no + ", rec_header=" + rec_header
-				+ ", rec_contents=" + rec_contents + ", rec_regdate=" + rec_regdate + ", rec_photo=" + rec_photo
+				+ ", rec_content=" + rec_content + ", rec_regdate=" + rec_regdate + ", rec_photo=" + rec_photo
 				+ ", rec_hit=" + rec_hit + ", rec_popularity=" + rec_popularity + ", rec_bookmark=" + rec_bookmark
 				+ ", rec_material=" + rec_material + "]";
 	}

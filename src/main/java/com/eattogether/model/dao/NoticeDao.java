@@ -1,15 +1,19 @@
 package com.eattogether.model.dao;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.eattogether.model.bean.Notice;
+import com.eattogether.utility.Paging;
 
 public class NoticeDao extends SuperDao{
 	
 	public int insertData(Notice bean) {
 		// no 컬럼은 시퀀스가 알아서 처리합니다.				
-		String sql = " insert into notice(not_no, mem_no, not_header, not_content, not_redate)" ;
+		String sql = " insert into notice(not_no, mem_no, not_header, not_content, not_regdate)" ;
 		sql += " values(seqboard.nextval, ?, ?, ?, ?)" ;
 		
 		PreparedStatement pstmt = null ;
@@ -23,9 +27,9 @@ public class NoticeDao extends SuperDao{
 			pstmt = conn.prepareStatement(sql) ;
 			
 			pstmt.setInt(1, bean.getMem_no());
-			pstmt.setInt(2, bean.getNot_header());
-			pstmt.setInt(3, bean.getNot_content());
-			pstmt.setInt(4, bean.getNot_redate());
+			pstmt.setString(2, bean.getNot_header());
+			pstmt.setString(3, bean.getNot_content());
+			pstmt.setString(4, bean.getNot_regdate());
 			
 			cnt = pstmt.executeUpdate() ;			
 			conn.commit();
@@ -53,6 +57,79 @@ public class NoticeDao extends SuperDao{
 	
 	public NoticeDao() {
 		super();
+	}
+
+	public List<Notice> getDataList(Paging paging) {
+		String sql = " select not_no, mem_no, not_header, not_content, not_regdate ";
+		sql += " from (select rank() over(order by not_no desc) as ranking, not_no, mem_no, not_header, not_content, not_regdate ";
+		sql += " from Notice " ;
+		
+		// 필드 검색을 위하여 mode 변수로 분기 처리하도록 합니다.
+		String mode = paging.getMode() ;
+		String keyword = paging.getKeyword() ;
+		
+		if(mode==null || mode.equals("all") || mode.equals("null") || mode.equals("")) {			
+		}else { // 전체 모드가 아니면
+			sql += " where " + mode + " like '%" + keyword + "%'" ; 
+		}
+		
+		sql += " )";
+		sql += " where ranking between ? and ? ";
+		
+		System.out.println("sql 구문:\n" + sql);
+		
+		PreparedStatement pstmt = null ; // 문장 객체
+		ResultSet rs = null ;
+		
+		List<Notice> dataList = new ArrayList<Notice>();
+		
+		super.conn = super.getConnection() ;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, paging.getBeginRow());
+			pstmt.setInt(2, paging.getEndRow());			
+			
+			rs = pstmt.executeQuery() ;
+			
+			// 요소들 읽어서 컬렉션에 담습니다.
+			while(rs.next()) {				
+				Notice bean = this.resultSet2Bean(rs) ;
+				
+				dataList.add(bean) ;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) {rs.close();}
+				if(pstmt != null) {pstmt.close();}
+				super.closeConnection();
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+			
+		return dataList ;
+	}
+	
+	private Notice resultSet2Bean(ResultSet rs) {
+		try {
+			Notice bean = new Notice() ;			
+			bean.setNot_no(rs.getInt("not_no"));
+			bean.setMem_no(rs.getInt("mem_no"));
+			bean.setNot_header(rs.getString("not_header"));
+			bean.setNot_content(rs.getString("not_content"));
+			bean.setNot_regdate(String.valueOf(rs.getDate("not_regdate")));	
+			return bean ;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null ;
+		}
 	}
 
 }

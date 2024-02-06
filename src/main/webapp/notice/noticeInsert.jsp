@@ -7,13 +7,21 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+body{
+background-color: #F8EBCE;
+}
+#not_no,#man_id,#fakeid {
+	display: none;
+	visibility: hidden;
+}
+</style>
 </head>
 <body>
 	<div class="container mt-3">
 		<h2>공지사항 등록</h2>
-		<p>관리자가 게시물을 등록하는 페이지입니다.</p>
 
-		<form action="<%=%>" method="post">
+		<form action="#" method="post">
 			<input type="hidden" name="command" value="notiInsert">
 			<div id="not_no" class="input-group mb-3">
 				<span class="input-group-text">글번호</span> <input type="text"
@@ -23,9 +31,8 @@
 
 				<c:set var="userInfo" value="#" />
 
-				<span class="input-group-text">작성자</span> <input type="text"
-					class="form-control" id="fakeid" name="fakeid" value="${userInfo}"
-					disabled="disabled"> <input type="hidden" id="id" name="id"
+				<span class="input-group-text" id="man_id">작성자</span> <input type="text"
+					class="form-control" id="fakeid" name="fakeid" disabled="disabled"> <input type="hidden" id="id" name="id"
 					value="${sessionScope.loginfo.id}">
 			</div>
 			<div class="input-group mb-3">
@@ -37,8 +44,8 @@
 					class="form-control" id="not_header" name="not_header">
 			</div>
 			<div class="input-group mb-3">
-				<span class="input-group-text">글내용</span> <input type="text"
-					class="form-control" id="not_contents" name="not_contents">
+				<span class="input-group-text">글내용</span> <textarea type="text"
+					class="form-control" id="not_contents" name="not_contents"></textarea>s
 			</div>
 			<div id="buttonset" class="input-group mb-3">
 				<button type="submit" class="btn btn-primary btn-lg"

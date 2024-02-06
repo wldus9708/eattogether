@@ -1,27 +1,28 @@
 package com.eattogether.model.bean;
 
+
 public class Notice {
 	private int not_no;
 	private int mem_no;
-	private int not_header;
-	private int not_content;
-	private int not_redate;
+	private String not_header;
+	private String not_content;
+	private String not_regdate;
 	
 	@Override
 	public String toString() {
 		return "Notice [not_no=" + not_no + ", mem_no=" + mem_no + ", not_header=" + not_header + ", not_content="
-				+ not_content + ", not_redate=" + not_redate + "]";
+				+ not_content + ", not_regdate=" + not_regdate + "]";
 	}
 	
 	
 	
-	public Notice(int not_no, int mem_no, int not_header, int not_content, int not_redate) {
+	public Notice(int not_no, int mem_no, String not_header, String not_content, String not_regdate) {
 		super();
 		this.not_no = not_no;
 		this.mem_no = mem_no;
 		this.not_header = not_header;
 		this.not_content = not_content;
-		this.not_redate = not_redate;
+		this.not_regdate = not_regdate;
 	}
 	
 	
@@ -50,38 +51,38 @@ public class Notice {
 
 
 
-	public int getNot_header() {
+	public String getNot_header() {
 		return not_header;
 	}
 
 
 
-	public void setNot_header(int not_header) {
+	public void setNot_header(String not_header) {
 		this.not_header = not_header;
 	}
 
 
 
-	public int getNot_content() {
+	public String getNot_content() {
 		return not_content;
 	}
 
 
 
-	public void setNot_content(int not_content) {
+	public void setNot_content(String not_content) {
 		this.not_content = not_content;
 	}
 
 
 
-	public int getNot_redate() {
-		return not_redate;
+	public String getNot_regdate() {
+		return not_regdate;
 	}
 
 
 
-	public void setNot_redate(int not_redate) {
-		this.not_redate = not_redate;
+	public void setNot_regdate(String not_regdate) {
+		this.not_regdate = not_regdate;
 	}
 
 

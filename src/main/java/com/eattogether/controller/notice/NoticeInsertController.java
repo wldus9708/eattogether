@@ -25,15 +25,15 @@ public class NoticeInsertController extends Superclass{
 		
 		int not_no = Integer.parseInt(request.getParameter("not_no"));
 		int mem_no = Integer.parseInt(request.getParameter("mem_no"));
-		int not_header = Integer.parseInt(request.getParameter("not_header"));
-		int not_content = Integer.parseInt(request.getParameter("not_content"));
-		int not_redate = Integer.parseInt(request.getParameter("not_redate"));
+		String not_header = request.getParameter("not_header");
+		String not_content = request.getParameter("not_content");
+		String not_redate =request.getParameter("not_regdate");
 		
 		bean.setNot_no(not_no);
 		bean.setMem_no(mem_no);
 		bean.setNot_header(not_header);
 		bean.setNot_content(not_content);
-		bean.setNot_redate(not_redate);
+		bean.setNot_regdate(not_redate);
 		
 		int cnt = -1 ;
 		cnt = dao.insertData(bean); 

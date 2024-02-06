@@ -11,7 +11,7 @@ meUpdate=com.eattogether.controller.member.MemberUpdateController
 # recipe section
 #reInsert=com.eattogether.controller.recipe.RecipeInsertController
 #reUpdate=com.eattogether.controller.recipe.RecipeUpdateController
-#reList=com.eattogether.controller.recipe.RecipeListController
+reList=com.eattogether.controller.recipe.RecipeListController
 #reDelete=com.eattogether.controller.recipe.RecipeDeleteController
 #reDetail=com.eattogether.controller.recipe.RecipeDetailController
 # files section

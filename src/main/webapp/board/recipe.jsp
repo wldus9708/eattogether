@@ -84,19 +84,15 @@
     
     <div class="container mt-3  ">
 		<div class="row ">
+				<h2>레시피 목록</h2>
+					<p>레시피 목록이 보여지는 페이지 입니다.</p>
+					<div id="lastrecommend" style="display:flex; justify-content:flex-end;">		  
+						<div class="recipe_latest">최신순</div>
+						<div class="recipe_re">추천순</div>
+					</div>
 				<div class="col-sm-1 "></div>
 				<div class="col-sm-10">
-				<h2>레시피 목록</h2>
-				<p>레시피 목록이 보여지는 페이지 입니다.</p>
-				
 				<table class="table table-borderless">
-					<tr> 
-						<div id="lastrecommend" style="dispaly:flex" "justify-content:flex-end;">		  
-							<div class="recipe_latest">최신순</div>
-							<div class="recipe_re">추천순</div>
-						</div>
-					</tr>
-				
 					<tr>
 						<td colspan="8" align="center">
 							<div class="row">

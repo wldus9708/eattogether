@@ -36,7 +36,7 @@ String notWithFormTag = withFormTag + "?command=";
 						<ul class="dropdown-menu">
 							<li><a class="dropdown-item" href="<%=notWithFormTag%>manList">회원관리</a></li>
 							<li><a class="dropdown-item" href="/eattogether/inquiry/inquList.jsp">문의사항</a></li>
-							<li><a class="dropdown-item" href="/eattogether/notice/mangernotiList.jsp">공지사항 관리</a></li>
+							<li><a class="dropdown-item" href="<%=notWithFormTag%>notiList">공지사항 관리</a></li>
 							<li><a class="dropdown-item" href="<%=notWithFormTag%>meLogout">로그아웃</a></li>
 						</ul></li>
 				</ul>

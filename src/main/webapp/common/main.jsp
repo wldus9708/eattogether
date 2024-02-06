@@ -35,7 +35,7 @@ $(function() {
 			<div id="main_materialBox00">
 				<div class="recipe_side0">
 					<h3 id="recipe">
-						<p>레시피</p>
+						<a href="<%=notWithFormTag%>reList"><p>레시피</p></a>
 					</h3>
 				</div>
 

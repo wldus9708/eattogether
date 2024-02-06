@@ -12,7 +12,7 @@ import com.eattogether.utility.Paging;
 
 
 public class RecipeListController extends Superclass{
-private final String PREFIX = "recipe/";
+private final String PREFIX = "board/";
 	
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -27,7 +27,7 @@ private final String PREFIX = "recipe/";
 		
 		RecipeDao dao = new RecipeDao();
 		
-		int totalCount = dao.getTotalRecordCount("recipes", mode, keyword); // 차후 수정예정입니다.
+		int totalCount = dao.getTotalRecordCount("recipe", mode, keyword); // 차후 수정예정입니다.
 		String url = super.getUrlInformation("reList");
 		boolean isGrid = true;//상품이라면 true가 됩니다.
 		
@@ -45,7 +45,7 @@ private final String PREFIX = "recipe/";
 		
 		request.setAttribute("dataList", dataList);
 		
-		super.gotoPage(PREFIX + "reList.jsp");
+		super.gotoPage(PREFIX + "recipe.jsp");
 	}
 
 }

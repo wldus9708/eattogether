@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.eattogether.common.Superclass;
 import com.eattogether.model.bean.Recipe;
 import com.eattogether.model.dao.RecipeDao;
+import com.eattogether.utility.Paging;
 
 
 public class RecipeListController extends Superclass{
@@ -26,14 +27,25 @@ private final String PREFIX = "recipe/";
 		
 		RecipeDao dao = new RecipeDao();
 		
-		/*
-		 * List<RecipeDao> dataList = dao.getDataList();
-		 * 
-		 * request.setAttribute("dataList", dataList);//상품 목록 reqest 영역에 바인딩
-		 * request.setAttribute("dataList", dataList);
-		 */
+		int totalCount = dao.getTotalRecordCount("recipes", mode, keyword); // 차후 수정예정입니다.
+		String url = super.getUrlInformation("reList");
+		boolean isGrid = true;//상품이라면 true가 됩니다.
 		
-		super.gotoPage(PREFIX + "recipe.jsp");
+		Paging paging = new Paging(pageNumber, pageSize, totalCount, url, mode, keyword, isGrid);
+		
+		//int beginRow = 1;
+		//int endRow = 10;
+		
+		List<Recipe> dataList = dao.getDataList(paging);
+		
+		System.out.println("receips 데이터목록개수" + dataList.size());
+		
+		request.setAttribute("paging", paging);//페이징 객체도 바인딩
+		request.setAttribute("dataList", dataList);//상품 목록 reqest 영역에 바인딩
+		
+		request.setAttribute("dataList", dataList);
+		
+		super.gotoPage(PREFIX + "reList.jsp");
 	}
 
 }

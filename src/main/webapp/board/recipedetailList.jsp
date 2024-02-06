@@ -6,7 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/eattogether/css/recipedetailStyle.css">
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
@@ -88,30 +89,33 @@
 			<div id="recipedetail_box01">
 				<div id="recipedetail1">
 					<div>
-						<a href="/eattogether/member/Submypage2" class="userBtn"><img src="/eattogether/image/user.png"
-							alt=""></a>
+						<a href="/eattogether/member/Submypage2" class="userBtn"><img
+							src="/eattogether/image/user.png" alt=""></a>
 					</div>
 					<div>
-						<a href="/eattogether/member/Submypage2" class="userId"><span id="recipeDetail_Id">kimwldus97</span></a>
+						<a href="/eattogether/member/Submypage2" class="userId"><span
+							id="recipeDetail_Id">${bean.mem_no}</span></a>
 					</div>
 					<div>
-						<a href="#" class="upBtn"><span id="recipeUp">4520</span> <img
-							src="/eattogether/image/upBtn.png" alt=""> </a>
+						<a href="#" class="upBtn"><span id="recipeUp">${bean.rec_popularity}</span>
+							<img src="/eattogether/image/upBtn.png" alt=""> </a>
 					</div>
 					<div>
-						<a href="#" class="playBtn"><img src="/eattogether/image/likes.png"
-							alt=""> </a>
+						<a href="#" class="playBtn"><img
+							src="/eattogether/image/likes.png" alt=""> </a>
 					</div>
 					<div>
 						<img id="myImage" class="overlay-image right-align"
-							src="/eattogether/image/emptystar.png" onclick="changeImg()" alt="즐겨찾기">
+							src="/eattogether/image/emptystar.png" onclick="changeImg()"
+							alt="${bean.rec_bookmark}">
+						<!-- 즐겨찾기 -->
 					</div>
 				</div>
 				<div id="recipedetail2">
 					<div id="recipe_container">
 						<div class="recipe_image">
 							<a class="removeUnderLine" href="#"> <img class="card-img"
-								src="/eattogether/image/steak_01.jpg" alt=""></a>
+								src="/eattogether/image/steak_01.jpg" alt="${bean.rec_photo}"></a>
 						</div>
 					</div>
 				</div>
@@ -119,22 +123,17 @@
 			<div id="recipedetail_box02">
 				<table id="recipetitle">
 					<tr>
-						<th colspan="2" id="re_title">맛있는 파스타</th>
+						<th colspan="2" id="re_title">${bean.rec_header}</th>
 					</tr>
 					<tr>
 						<td style="width: 5%;" id="re_mat">재료</td>
-						<td style="width: 45%;" id="re_matkind">재료종류</td>
+						<td style="width: 45%;" id="re_matkind">${bean.rec_material}</td>
 					</tr>
 					<tr>
 						<td style="width: 5%;" id="re_recipe">레시피</td>
 						<td style="width: 45%;" id="re_number">
 							<ul id="re_Sequence">
-								<li>면을 넣습니다</li>
-								<li>바지락을 넣습니다</li>
-								<li>면을 넣습니다</li>
-								<li>바지락을 넣습니다</li>
-								<li>면을 넣습니다</li>
-								<li>바지락을 넣습니다</li>
+								<li>${bean.rec_content}</li>
 							</ul>
 						</td>
 					</tr>

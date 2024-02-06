@@ -9,7 +9,10 @@ import java.util.List;
 import com.eattogether.model.bean.Member;
 
 public class MemberDao extends SuperDao {
-	
+	// 아이디 중복확인에서 사용
+	public static final int USABLE_ID = 1; // 사용가능
+	public static final int UNUSABLE_ID = 2; // 사용 불가능
+
 	public Member getDataByIdAndPassword(String id, String password) {
 
 		// 아이디와 비밀번호를 이용하여 해당 회원이 존재하는지 확인합니다.
@@ -100,10 +103,11 @@ public class MemberDao extends SuperDao {
 	public int getDataById(String id) {
 		// 아이디가 있는지 확인하기
 		String sql = "select count(*) from members ";
-		sql += " where id = ?";
+		sql += " where mem_id = ?";
 		PreparedStatement pstmt = null;
-		int cnt = -1;
+		ResultSet rs = null;
 
+		int result = 0;
 		try {
 			super.conn = super.getConnection();
 			conn.setAutoCommit(false);
@@ -112,8 +116,15 @@ public class MemberDao extends SuperDao {
 
 			pstmt.setString(1, id);
 
-			cnt = pstmt.executeUpdate();
-			conn.commit();
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				int cnt = rs.getInt(1);
+				if (cnt > 0) {
+					result = MemberDao.UNUSABLE_ID;
+				} else {
+					result = MemberDao.USABLE_ID;
+				}
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -132,15 +143,13 @@ public class MemberDao extends SuperDao {
 				e2.printStackTrace();
 			}
 		}
-
-		return cnt;
+		System.out.println("아이디 중복확인 결과 : " + result + " ,id : " + id);
+		return result;
 	}
 
-	
-	
 	private Member resultSet2Bean(ResultSet rs) {
 		try {
-			
+
 			Member bean = new Member();
 			bean.setNo(Integer.parseInt(rs.getString("mem_no")));
 			bean.setId(rs.getString("mem_id"));
@@ -168,7 +177,7 @@ public class MemberDao extends SuperDao {
 		sql += " where mem_id = ?";
 		ResultSet rs = null;
 		PreparedStatement pstmt = null;
-		Member bean =null ;
+		Member bean = null;
 		super.conn = super.getConnection();
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -195,39 +204,38 @@ public class MemberDao extends SuperDao {
 		}
 		return bean;
 	}
-	
-	
+
 	public int updateData(Member bean) {
 		String sql = " update members set mem_id=?,mem_name = ?,mem_password = ?,mem_alias = ?,mem_phone=?,mem_taste=?";
-        sql += " where mem_no =?";
-        PreparedStatement pstmt = null;
-        int cnt = -9999999;
-        try {
-            super.conn = super.getConnection();
-            // 자동 커밋 기능을 비활성화 시킵니다.
-            // 실행이 성공적으로 완료된 후 commit() 메소드를 명시해줍니다.
-            conn.setAutoCommit(false);
-            pstmt = conn.prepareStatement(sql);
-
-            pstmt.setString(1, bean.getId());
-            pstmt.setString(2, bean.getName());
-            pstmt.setString(3, bean.getPassword());
-            pstmt.setString(4, bean.getAlias());
-            pstmt.setString(5, bean.getPhone());
-            pstmt.setString(6, bean.getTaste());
-            pstmt.setInt(7, bean.getNo());
-            cnt = pstmt.executeUpdate();
-            conn.commit();
+		sql += " where mem_no =?";
+		PreparedStatement pstmt = null;
+		int cnt = -9999999;
+		try {
+			super.conn = super.getConnection();
+			// 자동 커밋 기능을 비활성화 시킵니다.
+			// 실행이 성공적으로 완료된 후 commit() 메소드를 명시해줍니다.
 			conn.setAutoCommit(false);
-			
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, bean.getId());
+			pstmt.setString(2, bean.getName());
+			pstmt.setString(3, bean.getPassword());
+			pstmt.setString(4, bean.getAlias());
+			pstmt.setString(5, bean.getPhone());
+			pstmt.setString(6, bean.getTaste());
+			pstmt.setInt(7, bean.getNo());
+			cnt = pstmt.executeUpdate();
+			conn.commit();
+			conn.setAutoCommit(false);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			try {
-	            // 예외가 발생한 경우 롤백 수행
-	            conn.rollback();
-	        } catch (SQLException e1) {
-	            e1.printStackTrace();
-	        }
+				// 예외가 발생한 경우 롤백 수행
+				conn.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
 		} finally {
 			try {
 				if (pstmt != null) {
@@ -242,39 +250,43 @@ public class MemberDao extends SuperDao {
 		return cnt;
 	}
 
-	public List<Member> getDataList(){
-		String sql ="select * from members";
-		
+	public List<Member> getDataList() {
+		String sql = "select * from members";
+
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+
 		List<Member> dataList = new ArrayList<Member>();
-		
+
 		super.conn = super.getConnection();
 		try {
 			pstmt = conn.prepareStatement(sql);
-			
-			//테이블의 몇행몇열이 여기에 들어있습니다.
+
+			// 테이블의 몇행몇열이 여기에 들어있습니다.
 			rs = pstmt.executeQuery();
-			
-			//요소들 읽어서 컬렉션에 담습니다.
-			while(rs.next()) {
+
+			// 요소들 읽어서 컬렉션에 담습니다.
+			while (rs.next()) {
 				Member bean = this.resultSet2Bean(rs);
 				dataList.add(bean);
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {//200p 5번
+		} finally {// 200p 5번
 			try {
-				if(rs != null) {rs.close();}
-				if(pstmt != null) {pstmt.close();}
+				if (rs != null) {
+					rs.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
 				super.closeConnection();
-			}catch(Exception e2) {
+			} catch (Exception e2) {
 				e2.printStackTrace();
 			}
 		}
-		
+
 		return dataList;
 	}
 }

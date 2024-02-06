@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="./../common/common.jsp"%>
-<%@ include file="./../common/top.jsp"%>	
+<%@ include file="./../common/top.jsp"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,13 +41,31 @@
 
 		return regExp.test(asValue);
 	}
+	function resetIdCheckValue() {
+        $('#join_idCheck').val("N");
+    }
 	
 	$(document).ready(function() {
 		$('#join_birth').datepicker({ // 제이쿼리 생일
 			dateFormat : "yy/mm/dd"
 		});
+		$('#join_DuplicateBtn').click(function(){
+		 	var id = $("#join_id").val();
+	    	window.open("/eattogether/member/checkUserid.jsp?id="+id,"idchk",
+	   	"width=400,height=300, location=yes,resizable=yes,top=100,left=50");
+	 	});
+		$('form[name=joinForm] #join_id').on('input', function() { // 아이디 입력란에서 값이 변경될 때마다 아이디 체크 값을 초기화
+            resetIdCheckValue();
+        });
 		
 		
+		$('form[name=joinForm] #join_id').keyup(function() { // 아이디 제약조건 keyup
+			if (!isId($('form[name=joinForm] #join_id').val())) {
+				$('form[name=joinForm] #join_idError').text("첫글자는 영문 소문자, 3~8자리, 특수문자 제외해주세요").css("color", "red");
+			} else {
+				$('form[name=joinForm] #join_idError').text("");
+			}
+		})
 		$('form[name=joinForm] #join_id').keyup(function() { // 아이디 제약조건 keyup
 			if (!isId($('form[name=joinForm] #join_id').val())) {
 				$('form[name=joinForm] #join_idError').text("첫글자는 영문 소문자, 3~8자리, 특수문자 제외해주세요").css("color", "red");
@@ -61,7 +80,7 @@
 				$('form[name=joinForm] #join_birthError').text("");
 			}
 		})
-		$('form[name=joinForm] #join_birth').change(function() { // 아이디 제약조건 change(datepicker로 선택했을때를 위해 넣음)
+		$('form[name=joinForm] #join_birth').change(function() { // 생일 제약조건 change(datepicker로 선택했을때를 위해 넣음)
 			if (!isBirth($('form[name=joinForm] #join_birth').val())) {
 				$('form[name=joinForm] #join_birthError').text("yyyy/mm/dd 형식으로 입력해 주세요.").css("color", "red");
 			} else {
@@ -107,6 +126,12 @@
 			$('#join_id').focus();
 			return false;
 		}
+		var idCheckValue = $('#join_idCheck').val();
+	    if (idCheckValue === "N") {
+	        alert('중복 확인을 해주세요.');
+	        return false;
+	    }
+		
 		var password = $('#join_password').val();
 		if (!isPassword(password)) {
 			alert('비밀번호 첫글자는 영문 소문자, 6~8자리 특수문자 포함으로 입력해주세요');
@@ -155,58 +180,12 @@
 	    }
 
 	}
-	function checkDuplicate() {
-	    var userId = $('#join_id').val(); // 사용자가 입력한 아이디 값 가져오기
-	    $('#staticBackdrop input[type="text"]').val(userId); // 모달 창의 input에 아이디 값 설정
-	    var isDuplicate = checkIfIdIsDuplicate(userId); // 여기에 실제 동기 중복 확인을 하는 로직을 추가
-
-	    if (isDuplicate) {
-	        $('.modal-body span').text('이미 사용 중인 아이디입니다.').css('color', 'red');
-	        $('#join_idCheck').val('N'); // 중복이면 다시 중복 확인을 요청하도록 설정
-	    } else {
-	        $('.modal-body span').text('사용 가능한 아이디입니다.').css('color', 'green');
-	        $('#join_idCheck').val('Y'); // 사용 가능하면 Y로 설정
-	    }
-	    
-	}
-	
 	
 </script>
 <meta charset="UTF-8">
 <title>회원가입 페이지</title>
 </head>
 <body>
-
-<!-- 중복확인 Modal 시작 -->
-	<div id="join_modal_wrap">
-		<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
-			data-bs-keyboard="false" tabindex="-1"
-			aria-labelledby="staticBackdropLabel" aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h1 class="modal-title fs-5" id="staticBackdropLabel">아이디
-							중복확인</h1>
-						<button type="button" class="btn-close" data-bs-dismiss="modal"
-							aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-					<!-- 사용가능하면 Y값을 히든으로 넘겨주려고함	  -->
-						<input type="text" maxlength="8">
-						<!-- <input type="text" value="Y 히든으로 숨길예정"> -->
-						<button type="button" class="btn btn-secondary join_checkbtn">중복확인</button>
-						<br> <span>사용 가능합니다.</span>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary"
-							data-bs-dismiss="modal">돌아가기</button>
-						<button type="button" class="btn btn-primary  join_checkbtn	">사용하기</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-<!-- 중복확인 Modal 끝 -->	
 	<div id="join_wrap">
 		<div id="join_box">
 			<form action="<%=withFormTag %>" method="post" name="joinForm">
@@ -214,11 +193,10 @@
 				<div id="join_form_wrap">
 					<div class="join_form_container">
 						<label class="join_label" for="userid">아이디:</label> <input
-							class="join_input_field" type="text" id="join_id" name="id" maxlength="8">
+							class="join_input_field" type="text" id="join_id" name="id" maxlength="8" onkeydown="inputIdChk()">
 							<input
 							type="hidden" id="join_idCheck" name="join_idCheck" value="N">
-						<button type="button" id="join_DuplicateBtn"
-							onclick="checkDuplicate();" data-bs-toggle="modal" data-bs-target="#staticBackdrop">중복확인</button>
+						<button type="button" id="join_DuplicateBtn">중복확인</button>
 						<span id="join_idError" class="join_error_next_box"></span>
 					</div>
 					<div class="join_form_container">

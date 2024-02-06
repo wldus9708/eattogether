@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.eattogether.common.Superclass;
 import com.eattogether.model.bean.Recipe;
+import com.eattogether.model.dao.MemberDao;
 import com.eattogether.model.dao.RecipeDao;
 import com.eattogether.utility.Paging;
 
@@ -26,7 +27,7 @@ private final String PREFIX = "board/";
 		String keyword = request.getParameter("keyword");
 		
 		RecipeDao dao = new RecipeDao();
-		
+		MemberDao mdao = new MemberDao();
 		int totalCount = dao.getTotalRecordCount("recipe", mode, keyword); // 차후 수정예정입니다.
 		String url = super.getUrlInformation("reList");
 		boolean isGrid = true;//상품이라면 true가 됩니다.

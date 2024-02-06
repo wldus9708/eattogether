@@ -160,4 +160,83 @@ public class MemberDao extends SuperDao {
 			return null;
 		}
 	}
+
+	public Member getDataBean(String id) {
+		String sql = " select * from members ";
+		sql += " where id = ?";
+		ResultSet rs = null;
+		PreparedStatement pstmt = null;
+		Member bean =null ;
+		super.conn = super.getConnection();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				bean = this.resultSet2Bean(rs);
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				super.closeConnection();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return bean;
+	}
+	
+	
+	public int updateData(Member bean) {
+		String sql = " update members set id=?,name = ?,password = ?,alias = ?,phone=?,taste=?";
+        sql += " where no =?";
+        PreparedStatement pstmt = null;
+        int cnt = -9999999;
+        try {
+            super.conn = super.getConnection();
+            // 자동 커밋 기능을 비활성화 시킵니다.
+            // 실행이 성공적으로 완료된 후 commit() 메소드를 명시해줍니다.
+            conn.setAutoCommit(false);
+            pstmt = conn.prepareStatement(sql);
+
+            pstmt.setString(1, bean.getId());
+            pstmt.setString(2, bean.getName());
+            pstmt.setString(3, bean.getPassword());
+            pstmt.setString(4, bean.getAlias());
+            pstmt.setString(5, bean.getPhone());
+            pstmt.setString(6, bean.getTaste());
+            pstmt.setInt(7, bean.getNo());
+            cnt = pstmt.executeUpdate();
+            conn.commit();
+			conn.setAutoCommit(false);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			try {
+	            // 예외가 발생한 경우 롤백 수행
+	            conn.rollback();
+	        } catch (SQLException e1) {
+	            e1.printStackTrace();
+	        }
+		} finally {
+			try {
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				super.closeConnection();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+
+		return cnt;
+	}
 }

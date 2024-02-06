@@ -6,8 +6,29 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/eattogether/css/mangernotiListStyle.css">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script type="text/javascript">
+$( function() {
+    $( "#accordion" ).accordion({
+      collapsible: true
+      
+    });
+  } );
+  
+  function changeImg() {
+	  var imageElement = $("#myImage");
+	  
+  
+  		if (imageElement.attr('src').endsWith('./../image/emptystar.png')) {
+	    imageElement.attr('src', './../image/star.png');
+	  } else {
+	    imageElement.attr('src', './../image/emptystar.png');
+	  }
+	}
 	$(document).ready(function(){
 		/* 필드 검색시 체크한 콤보 박스 상태 보존 */
 		var optionList = $('#mode option');/* 옵션 목록 */
@@ -48,6 +69,61 @@
 </head>
 <body>
 	<div id="contain">
+		<c:if test="${whologin != 2 }">
+			<div id="box1">
+				<div class="recipe_side0">
+					<h3 id="recipe">
+						<p>레시피</p>
+					</h3>
+				</div>
+
+				<div id="accordion">
+					<h3>
+						<a href="#">양식</a>
+					</h3>
+					<ul>
+						<li><a href="#">파스타</a></li>
+						<li><a href="#">리조또</a></li>
+						<li><a href="#">스테이크</a></li>
+						<li><a href="#">피자</a></li>
+						<li><a href="#">오믈렛</a></li>
+					</ul>
+
+					<h3>
+						<a href="#">한식</a>
+					</h3>
+					<ul>
+						<li><a href="#">김치볶음밥</a></li>
+						<li><a href="#">된장찌개</a></li>
+						<li><a href="#">김치찌개</a></li>
+						<li><a href="#">고등어조림</a></li>
+						<li><a href="#">고추장삼겹살</a></li>
+					</ul>
+
+					<h3>
+						<a href="#">중식</a>
+					</h3>
+					<ul>
+						<li><a href="#">마라탕</a></li>
+						<li><a href="#">탕후루</a></li>
+						<li><a href="#">짬뽕</a></li>
+						<li><a href="#">잡채밥</a></li>
+						<li><a href="#">유린기</a></li>
+					</ul>
+
+					<h3>
+						<a href="#">일식</a>
+					</h3>
+					<ul>
+						<li><a href="#">초밥</a></li>
+						<li><a href="#">호토마키</a></li>
+						<li><a href="#">우동</a></li>
+						<li><a href="#">가라아게</a></li>
+						<li><a href="#">덴뿌라</a></li>
+					</ul>
+				</div>
+			</div>
+		</c:if>
 		<div id="box2">
 			<form action="<%=withFormTag%>" method="get">
 				<input type="hidden" name="command" value="mangernotiLis">
@@ -64,9 +140,10 @@
 
 						<button class="form-control-sm btn btn-warning" type="button"
 							onclick="searchAll();">전체 검색</button>
-
-						<button class="form-control-sm btn btn-info" type="button"
-							onclick="writeForm();">글쓰기</button>
+						<c:if test="${whologin == 2 }">
+							<button class="form-control-sm btn btn-info" type="button"
+								onclick="writeForm();">글쓰기</button>
+						</c:if>
 
 						&nbsp;&nbsp; <span class="label label-default">
 							${requestScope.paging.pagingStatus} </span>
@@ -77,27 +154,29 @@
 				<h2>공지사항</h2>
 				<c:forEach var="bean" items="${dataList}">
 					<ul id="inquiryList">
-						<li><a href="#" class="toggleInquiry" >${bean.not_header} </a>
+						<li><a href="#" class="toggleInquiry">${bean.not_header}
+						</a>
 
 							<div class="inquiryDetails">
 								<div id="manger_contents">
 									<p>${bean.not_content}</p>
 								</div>
-								<div id="manger_modify">
-									<button
-										href="<%=notWithFormTag%>notiUpdate&not_no=${bean.not_no}${requestScope.paging.flowParameter}"
-										id="editInquiry">수정하기</button>
-									<button id="deleteButton" data="${bean.not_no}">삭제하기</button>
-								</div>
+								<c:if test="${whologin == 2}">
+									<div id="manger_modify">
+										<button
+											href="<%=notWithFormTag%>notiUpdate&not_no=${bean.not_no}${requestScope.paging.flowParameter}"
+											id="editInquiry">수정하기</button>
+										<button id="deleteButton" data="${bean.not_no}">삭제하기</button>
+									</div>
+								</c:if>
 							</div></li>
 					</ul>
 				</c:forEach>
 			</section>
 
 		</div>
-
-		${requestScope.paging.pagingHtml}
 	</div>
+	${requestScope.paging.pagingHtml}
 </body>
 <script type="text/javascript">
 document.addEventListener("DOMContentLoaded", function () {

@@ -24,7 +24,6 @@ body {
     display: flex;
   width: 250px;
   height: 600px;
-  margin-left: 300px;
   border-radius: 30px;
   flex-direction: column; /* 버튼들을 세로로 나열 */
   align-items: center; /* 버튼들을 가운데 정렬 */

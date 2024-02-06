@@ -10,11 +10,6 @@
 </head>
 <body>
 	<div id="contain">
-		<div id="box1">
-			<a href="/eattogether/manager/manList.jsp" id="ma_memberbt">회원조회</a> <a
-				href="/eattogether/notice/mangernotiList.jsp " id="ma_announbt">공지사항</a> <a
-				href="/eattogether/inquiry/inquList.jsp" id="ma_inquirybt">문의사항</a>
-		</div>
 		<div id="box2">
 			<div class="manger_searchbox">
 				<div id="mansearch_conditions">검색조건</div>

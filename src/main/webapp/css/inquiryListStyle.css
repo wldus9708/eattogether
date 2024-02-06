@@ -18,42 +18,13 @@ body {
 
 }
 
-#box1 {
-	  border: 3px solid #000;
-  background-color: #FFCD1D;
-    display: flex;
-  width: 250px;
-  height: 600px;
-  margin-left: 300px;
-  border-radius: 30px;
-  flex-direction: column; /* 버튼들을 세로로 나열 */
-  align-items: center; /* 버튼들을 가운데 정렬 */
-
-}
-#ma_memberbt,#ma_announbt,#ma_inquirybt{
-	background-color: #fff;
-	border: 3px solid #000;
-	  margin: 15px;
-	  width: 150px;
-	  height: 50px;
-	  border-radius: 15px;
-	  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 15px;
-    color: #000;
-}
-
-
 #box2 {
       flex: 1;
       background-color: #F8EBCE;
       width: 100%;
-      margin: 0 auto;
+      margin: 150px;
       height: 600px;
       display: flex;
-        margin-right: 500px;
       flex-direction: column;
       padding: 20px;
       box-sizing: border-box;

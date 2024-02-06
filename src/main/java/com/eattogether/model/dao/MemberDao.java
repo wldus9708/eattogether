@@ -163,7 +163,7 @@ public class MemberDao extends SuperDao {
 
 	public Member getDataBean(String id) {
 		String sql = " select * from members ";
-		sql += " where id = ?";
+		sql += " where mem_id = ?";
 		ResultSet rs = null;
 		PreparedStatement pstmt = null;
 		Member bean =null ;
@@ -196,8 +196,8 @@ public class MemberDao extends SuperDao {
 	
 	
 	public int updateData(Member bean) {
-		String sql = " update members set id=?,name = ?,password = ?,alias = ?,phone=?,taste=?";
-        sql += " where no =?";
+		String sql = " update members set mem_id=?,mem_name = ?,mem_password = ?,mem_alias = ?,mem_phone=?,mem_taste=?";
+        sql += " where mem_no =?";
         PreparedStatement pstmt = null;
         int cnt = -9999999;
         try {

@@ -90,12 +90,52 @@
 				<p>레시피 목록이 보여지는 페이지 입니다.</p>
 				
 				<table class="table table-borderless">
-					<thead> 
-						<div id="lastrecommend" style="dispaly:flex" "justify-content: flex-end;">		  
-							  <div class="recipe_latest">최신순</div>
-							  <div class="recipe_re">추천순</div>
+					<tr> 
+						<div id="lastrecommend" style="dispaly:flex" "justify-content:flex-end;">		  
+							<div class="recipe_latest">최신순</div>
+							<div class="recipe_re">추천순</div>
 						</div>
-					</thead>
+					</tr>
+				
+					<tr>
+						<td colspan="8" align="center">
+							<div class="row">
+							   <div class="col-sm-1"></div>
+							   <div class="col-sm-10">
+							      <form action="<%=withFormTag%>" method="get">
+							         <input type="hidden" name="command" value="prList">
+							         <div class="row">
+							            <div class="col-sm-12">
+							               <select class="form-control-sm" id="mode" name="mode">
+							                  <option value="all">--- 선택해주세요.
+							                  <option value="name">작성자명
+							                  <option value="recipe">레시피제목
+							                  <option value="food">음식이름
+							               </select>
+							               <input class="form-control-sm" type="text" id="keyword" name="keyword">
+								               <button class="form-control-sm btn btn-warning" type="submit">검색</button>
+								               
+								               <button class="form-control-sm btn btn-warning"
+								               			type="button" onclick="searchAll();">전체 검색</button>
+								               
+								               <c:if test="${whologin == 2}">
+													<button class="form-control-sm btn btn-info" type="button" 
+														onclick="writeForm()">글쓰기</button>
+								               </c:if>
+								               
+								               &nbsp;&nbsp;
+							               <span class="label label-default">
+							               	<!-- 총 몇건인지 나타내는 명령어 -->
+							                  ${requestScope.paging.pagingStatus}
+							               </span>
+							            </div>                        
+							         </div>                     
+							      </form>
+							   </div>
+							   <div class="col-sm-1"></div>
+							</div>
+						</td>
+					</tr>
 					
 					<tbody>
 						

@@ -143,7 +143,7 @@ public class MemberDao extends SuperDao {
 				e2.printStackTrace();
 			}
 		}
-		System.out.println("아이디 중복확인 결과 : " + result + " ,id : " + id);
+		System.out.println("아이디 중복확인 결과([1]사용가능,[2]사용불가능 :  " + result + " , 아이디 : " + id);
 		return result;
 	}
 

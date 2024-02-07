@@ -110,3 +110,11 @@ body {
     background-color: #ddd;  /* 스크롤 바 트랙의 색상 */
     border-radius: 10px;  /* 테두리의 둥근 정도 조절 */
 }
+.memberAgreement_check input{
+	zoom: 1.5;
+	accent-color: #ED6D35;
+}
+.memberAgreement_event_check_right input{
+	zoom: 1.5;
+	accent-color: #ED6D35;
+}

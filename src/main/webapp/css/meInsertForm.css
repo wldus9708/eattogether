@@ -107,3 +107,7 @@ body{
     background: #ED6D35 !important;
     color: black !important;
 }
+.join_food_opt_container input{
+	zoom: 1.5;
+	accent-color: #ED6D35;
+}

@@ -1,6 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="./../common/top.jsp"%>
+<%
+String chek = null;
+String id = "";
+Cookie[] cookie = request.getCookies();
+if (cookie != null) {
+	for (int i = 0; i < cookie.length; i++) {
+		if (cookie[i].getName().equals("checkbox")) {
+	chek = "checked";
+	id = cookie[i].getValue();
+	System.out.println(id);
+		}
+	}
+}
+%>
 
 <!DOCTYPE html>
 <html>
@@ -90,7 +104,7 @@
 								<label for="username">아이디 : </label>
 							</div>
 							<div id="login_idbox_input">
-								<input type="text" id="login_userid" name="id" maxlength="8">
+								<input type="text" id="login_userid" name="id" maxlength="8" value="<%=id%>">
 							</div>
 						</div>
 						<span class="login_hiddenbox"></span>
@@ -105,6 +119,9 @@
 						<span class="login_hiddenbox"></span>
 						<div id="login_buttonbox">
 							<button id="login_button" type="submit">로그인</button>
+						</div>
+						<div id="login_checkbox">
+							<input name="checkbox" type=checkbox value="chk" <%= chek %>> 아이디 저장		
 						</div>
 
 						<div id="login_links">

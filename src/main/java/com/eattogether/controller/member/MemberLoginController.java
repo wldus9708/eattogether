@@ -1,5 +1,6 @@
 package com.eattogether.controller.member;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,21 +17,24 @@ public class MemberLoginController extends Superclass {
 		super.doGet(request, response);
 		super.gotoPage(PREFIX + "login.jsp");
 	}
-	
+
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		super.doPost(request, response);
-		
+
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
-		System.out.println(id + "/" + password);
+		String checkbox = request.getParameter("checkbox");
+		System.out.println("아이디 : " + id + "/ 비밀번호 :" + password);
+		System.out.println("아이디 저장 여부:" + checkbox);
+
 
 		MemberDao dao = new MemberDao();
 		Member bean = dao.getDataByIdAndPassword(id, password);
 		System.out.println(bean);
 
 		if (bean == null) {
-			System.out.println( "로그인 정보가 잘못되었습니다.");
+			System.out.println("로그인 정보가 잘못되었습니다.");
 			String message = "로그인 정보가 잘못되었습니다.";
 			super.setAlertMessage(message);
 			super.gotoPage(PREFIX + "login.jsp");
@@ -38,13 +42,27 @@ public class MemberLoginController extends Superclass {
 			// session 영역(scope)에 나의 로그인 정보를 저장(바인딩)합니다.
 			// loginfo 속성을 사용하여 현재 로그인 상태를 확인할 수 있습니다.
 			super.session.setAttribute("loginfo", bean);
-			System.out.println(bean.getFlag());
+			System.out.println("회원 유형 = 회원(1), 관리자(2) : " + bean.getFlag());
 			
-			if(bean.getFlag().equals("1")) {
+			if (checkbox != null) {
+				Cookie cookie = new Cookie("checkbox", id);
+				cookie.setMaxAge(60 * 60);
+				response.addCookie(cookie);
+				System.out.println("아이디 저장 쿠키 생성완료");
+			}else {
+				Cookie noCookie = new Cookie("checkbox", "");
+				noCookie.setMaxAge(0);
+				response.addCookie(noCookie);
+				System.out.println("아이디 저장 쿠키 생성 선택 안함");
+			}
+			
+			
+
+			if (bean.getFlag().equals("1")) {
 				System.out.println("회원 메인페이지로 이동합니다.");
 				super.gotoPage("common/main.jsp");
-				
-			}else if(bean.getFlag().equals("2")) {
+
+			} else if (bean.getFlag().equals("2")) {
 				System.out.println("관리자 메인페이지로 이동합니다.");
 				super.gotoPage("manager/manList.jsp");
 			}

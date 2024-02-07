@@ -184,6 +184,7 @@ body {
 	height: 49px;
 	border-radius: 10px;
 	font-size: 18px;
+	font-weight: bold;
 }
 
 #login_password {
@@ -228,4 +229,15 @@ body {
 .login_checkbtn:focus {
 	background: #ED6D35 !important;
 	color: black !important;
+}
+
+#login_checkbox{
+    margin-left: 110px;
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+#login_checkbox input{
+	zoom: 1.5;
+	accent-color: #ED6D35;
 }

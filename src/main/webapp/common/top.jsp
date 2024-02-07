@@ -71,7 +71,7 @@ String notWithFormTag = withFormTag + "?command=";
 								</c:if>
 								<c:if test="${whologin eq 1 }">
 									<li><a class="dropdown-item"
-										href="/eattogether/member/MyPage2.jsp">마이페이지</a></li>
+										href="<%=notWithFormTag%>meList">마이페이지</a></li>
 									<li><a class="dropdown-item"
 										href="/eattogether/board/recipe.jsp">레시피</a></li>
 										<li><a class="dropdown-item"

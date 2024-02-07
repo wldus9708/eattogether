@@ -5,7 +5,7 @@ meInsert=com.eattogether.controller.member.MemberInsertController
 meAgree=com.eattogether.controller.member.MemberAgreementController
 meSuceess=com.eattogether.controller.member.MemberSuccessController
 meUpdate=com.eattogether.controller.member.MemberUpdateController
-#meList=com.eattogether.controller.member.MemberListController
+meList=com.eattogether.controller.member.MemberListController
 #meDelete=com.eattogether.controller.member.MemberDeleteController
 #meDetail=com.eattogether.controller.member.MemberDetailController
 # recipe section

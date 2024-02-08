@@ -148,12 +148,9 @@ $(function() {
 									               
 									               <button class="form-control-sm btn btn-warning"
 									               			type="button" onclick="searchAll();">전체 검색</button>
-									               
-									               <c:if test="${whologin == 2}">
-														<button class="form-control-sm btn btn-info" type="button" 
-															onclick="writeForm()">글쓰기</button>
-									               </c:if>
-									               
+									               			
+													<button class="form-control-sm btn btn-info" type="button" 
+														onclick="writeForm()">글쓰기</button>
 									               &nbsp;&nbsp;
 								               <span class="label label-default">
 								               	<!-- 총 몇건인지 나타내는 명령어 -->
@@ -162,6 +159,7 @@ $(function() {
 								            </div>                        
 								         </div>                     
 								      </form>
+								      <a class="recipe_insert" href="<%=notWithFormTag%>reInsert">글쓰기</a>
 								   </div>
 								   <div class="col-sm-1"></div>
 								</div>
@@ -194,7 +192,7 @@ $(function() {
 										<a id="sujoung" class="recipe-sujoung"  href=" ">
 											수정
 										</a>
-										<a id="sakgie" class="recipe-sakgie" href="">
+										<a id="sakgie" class="recipe-sakgie" href=" ">
 											삭제
 										</a>
 									</div>
@@ -206,151 +204,6 @@ $(function() {
 					</tr>
 					</c:if>
 					</c:forEach>
-							<!--  <td>
-								<div class="card" style="width: 300px">
-								<a class="removeUnderLine"  href="#">
-								<img class="card-img-top" src="/eattogether/image/steak_02.jpg" alt="스테이크02">
-								<div class="card-body">
-								<h4 class="card-title">
-								<span>
-									<a href="#" class="btn btn-primary">제목</a>
-								</span>
-								</h4>
-								<p class="card-text">
-								<a href="#" class="btn btn-primary">아이디</a>
-								</p>
-								</div>
-								</a>
-								</div>
-							</td>
-							<td>
-								<div class="card" style="width: 300px">
-								<a class="removeUnderLine"  href="#">
-								<img class="card-img-top" src="/eattogether/image/steak_03.jpg" alt="스테이크03">
-								<div class="card-body">
-								<h4 class="card-title">
-								<span>
-									<a href="#" class="btn btn-primary">제목</a>
-								</span>
-								</h4>
-								<p class="card-text">
-								<a href="#" class="btn btn-primary">아이디</a>
-								</p>
-								</div>
-								</a>
-								</div>
-							</td>
-						</tr>
-						<br/><br/>
-						<tr>
-							<td>
-								<div class="card" style="width: 300px">
-								<a class="removeUnderLine"  href="#">
-								<img class="card-img-top" src="/eattogether/image/risotto_01.jpg" alt="리조또01">
-								<div class="card-body">
-								<h4 class="card-title">
-								<span>
-									<a href="#" class="btn btn-primary">제목</a>
-								</span>
-								</h4>
-								<p class="card-text">
-								<a href="#" class="btn btn-primary">아이디</a>
-								</p>
-								</div>
-								</a>
-								</div>
-							</td>
-							<td>
-								<div class="card" style="width: 300px">
-								<a class="removeUnderLine"  href="#">
-								<img class="card-img-top" src="/eattogether/image/risotto_02.jpg" alt="리조또02">
-								<div class="card-body">
-								<h4 class="card-title">
-								<span>
-									<a href="#" class="btn btn-primary">제목</a>
-								</span>
-								</h4>
-								<p class="card-text">
-								<a href="#" class="btn btn-primary">아이디</a>
-								</p>
-								</div>
-								</a>
-								</div>
-							</td>
-							<td>
-								<div class="card" style="width: 300px">
-								<a class="removeUnderLine"  href="#">
-								<img class="card-img-top" src="/eattogether/image/risotto_03.jpg" alt="리조또03">
-								<div class="card-body">
-								<h4 class="card-title">
-								<span>
-									<a href="#" class="btn btn-primary">제목</a>
-								</span>
-								</h4>
-								<p class="card-text">
-								<a href="#" class="btn btn-primary">아이디</a>
-								</p>
-								</div>
-								</a>
-								</div>
-							</td>
-						</tr>
-						<br/><br/>
-						<tr>
-							<td>
-								<div class="card" style="width: 300px">
-								<a class="removeUnderLine"  href="#">
-								<img class="card-img-top" src="/eattogether/image/pizza_01.jpg" alt="피자01">
-								<div class="card-body">
-								<h4 class="card-title">
-								<span>
-									<a href="#" class="btn btn-primary">제목</a>
-								</span>
-								</h4>
-								<p class="card-text">
-								<a href="#" class="btn btn-primary">아이디</a>
-								</p>
-								</div>
-								</a>
-								</div>
-							</td>
-							<td>
-								<div class="card" style="width: 300px">
-								<a class="removeUnderLine"  href="#">
-								<img class="card-img-top" src="/eattogether/image/pizza_02.jpg" alt="피자02">
-								<div class="card-body">
-								<h4 class="card-title">
-								<span>
-									<a href="#" class="btn btn-primary">제목</a>
-								</span>
-								</h4>
-								<p class="card-text">
-								<a href="#" class="btn btn-primary">아이디</a>
-								</p>
-								</div>
-								</a>
-								</div>
-							</td>
-							<td>
-								<div class="card" style="width: 300px">
-								<a class="removeUnderLine"  href="#">
-								<img class="card-img-top" src="/eattogether/image/pizza_03.jpg" alt="피자03">
-								<div class="card-body">
-								<h4 class="card-title">
-								<span>
-									<a href="#" class="btn btn-primary">제목</a>
-								</span>
-								</h4>
-								<p class="card-text">
-								<a href="#" class="btn btn-primary">아이디</a>
-								</p>
-								</div>
-								</a>
-								</div>
-							</td>
-						</tr>
-					</tbody>
-					-->
 				</table>
 			</div>
 			<div class="col-sm-1"></div>

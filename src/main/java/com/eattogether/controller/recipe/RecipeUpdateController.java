@@ -11,11 +11,18 @@ import com.eattogether.model.dao.RecipeDao;
 import com.oreilly.servlet.MultipartRequest;
 
 public class RecipeUpdateController extends Superclass {
-	private final String PREFIX = "recipe/";
+	private final String PREFIX = "board/";
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		super.doGet(request, response);
+		super.doGet(request, response);	
+		
+		int rec_no = Integer.parseInt(request.getParameter("rec_no"));
+		RecipeDao dao = new RecipeDao();
+		Recipe bean = dao.getDataBean(rec_no);
+		
+		request.setAttribute("bean", bean);
+		super.gotoPage(PREFIX + "recipeUpdate.jsp");
 
 		/*
 		 * // 카테고리 테이블에서 레시피 목록을 읽어서 request에 바인딩합니다. FillItemDao fdao = new
@@ -32,7 +39,7 @@ public class RecipeUpdateController extends Superclass {
 		 * request.setAttribute("categories", categories); request.setAttribute("bean",
 		 * bean);
 		 */
-		super.gotoPage(PREFIX + "recipeUpdate.jsp");
+		
 	}
 
 	@Override

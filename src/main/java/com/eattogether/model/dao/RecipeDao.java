@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.eattogether.model.bean.Recipe;
+import com.eattogether.utility.MyUtility;
 import com.eattogether.utility.Paging;
 
 public class RecipeDao extends SuperDao{
@@ -207,6 +208,117 @@ public class RecipeDao extends SuperDao{
 		}
 		return cnt;
 	}
+
+	public int updateData(Recipe bean) {
+		System.out.println(bean);
+		String sql=" insert into recipe(rec_no, mem_no, cat_no, rec_header, rec_content, rec_regdate, rec_hit, rec_popularity, rec_bookmark, rec_material)";
+		sql += " values(seqproduct.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		
+		PreparedStatement pstmt = null;
+		int cnt = -9999999;
+		
+		try {
+			super.conn = super.getConnection();
+			conn.setAutoCommit(false);
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			
+			pstmt.setInt(1, bean.getRec_no());
+			pstmt.setInt(2, bean.getMem_no());
+			pstmt.setInt(3, bean.getCat_no());
+			pstmt.setString(4, bean.getRec_header());
+			pstmt.setString(5, bean.getRec_content());
+			pstmt.setString(6, bean.getRec_regdate());
+			pstmt.setInt(7, bean.getRec_hit());
+			pstmt.setInt(8, bean.getRec_popularity());
+			pstmt.setString(9, bean.getRec_bookmark());
+			pstmt.setString(10, bean.getRec_material());
+			
+			cnt = pstmt.executeUpdate();
+			conn.commit();
+		}catch(Exception e) {
+			e.printStackTrace();
+			try {
+				conn.rollback();
+			}catch(Exception e1) {
+				e1.printStackTrace();
+			}
+		}finally {
+			try {
+				if(pstmt != null) {pstmt.close();}
+				super.closeConnection();
+			}catch(Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return cnt;
+	}
 	
-	
+	public int deleteData(int rec_no) {
+		//상품은 주문 상세 테이블과 참조 무결성 제약 조건 set null을 가지고 있습니다.
+		//상품 삭제시 주문 상세 테이블의 remark컬럼을 갱신하도록 합니다.
+		
+		//no 컬럼은 시퀀스가 알아서 처리합니다.		
+		String sql = " ";
+		PreparedStatement pstmt = null;
+		int cnt = -9999999;
+		
+		try {
+			super.conn = super.getConnection();
+			//자동 커밋 기능을 비활성화 시킵니다.
+			//실행이 성공적으로 완료된 이후 commit() 메소드를 명시해 줍니다.
+			//conn.setAutoCommit(false); dml이 없으니까 
+			
+			Recipe bean = this.getDataBean(rec_no);
+			String message = MyUtility.getCurrentTime()+bean.getRec_no() + "(상품 번호 : "+ rec_no + "번)이 삭제 되었습니다.";
+			
+			//getDataBean() 메소드가 리턴된 다음에 conn이 null이 됩니다. 
+			//그래서, 다음과 같이 null체크를 해줘야 합니다.
+			//다음 항목도 공부하세요 : Connection Pooling 기법(수영장에 커넥션을 다 넣어놓고 사용자에게 하나씩 꺼내주는것)
+			/*
+			 * if(conn == null) { super.conn = super.getConnection();
+			 * conn.setAutoCommit(false); }
+			 */
+			super.conn = super.getConnection();
+			conn.setAutoCommit(false);
+			
+			//두개의 dml문장이 성공시 같이 성공되어야 하고 실패시 같이 실패되어야 합니다. 즉 트랜잭션이라고 볼수있습니다.
+			//step01 : 주문 상세 테이블의 비고 컬럼에 삭제된 히스토리를 남깁니다.
+			sql = " update orderdetails set remark = ? where pnum = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,message);
+			pstmt.setInt(2,rec_no);
+			cnt = pstmt.executeUpdate();
+			if(pstmt != null) {pstmt.close();}
+			
+			//step02 : 상품 테이블에서 해당 상품 번호를 삭제합니다.
+			sql = " delete from products where pnum = ? ";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1,rec_no);
+			cnt = pstmt.executeUpdate();
+			
+			//cnt = super.updateRemark("orderdetails", message);
+			
+			conn.commit();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			
+		}finally {
+			try {
+				if(pstmt != null) {pstmt.close();}
+				super.closeConnection();
+			}catch(Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		return cnt;
+	}
 }

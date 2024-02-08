@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/eattogether/css/mangernotiListStyle.css">
+<link rel="stylesheet" href="/eattogether/css/notiListStyle.css">
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script type="text/javascript">
@@ -43,20 +43,20 @@ $( function() {
 	});
 
 	function searchAll(){ /* 전체 검색  */
-		location.href = '<%=notWithFormTag%>noList'	;
+		location.href = '<%=notWithFormTag%>notiList'	;
 	}
 	
 	function writeForm(){ /* 게시물 작성  */
 		location.href = '<%=notWithFormTag%>notiInsert' ;
 	}
 	
-	function deleteNotice(no, paramList){ /* 게시물 삭제  */
+	function deleteNotice(noti_no, paramList){ /* 게시물 삭제  */
 		/* no : 삭제될 게시물 번호, paramList : 페이징 관련 파라미터들 */
 		
 		var response = window.confirm('해당 게시물을 삭제하시겠습니까?');
 		
 		if(response==true){
-			var url = '<%=notWithFormTag%>notiDelete&no=' + no + paramList;
+			var url = '<%=notWithFormTag%>notiDelete&noti_no=' + noti_no + paramList;
 			/* alert(url); */
 			location.href = url ;
 		
@@ -73,7 +73,7 @@ $( function() {
 			<div id="box1">
 				<div class="recipe_side0">
 					<h3 id="recipe">
-						<p>레시피</p>
+						<a href="<%=notWithFormTag%>reList"><p>레시피</p></a>
 					</h3>
 				</div>
 
@@ -126,7 +126,7 @@ $( function() {
 		</c:if>
 		<div id="box2">
 			<form action="<%=withFormTag%>" method="get">
-				<input type="hidden" name="command" value="mangernotiList">
+				<input type="hidden" name="command" value="notiList">
 				<div class="row">
 					<div class="col-sm-12">
 						<select class="form-control-sm" id="mode" name="mode">
@@ -135,7 +135,6 @@ $( function() {
 							<option value="contents">글내용
 						</select> <input class="form-control-sm" type="text" id="keyword"
 							name="keyword">
-
 						<button class="form-control-sm btn btn-warning" type="submit">검색</button>
 
 						<button class="form-control-sm btn btn-warning" type="button"
@@ -153,19 +152,20 @@ $( function() {
 				<h2>공지사항</h2>
 				<c:forEach var="bean" items="${dataList}">
 					<ul id="inquiryList">
-						<li><a href="#" class="toggleInquiry">${bean.not_header}
+						<li><a href="#" class="toggleInquiry">${bean.noti_header}
 						</a>
 
 							<div class="inquiryDetails">
 								<div id="manger_contents">
-									<p>${bean.not_content}</p>
+									<p>${bean.noti_content}</p>
 								</div>
 								<c:if test="${whologin == 2 }">
 									<div id="manger_modify">
 										<a type="button"
-											href="<%=notWithFormTag%>notiUpdate&not_no=${bean.not_no}${requestScope.paging.flowParameter}"
-											id="editInquiry">수정하기</a> <a type="button" id="deleteButton"
-											data="${bean.not_no}">삭제하기</a>
+											href="<%=notWithFormTag%>notiUpdate&noti_no=${bean.noti_no}${requestScope.paging.flowParameter}"
+											id="editInquiry">수정하기</a> 
+											<a href="#"  id="deleteButton"
+								onclick="return deleteNotice('${bean.noti_no}', '${requestScope.paging.flowParameter}');">삭제</a>
 									</div>
 								</c:if>
 							</div></li>

@@ -6,8 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.eattogether.common.Superclass;
-import com.eattogether.model.bean.Manger;
-import com.eattogether.model.dao.MangerDao;
+import com.eattogether.model.bean.Member;
+import com.eattogether.model.dao.MemberDao;
 import com.eattogether.utility.Paging;
 
 public class ManagerListController extends Superclass {
@@ -24,7 +24,7 @@ public class ManagerListController extends Superclass {
 				String mode = request.getParameter("mode");
 				String keyword = request.getParameter("keyword");		
 				
-				MangerDao dao = new MangerDao();
+				MemberDao dao = new MemberDao();
 				
 				int totalCount = dao.getTotalRecordCount("Members", mode, keyword);
 				String url = super.getUrlInformation("manList") ;
@@ -33,7 +33,7 @@ public class ManagerListController extends Superclass {
 				Paging paging = new Paging(pageNumber, pageSize, totalCount, url, mode, keyword, isGrid);
 				
 					
-				List<Manger> dataList = dao.getDataList(paging);
+				List<Member> dataList = dao.getDataList(paging);
 				
 				request.setAttribute("paging", paging); // 페이징 객체도 바인딩
 				request.setAttribute("dataList", dataList);

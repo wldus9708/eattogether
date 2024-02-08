@@ -88,17 +88,17 @@ function deleteNotice(mem_no, paramList){ /* 게시물 삭제  */
 					</tr>
 					<c:forEach var="bean" items="${dataList}">
 					<tr>
-						<td>${bean.mem_no}</td>
-						<td>${bean.mem_id}</td>
-						<td>${bean.mem_name}</td>
-						<td>${bean.mem_alias}</td>
-						<td>${bean.mem_birth}</td>
-						<td>${bean.mem_phone}</td>
-						<td>${bean.mem_taste}</td>
-						<td>${bean.mem_flag}</td>
+						<td>${bean.no}</td>
+						<td>${bean.id}</td>
+						<td>${bean.name}</td>
+						<td>${bean.alias}</td>
+						<td>${bean.birth}</td>
+						<td>${bean.phone}</td>
+						<td>${bean.taste}</td>
+						<td>${bean.flag}</td>
 						<td>
 							<a href="#" id="deleteButton"
-								onclick="return deleteNotice('${bean.mem_no}', '${requestScope.paging.flowParameter}');">삭제</a>
+								onclick="return deleteNotice('${bean.no}', '${requestScope.paging.flowParameter}');">삭제</a>
 						</td>
 					</tr>
 					</c:forEach>

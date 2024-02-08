@@ -6,12 +6,71 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.eattogether.model.bean.Manger;
 import com.eattogether.model.bean.Member;
+import com.eattogether.utility.Paging;
 
 public class MemberDao extends SuperDao {
 	// 아이디 중복확인에서 사용
 	public static final int USABLE_ID = 1; // 사용가능
 	public static final int UNUSABLE_ID = 2; // 사용 불가능
+	
+	public List<Member> getDataList(Paging paging) {
+		String sql = " select mem_no, mem_id, mem_name, mem_alias, mem_password, mem_social_key, mem_social_host,mem_birth, mem_phone, mem_taste , mem_picture, mem_flag";
+		sql += " from (select rank() over(order by mem_no desc) as ranking, mem_no, mem_id, mem_name, mem_alias, mem_password, mem_social_key, mem_social_host, mem_birth, mem_phone, mem_taste , mem_picture, mem_flag ";
+		sql += " from Members " ;
+		
+		// 필드 검색을 위하여 mode 변수로 분기 처리하도록 합니다.
+		String mode = paging.getMode() ;
+		String keyword = paging.getKeyword() ;
+		
+		if(mode==null || mode.equals("all") || mode.equals("null") || mode.equals("")) {			
+		}else { // 전체 모드가 아니면
+			sql += " where " + mode + " like '%" + keyword + "%'" ; 
+		}
+		
+		sql += " )";
+		sql += " where ranking between ? and ? ";
+		
+		System.out.println("sql 구문:\n" + sql);
+		
+		PreparedStatement pstmt = null ; // 문장 객체
+		ResultSet rs = null ;
+		
+		List<Member> dataList = new ArrayList<Member>();
+		
+		super.conn = super.getConnection() ;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, paging.getBeginRow());
+			pstmt.setInt(2, paging.getEndRow());			
+			
+			rs = pstmt.executeQuery() ;
+			
+			// 요소들 읽어서 컬렉션에 담습니다.
+			while(rs.next()) {				
+				Member bean = this.resultSet2Bean(rs) ;
+				
+				dataList.add(bean) ;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) {rs.close();}
+				if(pstmt != null) {pstmt.close();}
+				super.closeConnection();
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+			
+		return dataList ;
+	}
 
 	public Member getDataByIdAndPassword(String id, String password) {
 
@@ -288,5 +347,44 @@ public class MemberDao extends SuperDao {
 		}
 
 		return dataList;
+	}
+
+	public int deleteData(int no) {
+String sql = " delete from  Members where mem_no = ? " ;
+		
+		PreparedStatement pstmt = null ;
+		int cnt = -9999999 ;
+		
+		try {
+			super.conn = super.getConnection() ;
+			// 자동 커밋 기능을 비활성화 시킵니다.
+			// 실행이 성공적으로 완료된 이후 commit() 메소드를 명시해 줍니다. 
+			conn.setAutoCommit(false);			
+			pstmt = conn.prepareStatement(sql) ;
+			
+			pstmt.setInt(1,no);
+			
+			cnt = pstmt.executeUpdate() ;			
+			conn.commit();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			
+		} finally {
+			try {
+				if(pstmt != null) {pstmt.close();}
+				super.closeConnection();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		
+		return cnt ;
 	}
 }

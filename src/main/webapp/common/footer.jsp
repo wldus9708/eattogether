@@ -16,8 +16,8 @@
 	<footer id="footer_wrap">
 		<div id="footer_menu">
 			<a href=/eattogether/company/company.jsp>회사소개</a> <a
-				href=/eattogether/privacy.jsp target="_blank">개인정보취급방침</a> <a
-				href=/eattogether/agreement.jsp target="_blank">이용약관</a> <a href=#>공지사항</a>
+				href=/eattogether/company/privacy.jsp target="_blank">개인정보취급방침</a> <a
+				href=/eattogether/company/agreement.jsp target="_blank">이용약관</a> <a href=#>공지사항</a>
 		</div>
 		<div class="footer_left">
 			<div class="row">

@@ -32,7 +32,7 @@ public class Paging {
 		
 		if(_pageSize == null || _pageSize.equals("null") || _pageSize.equals("")) {
 			if(isGrid == true) { // 격자 형식으로 보기
-				_pageSize = "6" ; // 상품 목록 보기 기본 값 "6"
+				_pageSize = "25" ; // 상품 목록 보기 기본 값 "6"
 			}else {
 				_pageSize = "10" ; // 나머지 목록 보기 페이지 기본 값 "10" 	
 			} 

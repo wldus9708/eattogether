@@ -71,8 +71,7 @@
 						name="basic" value="${bean.rec_material}">
 				</div>
 				<div class="recipe_Update_food-recipe">
-				<textarea id="contents" name="contents" rows="6" cols="150">
-					${bean.rec_content}</textarea>
+				<textarea id="contents" name="contents" rows="6" cols="150">${bean.rec_content}</textarea>
 				</div>
 			</div>
 		</div>

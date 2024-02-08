@@ -71,7 +71,7 @@ public class RecipeUpdateController extends Superclass {
 		cnt = dao.updateData(bean);
 
 		if (cnt == -1) {
-			super.gotoPage(PREFIX + "recipeUpdate.jsp");
+			new RecipeListController().doGet(request, response);;
 		} else {
 			new RecipeListController().doGet(request, response);
 		}

@@ -148,10 +148,11 @@ $(function() {
 									               
 									               <button class="form-control-sm btn btn-warning"
 									               			type="button" onclick="searchAll();">전체 검색</button>
-									               			
+									               			<c:if test="${whologin == 1 }">
 													<button class="form-control-sm btn btn-info" type="button" 
 														onclick="writeForm()">글쓰기</button>
 									               &nbsp;&nbsp;
+									               </c:if>
 								               <span class="label label-default">
 								               	<!-- 총 몇건인지 나타내는 명령어 -->
 								                  ${requestScope.paging.pagingStatus}
@@ -159,7 +160,6 @@ $(function() {
 								            </div>                        
 								         </div>                     
 								      </form>
-								      <a class="recipe_insert" href="<%=notWithFormTag%>reInsert">글쓰기</a>
 								   </div>
 								   <div class="col-sm-1"></div>
 								</div>
@@ -188,14 +188,16 @@ $(function() {
 											${bean.rec_popularity}<img src="/eattogether/image/likes.png" style="width:35px" height="35px">
 										</a>
 									</div>
+									<c:if test="${whologin == 1 }">
 									<div class="card-body03">
-										<a id="sujoung" class="recipe-sujoung"  href=" ">
+										<a id="sujoung" class="recipe-sujoung"  href=" <%=notWithFormTag%>reUpdate&rec_no=${bean.rec_no}${requestScope.paging.flowParameter}">
 											수정
 										</a>
-										<a id="sakgie" class="recipe-sakgie" href=" ">
+										<a id="sakgie" class="recipe-sakgie" href=" '${bean.rec_no}${requestScope.paging.flowParameter}">
 											삭제
 										</a>
 									</div>
+									</c:if>
 									</div>
 									</a>
 								</div>

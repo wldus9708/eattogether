@@ -35,8 +35,8 @@ manList=com.eattogether.controller.manager.ManagerListController
 # notice section
 notiList=com.eattogether.controller.notice.NoticeListController
 notiInsert=com.eattogether.controller.notice.NoticeInsertController
-#notiUpdate=com.eattogether.controller.notice.NoticeUpdateController
-#notiDelete=com.eattogether.controller.notice.NoticeDeleteController
+notiUpdate=com.eattogether.controller.notice.NoticeUpdateController
+notiDelete=com.eattogether.controller.notice.NoticeDeleteController
 #notiDetail=com.eattogether.controller.notice.NoticeDetailController
 # inquiry section
 #inquInsert=com.eattogether.controller.inquiry.InquiryInsertController

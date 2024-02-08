@@ -37,7 +37,7 @@ public class NoticeListController extends Superclass{
 		request.setAttribute("paging", paging);
 		request.setAttribute("dataList", dataList);
 		
-		super.gotoPage(PREFIX + "mangernotiList.jsp");
+		super.gotoPage(PREFIX + "notiList.jsp");
 		
 	}
 }

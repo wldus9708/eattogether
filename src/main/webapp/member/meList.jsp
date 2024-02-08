@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@include file="./../common/common.jsp"%>
 <%@include file="./../common/top.jsp" %>
 
 <!DOCTYPE html>
@@ -18,20 +17,19 @@
 		<div class="custom-shape" id="myicon">
 			<img src="/eattogether/image/pasta_01.jpg" id="mypage_icon" alt=" ">
 		</div>
-		
 		<div id="mypage_box10">
 			<table id="submypage_Input">
 				<tr>
 					<td id="submyname" style ="width:25%">이름</td>
-					<td><span>${bean.name}</span></td>
+					<td><span>${sessionScope.loginfo.name}</span></td>
 				<tr>
 				<tr>
 					<td id="submyid" style ="width:25%">닉네임</td>
-					<td><span>${bean.alias}</span></td>
+					<td><span>${sessionScope.loginfo.alias}</span></td>
 				<tr>
 				<tr>
 					<td id="submyfood" style ="width:25%">음식취향</td>
-					<td><span>${bean.taste}</span></td>
+					<td><span>${sessionScope.loginfo.taste}</span></td>
 				<tr>
 				<tr>
 					<td id="subcoment" style ="width:25%">코멘트</td>
@@ -41,7 +39,7 @@
 			
 		</div>
 		<div class="mypage_button">
-			<a href="./mydataupdate2.jsp">
+			<a href="<%=notWithFormTag%>meUpdate">
 				<div id="bupdate">
 					<p id="od00">마이페이지수정</p>
 				</div>

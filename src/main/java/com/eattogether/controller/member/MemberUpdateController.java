@@ -2,6 +2,7 @@ package com.eattogether.controller.member;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.eattogether.common.Superclass;
 import com.eattogether.model.bean.Member;
@@ -13,14 +14,16 @@ public class MemberUpdateController extends Superclass{
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		super.doGet(request, response);
-		
+		HttpSession session = request.getSession();
 		//현재 로그인 한 사람의 아이디
-		String id=request.getParameter("id");
+		String id=(String)session.getAttribute("id");
+
+		System.out.println(id);
 		MemberDao dao =new MemberDao();
 		Member bean=dao.getDataBean(id);
-
+		
 		request.setAttribute("bean", bean);
-		super.gotoPage(PREFIX+"meUpdateForm.jsp");
+		super.gotoPage(PREFIX+"meUpdate.jsp");
 	}
 	
 	@Override
@@ -36,11 +39,10 @@ public class MemberUpdateController extends Superclass{
 		bean.setAlias(request.getParameter("alias"));
 		bean.setPhone(request.getParameter("phone"));
 		bean.setTaste(request.getParameter("taste"));
-		
+		bean.setPicture(request.getParameter("picture"));
 		int cnt = dao.updateData(bean);
-		String message="";
 		if(cnt==1){//수정 성공
-			//new ProductListController().doGet(request, response);
+			new MemberListController().doGet(request, response);
 		}else{//수정 실패	
 			new MemberUpdateController().doGet(request, response);
 		}

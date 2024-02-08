@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@include file="./../common/common.jsp"%>
 <%@include file="./../common/top.jsp"%>
 <!DOCTYPE html>
 <html>
@@ -37,9 +36,9 @@
 					<td id="myUp02">이름</td>
 					<td>
 					<input type="text"class="form-control" id="fakename" name="fakename"
-				disabled="disabled" value="${bean.name}">
+				disabled="disabled" value="${sessionScope.loginfo.name}">
 					<input type="hidden" class="custom-textbox"
-						id="name" name="name" value="${bean.name}"></td>
+						id="name" name="name" value="${sessionScope.loginfo.name}"></td>
 				<tr>
 				<tr>
 					<td id="myUp03">닉네임</td>

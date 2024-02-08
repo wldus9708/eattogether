@@ -3,6 +3,8 @@ package com.eattogether.model.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.eattogether.model.bean.Member;
 
@@ -239,4 +241,43 @@ public class MemberDao extends SuperDao {
 
 		return cnt;
 	}
+	
+	public List<Member> getDataList(String id){
+		String sql = "select * from members where id=?";
+		PreparedStatement pstmt = null ; // 문장 객체
+		ResultSet rs = null ;
+		
+		List<Member> dataList = new ArrayList<Member>();
+		
+		super.conn = super.getConnection() ;
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery() ;
+			
+			// 요소들 읽어서 컬렉션에 담습니다.
+			while(rs.next()) {				
+				Member bean = this.resultSet2Bean(rs) ;
+				
+				dataList.add(bean) ;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) {rs.close();}
+				if(pstmt != null) {pstmt.close();}
+				super.closeConnection();
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+			
+		return dataList ;	
+	}
+	
 }

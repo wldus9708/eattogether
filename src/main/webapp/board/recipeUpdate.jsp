@@ -23,7 +23,7 @@
 		</div>
 		<div>
 			<input type="file" id="image-input" accept="image/*"> <img
-				src="${bean.rec_photo}" id="image-preview" alt="사진">
+				src="/eattogether/image/${bean.rec_photo}" id="image-preview" alt="사진">
 		</div>
 		<div class="row">
 			<div class="col-sm-3">

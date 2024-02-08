@@ -100,3 +100,7 @@ section { /* 섹션*/
 	align-items: center;
 	margin: 50px;
 }
+
+::placeholder {
+    color: white;
+}

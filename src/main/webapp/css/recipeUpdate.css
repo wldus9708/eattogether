@@ -15,8 +15,8 @@ section { /* 섹션*/
 
 #image-preview {
 	max-width: 100%;
-	max-height: 200px;
-	width: 150px;
+	max-height: 300px;
+	width: 300px;
 }
 
 .recipe_Update_dack { /*뒤로가기 이미지 크기조절*/
@@ -99,4 +99,8 @@ section { /* 섹션*/
 	justify-content: center;
 	align-items: center;
 	margin: 50px;
+}
+
+::placeholder {
+    color: white;
 }

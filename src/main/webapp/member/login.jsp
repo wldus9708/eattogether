@@ -110,6 +110,9 @@ if (cookie != null) {
 	    $('#login_findId').click(function(){
 	        window.open("/eattogether/member/findUserid.jsp", "findid", "width=400,height=300,location=yes,resizable=yes,top=100,left=50");
 	    });
+	    $('#login_findPwd').click(function(){
+	        window.open("/eattogether/member/findPassword.jsp", "findpwd", "width=400,height=300,location=yes,resizable=yes,top=100,left=50");
+	    });
 	    
 	});
 </script>

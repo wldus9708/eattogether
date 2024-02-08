@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.eattogether.common.Superclass;
+import com.eattogether.controller.manager.ManagerListController;
 import com.eattogether.model.bean.Member;
 import com.eattogether.model.dao.MemberDao;
 
@@ -64,7 +65,7 @@ public class MemberLoginController extends Superclass {
 
 			} else if (bean.getFlag().equals("2")) {
 				System.out.println("관리자 메인페이지로 이동합니다.");
-				super.gotoPage("manager/manList.jsp");
+				new ManagerListController().doGet(request, response);
 			}
 		}
 	}

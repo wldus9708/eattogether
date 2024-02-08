@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="../css/company.css">
+<link rel="stylesheet" type="text/css" href="/eattogether/css/company.css">
 <meta charset="utf-8" />
 <title>Kakao 지도 시작하기</title>
 </head>

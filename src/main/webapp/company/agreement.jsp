@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="../css/agreement.css">
+<link rel="stylesheet" type="text/css" href="/eattogether/css/agreement.css">
 <meta charset="UTF-8">
 <title>Agreement</title>
 </head>

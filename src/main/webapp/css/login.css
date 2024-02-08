@@ -206,22 +206,24 @@ body {
 	width: 624px;
 }
 
-#login_links a {
+#login_links button {
 	text-decoration: none;
 	padding: 10px;
 	margin-right: 5px;
 	color: inherit;
+	border:none;
+	background: none;
+	font-weight: bold;
 }
 
-#login_links a:last-child {
+#login_links button:last-child {
 	margin-right: 0;
 }
 
 .login_checkbtn {
 	background: #ED6D35 !important;
-	;
 	color: black !important;
-	;
+
 }
 
 .login_checkbtn:hover,

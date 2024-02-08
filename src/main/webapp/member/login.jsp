@@ -20,67 +20,10 @@ if (cookie != null) {
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="/eattogether/css/login.css">
-
-
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-	<!-- Modal -->
-	<div id="login_modal_wrap">
-		<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
-			data-bs-keyboard="false" tabindex="-1"
-			aria-labelledby="staticBackdropLabel" aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h1 class="modal-title fs-5" id="staticBackdropLabel">아이디
-							찾기</h1>
-						<button type="button" class="btn-close" data-bs-dismiss="modal"
-							aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-						이름 : <input type="text" maxlength="8"><br> 
-						전화번호 : <input type="text" maxlength="11">
-						<button type="button" class="btn btn-secondary login_checkbtn">아이디 찾기</button>
-						<br> <span>아이디는 ~~~입니다.</span>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary"
-							data-bs-dismiss="modal">돌아가기</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Modal -->
-	<div id="login_modal_wrap2">
-		<div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static"
-			data-bs-keyboard="false" tabindex="-1"
-			aria-labelledby="staticBackdropLabel" aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h1 class="modal-title fs-5" id="staticBackdropLabel">비밀번호
-							찾기</h1>
-						<button type="button" class="btn-close" data-bs-dismiss="modal"
-							aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-						아이디 : <input type="text" maxlength="8"><br> 
-						전화번호 : <input type="text" maxlength="11">
-						<button type="button" class="btn btn-secondary login_checkbtn">비밀번호 찾기</button>
-						<br> <span>비밀번호는 ~~~입니다.</span>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary"
-							data-bs-dismiss="modal">돌아가기</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
 	<div id="login_wrap">
 		<div class="login_container">
 			<div class="login_left-half">
@@ -125,9 +68,9 @@ if (cookie != null) {
 						</div>
 
 						<div id="login_links">
-							<a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">아이디 찾기</a> 
-							<a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">비밀번호 찾기</a> <a
-								href="<%=notWithFormTag%>meAgree">회원가입</a>
+							<button type="button" id="login_findId">아이디 찾기</button> 
+							<button type="button" id="login_findPwd">비밀번호 찾기</button> &nbsp;&nbsp;&nbsp;&nbsp;
+							<a href="<%=notWithFormTag%>meAgree">회원가입</a>
 						</div>
 
 						<hr id="login_hr">
@@ -164,6 +107,10 @@ if (cookie != null) {
 	            $('form[name=login_form] .login_hiddenbox').text("");
 	        }
 	    });
+	    $('#login_findId').click(function(){
+	        window.open("/eattogether/member/findUserid.jsp", "findid", "width=400,height=300,location=yes,resizable=yes,top=100,left=50");
+	    });
+	    
 	});
 </script>
 </html>

@@ -1,9 +1,10 @@
 @charset "UTF-8";
-body {/*배경색 설정*/
+
+body { /*배경색 설정*/
 	background-color: #F8EBCE;
 }
 
-section{/* 섹션*/
+section { /* 섹션*/
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -11,86 +12,91 @@ section{/* 섹션*/
 	padding-bottom: 270px;
 	margin-top: 30px;
 }
-::placeholder{
-	color : white;
-}
 
 #image-preview {
-    max-width: 100%;
-    max-height: 200px;
-    width : 150px;
+	max-width: 100%;
+	max-height: 200px;
+	width: 150px;
 }
-		
-.recipe_Update_dack {/*뒤로가기 이미지 크기조절*/
+
+.recipe_Update_dack { /*뒤로가기 이미지 크기조절*/
 	width: 50px;
-  	height: auto;
-}	
-
-.recipe_Update_title{/*제목 입력하는 div태그*/
-	margin: 40px;
-  	text-align: center; 
-	border:2px solid black; 
-	border-radius: 10px; 
-	padding: 5px; 
-	width: 600px; 
-	background-color: #FC7439;
-	
+	height: auto;
 }
 
-.recipe_Update_title02 {/* 제목 input 태그*/
+.recipe_Update_title { /*제목 입력하는 div태그*/
+	margin: 40px;
+	text-align: center;
+	border: 2px solid black;
+	border-radius: 10px;
+	padding: 5px;
+	width: 600px;
+	background-color: #FC7439;
+}
+
+.recipe_Update_title02 { /* 제목 input 태그*/
 	width: 100%;
-	box-sizing: border-box; 
-	border:none;
+	box-sizing: border-box;
+	border: none;
 	outline: none; /* 포커스 효과 없애기 */
 	font-size: 20px;
 	background-color: #FC7439;
-	color:white;
+	color: white;
 }
 
-.recipe_Update_food-name{/* 레시피, 재료 text */
+.recipe_Update_food-name { /* 레시피, 재료 text */
 	margin: 5px;
 	padding: 5px;
-	border:2px solid black; 
-	border-radius: 20px;  
+	border: 2px solid black;
+	border-radius: 20px;
 	background-color: #FC7439;
 	text-align: center;
 }
-.recipe_Update_food-recipe{/* 내용 입력하는 div태그 */
-  	text-align: left; 
-	padding: 25px; 
-	width: 400px; 
+
+.recipe_Update_food-recipe { /* 내용 입력하는 div태그 */
+	text-align: left;
+	padding: 25px;
+	width: 400px;
 }
 
-.recipe_Update_food{/* 1,2,3 text 칸 */ 
-	border:2px solid black; 
-	border-radius: 10px; 
+.recipe_Update_food { /* 1,2,3 text 칸 */
+	border: 2px solid black;
+	border-radius: 10px;
 	background-color: white;
 	text-align: center;
 	padding: 8px;
 }
-.recipe_text_basic{
-	margin:5px;
+
+.recipe_text_basic {
+	margin: 5px;
 	width: 355px;
-	height:30px;
-	border-radius:10px;
+	height: 30px;
+	border-radius: 10px;
 }
 
-.recipe_text{
+.recipe_text {
 	width: 300px;
-	height:30px;
-	border-radius:10px; 
+	height: 30px;
+	border-radius: 10px;
 }
 
-.recipe_Update_button{/* 수정하기 등록하기 버튼 */
-	border:2px solid black; 
-	border-radius: 20px;
+#insert_btn01 { /* 등록하기 버튼 */
+	border: 3px solid #000;
+	margin: 30px;
+	height: 50px;
+	width: 100px;
+	text-align: center;
+	border-radius: 30px;
 	background-color: #FC7439;
+	font-weight: bold;
+	font-size: 20px;
+	padding: 10px;
 }
 
-.button{/* 수정하기 등록하기 버튼 푸터 */
+.button { /* 등록하기 버튼 푸터 */
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	margin : 50px;
+	margin: 50px;
 }

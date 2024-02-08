@@ -112,7 +112,7 @@ public class RecipeDao extends SuperDao{
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setInt(1, 1);
-			pstmt.setInt(2, 9);
+			pstmt.setInt(2, 22);
 			
 			rs = pstmt.executeQuery();
 			
@@ -159,56 +159,54 @@ public class RecipeDao extends SuperDao{
 			return null;
 		}
 	}
+
+	public int insertData(Recipe bean) {
+		System.out.println(bean);
+		
+		String sql=" insert into recipe(rec_no, mem_no, cat_no, rec_header, rec_content, rec_regdate, rec_hit, rec_popularity, rec_bookmark, rec_material)";
+		sql += " values(seqproduct.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		
+		PreparedStatement pstmt = null;
+		int cnt = -999999;
+		
+		try {
+			super.conn = super.getConnection();
+			conn.setAutoCommit(false);
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			//치환은 실행 앞에서 하는거다!!
+			pstmt.setInt(1, bean.getRec_no());
+			pstmt.setInt(2, bean.getMem_no());
+			pstmt.setInt(3, bean.getCat_no());
+			pstmt.setString(4, bean.getRec_header());
+			pstmt.setString(5, bean.getRec_content());
+			pstmt.setString(6, bean.getRec_regdate());
+			pstmt.setInt(7, bean.getRec_hit());
+			pstmt.setInt(8, bean.getRec_popularity());
+			pstmt.setString(9, bean.getRec_bookmark());
+			pstmt.setString(10, bean.getRec_material());
+			
+			//여기가 실행
+			cnt = pstmt.executeUpdate();
+			conn.commit();
+		}catch(Exception e) {
+			e.printStackTrace();
+			try {
+				conn.rollback();
+			}catch(Exception e2) {
+				e2.printStackTrace();
+			}
+		}finally {
+			try {
+				if(pstmt != null) {pstmt.close();}
+				super.closeConnection();
+			}catch(Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return cnt;
+	}
 	
-	/*
-	 * public int insertData(Recipe bean) { System.out.println(bean);
-	 * 
-	 * String sql = " insert into r" //상품 번호는 시퀀스로 처리, 입고 일자는 상황에 맞도록 설정(기본 값 지정)하기로
-	 * 합니다. //String
-	 * sql=" insert into products(pnum, name, company, image01, image02, image03, stock, price, category, contents, point, inputdate)"
-	 * ; //sql += " values(seqproduct.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-	 * 
-	 * PreparedStatement pstmt = null; int cnt = -999999;
-	 * 
-	 * try { super.conn = super.getConnection(); conn.setAutoCommit(false);
-	 * 
-	 * pstmt = conn.prepareStatement(sql);
-	 * 
-	 * //치환은 실행 앞에서 하는거다!! pstmt.setString(1, bean.getName()); pstmt.setString(2,
-	 * bean.getCompany()); pstmt.setString(3, bean.getImage01()); pstmt.setString(4,
-	 * bean.getImage02()); pstmt.setString(5, bean.getImage03()); pstmt.setInt(6,
-	 * bean.getStock()); pstmt.setInt(7, bean.getPrice()); pstmt.setString(8,
-	 * bean.getCategory()); pstmt.setString(9, bean.getContents()); pstmt.setInt(10,
-	 * bean.getPoint()); pstmt.setString(11, bean.getInputdate());
-	 * 
-	 * //여기가 실행 cnt = pstmt.executeUpdate(); conn.commit(); }catch(Exception e) {
-	 * e.printStackTrace(); try { conn.rollback(); }catch(Exception e2) {
-	 * e2.printStackTrace(); } }finally { try { if(pstmt != null) {pstmt.close();}
-	 * super.closeConnection(); }catch(Exception e2) { e2.printStackTrace(); } }
-	 * return cnt; }
-	 * 
-	 * public int UpdateData(Recipe bean) { System.out.println(bean); String
-	 * sql=" update products set name=?, company=?, image01=?, image02=?, image03=?, stock=?, price=?, category=?, contents=?, point=?, inputdate=?"
-	 * ; sql += " where pnum = ?";
-	 * 
-	 * PreparedStatement pstmt = null; int cnt = -9999999;
-	 * 
-	 * try { super.conn = super.getConnection(); conn.setAutoCommit(false);
-	 * 
-	 * pstmt = conn.prepareStatement(sql);
-	 * 
-	 * 
-	 * pstmt.setString(1, bean.getName()); pstmt.setString(2, bean.getCompany());
-	 * pstmt.setString(3, bean.getImage01()); pstmt.setString(4, bean.getImage02());
-	 * pstmt.setString(5, bean.getImage03()); pstmt.setInt(6, bean.getStock());
-	 * pstmt.setInt(7, bean.getPrice()); pstmt.setString(8, bean.getCategory());
-	 * pstmt.setString(9, bean.getContents()); pstmt.setInt(10, bean.getPoint());
-	 * pstmt.setString(11, bean.getInputdate()); pstmt.setInt(12, bean.getPnum());
-	 * 
-	 * cnt = pstmt.executeUpdate(); conn.commit(); }catch(Exception e) {
-	 * e.printStackTrace(); try { conn.rollback(); }catch(Exception e1) {
-	 * e1.printStackTrace(); } }finally { try { if(pstmt != null) {pstmt.close();}
-	 * super.closeConnection(); }catch(Exception e2) { e2.printStackTrace(); } }
-	 * return cnt; }
-	 */
+	
 }

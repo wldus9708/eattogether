@@ -44,50 +44,47 @@
 </script>
 </head>
 <body>
-	<div class="row">
-		<div class="col-sm-2"></div>
-		<div class="col-sm-8">
-			<div class="container">
-				<h2>상품 등록</h2>
-				<p>관리자가 구매할 상품을 등록하는 페이지입니다.</p>
-				<form action="<%=withFormTag%>" method="post" 
-					enctype="multipart/form-data">
-					<input type="hidden" name="command" value="prInsert">
-					<div id="productPnum" class="input-group">
-						<span class="input-group-text">상품 번호</span> <input
-							class="form-control" type="number" id="pnum" name="pnum">
-					</div>
-					<div class="input-group">
-						<span class="input-group-text">상품 이름</span> 
-						<input class="form-control" type="text" id="name" name="name" placeholder="레시피 제목을 입력하세요">
-					</div>
-					<div>
-						<input type="file" id="image-input" accept="image/*">
-			    		<img src="/eattogether/image/basicicon.png" id="image-preview" alt="사진">
-					</div>
-					<div class="input-group">
-						<span class="input-group-text">카테고리</span> 
-						<select id="category" name="category" class="form-select">
-							<c:forEach var="category" items="${requestScope.categories}">
-								<option value="${category.cat_name}">${category.cat_name}</option>
-							</c:forEach>
-						</select>
-					</div>
-					<div class="input-group">
-						<span class="input-group-text">레시피</span> 
-						<textarea id="contents" name="contents" rows="3" cols="50">
-					</div>
-					<div id="buttonset" class="input-group">
-						<button type="submit" class="btn btn-primary btn-lg"
-							onclick="return validCheck();">등록하기</button>
-						&nbsp;&nbsp;&nbsp;
-						<button type="reset" class="btn btn-secondary btn-lg">수정하기</button>
-					</div>
-				</form>
+		<div class="recipe_Update_title">
+			<input type="text" class="recipe_Update_title02" id="title"
+				name="title" placeholder="레시피 제목을 입력하세요">
+		</div>
+		<div>
+			<input type="file" id="image-input" accept="image/*">
+    		<img src="/eattogether/image/basicicon.png" id="image-preview" alt="사진">
+		</div>
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="recipe_Update_food-basic">
+					<div class="recipe_Update_food-name">재료 : </div>
+					<div class="recipe_Update_food-name">레시피 : </div>
+				</div>
+			</div>
+			<div class="col-sm-9">
+				<div class="recipe_Update_food-basic">
+					<input type="text" class="recipe_text_basic" id="basic" name="basic">
+				</div>
+				<div class="recipe_Update_food-recipe">
+					<span class="recipe_Update_food">1</span>
+					<input type="text" class="recipe_text" id="contents" name="contents">
+				</div>
+				<div class="recipe_Update_food-recipe">
+					<span class="recipe_Update_food">2</span>
+					<input type="text" class="recipe_text" id="contents" name="contents">
+				</div>
+				<div class="recipe_Update_food-recipe">
+					<span class="recipe_Update_food">3</span>
+					<input type="text" class="recipe_text" id="contents" name="contents">
+				</div>
 			</div>
 		</div>
-		<div class="col-sm-2"></div>
-	</div>
+		
+		<div class="button">
+			<button class="btn recipe_Update_button" type="reset">수정하기</button>
+			&nbsp;&nbsp;&nbsp;
+			<button type="submit" class="btn recipe_Update_button">등록하기</button>
+		</div>
+	</section>	
+	
 </body>
 </html>
 <%@ include file="./../common/footer.jsp"%>

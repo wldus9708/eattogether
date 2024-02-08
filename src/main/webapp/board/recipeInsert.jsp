@@ -42,14 +42,8 @@
 					<span class="recipe_Update_food">1</span> <input type="text"
 						class="recipe_text" id="contents" name="contents">
 				</div>
-				<div class="recipe_Update_food-recipe">
-					<span class="recipe_Update_food">2</span> <input type="text"
-						class="recipe_text" id="contents" name="contents">
-				</div>
-				<div class="recipe_Update_food-recipe">
-					<span class="recipe_Update_food">3</span> <input type="text"
-						class="recipe_text" id="contents" name="contents">
-				</div>
+				
+				<button type="button" class="btn" id="add-recipe">추가</button>
 			</div>
 		</div>
 		<div class="button">
@@ -60,6 +54,38 @@
 		</div>
 	</section>
 	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			var addButton = document.getElementById('add-recipe');
+			addButton.addEventListener('click', function() {
+				var recipeUpdateFoodRecipe = document
+						.getElementsByClassName('recipe_Update_food-recipe');
+				var newDiv = document.createElement('div');
+				newDiv.className = 'recipe_Update_food-recipe';
+
+				var newSpan = document.createElement('span');
+				newSpan.className = 'recipe_Update_food';
+				newSpan.textContent = recipeUpdateFoodRecipe.length + 1;
+				newDiv.appendChild(newSpan);
+
+				var newInput;
+				if (recipeUpdateFoodRecipe.length > 0) {
+					newInput = document.createElement('input');
+					newInput.type = 'text';
+					newInput.className = 'recipe_text';
+					newInput.name = 'contents';
+				} else {
+					newInput = document.createElement('input');
+					newInput.type = 'hidden';
+					newInput.className = 'recipe_text';
+					newInput.name = 'contents';
+				}
+				newDiv.appendChild(newInput);
+
+				document.getElementById('add-recipe').parentNode.insertBefore(
+						newDiv, addButton);
+			});
+		});
+
 		// 파일 입력(input) 엘리먼트
 		const imageInput = document.getElementById('image-input');
 

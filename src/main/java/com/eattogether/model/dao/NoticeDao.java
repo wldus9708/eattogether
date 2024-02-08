@@ -13,11 +13,11 @@ public class NoticeDao extends SuperDao{
 	
 	public int insertData(Notice bean) {
 		// no 컬럼은 시퀀스가 알아서 처리합니다.				
-		String sql = " insert into notice(not_no, mem_no, not_header, not_content, not_regdate)" ;
-		sql += " values(seqboard.nextval, ?, ?, ?, ?)" ;
+		String sql = " insert into Notice(not_no, mem_no, not_header, not_content, not_regdate)" ;
+		sql += " values(seq_Notice.nextval, default, ?, ?, sysdate)" ;
 		
 		PreparedStatement pstmt = null ;
-		int cnt = -9999999 ;
+		int cnt = -1 ;
 		
 		try {
 			super.conn = super.getConnection() ;
@@ -26,10 +26,8 @@ public class NoticeDao extends SuperDao{
 			conn.setAutoCommit(false);			
 			pstmt = conn.prepareStatement(sql) ;
 			
-			pstmt.setInt(1, bean.getMem_no());
-			pstmt.setString(2, bean.getNot_header());
-			pstmt.setString(3, bean.getNot_content());
-			pstmt.setString(4, bean.getNot_regdate());
+			pstmt.setString(1, bean.getNot_header());
+			pstmt.setString(2, bean.getNot_content());
 			
 			cnt = pstmt.executeUpdate() ;			
 			conn.commit();
@@ -55,9 +53,6 @@ public class NoticeDao extends SuperDao{
 		return cnt ;
 	}
 	
-	public NoticeDao() {
-		super();
-	}
 
 	public List<Notice> getDataList(Paging paging) {
 		String sql = " select not_no, mem_no, not_header, not_content, not_regdate ";
@@ -131,5 +126,10 @@ public class NoticeDao extends SuperDao{
 			return null ;
 		}
 	}
+	
+	public NoticeDao() {
+		super();
+	}
+
 
 }

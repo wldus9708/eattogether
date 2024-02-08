@@ -1,6 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="./../common/common.jsp" %>
+<c:set var="whologin" value="0"/>
+<c:if test="${not empty sessionScope.loginfo}">
+	<c:if test="${sessionScope.loginfo.flag =='2'}">
+		<c:set var="whologin" value="2" />
+	</c:if>
+	<c:if test="${sessionScope.loginfo.flag !='2'}">
+		<c:set var="whologin" value="1" />
+	</c:if>
+</c:if>
+
 <%
 // appName : 애플리케이션 컨텍스트 이름(프로젝트 이름)
 String appName = request.getContextPath();

@@ -40,8 +40,4 @@ public class NoticeListController extends Superclass{
 		super.gotoPage(PREFIX + "mangernotiList.jsp");
 		
 	}
-	@Override
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		super.doPost(request, response);
-	}
 }

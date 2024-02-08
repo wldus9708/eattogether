@@ -43,20 +43,20 @@ $( function() {
 	});
 
 	function searchAll(){ /* 전체 검색  */
-		location.href = '<%=notWithFormTag%>boList'	;
+		location.href = '<%=notWithFormTag%>noList'	;
 	}
 	
 	function writeForm(){ /* 게시물 작성  */
-		location.href = '<%=notWithFormTag%>boInsert' ;
+		location.href = '<%=notWithFormTag%>notiInsert' ;
 	}
 	
-	function deleteBoard(no, paramList){ /* 게시물 삭제  */
+	function deleteNotice(no, paramList){ /* 게시물 삭제  */
 		/* no : 삭제될 게시물 번호, paramList : 페이징 관련 파라미터들 */
 		
 		var response = window.confirm('해당 게시물을 삭제하시겠습니까?');
 		
 		if(response==true){
-			var url = '<%=notWithFormTag%>boDelete&no=' + no + paramList;
+			var url = '<%=notWithFormTag%>notiDelete&no=' + no + paramList;
 			/* alert(url); */
 			location.href = url ;
 		
@@ -126,7 +126,7 @@ $( function() {
 		</c:if>
 		<div id="box2">
 			<form action="<%=withFormTag%>" method="get">
-				<input type="hidden" name="command" value="mangernotiLis">
+				<input type="hidden" name="command" value="mangernotiList">
 				<div class="row">
 					<div class="col-sm-12">
 						<select class="form-control-sm" id="mode" name="mode">
@@ -144,7 +144,6 @@ $( function() {
 							<button class="form-control-sm btn btn-info" type="button"
 								onclick="writeForm();">글쓰기</button>
 						</c:if>
-
 						&nbsp;&nbsp; <span class="label label-default">
 							${requestScope.paging.pagingStatus} </span>
 					</div>
@@ -161,12 +160,12 @@ $( function() {
 								<div id="manger_contents">
 									<p>${bean.not_content}</p>
 								</div>
-								<c:if test="${whologin == 2}">
+								<c:if test="${whologin == 2 }">
 									<div id="manger_modify">
-										<button
+										<a type="button"
 											href="<%=notWithFormTag%>notiUpdate&not_no=${bean.not_no}${requestScope.paging.flowParameter}"
-											id="editInquiry">수정하기</button>
-										<button id="deleteButton" data="${bean.not_no}">삭제하기</button>
+											id="editInquiry">수정하기</a> <a type="button" id="deleteButton"
+											data="${bean.not_no}">삭제하기</a>
 									</div>
 								</c:if>
 							</div></li>

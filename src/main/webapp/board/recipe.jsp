@@ -14,41 +14,42 @@
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
 <script>
-<%--$(document).ready (function(){
-	/* 필드 검색시 체크한 콤보 박스 상태 보존-->여기는 mode(Paging에 만들어놓은) */
-	var optionList = $('#mode option');/* 옵션 목록 */
-	for(var i=0; i<optionList.length; i++){
-		if(optionList[i].value == '${requestScope.paging.mode}'){
-			optionList[i].selected = true;
-		}
-	}
-	/* 필드 검색시 입력한 keyword 내용 보존 */
-	$('#keyword').val('${requestScope.paging.keyword}');
-	
-	/* 상품 삭제 버튼 클릭 */
-	/* id속성이 "deleteAnchor"로 시작하는 항목을 찾아서  */
-	
-	$('[id^=deleteAnchor]').click(function(){
-		var response = confirm('해당 상품을 삭제하시겠습니까?');
-		if(response == true){
-			var pnum = $(this).attr('data');/* 상품번호 */
-			
-			var url = '<%=notWithFormTag%>reDelete${requestScope.paging.flowParameter}&pnum='+pnum;
-			
-			location.href = url;
-			
-		}else{
-			alert('상품 삭제가 취소되었습니다.');
-		}
+$(document).ready(function(){
+		/* 필드 검색시 체크한 콤보 박스 상태 보존 */
+		var optionList = $('#mode option');/* 옵션 목록 */
+		for(var i=0 ; i<optionList.length ; i++){
+			if(optionList[i].value == '${requestScope.paging.mode}'){
+				optionList[i].selected = true ;
+			}
+		}		
+		
+		/* 필드 검색시 입력한 keyword 내용 보존 */
+		$('#keyword').val('${requestScope.paging.keyword}');
+		
+		/* 상품 삭제 버튼 클릭 */
+		/* id 속성이 "deleteAnchor"로 시작하는 항목을 찾아서 */
+		$('[id^=deleteAnchor]').click(function(){
+			var response = confirm('해당 상품을 삭제하시겠습니까?');
+			if(response==true){				
+				var rec_no = $(this).attr('data') ; /* 상품 번호 */
+				
+				var url = '<%=notWithFormTag%>reDelete${requestScope.paging.flowParameter}&rec_no=' + rec_no ;
+				
+				location.href = url ;
+				
+			}else{
+				alert('상품 삭제가 취소되었습니다.') ;
+			}
+		});
 	});
-});
 
-function searchAll(){
-	location.href = '<%=notWithFormTag%>reList';
-}
-function writeForm(){
-	location.href = '<%=notWithFormTag%>reInsert';
-}--%>
+	function searchAll(){
+		location.href = '<%=notWithFormTag%>reList'	;
+	}
+	
+	function writeForm(){
+		location.href = '<%=notWithFormTag%>reInsert';
+	}
 
 $(function() {
     $( "#accordion" ).accordion({
@@ -189,14 +190,16 @@ $(function() {
 										</a>
 									</div>
 									<c:if test="${whologin == 1 }">
+									<c:if test="${sessionScope.loginfo.no== bean.mem_no}">
 									<div class="card-body03">
-										<a id="sujoung" class="recipe-sujoung"  href=" <%=notWithFormTag%>reUpdate&rec_no=${bean.rec_no}${requestScope.paging.flowParameter}">
+										<a id="updateAnchor" class="recipe-sujoung"  href=" <%=notWithFormTag%>reUpdate&rec_no=${bean.rec_no}${requestScope.paging.flowParameter}">
 											수정
 										</a>
-										<a id="sakgie" class="recipe-sakgie" href=" '${bean.rec_no}${requestScope.paging.flowParameter}">
+										<a id="deleteAnchor_${bean.rec_no}" class="recipe-sakgie" data="${bean.rec_no}">
 											삭제
 										</a>
 									</div>
+									</c:if>
 									</c:if>
 									</div>
 									</a>
@@ -207,6 +210,8 @@ $(function() {
 					</c:if>
 					</c:forEach>
 				</table>
+				<!-- 페이징 표현 -->
+				${requestScope.paging.pagingHtml}
 			</div>
 			<div class="col-sm-1"></div>
 		</div>

@@ -25,7 +25,7 @@ public class RecipeInsertController extends Superclass {
 
 		request.setAttribute("categories", categories); */
 
-		super.gotoPage(PREFIX + "RecipeInsertForm.jsp"); // 파일 이름 확인
+		super.gotoPage(PREFIX + "recipeInsert.jsp"); // 파일 이름 확인
 	}
 
 	@Override
@@ -58,7 +58,7 @@ public class RecipeInsertController extends Superclass {
 		cnt = dao.insertData(bean);
 
 		if (cnt == -1) {
-			super.gotoPage(PREFIX + "RecipeUpdate.jsp");
+			super.gotoPage(PREFIX + "recipeInsert.jsp");
 		} else {
 			new RecipeListController().doGet(request, response);
 		}

@@ -59,7 +59,7 @@ public class RecipeUpdateController extends Superclass {
 		bean.setRec_header(mr.getParameter("rec_header"));
 		bean.setRec_content(mr.getParameter("rec_content"));
 		bean.setRec_regdate(mr.getParameter("rec_regdate"));
-		bean.setRec_photo(mr.getParameter("rec_photo"));
+		bean.setRec_photo(mr.getFilesystemName("rec_photo"));
 		bean.setRec_hit(Integer.parseInt(mr.getParameter("rec_hit")));
 		bean.setRec_popularity(Integer.parseInt(mr.getParameter("rec_popularity")));
 		bean.setRec_bookmark(mr.getParameter("rec_bookmark"));
@@ -71,7 +71,7 @@ public class RecipeUpdateController extends Superclass {
 		cnt = dao.updateData(bean);
 
 		if (cnt == -1) {
-			new RecipeListController().doGet(request, response);;
+			super.gotoPage(PREFIX + "recipeUpdate.jsp");
 		} else {
 			new RecipeListController().doGet(request, response);
 		}

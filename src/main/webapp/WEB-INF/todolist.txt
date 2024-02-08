@@ -9,8 +9,8 @@ meList=com.eattogether.controller.member.MemberListController
 #meDelete=com.eattogether.controller.member.MemberDeleteController
 #meDetail=com.eattogether.controller.member.MemberDetailController
 # recipe section
-#reInsert=com.eattogether.controller.recipe.RecipeInsertController
-#reUpdate=com.eattogether.controller.recipe.RecipeUpdateController
+reInsert=com.eattogether.controller.recipe.RecipeInsertController
+reUpdate=com.eattogether.controller.recipe.RecipeUpdateController
 reList=com.eattogether.controller.recipe.RecipeListController
 #reDelete=com.eattogether.controller.recipe.RecipeDeleteController
 reDetail=com.eattogether.controller.recipe.RecipeDetailController

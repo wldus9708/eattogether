@@ -17,6 +17,9 @@ body {
   box-sizing: border-box;
 
 }
+#man_search{
+	width: 1000px;
+}
 
 #box1 {
 	  border: 3px solid #000;
@@ -56,6 +59,7 @@ body {
       flex-direction: column;
       padding: 20px;
       box-sizing: border-box;
+  align-items: center;
       
       
     }

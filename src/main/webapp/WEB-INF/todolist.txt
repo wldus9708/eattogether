@@ -27,10 +27,8 @@ reDetail=com.eattogether.controller.recipe.RecipeDetailController
 #boDelete=com.eattogether.controller.bookmark.BookmarkDeleteController
 #boDetail=com.eattogether.controller.bookmark.BookmarkDetailController
 # manager section
-#manInsert=com.eattogether.controller.manager.ManagerInsertController
-#manUpdate=com.eattogether.controller.manager.ManagerUpdateController
 manList=com.eattogether.controller.manager.ManagerListController
-#manDelete=com.eattogether.controller.manager.ManagerDeleteController
+manDelete=com.eattogether.controller.manager.ManagerDeleteController
 #manDetail=com.eattogether.controller.manager.ManagerDetailController
 # notice section
 notiList=com.eattogether.controller.notice.NoticeListController

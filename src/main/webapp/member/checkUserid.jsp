@@ -15,28 +15,13 @@ if (id != null && !id.isEmpty()) {
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="/eattogether/css/checkUserid.css">
 <meta charset="UTF-8">
 <title>아이디 중복 검사</title>
-<style>
-body{
-	background: #F8EBCE;
-}
-#checkUserid_wrap{
-	margin-top:30px;
-	margin-left: 30px;
-}
-#submit, #btUse{
-	background: #ED6D35;
-	border-radius: 7px
-}
-#btUse{
-	margin-bottom : 10px;
-}
-</style>
 <script type="text/javascript">
 
     $(function(){
-        $('#submit').click(function(event){
+        $('#check_submit').click(function(event){
             var id = $('#userid').val();
             var newAction = "checkUserid.jsp?id=" + id;
             $('form[name="frmId"]').attr('action', newAction);
@@ -44,7 +29,7 @@ body{
            
         });
 
-        $('#btUse').click(function(){
+        $('#check_btUse').click(function(){
             var id = '<%=id%>';
             opener.document.getElementById('join_id').value = id;
             opener.document.getElementById('join_idCheck').value = 'Y';
@@ -60,12 +45,12 @@ body{
 <br>
 <form name="frmId" method="post" action="checkUserid.jsp?id=<%=id%>">
     <input type="text" name="userid" id="userid" value="<%=id%>" title="아이디입력">
-    <input type="submit" id="submit" value="아이디 확인">
+    <input type="submit" id="check_submit" value="아이디 확인">
     
     <% if (result == MemberDao.UNUSABLE_ID) { %>
         <p style="color: red">이미 등록된 아이디입니다. 다른 아이디를 입력하세요</p>
     <% } else if (result == MemberDao.USABLE_ID) { %>
-        <input type="button" value="사용하기" id="btUse">
+        <input type="button" value="사용하기" id="check_btUse">
         <p style="color: green">사용 가능한 아이디입니다. [사용하기] 버튼을 클릭하세요</p>
     <% } %>
 </form>

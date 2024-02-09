@@ -64,6 +64,15 @@ public class RecipeUpdateController extends Superclass {
 		bean.setRec_popularity(Integer.parseInt(mr.getParameter("rec_popularity")));
 		bean.setRec_bookmark(mr.getParameter("rec_bookmark"));
 		bean.setRec_material(mr.getParameter("rec_material"));
+		bean.setRec_content(mr.getParameter("rec_content02"));
+		bean.setRec_content(mr.getParameter("rec_content03"));
+		bean.setRec_content(mr.getParameter("rec_content04"));
+		bean.setRec_content(mr.getParameter("rec_content05"));
+		bean.setRec_content(mr.getParameter("rec_content06"));
+		bean.setRec_content(mr.getParameter("rec_content07"));
+		bean.setRec_content(mr.getParameter("rec_content08"));
+		bean.setRec_content(mr.getParameter("rec_content09"));
+		bean.setRec_content(mr.getParameter("rec_content10"));
 
 		RecipeDao dao = new RecipeDao();
 		int cnt = -1;

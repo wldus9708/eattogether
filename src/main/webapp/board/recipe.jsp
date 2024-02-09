@@ -148,8 +148,8 @@ $(function() {
 									               <button class="form-control-sm btn btn-warning" type="submit">검색</button>
 									               
 									               <button class="form-control-sm btn btn-warning"
-									               			type="button" onclick="searchAll();">전체 검색</button>
-									               			<c:if test="${whologin == 1 }">
+								               			type="button" onclick="searchAll();">전체 검색</button>
+								               			<c:if test="${whologin == 1 }">
 													<button class="form-control-sm btn btn-info" type="button" 
 														onclick="writeForm()">글쓰기</button>
 									               &nbsp;&nbsp;

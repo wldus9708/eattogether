@@ -13,7 +13,7 @@ public class NoticeDao extends SuperDao{
 	
 	public int insertData(Notice bean) {
 		// no 컬럼은 시퀀스가 알아서 처리합니다.				
-		String sql = " insert into Notice(noti_no, mem_no, noti_header, noti_content, noti_regdate)" ;
+		String sql = " insert into Notice(noti_no, mem_id, noti_header, noti_content, noti_regdate)" ;
 		sql += " values(seq_Notice.nextval, default, ?, ?, sysdate)" ;
 		
 		PreparedStatement pstmt = null ;
@@ -54,7 +54,7 @@ public class NoticeDao extends SuperDao{
 	}
 	
 	public int updateData(Notice bean) {
-		System.out.println("문의사항 수정 페이지: ");
+		System.out.println("공지사항 수정 페이지: ");
 		System.out.println(bean);
 		
 		String sql = " update Notice set noti_header=?, noti_content=?, noti_regdate=sysdate ";
@@ -94,8 +94,8 @@ public class NoticeDao extends SuperDao{
 	}
 
 	public List<Notice> getDataList(Paging paging) {
-		String sql = " select noti_no, mem_no, noti_header, noti_content, noti_regdate ";
-		sql += " from (select rank() over(order by noti_no desc) as ranking, noti_no, mem_no, noti_header, noti_content, noti_regdate ";
+		String sql = " select noti_no, mem_id, noti_header, noti_content, noti_regdate ";
+		sql += " from (select rank() over(order by noti_no desc) as ranking, noti_no, mem_id, noti_header, noti_content, noti_regdate ";
 		sql += " from Notice " ;
 		
 		// 필드 검색을 위하여 mode 변수로 분기 처리하도록 합니다.
@@ -154,7 +154,7 @@ public class NoticeDao extends SuperDao{
 		try {
 			Notice bean = new Notice() ;			
 			bean.setNoti_no(rs.getInt("noti_no"));
-			bean.setMem_no(rs.getInt("mem_no"));
+			bean.setMem_id(rs.getString("mem_id"));
 			bean.setNoti_header(rs.getString("noti_header"));
 			bean.setNoti_content(rs.getString("noti_content"));
 			bean.setNoti_regdate(String.valueOf(rs.getDate("noti_regdate")));	

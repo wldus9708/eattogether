@@ -11,8 +11,8 @@ import com.eattogether.utility.Paging;
 
 public class MangerDao extends SuperDao{
 	public List<Manger> getDataList(Paging paging) {
-		String sql = " select mem_no, mem_id, mem_name, mem_alias, mem_birth, mem_phone, mem_taste , mem_flag";
-		sql += " from (select rank() over(order by mem_no desc) as ranking, mem_no, mem_id, mem_name, mem_alias, mem_birth, mem_phone, mem_taste, mem_flag ";
+		String sql = " select mem_id, mem_name, mem_alias, mem_birth, mem_phone, mem_taste , mem_flag";
+		sql += " from (select rank() over(order by mem_no desc) as ranking, mem_id, mem_name, mem_alias, mem_birth, mem_phone, mem_taste, mem_flag ";
 		sql += " from Members " ;
 		
 		// 필드 검색을 위하여 mode 변수로 분기 처리하도록 합니다.
@@ -70,7 +70,6 @@ public class MangerDao extends SuperDao{
 	private Manger resultSetBean(ResultSet rs) {
 		try {
 			Manger bean = new Manger();
-			bean.setMem_no(Integer.parseInt(rs.getString("mem_no")));
 			bean.setMem_id(rs.getString("mem_id"));
 			bean.setMem_id(rs.getString("mem_name"));
 			bean.setMem_id(rs.getString("mem_alias"));

@@ -25,13 +25,13 @@ function searchAll(){ /* 전체 검색  */
 	location.href = '<%=notWithFormTag%>manList'	;
 }
 
-function deleteNotice(mem_no, paramList){ /* 게시물 삭제  */
+function deleteNotice(mem_id, paramList){ /* 게시물 삭제  */
 	/* no : 삭제될 게시물 번호, paramList : 페이징 관련 파라미터들 */
 	
 	var response = window.confirm('해당 회원을 삭제하시겠습니까?');
 	
 	if(response==true){
-		var url = '<%=notWithFormTag%>manDelete&mem_no=' + mem_no+ paramList;
+		var url = '<%=notWithFormTag%>manDelete&mem_id=' + mem_id+ paramList;
 			/* alert(url); */
 			location.href = url;
 
@@ -76,7 +76,6 @@ function deleteNotice(mem_no, paramList){ /* 게시물 삭제  */
 			<div class="manger_member">
 				<table id="man_search">
 					<tr>
-						<td style="width: 10%">회원번호</td>
 						<td style="width: 10%">아이디</td>
 						<td style="width: 10%">이름</td>
 						<td style="width: 10%">닉네임</td>
@@ -88,7 +87,6 @@ function deleteNotice(mem_no, paramList){ /* 게시물 삭제  */
 					</tr>
 					<c:forEach var="bean" items="${dataList}">
 					<tr>
-						<td>${bean.no}</td>
 						<td>${bean.id}</td>
 						<td>${bean.name}</td>
 						<td>${bean.alias}</td>
@@ -98,7 +96,7 @@ function deleteNotice(mem_no, paramList){ /* 게시물 삭제  */
 						<td>${bean.flag}</td>
 						<td>
 							<a href="#" id="deleteButton"
-								onclick="return deleteNotice('${bean.no}', '${requestScope.paging.flowParameter}');">삭제</a>
+								onclick="return deleteNotice('${bean.id}', '${requestScope.paging.flowParameter}');">삭제</a>
 						</td>
 					</tr>
 					</c:forEach>

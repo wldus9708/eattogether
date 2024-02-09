@@ -115,7 +115,7 @@
 					<div id="recipe_container">
 						<div class="recipe_image">
 							<a class="removeUnderLine" href="#"> <img class="card-img"
-								src="/eattogether/image/steak_01.jpg" alt="${bean.rec_photo}"></a>
+								src="/eattogether/image/${bean.rec_photo}" alt="${bean.rec_photo}"></a>
 						</div>
 					</div>
 				</div>

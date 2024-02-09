@@ -16,7 +16,7 @@
 		</div>
 		<div id="company_map"></div>
 		<script type="text/javascript"
-			src="//dapi.kakao.com/v2/maps/sdk.js?appkey=23b16cbcbf1e110866397960059fe575&libraries=services,clusterer,drawing"></script>
+			src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6e01dbb1d4c670a9e232e933bd89d729&libraries=services,clusterer,drawing"></script>
 		<script>
 			var container = document.getElementById('company_map'); //지도를 표시할 div
 			var options = {

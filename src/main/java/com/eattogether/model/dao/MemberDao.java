@@ -14,8 +14,8 @@ public class MemberDao extends SuperDao {
 	public static final int UNUSABLE_ID = 2;
 
 	public List<Member> getDataList(Paging paging) {
-		String sql = " select mem_no, mem_id, mem_name, mem_alias, mem_password, mem_social_key, mem_social_host,mem_birth, mem_phone, mem_taste , mem_picture, mem_flag";
-		sql += " from (select rank() over(order by mem_no desc) as ranking, mem_no, mem_id, mem_name, mem_alias, mem_password, mem_social_key, mem_social_host, mem_birth, mem_phone, mem_taste , mem_picture, mem_flag ";
+		String sql = " select mem_id, mem_name, mem_alias, mem_password, mem_social_key, mem_social_host,mem_birth, mem_phone, mem_taste , mem_picture, mem_flag";
+		sql += " from (select rank() over(order by mem_id desc) as ranking, mem_id, mem_name, mem_alias, mem_password, mem_social_key, mem_social_host, mem_birth, mem_phone, mem_taste , mem_picture, mem_flag ";
 		sql += " from Members ";
 
 		String mode = paging.getMode();
@@ -112,8 +112,8 @@ public class MemberDao extends SuperDao {
 
 	public int insertData(Member bean) {
 		System.out.println(bean);
-		String sql = "insert into members(mem_no,mem_id,mem_name,mem_alias,mem_password,mem_birth,mem_phone,mem_taste,mem_flag)";
-		sql += " values(seq_member.nextval,?,?,?,?,?,?,?,default)";
+		String sql = "insert into members(mem_id,mem_name,mem_alias,mem_password,mem_birth,mem_phone,mem_taste,mem_flag)";
+		sql += " values(?,?,?,?,?,?,?,default)";
 
 		PreparedStatement pstmt = null;
 		int cnt = -1;
@@ -206,7 +206,6 @@ public class MemberDao extends SuperDao {
 		try {
 
 			Member bean = new Member();
-			bean.setNo(Integer.parseInt(rs.getString("mem_no")));
 			bean.setId(rs.getString("mem_id"));
 			bean.setName(rs.getString("mem_name"));
 			bean.setAlias(rs.getString("mem_alias"));
@@ -260,7 +259,7 @@ public class MemberDao extends SuperDao {
 		return bean;
 	}
 
-	public int updateData(Member bean) {
+	public int updateData(Member bean) { // no 변경해야 할 곳
 		String sql = " update members set mem_id=?,mem_name = ?,mem_password = ?,mem_alias = ?,mem_phone=?,mem_taste=?";
 		sql += " where mem_no =?";
 		PreparedStatement pstmt = null;
@@ -276,7 +275,7 @@ public class MemberDao extends SuperDao {
 			pstmt.setString(4, bean.getAlias());
 			pstmt.setString(5, bean.getPhone());
 			pstmt.setString(6, bean.getTaste());
-			pstmt.setInt(7, bean.getNo());
+			//pstmt.setInt(7, bean.getNo()); no 변경해야 할 곳
 			cnt = pstmt.executeUpdate();
 			conn.commit();
 			conn.setAutoCommit(false);
@@ -323,7 +322,7 @@ public class MemberDao extends SuperDao {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {// 200p 5번
+		} finally {
 			try {
 				if (rs != null) {
 					rs.close();
@@ -340,7 +339,7 @@ public class MemberDao extends SuperDao {
 		return dataList;
 	}
 
-	public int deleteData(int no) {
+	public int deleteData(int no) {// no 변경해야 할 곳
 		String sql = " delete from  Members where mem_no = ? ";
 
 		PreparedStatement pstmt = null;

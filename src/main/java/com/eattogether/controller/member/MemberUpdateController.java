@@ -29,7 +29,6 @@ public class MemberUpdateController extends Superclass{
 		MemberDao dao = new MemberDao();
 		Member bean = new Member();
 		
-		bean.setNo(Integer.parseInt(request.getParameter("no")));
 		bean.setId(request.getParameter("id"));
 		bean.setName(request.getParameter("name"));
 		bean.setPassword(request.getParameter("password"));

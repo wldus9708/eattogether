@@ -1,8 +1,7 @@
 package com.eattogether.model.bean;
 
 public class Member {
-	private int no; // 회원번호
-	private String id; //아이디
+	private String id; // 아이디
 	private String name; // 이름
 	private String alias; // 닉네임
 	private String password; // 비밀번호
@@ -10,17 +9,16 @@ public class Member {
 	private String social_host; // 소셜 로그인 호스트
 	private String birth; // 생년월일
 	private String phone; // 전화번호
-	private String taste; // 음식취향 
+	private String taste; // 음식취향
 	private String picture; // 프로필 사진
 	private String flag; // 사용자 유형(회원 : 1, 관리자 : 2)
-	
+
 	public Member() {
 	}
 
-	public Member(int no, String id, String name, String alias, String password, String social_key, String social_host,
+	public Member(String id, String name, String alias, String password, String social_key, String social_host,
 			String birth, String phone, String taste, String picture, String flag) {
 		super();
-		this.no = no;
 		this.id = id;
 		this.name = name;
 		this.alias = alias;
@@ -32,14 +30,6 @@ public class Member {
 		this.taste = taste;
 		this.picture = picture;
 		this.flag = flag;
-	}
-
-	public int getNo() {
-		return no;
-	}
-
-	public void setNo(int no) {
-		this.no = no;
 	}
 
 	public String getId() {
@@ -132,9 +122,9 @@ public class Member {
 
 	@Override
 	public String toString() {
-		return "Member [no=" + no + ", id=" + id + ", name=" + name + ", alias=" + alias + ", password=" + password
-				+ ", social_key=" + social_key + ", social_host=" + social_host + ", birth=" + birth + ", phone="
-				+ phone + ", taste=" + taste + ", picture=" + picture + ", flag=" + flag + "]";
+		return "Member [id=" + id + ", name=" + name + ", alias=" + alias + ", password=" + password + ", social_key="
+				+ social_key + ", social_host=" + social_host + ", birth=" + birth + ", phone=" + phone + ", taste="
+				+ taste + ", picture=" + picture + ", flag=" + flag + "]";
 	}
-	
+
 }

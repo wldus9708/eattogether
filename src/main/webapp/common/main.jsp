@@ -10,14 +10,49 @@
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="/eattogether/css/main.css">
+<style>
+@keyframes moveLR {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(-15px); }
+    100% { transform: translateX(15px); } 
+}
+#main_loadDiv
+{
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background : #F8EBCE;
+    display: flex;
+    z-index: 999;
+    opacity: 0.9;
+}
+
+
+#main_loadImg
+{
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+    animation: moveLR 0.5s ease infinite alternate;
+}	
+</style>
 <script>
 $(function() {
 		$("#accordion").accordion({
 			collapsible : true
 
 		});
+		
+		
 	});
-
+$(window).on('load', function() {
+    setTimeout(function(){
+        $("#main_loadDiv").fadeOut();
+    }, 300);
+});
 	function changeImg() {
 		var imageElement = $("#myImage");
 
@@ -30,7 +65,9 @@ $(function() {
 </script>
 </head>
 <body>
-	
+	<div id="main_loadDiv">
+    	<img id="main_loadImg" src="/eattogether/image/cooker.png">
+	</div>
 		<div id="main_wrap">
 			<div id="main_materialBox00">
 				<div class="recipe_side0">

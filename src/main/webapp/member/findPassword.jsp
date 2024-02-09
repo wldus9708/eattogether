@@ -16,51 +16,9 @@ if (id != null && !id.isEmpty() && phone != null && !phone.isEmpty()) {
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="/eattogether/css/findPassword.css">
 <meta charset="UTF-8">
 <title>비밀번호 찾기</title>
-<style>
-body {
-    background: #F8EBCE;
-}
-
-#findPassword_wrap {
-    margin-top: 30px;
-    margin-left: 30px;
-}
-.findPwd_form_container {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-}
-.findPwd_label {
-    margin-right: 10px;
-    width: 100px;
-    text-align: center;
-}
-.findPwd_input_field {
-    width: 200px;
-    border-radius: 12px;
-}
-#findPwd_submit {
-    background: #ED6D35;
-    border-radius: 7px;
-    width: 110px;
-    height: 33px;
-    font-weight: bold
-}
-#findPwd_btn{
-	margin-left: 150px;
-    margin-top: 30px;
-    margin-bottom: 20px;
-	
-}
-.findPwd_result p{
-	font-size: 20px;
-	font-weight: bold;
-}
-</style>
 <script type="text/javascript">
     $(function() {
         $('#submit').click(function(event) {

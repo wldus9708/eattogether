@@ -259,8 +259,8 @@ public class MemberDao extends SuperDao {
 		return bean;
 	}
 
-	public int updateData(Member bean) { // no 변경해야 할 곳
-		String sql = " update members set mem_id=?,mem_name = ?,mem_password = ?,mem_alias = ?,mem_phone=?,mem_taste=?";
+	public int updateData(Member bean) {
+		String sql = " update members set mem_name = ?,mem_password = ?,mem_alias = ?,mem_phone=?,mem_taste=?";
 		sql += " where mem_no =?";
 		PreparedStatement pstmt = null;
 		int cnt = -9999999;
@@ -269,13 +269,13 @@ public class MemberDao extends SuperDao {
 			conn.setAutoCommit(false);
 			pstmt = conn.prepareStatement(sql);
 
-			pstmt.setString(1, bean.getId());
-			pstmt.setString(2, bean.getName());
-			pstmt.setString(3, bean.getPassword());
-			pstmt.setString(4, bean.getAlias());
-			pstmt.setString(5, bean.getPhone());
-			pstmt.setString(6, bean.getTaste());
-			//pstmt.setInt(7, bean.getNo()); no 변경해야 할 곳
+			pstmt.setString(1, bean.getName());
+			pstmt.setString(2, bean.getPassword());
+			pstmt.setString(3, bean.getAlias());
+			pstmt.setString(4, bean.getPhone());
+			pstmt.setString(5, bean.getTaste());
+			pstmt.setString(6, bean.getId());
+			
 			cnt = pstmt.executeUpdate();
 			conn.commit();
 			conn.setAutoCommit(false);
@@ -339,8 +339,8 @@ public class MemberDao extends SuperDao {
 		return dataList;
 	}
 
-	public int deleteData(int no) {// no 변경해야 할 곳
-		String sql = " delete from  Members where mem_no = ? ";
+	public int deleteData(String id) {
+		String sql = " delete from  Members where mem_id = ? ";
 
 		PreparedStatement pstmt = null;
 		int cnt = -9999999;
@@ -350,7 +350,7 @@ public class MemberDao extends SuperDao {
 			conn.setAutoCommit(false);
 			pstmt = conn.prepareStatement(sql);
 
-			pstmt.setInt(1, no);
+			pstmt.setString(1, id);
 
 			cnt = pstmt.executeUpdate();
 			conn.commit();

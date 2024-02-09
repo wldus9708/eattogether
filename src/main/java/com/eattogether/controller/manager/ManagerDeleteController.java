@@ -11,10 +11,10 @@ public class ManagerDeleteController extends Superclass{
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		super.doGet(request, response);
 		
-		int no = Integer.parseInt(request.getParameter("no")) ;
+		String id = request.getParameter("id") ;
 		MemberDao dao = new MemberDao() ;
 		int cnt = -1;
-		cnt = dao.deleteData(no);		
+		cnt = dao.deleteData(id);		
 
 		new ManagerListController().doGet(request, response); 
 	}

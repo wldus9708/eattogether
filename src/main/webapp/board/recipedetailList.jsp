@@ -94,7 +94,7 @@
 					</div>
 					<div>
 						<a href="/eattogether/member/Submypage2" class="userId"><span
-							id="recipeDetail_Id">${bean.mem_no}</span></a>
+							id="recipeDetail_Id">${bean.mem_id}</span></a>
 					</div>
 					<div>
 						<a href="#" class="upBtn"><span id="recipeUp">${bean.rec_popularity}</span>
@@ -133,7 +133,16 @@
 						<td style="width: 5%;" id="re_recipe">레시피</td>
 						<td style="width: 45%;" id="re_number">
 							<ul id="re_Sequence">
-								<li>${bean.rec_content}</li>
+								<li>${bean.rec_content01}</li>
+								<li>${bean.rec_content02}</li>
+								<li>${bean.rec_content03}</li>
+								<li>${bean.rec_content04}</li>
+								<li>${bean.rec_content05}</li>
+								<li>${bean.rec_content06}</li>
+								<li>${bean.rec_content07}</li>
+								<li>${bean.rec_content08}</li>
+								<li>${bean.rec_content09}</li>
+								<li>${bean.rec_content10}</li>
 							</ul>
 						</td>
 					</tr>

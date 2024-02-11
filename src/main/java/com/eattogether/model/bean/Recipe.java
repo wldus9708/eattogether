@@ -4,16 +4,16 @@ import com.eattogether.common.Superclass;
 
 public class Recipe extends Superclass {
 	private Integer rec_no;
-	private Integer mem_no;
+	private String mem_id;
 	private Integer cat_no;
 	private String rec_header;
-	private String rec_content;
 	private String rec_regdate; // 등록일 날짜 형식
 	private String rec_photo;; // 사진
 	private Integer rec_hit;
 	private Integer rec_popularity;
 	private String rec_bookmark; // 즐겨찾기 플래그
 	private String rec_material;
+	private String rec_content01;
 	private String rec_content02;
 	private String rec_content03;
 	private String rec_content04;
@@ -29,11 +29,11 @@ public class Recipe extends Superclass {
 	public void setRec_no(Integer rec_no) {
 		this.rec_no = rec_no;
 	}
-	public Integer getMem_no() {
-		return mem_no;
+	public String getMem_id() {
+		return mem_id;
 	}
-	public void setMem_no(Integer mem_no) {
-		this.mem_no = mem_no;
+	public void setMem_id(String mem_id) {
+		this.mem_id = mem_id;
 	}
 	public Integer getCat_no() {
 		return cat_no;
@@ -46,12 +46,6 @@ public class Recipe extends Superclass {
 	}
 	public void setRec_header(String rec_header) {
 		this.rec_header = rec_header;
-	}
-	public String getRec_content() {
-		return rec_content;
-	}
-	public void setRec_content(String rec_content) {
-		this.rec_content = rec_content;
 	}
 	public String getRec_regdate() {
 		return rec_regdate;
@@ -88,6 +82,12 @@ public class Recipe extends Superclass {
 	}
 	public void setRec_material(String rec_material) {
 		this.rec_material = rec_material;
+	}
+	public String getRec_content01() {
+		return rec_content01;
+	}
+	public void setRec_content01(String rec_content01) {
+		this.rec_content01 = rec_content01;
 	}
 	public String getRec_content02() {
 		return rec_content02;
@@ -143,35 +143,34 @@ public class Recipe extends Superclass {
 	public void setRec_content10(String rec_content10) {
 		this.rec_content10 = rec_content10;
 	}
-	
 	@Override
 	public String toString() {
-		return "Recipe [rec_no=" + rec_no + ", mem_no=" + mem_no + ", cat_no=" + cat_no + ", rec_header=" + rec_header
-				+ ", rec_content=" + rec_content + ", rec_regdate=" + rec_regdate + ", rec_photo=" + rec_photo
-				+ ", rec_hit=" + rec_hit + ", rec_popularity=" + rec_popularity + ", rec_bookmark=" + rec_bookmark
-				+ ", rec_material=" + rec_material + ", rec_content02=" + rec_content02 + ", rec_content03="
-				+ rec_content03 + ", rec_content04=" + rec_content04 + ", rec_content05=" + rec_content05
-				+ ", rec_content06=" + rec_content06 + ", rec_content07=" + rec_content07 + ", rec_content08="
-				+ rec_content08 + ", rec_content09=" + rec_content09 + ", rec_content10=" + rec_content10 + "]";
+		return "Recipe [rec_no=" + rec_no + ", mem_id=" + mem_id + ", cat_no=" + cat_no + ", rec_header=" + rec_header
+				+ ", rec_regdate=" + rec_regdate + ", rec_photo=" + rec_photo + ", rec_hit=" + rec_hit
+				+ ", rec_popularity=" + rec_popularity + ", rec_bookmark=" + rec_bookmark + ", rec_material="
+				+ rec_material + ", rec_content01=" + rec_content01 + ", rec_content02=" + rec_content02
+				+ ", rec_content03=" + rec_content03 + ", rec_content04=" + rec_content04 + ", rec_content05="
+				+ rec_content05 + ", rec_content06=" + rec_content06 + ", rec_content07=" + rec_content07
+				+ ", rec_content08=" + rec_content08 + ", rec_content09=" + rec_content09 + ", rec_content10="
+				+ rec_content10 + "]";
 	}
-	
-	public Recipe(Integer rec_no, Integer mem_no, Integer cat_no, String rec_header, String rec_content,
-			String rec_regdate, String rec_photo, Integer rec_hit, Integer rec_popularity, String rec_bookmark,
-			String rec_material, String rec_content02, String rec_content03, String rec_content04, String rec_content05,
-			String rec_content06, String rec_content07, String rec_content08, String rec_content09,
-			String rec_content10) {
+	public Recipe(Integer rec_no, String mem_id, Integer cat_no, String rec_header, String rec_regdate,
+			String rec_photo, Integer rec_hit, Integer rec_popularity, String rec_bookmark, String rec_material,
+			String rec_content01, String rec_content02, String rec_content03, String rec_content04,
+			String rec_content05, String rec_content06, String rec_content07, String rec_content08,
+			String rec_content09, String rec_content10) {
 		super();
 		this.rec_no = rec_no;
-		this.mem_no = mem_no;
+		this.mem_id = mem_id;
 		this.cat_no = cat_no;
 		this.rec_header = rec_header;
-		this.rec_content = rec_content;
 		this.rec_regdate = rec_regdate;
 		this.rec_photo = rec_photo;
 		this.rec_hit = rec_hit;
 		this.rec_popularity = rec_popularity;
 		this.rec_bookmark = rec_bookmark;
 		this.rec_material = rec_material;
+		this.rec_content01 = rec_content01;
 		this.rec_content02 = rec_content02;
 		this.rec_content03 = rec_content03;
 		this.rec_content04 = rec_content04;
@@ -182,11 +181,9 @@ public class Recipe extends Superclass {
 		this.rec_content09 = rec_content09;
 		this.rec_content10 = rec_content10;
 	}
-	
 	public Recipe() {
 		super();
 	}
-
 	
-
+	
 }

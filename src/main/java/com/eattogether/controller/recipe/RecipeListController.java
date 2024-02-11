@@ -28,7 +28,7 @@ private final String PREFIX = "board/";
 		
 		RecipeDao dao = new RecipeDao();
 		MemberDao mdao = new MemberDao();
-		int totalCount = dao.getTotalRecordCount("recipe", mode, keyword); // 차후 수정예정입니다.
+		int totalCount = dao.getTotalRecordCount("recipe", mode, keyword);
 		String url = super.getUrlInformation("reList");
 		boolean isGrid = true;//상품이라면 true가 됩니다.
 		
@@ -39,12 +39,13 @@ private final String PREFIX = "board/";
 		
 		List<Recipe> dataList = dao.getDataList(paging);
 		
-		System.out.println("receips 데이터목록개수" + dataList.size());
+		System.out.println("receip 데이터목록개수 :" + dataList.size());
 		
 		request.setAttribute("paging", paging);//페이징 객체도 바인딩
 		request.setAttribute("dataList", dataList);//상품 목록 reqest 영역에 바인딩
 		
 		request.setAttribute("dataList", dataList);
+		
 		
 		super.gotoPage(PREFIX + "recipe.jsp");
 	}

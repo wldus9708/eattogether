@@ -16,33 +16,60 @@
 <link rel="stylesheet" type="text/css"
 	href="/eattogether/css/recipeInsert.css">
 </head>
+<style>
+#productPnum {
+	display: none;
+	visibility: hidden;
+} /* 상품 번호는 안보이게 지정*/
+</style>
 <body>
-	<section>
+	<h2>상품 등록</h2>
+	<p>관리자가 구매할 상품을 등록하는 페이지입니다.</p>
+	<form action="<%=withFormTag%>" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="command" value="reInsert">
+		<div id="productPnum" class="input-group">
+			<span class="input-group-text">레시피 번호</span> 
+			<input class="form-control" name="rec_no" type="number" id="rec_no">
+		</div>
 		<div class="recipe_Update_title">
-			<input type="text" class="recipe_Update_title02" id="title"
-				name="title" placeholder="제목을 입력하세요">
+			<input type="text" name="rec_header" id="rec_header" class="recipe_Update_title02"
+				 placeholder="제목을 입력하세요">
 		</div>
 		<div>
-			<input type="file" id="image-input" accept="image/*"> <img
-				src="/eattogether/image/basicicon.png" id="image-preview" alt="사진">
+			<input type="file" name="rec_photo" id="image-input" accept="image/*"> 
+			<img src="/eattogether/image/basicicon.png" id="image-preview" alt="사진">
 		</div>
 		<div class="row">
 			<div class="col-sm-3">
 				<div class="recipe_Update_food-basic">
+					<div class="recipe_Update_food-name">작성자 : </div>
+					<div class="recipe_Update_food-name">카테고리 :</div>
 					<div class="recipe_Update_food-name">재료 :</div>
 					<div class="recipe_Update_food-name">레시피 :</div>
 				</div>
 			</div>
 			<div class="col-sm-9">
 				<div class="recipe_Update_food-basic">
-					<input type="text" class="recipe_text_basic" id="basic"
-						name="basic">
+					<c:set var="userInfo" value="${sessionScope.loginfo.name}(${sessionScope.loginfo.id})"/>
+					<input type="text" class="form-control" id="fakeid" name="fakeid" value="${userInfo}" disabled="disabled">
+					<input type="hidden" id="id" name="mem_id" value="${sessionScope.loginfo.id}">
+				</div>
+				<div class="recipe_Update_food-basic">
+					<select id="category" name="cat_no" class="recipe_text_basic">
+						<option value="카테고리">--------카테고리를 선택해주세요.--------</option>
+						<option value="1">양식</option>
+						<option value="2">한식</option>
+						<option value="3">중식</option>
+						<option value="4">일식</option>
+					</select>
+				</div>
+				<div class="recipe_Update_food-basic">
+					<input type="text"  name="rec_material" class="recipe_text_basic" id="basic">
 				</div>
 				<div class="recipe_Update_food-recipe">
-					<span class="recipe_Update_food">1</span> <input type="text"
-						class="recipe_text" id="contents" name="contents">
+					<span class="recipe_Update_food">1</span>
+					<input type="text" name="rec_content01" class="recipe_text" id="contents" >
 				</div>
-				
 				<button type="button" class="btn" id="add-recipe">추가</button>
 			</div>
 		</div>
@@ -52,7 +79,7 @@
 					id="insert_btn01">등록</button>
 			</a>
 		</div>
-	</section>
+	</form>
 	<script>
 		document.addEventListener('DOMContentLoaded', function() {
 			var addButton = document.getElementById('add-recipe');

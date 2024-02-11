@@ -61,10 +61,10 @@ $(function() {
 	  var imageElement = $("#myImage");
 	  
   
-  		if (imageElement.attr('src').endsWith('./../image/emptystar.png')) {
-	    imageElement.attr('src', './../image/star.png');
+  		if (imageElement.attr('src').endsWith('eattogether/image/emptystar.png')) {
+	    imageElement.attr('src', 'eattogether/image/star.png');
 	  } else {
-	    imageElement.attr('src', './../image/emptystar.png');
+	    imageElement.attr('src', 'eattogether/image/emptystar.png');
 	  }
 	}
 </script>
@@ -183,16 +183,16 @@ $(function() {
 									</div>
 									<div class="card-body02">
 										<a class="user-id" href=" ">
-											<img src="/eattogether/image/user.png" style="width:45px" height="45px">${bean.mem_no}
+											<img src="/eattogether/image/user.png" style="width:45px" height="45px">${bean.mem_id}
 										</a>
 										<a class="user-rocomend" href="">
 											${bean.rec_popularity}<img src="/eattogether/image/likes.png" style="width:35px" height="35px">
 										</a>
 									</div>
 									<c:if test="${whologin == 1 }">
-									<c:if test="${sessionScope.loginfo.no== bean.mem_no}">
+									<c:if test="${sessionScope.loginfo.id == bean.mem_id}">
 									<div class="card-body03">
-										<a id="updateAnchor" class="recipe-sujoung"  href=" <%=notWithFormTag%>reUpdate&rec_no=${bean.rec_no}${requestScope.paging.flowParameter}">
+										<a id="updateAnchor" class="recipe-sujoung"  href="<%=notWithFormTag%>reUpdate&rec_no=${bean.rec_no}${requestScope.paging.flowParameter}">
 											수정
 										</a>
 										<a id="deleteAnchor_${bean.rec_no}" class="recipe-sakgie" data="${bean.rec_no}">

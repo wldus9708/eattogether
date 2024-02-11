@@ -28,6 +28,7 @@
 		<div class="row">
 			<div class="col-sm-3">
 				<div class="recipe_Update_food-basic">
+					<div class="recipe_Update_food-name">카테고리 :</div>
 					<div class="recipe_Update_food-name">재료 :</div>
 					<div class="recipe_Update_food-name">레시피 :</div>
 				</div>
@@ -40,17 +41,17 @@
 				<div class="recipe_Update_food-recipe">
 					<span class="recipe_Update_food">1</span> <input type="text"
 						class="recipe_text" id="contents" name="contents"
-						value="${bean.rec_content}">
+						value="${bean.rec_content01}">
 				</div>
 				<div class="recipe_Update_food-recipe">
 					<span class="recipe_Update_food">2</span> <input type="text"
 						class="recipe_text" id="contents" name="contents"
-						value="${bean.rec_content}">
+						value="${bean.rec_content02}">
 				</div>
 				<div class="recipe_Update_food-recipe">
 					<span class="recipe_Update_food">3</span> <input type="text"
 						class="recipe_text" id="contents" name="contents"
-						value="${bean.rec_content}">
+						value="${bean.rec_content03}">
 				</div>
 			</div>
 		</div>

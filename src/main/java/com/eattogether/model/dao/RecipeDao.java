@@ -49,10 +49,10 @@ public class RecipeDao extends SuperDao{
 	}
 	
 	public List<Recipe> getDataList(Paging paging){
- 		String sql = "select rec_no, mem_no, cat_no, rec_header, rec_content, rec_regdate, rec_photo, rec_hit, rec_popularity, rec_bookmark, rec_material";
-		sql += " ,rec_content02, rec_content03, rec_content04, rec_content05, rec_content06, rec_content07, rec_content08, rec_content09, rec_content10";
- 		sql += " from (select rank() over(order by rec_regdate desc) as ranking, rec_no, mem_no, cat_no, rec_header, rec_content, rec_regdate, rec_photo, rec_hit, rec_popularity, rec_bookmark, rec_material";
- 		sql	+= " ,rec_content02, rec_content03, rec_content04, rec_content05, rec_content06, rec_content07, rec_content08, rec_content09, rec_content10";
+ 		String sql = "select rec_no, mem_id, cat_no, rec_header, rec_regdate, rec_photo, rec_hit, rec_popularity, rec_bookmark, rec_material";
+		sql += " , rec_content01, rec_content02, rec_content03, rec_content04, rec_content05, rec_content06, rec_content07, rec_content08, rec_content09, rec_content10";
+ 		sql += " from (select rank() over(order by rec_regdate desc) as ranking, rec_no, mem_id, cat_no, rec_header, rec_regdate, rec_photo, rec_hit, rec_popularity, rec_bookmark, rec_material";
+ 		sql	+= " , rec_content01, rec_content02, rec_content03, rec_content04, rec_content05, rec_content06, rec_content07, rec_content08, rec_content09, rec_content10";
 		sql += " from recipe ";
 		
 		String mode = paging.getMode();
@@ -100,10 +100,10 @@ public class RecipeDao extends SuperDao{
 	}
 	
 	public List<Recipe> getDataList(int beginRow, int endRow){
-		String sql = "select rec_no, mem_no, cat_no, rec_header, rec_content, rec_regdate, rec_photo, rec_hit, rec_popularity, rec_bookmark, rec_material";
-		sql += " ,rec_content02, rec_content03, rec_content04, rec_content05, rec_content06, rec_content07, rec_content08, rec_content09, rec_content10";
-		sql += " from (select rank() over(order by rec_regdate desc) as ranking, rec_no, mem_no, cat_no, rec_header, rec_content, rec_regdate, rec_photo, rec_hit, rec_popularity, rec_bookmark, rec_material";
-		sql	+= " ,rec_content02, rec_content03, rec_content04, rec_content05, rec_content06, rec_content07, rec_content08, rec_content09, rec_content10";
+		String sql = "select rec_no, mem_id, cat_no, rec_header, rec_regdate, rec_photo, rec_hit, rec_popularity, rec_bookmark, rec_material";
+		sql += " , rec_content01, rec_content02, rec_content03, rec_content04, rec_content05, rec_content06, rec_content07, rec_content08, rec_content09, rec_content10";
+		sql += " from (select rank() over(order by rec_regdate desc) as ranking, rec_no, mem_id, cat_no, rec_header, rec_regdate, rec_photo, rec_hit, rec_popularity, rec_bookmark, rec_material";
+		sql	+= " , rec_content01, rec_content02, rec_content03, rec_content04, rec_content05, rec_content06, rec_content07, rec_content08, rec_content09, rec_content10";
 		sql += " from recipe) where ranking between ? and ? ";
 		
 		PreparedStatement pstmt = null;
@@ -117,7 +117,7 @@ public class RecipeDao extends SuperDao{
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setInt(1, 1);
-			pstmt.setInt(2, 22);
+			pstmt.setInt(2, 25);
 			
 			rs = pstmt.executeQuery();
 			
@@ -146,25 +146,25 @@ public class RecipeDao extends SuperDao{
 		Recipe bean = new Recipe();
 		try {
 			bean.setRec_no(rs.getInt("rec_no"));
-			bean.setMem_no(rs.getInt("mem_no"));
+			bean.setMem_id(rs.getString("mem_id"));
 			bean.setCat_no(rs.getInt("cat_no"));
 			bean.setRec_header(rs.getString("rec_header"));
-			bean.setRec_content(rs.getString("rec_content"));
 			bean.setRec_regdate(String.valueOf(rs.getDate("rec_regdate")));
 			bean.setRec_photo(rs.getString("rec_photo"));		
 			bean.setRec_hit(rs.getInt("rec_hit"));
 			bean.setRec_popularity(rs.getInt("rec_popularity"));
 			bean.setRec_bookmark(rs.getString("rec_bookmark"));
 			bean.setRec_material(rs.getString("rec_material"));
-			bean.setRec_content(rs.getString("rec_content02"));
-			bean.setRec_content(rs.getString("rec_content03"));
-			bean.setRec_content(rs.getString("rec_content04"));
-			bean.setRec_content(rs.getString("rec_content05"));
-			bean.setRec_content(rs.getString("rec_content06"));
-			bean.setRec_content(rs.getString("rec_content07"));
-			bean.setRec_content(rs.getString("rec_content08"));
-			bean.setRec_content(rs.getString("rec_content09"));
-			bean.setRec_content(rs.getString("rec_content10"));
+			bean.setRec_content01(rs.getString("rec_content01"));
+			bean.setRec_content02(rs.getString("rec_content02"));
+			bean.setRec_content03(rs.getString("rec_content03"));
+			bean.setRec_content04(rs.getString("rec_content04"));
+			bean.setRec_content05(rs.getString("rec_content05"));
+			bean.setRec_content06(rs.getString("rec_content06"));
+			bean.setRec_content07(rs.getString("rec_content07"));
+			bean.setRec_content08(rs.getString("rec_content08"));
+			bean.setRec_content09(rs.getString("rec_content09"));
+			bean.setRec_content10(rs.getString("rec_content10"));
 			
 			
 			return bean;
@@ -178,9 +178,9 @@ public class RecipeDao extends SuperDao{
 	public int insertData(Recipe bean) {
 		System.out.println(bean);
 		
-		String sql=" insert into recipe(rec_no, mem_no, cat_no, rec_header, rec_content, rec_regdate, rec_hit, rec_popularity, rec_bookmark, rec_material ";
-		sql	+= " ,rec_content02, rec_content03, rec_content04, rec_content05, rec_content06, rec_content07, rec_content08, rec_content09, rec_content10)";
-		sql += " values(seqproduct.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql=" insert into recipe(rec_no, mem_id, rec_header, cat_no, rec_regdate, rec_photo, rec_material ";
+		sql	+= " , rec_content01, rec_content02, rec_content03, rec_content04, rec_content05, rec_content06, rec_content07, rec_content08, rec_content09, rec_content10)";
+		sql += " values(seq_recipe.nextval, ?, ?, ?, sysdate, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		PreparedStatement pstmt = null;
 		int cnt = -999999;
@@ -192,26 +192,23 @@ public class RecipeDao extends SuperDao{
 			pstmt = conn.prepareStatement(sql);
 			
 			//치환은 실행 앞에서 하는거다!!
-			pstmt.setInt(1, bean.getRec_no());
-			pstmt.setInt(2, bean.getMem_no());
+			pstmt.setString(1, bean.getMem_id());
+			pstmt.setString(2, bean.getRec_header());
 			pstmt.setInt(3, bean.getCat_no());
-			pstmt.setString(4, bean.getRec_header());
-			pstmt.setString(5, bean.getRec_content());
-			pstmt.setString(6, bean.getRec_regdate());
-			pstmt.setInt(7, bean.getRec_hit());
-			pstmt.setInt(8, bean.getRec_popularity());
-			pstmt.setString(9, bean.getRec_bookmark());
-			pstmt.setString(10, bean.getRec_material());
-			pstmt.setString(11, bean.getRec_content02());
-			pstmt.setString(12, bean.getRec_content03());
-			pstmt.setString(13, bean.getRec_content04());
-			pstmt.setString(14, bean.getRec_content05());
-			pstmt.setString(15, bean.getRec_content06());
-			pstmt.setString(16, bean.getRec_content07());
-			pstmt.setString(17, bean.getRec_content08());
-			pstmt.setString(18, bean.getRec_content09());
-			pstmt.setString(19, bean.getRec_content10());
+			pstmt.setString(4, bean.getRec_photo());
+			pstmt.setString(5, bean.getRec_material());
+			pstmt.setString(6, bean.getRec_content01());
 			
+			pstmt.setString(7, bean.getRec_content02()); 
+			pstmt.setString(8, bean.getRec_content03()); 
+			pstmt.setString(9, bean.getRec_content04());
+			pstmt.setString(10, bean.getRec_content05()); 
+			pstmt.setString(11, bean.getRec_content06()); 
+			pstmt.setString(12, bean.getRec_content07());
+			pstmt.setString(13, bean.getRec_content08()); 
+			pstmt.setString(14, bean.getRec_content09()); 
+			pstmt.setString(15, bean.getRec_content10());
+			 
 			
 			//여기가 실행
 			cnt = pstmt.executeUpdate();
@@ -236,8 +233,8 @@ public class RecipeDao extends SuperDao{
 
 	public int updateData(Recipe bean) {
 		System.out.println(bean);
-		String sql=" update into recipe(rec_no, mem_no, cat_no, rec_header, rec_content, rec_regdate, rec_hit, rec_popularity, rec_bookmark, rec_material ";
-		sql	+= " ,rec_content02, rec_content03, rec_content04, rec_content05, rec_content06, rec_content07, rec_content08, rec_content09, rec_content10)";
+		String sql=" update into recipe(rec_no, mem_id, cat_no, rec_header, rec_regdate, rec_hit, rec_popularity, rec_bookmark, rec_material ";
+		sql	+= " , rec_content01, rec_content02, rec_content03, rec_content04, rec_content05, rec_content06, rec_content07, rec_content08, rec_content09, rec_content10)";
 		sql += " values(seqproduct.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		PreparedStatement pstmt = null;
@@ -251,15 +248,15 @@ public class RecipeDao extends SuperDao{
 			
 			
 			pstmt.setInt(1, bean.getRec_no());
-			pstmt.setInt(2, bean.getMem_no());
+			pstmt.setString(2, bean.getMem_id());
 			pstmt.setInt(3, bean.getCat_no());
 			pstmt.setString(4, bean.getRec_header());
-			pstmt.setString(5, bean.getRec_content());
-			pstmt.setString(6, bean.getRec_regdate());
-			pstmt.setInt(7, bean.getRec_hit());
-			pstmt.setInt(8, bean.getRec_popularity());
-			pstmt.setString(9, bean.getRec_bookmark());
-			pstmt.setString(10, bean.getRec_material());
+			pstmt.setString(5, bean.getRec_regdate());
+			pstmt.setInt(6, bean.getRec_hit());
+			pstmt.setInt(7, bean.getRec_popularity());
+			pstmt.setString(8, bean.getRec_bookmark());
+			pstmt.setString(9, bean.getRec_material());
+			pstmt.setString(10, bean.getRec_content01());
 			pstmt.setString(11, bean.getRec_content02());
 			pstmt.setString(12, bean.getRec_content03());
 			pstmt.setString(13, bean.getRec_content04());

@@ -15,21 +15,16 @@
 <link rel="stylesheet" type="text/css"
 	href="/eattogether/css/recipeUpdate.css">
 <style>
-#rec_no{display : none; visibility:hidden;}
+#rec_no, #rec_regdate{display : none; visibility:hidden;}
 </style>
 </head>
 <body>
-	<form action="<%=withFormTag%>" method="post">
+	<form action="<%=withFormTag%>" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="command" value="reUpdate">
-		<!-- 다음 파라미터들은 페이징과 관련된 항목입니다. -->
-		<input type="hidden" name="pageNumber" value="<%=request.getParameter("pageNumber") %>">
-		<input type="hidden" name="pageSize" value="<%=request.getParameter("pageSize") %>">
-		<input type="hidden" name="mode" value="<%=request.getParameter("mode") %>">
-		<input type="hidden" name="keyword" value="<%=request.getParameter("keyword") %>">
 		
 		<div class="recipe_Update_title">
-			<input type="text" class="recipe_Update_title02" id="title"
-				name="title" placeholder="레시피 제목을 입력하세요" value="${bean.rec_header}">
+			<input type="text" class="recipe_Update_title02" id="rec_header"
+				name="rec_header" placeholder="레시피 제목을 입력하세요" value="${bean.rec_header}">
 		</div>
 		
 		<div id="rec_no" class="input-group mb-3">
@@ -38,8 +33,14 @@
 				<input type="hidden" class="form-control" id="rec_no" name="rec_no" value = "${bean.rec_no}">
 		</div>
 		
+		<div id="rec_regdate" class="input-group mb-3">
+				<span class="input-group-text">업로드날짜</span> 
+				<input type="text" class="form-control" id="fakeregdate" name="fakeregdate" value = "${bean.rec_regdate}" disabled="disabled">
+				<input type="hidden" class="form-control" id="rec_regdate" name="rec_regdate" value = "${bean.rec_regdate}">
+		</div>
+		
 		<div class="rec_file">
-			<input type="file" id="image-input" accept="image/*"> <img
+			<input type="file" id="image-input" name="rec_photo" accept="image/*"> <img
 				src="/eattogether/image/${bean.rec_photo}" id="image-preview" alt="사진">
 			<input type="hidden" name="deleterec_photo" value="${bean.rec_photo}">
 		</div>
@@ -70,21 +71,21 @@
 				</div>
 				<div class="recipe_Update_food-basic">
 					<input type="text" class="recipe_text_basic" id="basic"
-						name="basic" value="${bean.rec_material}">
+						name="rec_material" value="${bean.rec_material}">
 				</div>
 				<div class="recipe_Update_food-recipe">
 					<span class="recipe_Update_food">1</span> 
-					<input type="text" class="recipe_text" id="content01" name="content01"
+					<input type="text" class="recipe_text" id="content01" name="rec_content01"
 						value="${bean.rec_content01}">
 				</div>
 				<div class="recipe_Update_food-recipe">
 					<span class="recipe_Update_food">2</span> 
-					<input type="text" class="recipe_text" id="content02" name="content02"
+					<input type="text" class="recipe_text" id="content02" name="rec_content02"
 						value="${bean.rec_content02}">
 				</div>
 				<div class="recipe_Update_food-recipe">
 					<span class="recipe_Update_food">3</span> 
-					<input type="text" class="recipe_text" id="content03" name="content03"
+					<input type="text" class="recipe_text" id="content03" name="rec_content03"
 						value="${bean.rec_content03}">
 				</div>
 			</div>

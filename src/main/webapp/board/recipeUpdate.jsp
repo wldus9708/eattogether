@@ -108,6 +108,7 @@
 				<button class="btn recipe_Update_button" type="submit"
 					id="update_btn01">수정</button>
 			</div>
+		</div>
 	</form>
 	<script>
 		document.addEventListener('DOMContentLoaded',

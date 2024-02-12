@@ -81,37 +81,32 @@
 		</div>
 	</form>
 	<script>
-		document.addEventListener('DOMContentLoaded', function() {
-			var addButton = document.getElementById('add-recipe');
-			addButton.addEventListener('click', function() {
-				var recipeUpdateFoodRecipe = document
-						.getElementsByClassName('recipe_Update_food-recipe');
-				var newDiv = document.createElement('div');
-				newDiv.className = 'recipe_Update_food-recipe';
+	document.addEventListener('DOMContentLoaded', function() {
+	    var addButton = document.getElementById('add-recipe');
+	    addButton.addEventListener('click', function() {
+	        var recipeUpdateFoodRecipe = document.getElementsByClassName('recipe_Update_food-recipe');
+	        // 새로운 입력 필드가 10개 이상이면 더 이상 추가하지 않음
+	        if (recipeUpdateFoodRecipe.length >= 10) {
+	            alert('최대 10개의 입력 필드만 추가할 수 있습니다.');
+	            return;
+	        }
+	        var newDiv = document.createElement('div');
+	        newDiv.className = 'recipe_Update_food-recipe';
 
-				var newSpan = document.createElement('span');
-				newSpan.className = 'recipe_Update_food';
-				newSpan.textContent = recipeUpdateFoodRecipe.length + 1;
-				newDiv.appendChild(newSpan);
+	        var newSpan = document.createElement('span');
+	        newSpan.className = 'recipe_Update_food';
+	        newSpan.textContent = recipeUpdateFoodRecipe.length + 1;
+	        newDiv.appendChild(newSpan);
 
-				var newInput;
-				if (recipeUpdateFoodRecipe.length > 0) {
-					newInput = document.createElement('input');
-					newInput.type = 'text';
-					newInput.className = 'recipe_text';
-					newInput.name = 'contents';
-				} else {
-					newInput = document.createElement('input');
-					newInput.type = 'hidden';
-					newInput.className = 'recipe_text';
-					newInput.name = 'contents';
-				}
-				newDiv.appendChild(newInput);
+	        var newInput = document.createElement('input');
+	        newInput.type = 'text';
+	        newInput.className = 'recipe_text';
+	        newInput.name = 'rec_content0[]'; // 배열 형태로 이름 지정
+	        newDiv.appendChild(newInput);
 
-				document.getElementById('add-recipe').parentNode.insertBefore(
-						newDiv, addButton);
-			});
-		});
+	        document.getElementById('add-recipe').parentNode.insertBefore(newDiv, addButton);
+	    });
+	});
 
 		// 파일 입력(input) 엘리먼트
 		const imageInput = document.getElementById('image-input');

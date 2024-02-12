@@ -14,20 +14,39 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="/eattogether/css/recipeUpdate.css">
+<style>
+#rec_no{display : none; visibility:hidden;}
+</style>
 </head>
 <body>
-	<section>
+	<form action="<%=withFormTag%>" method="post">
+		<input type="hidden" name="command" value="reUpdate">
+		<!-- 다음 파라미터들은 페이징과 관련된 항목입니다. -->
+		<input type="hidden" name="pageNumber" value="<%=request.getParameter("pageNumber") %>">
+		<input type="hidden" name="pageSize" value="<%=request.getParameter("pageSize") %>">
+		<input type="hidden" name="mode" value="<%=request.getParameter("mode") %>">
+		<input type="hidden" name="keyword" value="<%=request.getParameter("keyword") %>">
+		
 		<div class="recipe_Update_title">
 			<input type="text" class="recipe_Update_title02" id="title"
 				name="title" placeholder="레시피 제목을 입력하세요" value="${bean.rec_header}">
 		</div>
-		<div>
+		
+		<div id="rec_no" class="input-group mb-3">
+				<span class="input-group-text">글번호</span> 
+				<input type="text" class="form-control" id="fakeno" name="fakeno" value = "${bean.rec_no}" disabled="disabled">
+				<input type="hidden" class="form-control" id="rec_no" name="rec_no" value = "${bean.rec_no}">
+		</div>
+		
+		<div class="rec_file">
 			<input type="file" id="image-input" accept="image/*"> <img
 				src="/eattogether/image/${bean.rec_photo}" id="image-preview" alt="사진">
+			<input type="hidden" name="deleterec_photo" value="${bean.rec_photo}">
 		</div>
 		<div class="row">
 			<div class="col-sm-3">
 				<div class="recipe_Update_food-basic">
+					<div class="recipe_Update_food-name">작성자 : </div>
 					<div class="recipe_Update_food-name">카테고리 :</div>
 					<div class="recipe_Update_food-name">재료 :</div>
 					<div class="recipe_Update_food-name">레시피 :</div>
@@ -35,31 +54,45 @@
 			</div>
 			<div class="col-sm-9">
 				<div class="recipe_Update_food-basic">
+					<c:set var="userInfo" value="${sessionScope.loginfo.name}(${sessionScope.loginfo.id})"/>
+					<input type="text" class="form-control" id="fakeid" name="fakeid" value="${userInfo}" disabled="disabled">
+					<input type="hidden" id="id" name="mem_id" value="${sessionScope.loginfo.id}">
+				</div>
+				<div class="recipe_Update_food-basic">
+					<select id="category" name="cat_no" class="recipe_text_basic">
+					<c:set var="categroyInfo" value="${bean.cat_no}"/>
+						<option value="카테고리">--------카테고리를 선택해주세요.--------</option>
+						<option value="1">양식</option>
+						<option value="2">한식</option>
+						<option value="3">중식</option>
+						<option value="4">일식</option>
+					</select>
+				</div>
+				<div class="recipe_Update_food-basic">
 					<input type="text" class="recipe_text_basic" id="basic"
 						name="basic" value="${bean.rec_material}">
 				</div>
 				<div class="recipe_Update_food-recipe">
-					<span class="recipe_Update_food">1</span> <input type="text"
-						class="recipe_text" id="contents" name="contents"
+					<span class="recipe_Update_food">1</span> 
+					<input type="text" class="recipe_text" id="content01" name="content01"
 						value="${bean.rec_content01}">
 				</div>
 				<div class="recipe_Update_food-recipe">
-					<span class="recipe_Update_food">2</span> <input type="text"
-						class="recipe_text" id="contents" name="contents"
+					<span class="recipe_Update_food">2</span> 
+					<input type="text" class="recipe_text" id="content02" name="content02"
 						value="${bean.rec_content02}">
 				</div>
 				<div class="recipe_Update_food-recipe">
-					<span class="recipe_Update_food">3</span> <input type="text"
-						class="recipe_text" id="contents" name="contents"
+					<span class="recipe_Update_food">3</span> 
+					<input type="text" class="recipe_text" id="content03" name="content03"
 						value="${bean.rec_content03}">
 				</div>
 			</div>
 		</div>
 		<div class="button">
-			<button class="btn recipe_Update_button" type="submit"
-				id="update_btn01">수정</button>
+			<button class="btn recipe_Update_button" type="submit" id="update_btn01">수정하기</button>
 		</div>
-	</section>
+	</form>
 	<script>
 		// 파일 입력(input) 엘리먼트
 		const imageInput = document.getElementById('image-input');

@@ -233,7 +233,7 @@ public class RecipeDao extends SuperDao{
 
 	public int updateData(Recipe bean) {
 		System.out.println(bean);
-		String sql=" update recipe set(mem_id=?, cat_no=?, rec_header=?, rec_regdate = sysdate, rec_material=? , rec_content01=?";
+		String sql=" update recipe set mem_id=?, cat_no=?, rec_header=?, rec_regdate = sysdate, rec_material=? , rec_content01=? ";
 		sql	+= " where rec_no =?";
 		
 		PreparedStatement pstmt = null;
@@ -252,15 +252,15 @@ public class RecipeDao extends SuperDao{
 			pstmt.setString(5, bean.getRec_content01()); 
 			pstmt.setInt(6, bean.getRec_no());
 			/*
-			 * pstmt.setString(11, bean.getRec_content02()); 
-			 * pstmt.setString(12, bean.getRec_content03());
-			 * pstmt.setString(13, bean.getRec_content04()); 
-			 * pstmt.setString(14, bean.getRec_content05()); 
-			 * pstmt.setString(15, bean.getRec_content06());
-			 * pstmt.setString(16, bean.getRec_content07()); 
-			 * pstmt.setString(17, bean.getRec_content08()); 
-			 * pstmt.setString(18, bean.getRec_content09());
-			 * pstmt.setString(19, bean.getRec_content10());
+			 * pstmt.setString(7, bean.getRec_content02());
+			 * pstmt.setString(8, bean.getRec_content03());
+			 * pstmt.setString(9, bean.getRec_content04()); 
+			 * pstmt.setString(10, bean.getRec_content05()); 
+			 * pstmt.setString(11, bean.getRec_content06());
+			 * pstmt.setString(12, bean.getRec_content07()); 
+			 * pstmt.setString(13, bean.getRec_content08()); 
+			 * pstmt.setString(14, bean.getRec_content09());
+			 * pstmt.setString(15, bean.getRec_content10());
 			 */
 			
 			cnt = pstmt.executeUpdate();

@@ -233,7 +233,7 @@ public class RecipeDao extends SuperDao{
 
 	public int updateData(Recipe bean) {
 		System.out.println(bean);
-		String sql=" update recipe set mem_id=?, cat_no=?, rec_header=?, rec_regdate = sysdate, rec_material=? , rec_content01=? ";
+		String sql=" update recipe set mem_id=?, cat_no=?, rec_header=?, rec_photo = ?,rec_regdate = sysdate, rec_material=? , rec_content01=? ";
 		sql	+= " where rec_no =?";
 		
 		PreparedStatement pstmt = null;
@@ -248,9 +248,10 @@ public class RecipeDao extends SuperDao{
 			pstmt.setString(1, bean.getMem_id());
 			pstmt.setInt(2, bean.getCat_no());
 			pstmt.setString(3, bean.getRec_header());
-			pstmt.setString(4, bean.getRec_material());
-			pstmt.setString(5, bean.getRec_content01()); 
-			pstmt.setInt(6, bean.getRec_no());
+			pstmt.setString(4, bean.getRec_photo());
+			pstmt.setString(5, bean.getRec_material());
+			pstmt.setString(6, bean.getRec_content01()); 
+			pstmt.setInt(7, bean.getRec_no());
 			/*
 			 * pstmt.setString(7, bean.getRec_content02());
 			 * pstmt.setString(8, bean.getRec_content03());

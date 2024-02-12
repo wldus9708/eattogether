@@ -44,6 +44,9 @@
 	function resetIdCheckValue() {
         $('#join_idCheck').val("N");
     }
+	function resetPhoneCheckValue() {
+        $('#join_phoneCheck').val("N");
+    }
 	
 	$(document).ready(function() {
 		$('#join_birth').datepicker({ // 제이쿼리 생일
@@ -54,8 +57,16 @@
 	    	window.open("/eattogether/member/checkUserid.jsp?id="+id,"idchk",
 	   	"width=400,height=300, location=yes,resizable=yes,top=100,left=50");
 	 	});
+		$('#join_DuplicateBtn2').click(function(){
+		 	var phone = $("#join_phone").val();
+	    	window.open("/eattogether/member/checkPhone.jsp?phone="+phone,"phonechk",
+	   	"width=400,height=300, location=yes,resizable=yes,top=100,left=50");
+	 	});
 		$('form[name=joinForm] #join_id').on('input', function() { // 아이디 입력란에서 값이 변경될 때마다 아이디 체크 값을 초기화
-            resetIdCheckValue();
+			resetIdCheckValue();
+        });
+		$('form[name=joinForm] #join_phone').on('input', function() { // 전화번호 입력란에서 값이 변경될 때마다 전화번호 체크 값을 초기화
+            resetPhoneCheckValue();
         });
 		
 		
@@ -128,7 +139,7 @@
 		}
 		var idCheckValue = $('#join_idCheck').val();
 	    if (idCheckValue === "N") {
-	        alert('중복 확인을 해주세요.');
+	        alert('아이디 중복 확인을 해주세요.');
 	        return false;
 	    }
 		
@@ -172,6 +183,11 @@
 			$('#join_phone').focus();
 			return false;
 		}
+		var phoneCheckValue = $('#join_phoneCheck').val();
+	    if (phoneCheckValue === "N") {
+	        alert('전화번호 중복 확인을 해주세요.');
+	        return false;
+	    }
 		// 체크박스 하나는 선택되게 alert
 	    var checkedBoxes = $('input[name="taste"]:checked');
 	    if (checkedBoxes.length === 0) {
@@ -227,9 +243,11 @@
 					</div>
 					<div class="join_form_container">
 						<label class="join_label" for="phone">전화번호:</label> <input
-							class="join_input_field" type="tel" id="join_phone"
-							name="phone" maxlength="11"> <span id="join_phoneError"
-							class="join_error_next_box"></span>
+							class="join_input_field" type="tel" id="join_phone" name="phone"
+							maxlength="11" onkeydown="inputPhoneChk()"> <input type="hidden" id="join_phoneCheck"
+							name="join_phoneCheck" value="N">
+						<button type="button" id="join_DuplicateBtn2">중복확인</button>
+						<span id="join_phoneError" class="join_error_next_box"></span>
 					</div>
 					<div class="join_form_container">
 						<label class="join_label" for="favorite_food">좋아하는 음식:</label>

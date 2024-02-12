@@ -1,27 +1,24 @@
 package com.eattogether.controller.recipe;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.oreilly.servlet.MultipartRequest;
 import com.eattogether.common.Superclass;
 import com.eattogether.model.bean.Recipe;
 import com.eattogether.model.dao.RecipeDao;
-
+import com.oreilly.servlet.MultipartRequest;
 
 public class RecipeUpdateController extends Superclass {
 	private final String PREFIX = "board/";
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		super.doGet(request, response);	
-		
+		super.doGet(request, response);
+
 		int rec_no = Integer.parseInt(request.getParameter("rec_no"));
 		RecipeDao dao = new RecipeDao();
 		Recipe bean = dao.getDataBean(rec_no);
-		
+
 		request.setAttribute("bean", bean);
 		super.gotoPage(PREFIX + "recipeUpdate.jsp");
 
@@ -40,14 +37,14 @@ public class RecipeUpdateController extends Superclass {
 		 * request.setAttribute("categories", categories); request.setAttribute("bean",
 		 * bean);
 		 */
-		
+
 	}
 
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		super.doPost(request, response);
 
-		MultipartRequest mr = (MultipartRequest)request.getAttribute("mr"); // MultipartRequest 서블릿
+		MultipartRequest mr = (MultipartRequest) request.getAttribute("mr"); // MultipartRequest 서블릿
 
 		System.out.println("mr = " + mr);
 
@@ -60,18 +57,22 @@ public class RecipeUpdateController extends Superclass {
 		bean.setRec_header(mr.getParameter("rec_header"));
 		bean.setRec_photo(mr.getFilesystemName("rec_photo"));
 		bean.setRec_material(mr.getParameter("rec_material"));
-		bean.setRec_content01(mr.getParameter("rec_content01"));
-		/*
-		 * bean.setRec_content02(mr.getParameter("rec_content02"));
-		 * bean.setRec_content03(mr.getParameter("rec_content03"));
-		 * bean.setRec_content04(mr.getParameter("rec_content04"));
-		 * bean.setRec_content05(mr.getParameter("rec_content05"));
-		 * bean.setRec_content06(mr.getParameter("rec_content06"));
-		 * bean.setRec_content07(mr.getParameter("rec_content07"));
-		 * bean.setRec_content08(mr.getParameter("rec_content08"));
-		 * bean.setRec_content09(mr.getParameter("rec_content09"));
-		 * bean.setRec_content10(mr.getParameter("rec_content10"));
-		 */
+
+		// 레시피 내용 배열 처리
+		String[] recContents = mr.getParameterValues("rec_content[]");
+		if (recContents != null && recContents.length > 0) {
+			for (int i = 0; i < recContents.length && i < 10; i++) {
+				// 각각의 rec_contentXX에 값을 설정합니다.
+				String methodName = "setRec_content" + String.format("%02d", i + 1);
+				try {
+					// Recipe 클래스의 해당 메서드를 동적으로 호출하여 값을 설정합니다.
+					Recipe.class.getMethod(methodName, String.class).invoke(bean, recContents[i]);
+				} catch (NoSuchMethodException e) {
+					e.printStackTrace();
+					// 메서드가 존재하지 않을 경우 예외를 처리합니다.
+				}
+			}
+		}
 		RecipeDao dao = new RecipeDao();
 		int cnt = -1;
 

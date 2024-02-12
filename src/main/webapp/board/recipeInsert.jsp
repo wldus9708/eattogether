@@ -25,24 +25,26 @@
 <body>
 	<h2>상품 등록</h2>
 	<p>관리자가 구매할 상품을 등록하는 페이지입니다.</p>
-	<form action="<%=withFormTag%>" method="post" enctype="multipart/form-data">
+	<form action="<%=withFormTag%>" method="post"
+		enctype="multipart/form-data">
 		<input type="hidden" name="command" value="reInsert">
 		<div id="productPnum" class="input-group">
-			<span class="input-group-text">레시피 번호</span> 
-			<input class="form-control" name="rec_no" type="number" id="rec_no">
+			<span class="input-group-text">레시피 번호</span> <input
+				class="form-control" name="rec_no" type="number" id="rec_no">
 		</div>
 		<div class="recipe_Update_title">
-			<input type="text" name="rec_header" id="rec_header" class="recipe_Update_title02"
-				 placeholder="제목을 입력하세요">
+			<input type="text" name="rec_header" id="rec_header"
+				class="recipe_Update_title02" placeholder="제목을 입력하세요">
 		</div>
 		<div>
-			<input type="file" name="rec_photo" id="image-input" accept="image/*"> 
-			<img src="/eattogether/image/basicicon.png" id="image-preview" alt="사진">
+			<input type="file" name="rec_photo" id="image-input" accept="image/*">
+			<img src="/eattogether/image/basicicon.png" id="image-preview"
+				alt="사진">
 		</div>
 		<div class="row">
 			<div class="col-sm-3">
 				<div class="recipe_Update_food-basic">
-					<div class="recipe_Update_food-name">작성자 : </div>
+					<div class="recipe_Update_food-name">작성자 :</div>
 					<div class="recipe_Update_food-name">카테고리 :</div>
 					<div class="recipe_Update_food-name">재료 :</div>
 					<div class="recipe_Update_food-name">레시피 :</div>
@@ -50,9 +52,12 @@
 			</div>
 			<div class="col-sm-9">
 				<div class="recipe_Update_food-basic">
-					<c:set var="userInfo" value="${sessionScope.loginfo.name}(${sessionScope.loginfo.id})"/>
-					<input type="text" class="form-control" id="fakeid" name="fakeid" value="${userInfo}" disabled="disabled">
-					<input type="hidden" id="id" name="mem_id" value="${sessionScope.loginfo.id}">
+					<c:set var="userInfo"
+						value="${sessionScope.loginfo.name}(${sessionScope.loginfo.id})" />
+					<input type="text" class="form-control" id="fakeid" name="fakeid"
+						value="${userInfo}" disabled="disabled"> <input
+						type="hidden" id="id" name="mem_id"
+						value="${sessionScope.loginfo.id}">
 				</div>
 				<div class="recipe_Update_food-basic">
 					<select id="category" name="cat_no" class="recipe_text_basic">
@@ -64,11 +69,12 @@
 					</select>
 				</div>
 				<div class="recipe_Update_food-basic">
-					<input type="text"  name="rec_material" class="recipe_text_basic" id="basic">
+					<input type="text" name="rec_material" class="recipe_text_basic"
+						id="basic">
 				</div>
 				<div class="recipe_Update_food-recipe">
-					<span class="recipe_Update_food">1</span>
-					<input type="text" name="rec_content01" class="recipe_text" id="contents" >
+					<span class="recipe_Update_food">1</span> <input type="text"
+						name="rec_content[]" class="recipe_text" id="contents">
 				</div>
 				<button type="button" class="btn" id="add-recipe">추가</button>
 			</div>
@@ -81,32 +87,34 @@
 		</div>
 	</form>
 	<script>
-	document.addEventListener('DOMContentLoaded', function() {
-	    var addButton = document.getElementById('add-recipe');
-	    addButton.addEventListener('click', function() {
-	        var recipeUpdateFoodRecipe = document.getElementsByClassName('recipe_Update_food-recipe');
-	        // 새로운 입력 필드가 10개 이상이면 더 이상 추가하지 않음
-	        if (recipeUpdateFoodRecipe.length >= 10) {
-	            alert('최대 10개의 입력 필드만 추가할 수 있습니다.');
-	            return;
-	        }
-	        var newDiv = document.createElement('div');
-	        newDiv.className = 'recipe_Update_food-recipe';
+		document.addEventListener('DOMContentLoaded', function() {
+			var addButton = document.getElementById('add-recipe');
+			addButton.addEventListener('click', function() {
+				var recipeUpdateFoodRecipe = document
+						.getElementsByClassName('recipe_Update_food-recipe');
+				// 새로운 입력 필드가 10개 이상이면 더 이상 추가하지 않음
+				if (recipeUpdateFoodRecipe.length >= 10) {
+					alert('최대 10개의 입력 필드만 추가할 수 있습니다.');
+					return;
+				}
+				var newDiv = document.createElement('div');
+				newDiv.className = 'recipe_Update_food-recipe';
 
-	        var newSpan = document.createElement('span');
-	        newSpan.className = 'recipe_Update_food';
-	        newSpan.textContent = recipeUpdateFoodRecipe.length + 1;
-	        newDiv.appendChild(newSpan);
+				var newSpan = document.createElement('span');
+				newSpan.className = 'recipe_Update_food';
+				newSpan.textContent = recipeUpdateFoodRecipe.length + 1;
+				newDiv.appendChild(newSpan);
 
-	        var newInput = document.createElement('input');
-	        newInput.type = 'text';
-	        newInput.className = 'recipe_text';
-	        newInput.name = 'rec_content0[]'; // 배열 형태로 이름 지정
-	        newDiv.appendChild(newInput);
+				var newInput = document.createElement('input');
+				newInput.type = 'text';
+				newInput.className = 'recipe_text';
+				newInput.name = 'rec_content[]'; // 배열 형태로 이름 지정
+				newDiv.appendChild(newInput);
 
-	        document.getElementById('add-recipe').parentNode.insertBefore(newDiv, addButton);
-	    });
-	});
+				document.getElementById('add-recipe').parentNode.insertBefore(
+						newDiv, addButton);
+			});
+		});
 
 		// 파일 입력(input) 엘리먼트
 		const imageInput = document.getElementById('image-input');

@@ -18,12 +18,12 @@ public class RecipeInsertController extends Superclass {
 		super.doGet(request, response);
 
 		/*
-		  FillItemDao dao = new FillItemDao(); 
-		  List<FillItem> categories = null;
-		  categories = dao.getDataList("products", "category"); 
-		 
-
-		request.setAttribute("categories", categories); */
+		 * FillItemDao dao = new FillItemDao(); List<FillItem> categories = null;
+		 * categories = dao.getDataList("products", "category");
+		 * 
+		 * 
+		 * request.setAttribute("categories", categories);
+		 */
 
 		super.gotoPage(PREFIX + "recipeInsert.jsp"); // 파일 이름 확인
 	}
@@ -46,18 +46,22 @@ public class RecipeInsertController extends Superclass {
 		bean.setRec_header(mr.getParameter("rec_header"));
 		bean.setRec_photo(mr.getFilesystemName("rec_photo"));
 		bean.setRec_material(mr.getParameter("rec_material"));
-		bean.setRec_content01(mr.getParameter("rec_content01"));
-		
-		bean.setRec_content02(mr.getParameter("rec_content02"));
-		bean.setRec_content03(mr.getParameter("rec_content03"));
-		bean.setRec_content04(mr.getParameter("rec_content04"));
-		bean.setRec_content05(mr.getParameter("rec_content05"));
-		bean.setRec_content06(mr.getParameter("rec_content06"));
-		bean.setRec_content07(mr.getParameter("rec_content07"));
-		bean.setRec_content08(mr.getParameter("rec_content08"));
-		bean.setRec_content09(mr.getParameter("rec_content09"));
-		bean.setRec_content10(mr.getParameter("rec_content10"));
-		 
+
+		// 배열 형태의 파라미터
+		String[] recContents = mr.getParameterValues("rec_content[]");
+		if (recContents != null && recContents.length > 0) {
+			for (int i = 0; i < recContents.length && i < 10; i++) {
+				// 각각의 rec_contentXX에 값을 설정합니다.
+				String methodName = "setRec_content" + String.format("%02d", i + 1);
+				try {
+					// Recipe 클래스의 해당 메서드를 동적으로 호출합니다.
+					Recipe.class.getMethod(methodName, String.class).invoke(bean, recContents[i]);
+				} catch (NoSuchMethodException e) {
+					e.printStackTrace();
+					// 메서드가 존재하지 않을 경우 예외를 처리합니다.
+				}
+			}
+		}
 
 		RecipeDao dao = new RecipeDao();
 		int cnt = -1;

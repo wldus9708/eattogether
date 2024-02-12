@@ -115,7 +115,8 @@
 					<div id="recipe_container">
 						<div class="recipe_image">
 							<a class="removeUnderLine" href="#"> <img class="card-img"
-								src="/eattogether/image/${bean.rec_photo}" alt="${bean.rec_photo}"></a>
+								src="/eattogether/image/${bean.rec_photo}"
+								alt="${bean.rec_photo}"></a>
 						</div>
 					</div>
 				</div>
@@ -133,16 +134,16 @@
 						<td style="width: 5%;" id="re_recipe">레시피</td>
 						<td style="width: 45%;" id="re_number">
 							<ul id="re_Sequence">
-								<li>${bean.rec_content01}</li>
-								<li>${bean.rec_content02}</li>
-								<li>${bean.rec_content03}</li>
-								<li>${bean.rec_content04}</li>
-								<li>${bean.rec_content05}</li>
-								<li>${bean.rec_content06}</li>
-								<li>${bean.rec_content07}</li>
-								<li>${bean.rec_content08}</li>
-								<li>${bean.rec_content09}</li>
-								<li>${bean.rec_content10}</li>
+								<%
+								for (int i = 1; i <= 10; i++) {
+									String content = (String) request.getAttribute("rec_content" + i);
+									if (content != null && !content.isEmpty()) {
+								%>
+								<li><%=content%></li>
+								<%
+								}
+								}
+								%>
 							</ul>
 						</td>
 					</tr>

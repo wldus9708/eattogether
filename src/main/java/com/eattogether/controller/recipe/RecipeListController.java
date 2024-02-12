@@ -39,7 +39,7 @@ private final String PREFIX = "board/";
 		
 		List<Recipe> dataList = dao.getDataList(paging);
 		
-		System.out.println("receip 데이터목록개수 :" + dataList.size());
+		System.out.println("recipe 데이터목록개수 :" + dataList.size());
 		
 		request.setAttribute("paging", paging);//페이징 객체도 바인딩
 		request.setAttribute("dataList", dataList);//상품 목록 reqest 영역에 바인딩

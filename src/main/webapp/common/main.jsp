@@ -12,9 +12,9 @@
 <link rel="stylesheet" type="text/css" href="/eattogether/css/main.css">
 <style>
 @keyframes moveLR {
-    0% { transform: translateX(0); }
-    50% { transform: translateX(-15px); }
-    100% { transform: translateX(15px); } 
+    0% { transform: translateX(0) rotate(0deg); }
+    50% { transform: translateX(-15px) rotate(-30deg); }
+    100% { transform: translateX(15px) rotate(30deg); } 
 }
 #main_loadDiv
 {

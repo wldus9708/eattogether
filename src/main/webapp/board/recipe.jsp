@@ -195,7 +195,7 @@ $(function() {
 										<a id="updateAnchor" class="recipe-sujoung"  href="<%=notWithFormTag%>reUpdate&rec_no=${bean.rec_no}${requestScope.paging.flowParameter}">
 											수정
 										</a>
-										<a id="deleteAnchor_${bean.rec_no}" class="recipe-sakgie" data="${bean.rec_no}">
+										<a id="deleteAnchor_${bean.rec_no}" class="recipe-sakgie" href= "" data="${bean.rec_no}">
 											삭제
 										</a>
 									</div>

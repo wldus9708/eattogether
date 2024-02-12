@@ -44,7 +44,7 @@
                 <li><a href="#">된장찌개</a></li>
                 <li><a href="#">김치찌개</a></li>
                 <li><a href="#">고등어조림</a></li>
-                <li><a href="#">고추장삼겹살</a></li>
+                <li><a href="#">떡볶이</a></li>
             </ul>
         
             <h3><a href="#">중식</a></h3>

@@ -47,17 +47,17 @@ public class RecipeInsertController extends Superclass {
 		bean.setRec_photo(mr.getFilesystemName("rec_photo"));
 		bean.setRec_material(mr.getParameter("rec_material"));
 		bean.setRec_content01(mr.getParameter("rec_content01"));
-		/*
-		 * bean.setRec_content02(mr.getParameter("rec_content02"));
-		 * bean.setRec_content03(mr.getParameter("rec_content03"));
-		 * bean.setRec_content04(mr.getParameter("rec_content04"));
-		 * bean.setRec_content05(mr.getParameter("rec_content05"));
-		 * bean.setRec_content06(mr.getParameter("rec_content06"));
-		 * bean.setRec_content07(mr.getParameter("rec_content07"));
-		 * bean.setRec_content08(mr.getParameter("rec_content08"));
-		 * bean.setRec_content09(mr.getParameter("rec_content09"));
-		 * bean.setRec_content10(mr.getParameter("rec_content10"));
-		 */
+		
+		bean.setRec_content02(mr.getParameter("rec_content02"));
+		bean.setRec_content03(mr.getParameter("rec_content03"));
+		bean.setRec_content04(mr.getParameter("rec_content04"));
+		bean.setRec_content05(mr.getParameter("rec_content05"));
+		bean.setRec_content06(mr.getParameter("rec_content06"));
+		bean.setRec_content07(mr.getParameter("rec_content07"));
+		bean.setRec_content08(mr.getParameter("rec_content08"));
+		bean.setRec_content09(mr.getParameter("rec_content09"));
+		bean.setRec_content10(mr.getParameter("rec_content10"));
+		 
 
 		RecipeDao dao = new RecipeDao();
 		int cnt = -1;

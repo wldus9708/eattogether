@@ -26,17 +26,15 @@ public class MyUtility {
 		// 상품 수정시 웹서버 경로에 있는 과거 이미지를 삭제합니다.
 		// 관련 파일 : prUpdateForm.jsp 파일에 name 속성이 "deleteImage숫자형식"인 항목들
 		String[] deleteImages = {
-			mr.getParameter("deleteImage01"),
-			mr.getParameter("deleteImage02"),
-			mr.getParameter("deleteImage03")
+			mr.getParameter("deleterec_photo")
 		};
 		
 		for(String delFile : deleteImages) {
 			if(delFile != null) {
-				String deleteFile = imageUploadWebPath + "/" + delFile ; 
+				String deleteFile = imageUploadWebPath + "/" + delFile ;
 				File target = new File(deleteFile);
 				if(target.delete()) {
-					System.out.println(deleteFile + " file delete success"); 
+					System.out.println(deleteFile + " file delete success");
 				}
 			}
 		}

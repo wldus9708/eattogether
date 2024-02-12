@@ -233,9 +233,8 @@ public class RecipeDao extends SuperDao{
 
 	public int updateData(Recipe bean) {
 		System.out.println(bean);
-		String sql=" update into recipe(rec_no, mem_id, cat_no, rec_header, rec_regdate, rec_hit, rec_popularity, rec_bookmark, rec_material ";
-		sql	+= " , rec_content01, rec_content02, rec_content03, rec_content04, rec_content05, rec_content06, rec_content07, rec_content08, rec_content09, rec_content10)";
-		sql += " values(seqproduct.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql=" update recipe set(mem_id=?, cat_no=?, rec_header=?, rec_regdate = sysdate, rec_material=? , rec_content01=?";
+		sql	+= " where rec_no =?";
 		
 		PreparedStatement pstmt = null;
 		int cnt = -9999999;
@@ -246,26 +245,23 @@ public class RecipeDao extends SuperDao{
 			
 			pstmt = conn.prepareStatement(sql);
 			
-			
-			pstmt.setInt(1, bean.getRec_no());
-			pstmt.setString(2, bean.getMem_id());
-			pstmt.setInt(3, bean.getCat_no());
-			pstmt.setString(4, bean.getRec_header());
-			pstmt.setString(5, bean.getRec_regdate());
-			pstmt.setInt(6, bean.getRec_hit());
-			pstmt.setInt(7, bean.getRec_popularity());
-			pstmt.setString(8, bean.getRec_bookmark());
-			pstmt.setString(9, bean.getRec_material());
-			pstmt.setString(10, bean.getRec_content01());
-			pstmt.setString(11, bean.getRec_content02());
-			pstmt.setString(12, bean.getRec_content03());
-			pstmt.setString(13, bean.getRec_content04());
-			pstmt.setString(14, bean.getRec_content05());
-			pstmt.setString(15, bean.getRec_content06());
-			pstmt.setString(16, bean.getRec_content07());
-			pstmt.setString(17, bean.getRec_content08());
-			pstmt.setString(18, bean.getRec_content09());
-			pstmt.setString(19, bean.getRec_content10());
+			pstmt.setString(1, bean.getMem_id());
+			pstmt.setInt(2, bean.getCat_no());
+			pstmt.setString(3, bean.getRec_header());
+			pstmt.setString(4, bean.getRec_material());
+			pstmt.setString(5, bean.getRec_content01()); 
+			pstmt.setInt(6, bean.getRec_no());
+			/*
+			 * pstmt.setString(11, bean.getRec_content02()); 
+			 * pstmt.setString(12, bean.getRec_content03());
+			 * pstmt.setString(13, bean.getRec_content04()); 
+			 * pstmt.setString(14, bean.getRec_content05()); 
+			 * pstmt.setString(15, bean.getRec_content06());
+			 * pstmt.setString(16, bean.getRec_content07()); 
+			 * pstmt.setString(17, bean.getRec_content08()); 
+			 * pstmt.setString(18, bean.getRec_content09());
+			 * pstmt.setString(19, bean.getRec_content10());
+			 */
 			
 			cnt = pstmt.executeUpdate();
 			conn.commit();

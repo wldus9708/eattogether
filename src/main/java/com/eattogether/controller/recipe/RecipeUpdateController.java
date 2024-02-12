@@ -46,7 +46,7 @@ public class RecipeUpdateController extends Superclass {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		super.doPost(request, response);
 
-		MultipartRequest mr = (MultipartRequest) request.getAttribute("mr"); // MultipartRequest 서블릿
+		MultipartRequest mr = (MultipartRequest)request.getAttribute("mr"); // MultipartRequest 서블릿
 
 		System.out.println("mr = " + mr);
 
@@ -57,23 +57,20 @@ public class RecipeUpdateController extends Superclass {
 		bean.setMem_id(mr.getParameter("mem_id"));
 		bean.setCat_no(Integer.parseInt(mr.getParameter("cat_no")));
 		bean.setRec_header(mr.getParameter("rec_header"));
-		bean.setRec_regdate(mr.getParameter("rec_regdate"));
 		bean.setRec_photo(mr.getFilesystemName("rec_photo"));
-		bean.setRec_hit(Integer.parseInt(mr.getParameter("rec_hit")));
-		bean.setRec_popularity(Integer.parseInt(mr.getParameter("rec_popularity")));
-		bean.setRec_bookmark(mr.getParameter("rec_bookmark"));
 		bean.setRec_material(mr.getParameter("rec_material"));
 		bean.setRec_content01(mr.getParameter("rec_content01"));
-		bean.setRec_content02(mr.getParameter("rec_content02"));
-		bean.setRec_content03(mr.getParameter("rec_content03"));
-		bean.setRec_content04(mr.getParameter("rec_content04"));
-		bean.setRec_content05(mr.getParameter("rec_content05"));
-		bean.setRec_content06(mr.getParameter("rec_content06"));
-		bean.setRec_content07(mr.getParameter("rec_content07"));
-		bean.setRec_content08(mr.getParameter("rec_content08"));
-		bean.setRec_content09(mr.getParameter("rec_content09"));
-		bean.setRec_content10(mr.getParameter("rec_content10"));
-
+		/*
+		 * bean.setRec_content02(mr.getParameter("rec_content02"));
+		 * bean.setRec_content03(mr.getParameter("rec_content03"));
+		 * bean.setRec_content04(mr.getParameter("rec_content04"));
+		 * bean.setRec_content05(mr.getParameter("rec_content05"));
+		 * bean.setRec_content06(mr.getParameter("rec_content06"));
+		 * bean.setRec_content07(mr.getParameter("rec_content07"));
+		 * bean.setRec_content08(mr.getParameter("rec_content08"));
+		 * bean.setRec_content09(mr.getParameter("rec_content09"));
+		 * bean.setRec_content10(mr.getParameter("rec_content10"));
+		 */
 		RecipeDao dao = new RecipeDao();
 		int cnt = -1;
 

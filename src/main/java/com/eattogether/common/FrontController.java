@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.eattogether.utility.MyUtility;
 import com.oreilly.servlet.MultipartRequest;
+import com.eattogether.utility.MyUtility;
 
 
 @WebServlet(urlPatterns = { "/Eat", "/xxx" }, initParams = {
@@ -60,7 +60,7 @@ public class FrontController extends HttpServlet {
 				//파일 업로드인 경우에는 mr 객체를 이용해야만 파라미터 정보를 읽어 올 수 있습니다.
 				command = mr.getParameter("command");//원래 불러올때는 request.getParameter였는데 이제는 사진이니까
 				
-				if(command.equals("prUpdate")) {
+				if(command.equals("reUpdate")) {
 					//상품 정보 수정시 과거 이미지는 삭제해 주어야 합니다. 
 					MyUtility.deleteOldImageFile(imageUploadWebPath, mr);
 				}

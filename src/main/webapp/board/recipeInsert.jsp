@@ -114,8 +114,9 @@
 				document.getElementById('add-recipe').parentNode.insertBefore(
 						newDiv, addButton);
 			});
-		});
-
+		});	
+	
+		
 		// 파일 입력(input) 엘리먼트
 		const imageInput = document.getElementById('image-input');
 

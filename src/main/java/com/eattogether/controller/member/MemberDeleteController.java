@@ -19,7 +19,6 @@ public class MemberDeleteController extends Superclass{
 		if(cnt!=-1) {
 			System.out.println("탈퇴성공");
 			super.session.invalidate();
-			super.gotoPage("common/main.jsp");
 		new MemberLogoutController().doGet(request, response);
 		}else {
 			System.out.println("탈퇴실패");

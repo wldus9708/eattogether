@@ -28,12 +28,12 @@ String notWithFormTag = withFormTag + "?command=";
 		</div>
 
 		<div id="delete_message03">
-		<a href="<%=notWithFormTag%>meDelete&id=${sessionScope.loginfo.id}">
-			<div id="delete_message_b1">예</div>
-			</a>
-			<a href="<%=notWithFormTag%>meList">
-			<div id="delete_message_b2">아니오</div>
-			</a>
+		
+			<div id="delete_message_b1"><a href="<%=notWithFormTag%>meDelete&id=${sessionScope.loginfo.id}">예</a></div>
+			
+			
+			<div id="delete_message_b2"><a href="<%=notWithFormTag%>meList">아니오</a></div>
+			
 		</div>
 	</div>
 </body>

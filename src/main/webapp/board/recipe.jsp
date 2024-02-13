@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="./../common/top.jsp"%>
 
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,11 +62,10 @@ $(function() {
   function changeImg() {
 	  var imageElement = $("#myImage");
 	  
-  
-  		if (imageElement.attr('src').endsWith('eattogether/image/emptystar.png')) {
-	    imageElement.attr('src', 'eattogether/image/star.png');
+  		if (imageElement.attr('src').endsWith('/eattogether/image/emptystar.png')) {
+	    imageElement.attr('src', '/eattogether/image/star.png');
 	  } else {
-	    imageElement.attr('src', 'eattogether/image/emptystar.png');
+	    imageElement.attr('src', '/eattogether/image/emptystar.png');
 	  }
 	}
 </script>
@@ -74,44 +75,44 @@ $(function() {
 	<aside class="recipe_sidebar">
 	
         <div class="recipe_side0">
-            <h3 id="recipe"><p>레시피</p></h3>
+           <a href="<%=notWithFormTag%>reList"><p>레시피<p></a>
         </div>
 		
 		<div id="accordion">
-            <h3><a href="#">양식</a></h3>
+            <h3><a href="<%=notWithFormTag%>reList&mode=cat_no&keyword=1">양식</a></h3>
             <ul>
-                <li><a href="#">파스타</a></li>
-                <li><a href="#">리조또</a></li>
-                <li><a href="#">스테이크</a></li>
-                <li><a href="#">피자</a></li>
-                <li><a href="#">오믈렛</a></li>
+                <li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=파스타">파스타</a></li>
+                <li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=리조또">리조또</a></li>
+                <li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=스테이크">스테이크</a></li>
+                <li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=피자">피자</a></li>
+                <li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=오믈렛">오믈렛</a></li>
             </ul>
         
-            <h3><a href="#">한식</a></h3>
+            <h3><a href="<%=notWithFormTag%>reList&mode=cat_no&keyword=2">한식</a></h3>
             <ul>
-                <li><a href="#">김치볶음밥</a></li>
-                <li><a href="#">된장찌개</a></li>
-                <li><a href="#">김치찌개</a></li>
-                <li><a href="#">고등어조림</a></li>
-                <li><a href="#">떡볶이</a></li>
+                <li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=김치볶음밥">김치볶음밥</a></li>
+                <li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=된장찌개">된장찌개</a></li>
+                <li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=김치찌개">김치찌개</a></li>
+                <li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=고등어조림">고등어조림</a></li>
+                <li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=떡볶이">떡볶이</a></li>
             </ul>
         
-            <h3><a href="#">중식</a></h3>
+            <h3><a href="<%=notWithFormTag%>reList&mode=cat_no&keyword=3">중식</a></h3>
             <ul>
-                <li><a href="#">마라탕</a></li>
-                <li><a href="#">탕후루</a></li>
-                <li><a href="#">짬뽕</a></li>
-                <li><a href="#">잡채밥</a></li>
-                <li><a href="#">유린기</a></li>
+                <li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=마라탕">마라탕</a></li>
+                <li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=탕후루">탕후루</a></li>
+                <li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=짬뽕">짬뽕</a></li>
+                <li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=잡채밥">잡채밥</a></li>
+                <li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=유린기">유린기</a></li>
             </ul>
         
-            <h3><a href="#">일식</a></h3>
+            <h3><a href="<%=notWithFormTag%>reList&mode=cat_no&keyword=4">일식</a></h3>
             <ul>
-                <li><a href="#">초밥</a></li>
-                <li><a href="#">호토마키</a></li>
-                <li><a href="#">우동</a></li>
-                <li><a href="#">가라아게</a></li>
-                <li><a href="#">덴뿌라</a></li>
+                <li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=초밥">초밥</a></li>
+                <li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=호토마키">호토마키</a></li>
+                <li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=우동">우동</a></li>
+                <li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=가라아게">가라아게</a></li>
+                <li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=덴뿌라">덴뿌라</a></li>
             </ul>
         </div>
         <br/><br/><br/><br/><br/><br/><br/><br/><br/>
@@ -140,9 +141,9 @@ $(function() {
 								            <div class="col-sm-12">
 								               <select class="form-control-sm" id="mode" name="mode">
 								                  <option value="all">--- 선택해주세요.
-								                  <option value="name">작성자명
-								                  <option value="recipe">레시피제목
-								                  <option value="food">음식이름
+								                  <option value="mem_id">작성자명
+								                  <option value="rec_header">레시피제목
+								                  <option value="cat_no">음식이름
 								               </select>
 								               <input class="form-control-sm" type="text" id="keyword" name="keyword">
 									               <button class="form-control-sm btn btn-warning" type="submit">검색</button>
@@ -174,15 +175,16 @@ $(function() {
 					</c:if>
 						<td>
 							<div class="card" style="width: 300px">
+								<img id="myImage" class="overlay-image right-align" src="/eattogether/image/emptystar.png" onclick="changeImg()" alt="즐겨찾기">
 								<a class="removeUnderLine"  href="<%=notWithFormTag%>reDetail&rec_no=${bean.rec_no}">
 								<img class="card-img-top" src="/eattogether/image/${bean.rec_photo}" alt="사진 이름">
-								<img id="myImage" class="overlay-image right-align" src="/eattogether/image/emptystar.png" onclick="changeImg()" alt="즐겨찾기">
+								
 								<div class="card-body">
 									<div class="card-body01">
 										<a href="recipeDetail.jsp" class="board_title">${bean.rec_header}</a>
 									</div>
 									<div class="card-body02">
-										<a class="user-id" href=" ">
+										<a class="user-id" href="/eattogether/member/Submypage2.jsp">
 											<img src="/eattogether/image/user.png" style="width:45px" height="45px">${bean.mem_id}
 										</a>
 										<a class="user-rocomend" href="">

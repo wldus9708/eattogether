@@ -64,6 +64,10 @@ public class FrontController extends HttpServlet {
 					//상품 정보 수정시 과거 이미지는 삭제해 주어야 합니다. 
 					MyUtility.deleteOldImageFile(imageUploadWebPath, mr);
 				}
+				if(command.equals("meUpdate")) {
+					// 상품 정보 수정시 과거 이미지는 삭제해 주어야 합니다.
+					MyUtility.deleteOldImageFile(imageUploadWebPath, mr);
+				}
 				
 				//file upload object binding in request scope.
 				request.setAttribute("mr", mr);

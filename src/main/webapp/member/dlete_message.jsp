@@ -1,7 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="./../common/common.jsp"%>
+<%
+// appName : 애플리케이션 컨텍스트 이름(프로젝트 이름)
+String appName = request.getContextPath();
+String mappingName = "/Eat"; //in FrontController.java file
 
+// 폼 태그에서 사용할 전역 변수
+String withFormTag = appName + mappingName;
+
+String notWithFormTag = withFormTag + "?command=";
+
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,9 +28,12 @@
 		</div>
 
 		<div id="delete_message03">
-			<button id="delete_message_b1">예</button>
-
-			<button id="delete_message_b2">아니오</button>
+		<a href="<%=notWithFormTag%>meDelete&id=${sessionScope.loginfo.id}">
+			<div id="delete_message_b1">예</div>
+			</a>
+			<a href="<%=notWithFormTag%>meList">
+			<div id="delete_message_b2">아니오</div>
+			</a>
 		</div>
 	</div>
 </body>

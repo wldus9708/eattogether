@@ -56,7 +56,8 @@ form { /* 섹션*/
 .recipe_Update_food-recipe { /* 내용 입력하는 div태그 */
 	text-align: left;
 	padding: 25px;
-	width: 400px;
+	width: 600px; /* 수정: 너비를 더 넓게 조정 */
+
 }
 
 .recipe_Update_food { /* 1,2,3 text 칸 */
@@ -102,9 +103,9 @@ form { /* 섹션*/
 }
 
 ::placeholder {
-    color: white;
+	color: white;
 }
 
-.rec_file{
-	margin : 20px, 0px;
+.rec_file {
+	margin: 20px, 0px;
 }

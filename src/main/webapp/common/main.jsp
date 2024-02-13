@@ -78,25 +78,25 @@ $(window).on('load', function() {
 
 				<div id="accordion">
 					<h3>
-						<a href="#">양식</a>
+						<a href="<%=notWithFormTag%>reList&mode=cat_no&keyword=1">양식</a>
 					</h3>
 					<ul>
-						<li><a href="#">파스타</a></li>
-						<li><a href="#">리조또</a></li>
-						<li><a href="#">스테이크</a></li>
-						<li><a href="#">피자</a></li>
-						<li><a href="#">오믈렛</a></li>
+						<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=파스타">파스타</a></li>
+						<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=리조또">리조또</a></li>
+						<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=스테이크">스테이크</a></li>
+						<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=피자">피자</a></li>
+						<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=오믈렛">오믈렛</a></li>
 					</ul>
 
 					<h3>
 						<a href="#">한식</a>
 					</h3>
 					<ul>
-						<li><a href="#">김치볶음밥</a></li>
-						<li><a href="#">된장찌개</a></li>
-						<li><a href="#">김치찌개</a></li>
-						<li><a href="#">고등어조림</a></li>
-						<li><a href="#">떡볶이</a></li>
+						<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=김치볶음밥">김치볶음밥</a></li>
+						<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=된장찌개">된장찌개</a></li>
+						<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=김치찌개">김치찌개</a></li>
+						<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=고등어조림">고등어조림</a></li>
+						<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=떡볶이">떡볶이</a></li>
 					</ul>
 
 					<h3>

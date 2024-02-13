@@ -55,7 +55,7 @@ public class RecipeDao extends SuperDao {
 	public List<Recipe> getDataList(Paging paging) {
 		String sql = "select rec_no, mem_id, cat_no, rec_header, rec_regdate, rec_photo, rec_hit, rec_popularity, rec_bookmark, rec_material";
 		sql += " , rec_content01, rec_content02, rec_content03, rec_content04, rec_content05, rec_content06, rec_content07, rec_content08, rec_content09, rec_content10";
-		sql += " from (select rank() over(order by rec_regdate desc) as ranking, rec_no, mem_id, cat_no, rec_header, rec_regdate, rec_photo, rec_hit, rec_popularity, rec_bookmark, rec_material";
+		sql += " from (select rank() over(order by rec_regdate desc, rec_no desc) as ranking, rec_no, mem_id, cat_no, rec_header, rec_regdate, rec_photo, rec_hit, rec_popularity, rec_bookmark, rec_material";
 		sql += " , rec_content01, rec_content02, rec_content03, rec_content04, rec_content05, rec_content06, rec_content07, rec_content08, rec_content09, rec_content10";
 		sql += " from recipe ";
 

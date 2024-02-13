@@ -6,11 +6,6 @@
 		background-color: #F8EBCE !important;
 	}
 	
-	#recipe {
-		margin-top :5px;/*사이드 메뉴 레시피 글자 중앙 정렬*/
-		width: 200px;/* 원하는 가로 길이로 설정 */
-	}
-	
     .ui-accordion-header {/* 사이드바 안 아코디언 헤더 스타일 */
         background-color: #FFCD1D;
         padding: 10px;
@@ -71,6 +66,7 @@
 		text-align: center;
 		color: #FFFFFF;
 		border: 3px solid black;
+		font-size: 28px;
 	}
 	
 	#recipe_sidebar{

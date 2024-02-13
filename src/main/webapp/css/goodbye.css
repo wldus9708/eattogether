@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+body {
+margin: 0 auto; /* 페이지를 가운데 정렬 */
+            background-color:#F8EBCE;
+            display:flex;
+ align-content: center;
+ justify-content: center;
+
+}
+a{
+color: black; /* 링크 텍스트 색상을 검정색으로 설정 */
+  text-decoration: none;
+}
+.goodbye_message{
+	top: 20%;
+	left: 25%;
+	width: 50%;
+	height: 60%;
+	position: absolute;
+}
+#goodbye_message01{
+background-color: #FC7439;
+position: absolute;
+top: 10%;
+left: 10%;
+width: 80%;
+height: 30%;
+border-radius: 50px;
+display:flex;
+justify-content: center;
+align-items: center; 
+font-style: bold;
+font-size: 2vw;
+
+}

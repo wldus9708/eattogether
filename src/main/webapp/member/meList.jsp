@@ -45,7 +45,7 @@
 				<div id="bupdate">
 					<p id="od00">마이페이지수정</p>
 				</div>
-			</a> <a href="<%=notWithFormTag%>meDelete&id=${sessionScope.loginfo.id}">
+			</a> <a href="<%=notWithFormTag%>meMessage&id=${sessionScope.loginfo.id}">
 				<div id="binselt">
 					<p id="od01">회원탈퇴</p>
 				</div>

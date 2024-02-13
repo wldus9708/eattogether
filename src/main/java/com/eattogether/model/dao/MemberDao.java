@@ -308,21 +308,21 @@ public class MemberDao extends SuperDao {
 	}
 
 	public int updateData(Member bean) {
-		String sql = " update members set mem_name = ?,mem_password = ?,mem_alias = ?,mem_phone=?,mem_taste=?";
-		sql += " where mem_no =?";
-		PreparedStatement pstmt = null;
+		String sql = " update members set mem_alias = ?,mem_password = ?,mem_phone=?,mem_taste=?,mem_picture=?";
+        sql += " where mem_id =?";
+        PreparedStatement pstmt = null;
 		int cnt = -9999999;
 		try {
 			super.conn = super.getConnection();
 			conn.setAutoCommit(false);
 			pstmt = conn.prepareStatement(sql);
 
-			pstmt.setString(1, bean.getName());
-			pstmt.setString(2, bean.getPassword());
-			pstmt.setString(3, bean.getAlias());
-			pstmt.setString(4, bean.getPhone());
-			pstmt.setString(5, bean.getTaste());
-			pstmt.setString(6, bean.getId());
+			pstmt.setString(1, bean.getAlias());
+            pstmt.setString(2, bean.getPassword());
+            pstmt.setString(3, bean.getPhone());
+            pstmt.setString(4, bean.getTaste());
+            pstmt.setString(5, bean.getPicture());
+            pstmt.setString(6, bean.getId());
 			
 			cnt = pstmt.executeUpdate();
 			conn.commit();
@@ -386,23 +386,64 @@ public class MemberDao extends SuperDao {
 
 		return dataList;
 	}
-
-	public int deleteData(String id) {
-		String sql = " delete from  Members where mem_id = ? ";
-
-		PreparedStatement pstmt = null;
-		int cnt = -9999999;
-
+	public List<Member> getDataList(String id){
+		String sql = "select * from members where mem_id=?";
+		PreparedStatement pstmt = null ; // 문장 객체
+		ResultSet rs = null ;
+		
+		List<Member> dataList = new ArrayList<Member>();
+		
+		super.conn = super.getConnection() ;
 		try {
-			super.conn = super.getConnection();
-			conn.setAutoCommit(false);
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, id);
+			rs = pstmt.executeQuery() ;
+			
+			// 요소들 읽어서 컬렉션에 담습니다.
+			while(rs.next()) {				
+				Member bean = this.resultSet2Bean(rs) ;
+				
+				dataList.add(bean) ;
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) {rs.close();}
+				if(pstmt != null) {pstmt.close();}
+				super.closeConnection();
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+			
+		return dataList ;	
+	}
 
-			cnt = pstmt.executeUpdate();
+public int deleteData(String id) {
+		
+		String sql = "" ;		
+		PreparedStatement pstmt = null ;
+		int cnt = -9999999 ;
+		
+		try {
+			
+			super.conn = super.getConnection() ;
+			conn.setAutoCommit(false); // dml과 관련이 있습니다.			
+			// 다음 항목도 공부하세요 : Connection Pooling 기법
+
+			// step02 : 상품 테이블에서 해당 상품 번호를 삭제합니다.
+			sql = " delete from members where mem_id = ? " ;
+			pstmt = conn.prepareStatement(sql) ;			
+			pstmt.setString(1, id);				
+			cnt = pstmt.executeUpdate() ;			
+						
 			conn.commit();
-
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			try {
@@ -410,20 +451,18 @@ public class MemberDao extends SuperDao {
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
-
+			
 		} finally {
 			try {
-				if (pstmt != null) {
-					pstmt.close();
-				}
+				if(pstmt != null) {pstmt.close();}
 				super.closeConnection();
 			} catch (Exception e2) {
 				e2.printStackTrace();
 			}
-		}
-
-		return cnt;
+		}		
+		return cnt ;
 	}
+	
 
 	public String getDataByNameAndPhone(String name, String phone) {
 

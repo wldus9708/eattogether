@@ -25,18 +25,16 @@ function searchAll(){ /* 전체 검색  */
 	location.href = '<%=notWithFormTag%>manList'	;
 }
 
-function deleteNotice(mem_id, paramList){ /* 게시물 삭제  */
-	/* no : 삭제될 게시물 번호, paramList : 페이징 관련 파라미터들 */
-	
+function deleteNotice(id, paramList){ 	
 	var response = window.confirm('해당 회원을 삭제하시겠습니까?');
 	
 	if(response==true){
-		var url = '<%=notWithFormTag%>manDelete&mem_id=' + mem_id+ paramList;
+		var url = '<%=notWithFormTag%>manDelete&id=' + id+ paramList;
 			/* alert(url); */
 			location.href = url;
 
 		} else {
-			alert('게시물 삭제가 취소되었습니다.');
+			alert('회원 삭제가 취소되었습니다.');
 			return false;
 		}
 	}
@@ -57,11 +55,11 @@ function deleteNotice(mem_id, paramList){ /* 게시물 삭제  */
 					<div class="col-sm-12">
 						<select class="form-control-sm" id="mode" name="mode">
 							<option value="all">--- 선택해주세요.
-							<option value="subject">아이디
-							<option value="contents">이름
-							<option value="contents">닉네임
-							<option value="contents">전화번호
-							<option value="contents">사용자유형
+							<option value="mem_id">아이디
+							<option value="mem_name">이름
+							<option value="mem_alias">닉네임
+							<option value="mem_phone">전화번호
+							<option value="mem_flag">사용자유형
 						</select> <input class="form-control-sm" type="text" id="keyword"
 							name="keyword">
 						<button class="form-control-sm btn btn-warning" type="submit">검색</button>

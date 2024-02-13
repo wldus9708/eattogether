@@ -131,8 +131,8 @@ $( function() {
 					<div class="col-sm-12">
 						<select class="form-control-sm" id="mode" name="mode">
 							<option value="all">--- 선택해주세요.
-							<option value="subject">글제목
-							<option value="contents">글내용
+							<option value="noti_header">글제목
+							<option value="noti_content">글내용
 						</select> <input class="form-control-sm" type="text" id="keyword"
 							name="keyword">
 						<button class="form-control-sm btn btn-warning" type="submit">검색</button>

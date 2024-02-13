@@ -1,3 +1,5 @@
+# main section
+main=com.eattogether.controller.main.MainController
 # member section
 meLogin=com.eattogether.controller.member.MemberLoginController
 meLogout=com.eattogether.controller.member.MemberLogoutController

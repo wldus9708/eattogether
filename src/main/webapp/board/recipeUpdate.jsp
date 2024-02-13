@@ -95,10 +95,9 @@
 							<span class="recipe_Update_food">${loop.index + 1}</span> <input
 								type="text" class="recipe_text" name="rec_content[]"
 								value="${content}">
+							<button type="button" class="btn btn-danger remove-field">X</button>
 						</div>
 					</c:forEach>
-
-
 
 					<button type="button" class="btn" id="add-recipe">추가</button>
 				</div>
@@ -108,7 +107,6 @@
 				<button class="btn recipe_Update_button" type="submit"
 					id="update_btn01">수정</button>
 			</div>
-		</div>
 	</form>
 	<script>
 		document.addEventListener('DOMContentLoaded',
@@ -138,6 +136,12 @@
 						newInput.value = content; // 데이터베이스에서 가져온 값으로 설정
 						newDiv.appendChild(newInput);
 
+						var removeButton = document.createElement('button');
+						removeButton.type = 'button';
+						removeButton.className = 'btn btn-danger remove-field';
+						removeButton.textContent = 'X';
+						newDiv.appendChild(removeButton);
+
 						recipeFieldsContainer.appendChild(newDiv);
 					});
 				});
@@ -166,10 +170,35 @@
 				newInput.name = 'rec_content[]'; // 배열 형태로 이름 지정
 				newDiv.appendChild(newInput);
 
+				var removeButton = document.createElement('button');
+				removeButton.type = 'button';
+				removeButton.className = 'btn btn-danger remove-field';
+				removeButton.textContent = 'X';
+				newDiv.appendChild(removeButton);
+
 				document.getElementById('add-recipe').parentNode.insertBefore(
 						newDiv, addButton);
+				adjustIndexes(); // 새로운 텍스트 필드를 추가한 후에 번호를 다시 조정합니다
 			});
 		});
+
+		document.addEventListener('click', function(event) {
+			if (event.target.classList.contains('remove-field')) {
+				var parentElement = event.target.parentNode;
+				parentElement.parentNode.removeChild(parentElement);
+				adjustIndexes(); // 텍스트 필드를 삭제한 후에 번호를 다시 조정합니다
+				isModified = true;
+			}
+		});
+
+		function adjustIndexes() {
+			var recipeUpdateFoodRecipe = document
+					.querySelectorAll('.recipe_Update_food-recipe');
+			recipeUpdateFoodRecipe.forEach(function(item, index) {
+				var span = item.querySelector('.recipe_Update_food');
+				span.textContent = index + 1;
+			});
+		}
 
 		// 파일 입력(input) 엘리먼트
 		const imageInput = document.getElementById('image-input');

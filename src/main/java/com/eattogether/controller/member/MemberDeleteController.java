@@ -18,7 +18,8 @@ public class MemberDeleteController extends Superclass{
 		cnt=dao.deleteData(id);
 		if(cnt!=-1) {
 			System.out.println("탈퇴성공");
-			super.gotoPage("member/meGoodbye.jsp");
+			super.session.invalidate();
+			super.gotoPage("common/main.jsp");
 		new MemberLogoutController().doGet(request, response);
 		}else {
 			System.out.println("탈퇴실패");

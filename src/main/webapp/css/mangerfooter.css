@@ -8,7 +8,7 @@ body{
 	width: 100%;
 	 z-index: 10;
 	 height: 13%;
-}
+	 	
 a {
 	text-decoration: none;
 	color: inherit;
@@ -17,6 +17,10 @@ a {
 
 	display: inline-block;
 	vertical-align: top;
+	display: flex;
+	flex-direction: row;
+}
+
 }
 .footer_left{
 		position: absolute;

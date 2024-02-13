@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.eattogether.common.Superclass;
 import com.eattogether.controller.manager.ManagerListController;
 import com.eattogether.model.bean.Member;
+import com.eattogether.model.bean.SHA256Encryption;
 import com.eattogether.model.dao.MemberDao;
 
 public class MemberLoginController extends Superclass {
@@ -26,11 +27,16 @@ public class MemberLoginController extends Superclass {
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
 		String checkbox = request.getParameter("checkbox");
-		System.out.println("아이디 : " + id + "/ 비밀번호 :" + password);
+		System.out.println("아이디 : " + id + "/ 암호화 전비밀번호 :" + password);
 		System.out.println("아이디 저장 여부:" + checkbox);
+		
+		// 주석 나중에 해제 예정
+		//String hashedPassword = SHA256Encryption.encrypt(password);
 
 
 		MemberDao dao = new MemberDao();
+		// 주석 나중에 해제 예정
+		//Member bean = dao.getDataByIdAndPassword(id, hashedPassword);
 		Member bean = dao.getDataByIdAndPassword(id, password);
 		System.out.println(bean);
 

@@ -122,7 +122,8 @@ $(window).on('load', function() {
 					</ul>
 				</div>
 			</div>
-		<form action="">
+		<form action="<%=withFormTag %>" method="post">
+		<input type="hidden" name="command" value="main">
 			<div id="main_materialBox">
 				<div id="main_materialBox_left">
 					<div id="main_materialBox_left_1">

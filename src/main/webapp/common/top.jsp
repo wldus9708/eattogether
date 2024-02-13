@@ -78,7 +78,7 @@ String notWithFormTag = withFormTag + "?command=";
 									<li><a class="dropdown-item"
 										href="<%=notWithFormTag%>notiList">공지사항</a></li>
 									<li><a class="dropdown-item"
-										href="/eattogether/inquiry/inquList.jsp">문의사항</a></li>
+										href="<%=notWithFormTag%>inquList">문의사항</a></li>
 									<li><a class="dropdown-item"
 										href="<%=notWithFormTag%>meLogout">로그아웃</a></li>
 								</c:if>
@@ -87,7 +87,7 @@ String notWithFormTag = withFormTag + "?command=";
 									<li><a class="dropdown-item"
 										href="<%=notWithFormTag%>manList">회원관리</a></li>
 									<li><a class="dropdown-item"
-										href="/eattogether/inquiry/inquList.jsp">문의사항</a></li>
+										href="<%=notWithFormTag%>inquList">문의사항</a></li>
 									<li><a class="dropdown-item"
 										href="<%=notWithFormTag%>notiList">공지사항 관리</a></li>
 									<li><a class="dropdown-item"

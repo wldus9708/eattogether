@@ -240,10 +240,4 @@ String sql = " delete from  Notice where noti_no = ? " ;
 		
 		return cnt ;
 	}
-
-	
-	
-	
-
-
 }

@@ -38,9 +38,6 @@
 				</div>
 			</div>
 		</div>
-		<div class="footer_center">
-			<img src="../image/macaron01.png">
-		</div>
 		<c:if test="${whologin eq 1 }">
 			<div class="footer_right">
 				<div id="footer_box">

@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@include file="./../common/common.jsp"%>
 
-<c:set var="whologin" value="0"/>
+<c:set var="whologin" value="0" />
 <c:if test="${not empty sessionScope.loginfo}">
 	<c:if test="${sessionScope.loginfo.flag =='2'}">
 		<c:set var="whologin" value="2" />
@@ -20,7 +20,6 @@ String mappingName = "/Eat"; //in FrontController.java file
 String withFormTag = appName + mappingName;
 
 String notWithFormTag = withFormTag + "?command=";
-
 %>
 
 
@@ -36,32 +35,34 @@ String notWithFormTag = withFormTag + "?command=";
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light" id="header_wrap">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="/eattogether/common/main.jsp"> <img src="/eattogether/image/cooker.png"
-				alt="" id="header_img1"> <span id="header_span1">오늘뭐먹지?</span>
+			<a class="navbar-brand" href="/eattogether/common/main.jsp"> <img
+				src="/eattogether/image/cooker.png" alt="" id="header_img1"> <span
+				id="header_span1">오늘뭐먹지?</span>
 			</a>
-
-			<div class="d-flex" style="flex: 0 0 60%;">
-				<input class="form-control" type="text" id="header_text">
-				<button class="btn btn-light" id="header_button" type="submit">
-					<img src="/eattogether/image/search.png" alt="" id="header_img2">
-				</button>
-			</div>
-
+			<c:if test="${whologin ne 2 }">
+				<div class="d-flex" style="flex: 0 0 60%;">
+					<input class="form-control" type="text" id="header_text">
+					<button class="btn btn-light" id="header_button" type="submit">
+						<img src="/eattogether/image/search.png" alt="" id="header_img2">
+					</button>
+				</div>
+			</c:if>
 			<div class="d-flex align-items-center">
 				<a href="#" class="d-flex flex-row align-items-center"> <img
 					src="/eattogether/image/user.png" alt="" id="header_img3">
 				</a>
 				<div id="manheader">
 					<ul>
-						<li class="header">
-						<c:if test="${whologin eq 0 }">
-							<a class="header-toggle" role="button"
-							href="#" sdata-bs-toggle="dropdown" id="manger">로그인▼</a>
-						</c:if>
-						<c:if test="${whologin ne 0 }">
-							<a class="header-toggle" role="button"
-							href="#" sdata-bs-toggle="dropdown" id="manger">${sessionScope.loginfo.alias}님▼</a>
-						</c:if>
+						<li class="header"><c:if test="${whologin eq 0 }">
+								<a class="header-toggle" role="button" href="#"
+									sdata-bs-toggle="dropdown" id="manger">로그인▼</a>
+							</c:if> <c:if test="${whologin eq 1}">
+								<a class="header-toggle" role="button" href="#"
+									sdata-bs-toggle="dropdown" id="manger">${sessionScope.loginfo.alias}님▼</a>
+							</c:if> <c:if test="${whologin eq 2 }">
+								<a class="header-toggle" role="button" href="#"
+									sdata-bs-toggle="dropdown" id="manger">${sessionScope.loginfo.alias}님▼</a>
+							</c:if>
 							<ul class="dropdown-menu">
 								<c:if test="${whologin eq 0 }">
 									<li><a class="dropdown-item"
@@ -73,20 +74,26 @@ String notWithFormTag = withFormTag + "?command=";
 									<li><a class="dropdown-item"
 										href="<%=notWithFormTag%>meList&id=${sessionScope.loginfo.id}">마이페이지</a></li>
 									<li><a class="dropdown-item"
-										href="/eattogether/board/recipe.jsp">레시피</a></li>
-										<li><a class="dropdown-item"
+										href="<%=notWithFormTag%>reList">레시피</a></li>
+									<li><a class="dropdown-item"
 										href="<%=notWithFormTag%>notiList">공지사항</a></li>
+									<li><a class="dropdown-item"
+										href="/eattogether/inquiry/inquList.jsp">문의사항</a></li>
 									<li><a class="dropdown-item"
 										href="<%=notWithFormTag%>meLogout">로그아웃</a></li>
 								</c:if>
 								<c:if test="${whologin eq 2 }">
+
 									<li><a class="dropdown-item"
-										href="<%=notWithFormTag%>manList">관리자페이지</a></li>
+										href="<%=notWithFormTag%>manList">회원관리</a></li>
 									<li><a class="dropdown-item"
-										href="<%=notWithFormTag%>meLogout">로그아웃</a></li>	
+										href="/eattogether/inquiry/inquList.jsp">문의사항</a></li>
+									<li><a class="dropdown-item"
+										href="<%=notWithFormTag%>notiList">공지사항 관리</a></li>
+									<li><a class="dropdown-item"
+										href="<%=notWithFormTag%>meLogout">로그아웃</a></li>
 								</c:if>
-							</ul>
-						</li>
+							</ul></li>
 					</ul>
 				</div>
 			</div>
@@ -100,6 +107,6 @@ String notWithFormTag = withFormTag + "?command=";
 		</div>
 	</c:if>
 	<c:remove var="alertMessage" scope="session" />
-	
+
 </body>
 </html>

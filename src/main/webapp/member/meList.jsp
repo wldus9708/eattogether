@@ -1,3 +1,5 @@
+<%@page import="com.eattogether.model.bean.Recipe"%>
+<%@page import="com.eattogether.model.dao.RecipeDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="./../common/common.jsp"%>
@@ -13,7 +15,6 @@
 </style>
 </head>
 <body>
-
 <div class="Mypage_ntr">
 	<div id="mypage_box00">
 		<div class="custom-shape" id="myicon">
@@ -60,10 +61,10 @@
 				<div>'닉네임'의 즐겨찾기</div>
 			</div>
 			<div class="submypage_Bookmark02">
-				<img src="/eattogether/image/steak_02.jpg" id="subima">
-				<img src="/eattogether/image/steak_02.jpg" id="subima">
-				<img src="/eattogether/image/steak_02.jpg" id="subima">
-				<img src="/eattogether/image/steak_02.jpg" id="subima">
+				<img src="/eattogether/image/steak_02.jpg" class="subima">
+				<img src="/eattogether/image/steak_02.jpg" class="subima">
+				<img src="/eattogether/image/steak_02.jpg" class="subima">
+				<img src="/eattogether/image/steak_02.jpg" class="subima">
 			</div>
 		</div>
 		<div class="mysubpage_box01">
@@ -71,10 +72,10 @@
 				<div>내가 만든 레시피</div>
 			</div>
 			<div class="submypage_Bookmark02">
-				<img src="/eattogether/image/steak_02.jpg" id="subima">
-				<img src="/eattogether/image/steak_02.jpg" id="subima">
-				<img src="/eattogether/image/steak_02.jpg" id="subima">
-				<img src="/eattogether/image/steak_02.jpg" id="subima">
+				<img src="/eattogether/image/steak_02.jpg" class="subima">
+				<img src="/eattogether/image/steak_02.jpg" class="subima">
+				<img src="/eattogether/image/steak_02.jpg" class="subima">
+				<img src="/eattogether/image/steak_02.jpg" class="subima">
 			</div>
 		</div>
 		<div class="mysubpage_box01">
@@ -82,10 +83,12 @@
 				<div>닉네임'의 최근본 목록</div>
 			</div>
 			<div class="submypage_Bookmark02">
-				<img src="/eattogether/image/steak_02.jpg" id="subima">
-				<img src="/eattogether/image/steak_02.jpg" id="subima">
-				<img src="/eattogether/image/steak_02.jpg" id="subima">
-				<img src="/eattogether/image/steak_02.jpg" id="subima">
+			<c:forEach var="item" items="${sessionScope.testList}">
+			<a href="<%=notWithFormTag%>meDetail&id=${item.rec_no}">
+			<img src="/eattogether/image/${item.rec_photo}" class="subima">			
+			</a>
+			</c:forEach>
+			
 			</div>
 		</div>
 	</div>

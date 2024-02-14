@@ -73,7 +73,7 @@ function deleteNotice(id, paramList){
 			</form>
 			<div class="manger_member">
 				<table id="man_search">
-					<tr>
+					<tr id="man_header">
 						<td style="width: 10%">아이디</td>
 						<td style="width: 10%">이름</td>
 						<td style="width: 10%">닉네임</td>

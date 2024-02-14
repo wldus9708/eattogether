@@ -128,7 +128,7 @@ function searchAll(){ /* 전체 검색  */
 				
 					<tbody>
 					<c:forEach var="bean" items="${dataList}">
-						<tr>
+						<tr id="inq_header">
 							<th style="width: 5%;" id="in-Information">${bean.inq_no}</th>
 							<th style="width: 10%;" id="in-Information">${bean.inq_regdate}</th>
 							<th style="width: 30%;" id="in-Information">${bean.mem_id}</th>
@@ -156,4 +156,4 @@ function searchAll(){ /* 전체 검색  */
 		${requestScope.paging.pagingHtml}
 </body>
 </html>
-<%@include file="./../common/footer.jsp"%>
+<%@include file="./../common/mangerfooter.jsp"%>

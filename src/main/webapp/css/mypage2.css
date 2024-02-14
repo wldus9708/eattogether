@@ -97,7 +97,7 @@ a {
 	margin-bottom: 20px;
 }
 
-#subima{
+.subima{
 	width: 150px; /* 도형의 너비 */
 	height: 90px;
 	border: 5px solid #000;

@@ -8,27 +8,59 @@ body {
 }
 #contain {
   display: flex;
-  align-items: center; /* 세로 중앙 정렬 */
   margin: 50px;
+  margin-left: 300px;
+  margin-top: 100px;
 }
 
+#recipe {
+		margin-top :5px;/*사이드 메뉴 레시피 글자 중앙 정렬*/
+		width: 200px;/* 원하는 가로 길이로 설정 */
+	}
+	 .ui-accordion-header {/* 사이드바 안 아코디언 헤더 스타일 */
+        background-color: #FFCD1D;
+        padding: 10px;
+        cursor: default;
+        border: 2px solid black;
+        border-radius: 10px;
+        font-weight: bold;
+    }
+
+    .ui-accordion-content {/* 사이드바 안에 아코디언 콘텐츠 스타일 */
+        background-color: #fff;
+        padding: 15px;
+        border: 2px solid black;
+        border-radius: 10px;
+        font-weight: bold;
+    }
+	
+.recipe_side0 {
+		margin:auto;
+		text-align : center;
+		background-color: #FC7439;
+		border-radius: 35px;
+		width: 200px;
+		height: 50px;
+		text-align: center;
+		color: #FFFFFF;
+		border: 3px solid black;
+	}
+	
 #box1,#box2 {
 
   box-sizing: border-box;
 
 }
-
 #box2 {
       flex: 1;
       background-color: #F8EBCE;
-      width: 100%;
-      margin: 150px;
-      height: 600px;
+ 
       display: flex;
       flex-direction: column;
       padding: 20px;
       box-sizing: border-box;
-      
+      justify-content: center;
+  align-items: center;
       
     }
     #ma_memberbt:active, #ma_announbt:active, #ma_inquirybt:active,
@@ -38,7 +70,7 @@ body {
 }
 
     #box2 table {
-      width: 100%; /* 테이블의 너비를 100%로 설정 */
+      width: 1000px; /* 테이블의 너비를 100%로 설정 */
       border-collapse: collapse;
             background-color: #fff;
                   border-radius: 30px 30px 0 0;
@@ -52,7 +84,14 @@ body {
      text-align: left; 
      white-space: nowrap;
     }
-
+    .row{
+		margin-bottom: 10px;
+	}
+#inq_header{
+	background-color:#FFCD1D;
+	border: 3px solid black;
+	margin-top: 10px;
+}
     #textAreaContainer {
       display: flex;
       flex-direction: row;

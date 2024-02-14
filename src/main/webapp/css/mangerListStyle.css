@@ -81,7 +81,9 @@ body {
         margin-right: 150px;
        
     }
-
+#man_header{
+	background-color: #FFCD1D;
+}
     #mansearch_conditions {
         margin-right: 10px; /* 적절한 간격으로 조정하세요 */
          padding: 10px;

@@ -11,8 +11,8 @@
 <link rel="stylesheet" type="text/css" href="/eattogether/css/meInsertForm.css">	
 <script type="text/javascript">
 	
-	function isId(asValue) { //아이디 첫글자는 영문 소문자, 3~8자리, 특수문자 제외
-		var regExp = /^[a-z][a-z0-9]{2,7}$/;
+	function isId(asValue) { //아이디 첫글자는 이메일 형식으로 전환
+		var regExp = /^(?=.{1,30}$)[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 		return regExp.test(asValue);
 	}
@@ -62,6 +62,11 @@
 	    	window.open("/eattogether/member/checkPhone.jsp?phone="+phone,"phonechk",
 	   	"width=400,height=300, location=yes,resizable=yes,top=100,left=50");
 	 	});
+		$('#join_DuplicateBtn3').click(function(){
+		 	var alias = $("#join_alias").val();
+	    	window.open("/eattogether/member/checkAlias.jsp?alias="+alias,"aliaschk",
+	   	"width=400,height=300, location=yes,resizable=yes,top=100,left=50");
+	 	});
 		$('form[name=joinForm] #join_id').on('input', function() { // 아이디 입력란에서 값이 변경될 때마다 아이디 체크 값을 초기화
 			resetIdCheckValue();
         });
@@ -72,14 +77,7 @@
 		
 		$('form[name=joinForm] #join_id').keyup(function() { // 아이디 제약조건 keyup
 			if (!isId($('form[name=joinForm] #join_id').val())) {
-				$('form[name=joinForm] #join_idError').text("첫글자는 영문 소문자, 3~8자리, 특수문자 제외해주세요").css("color", "red");
-			} else {
-				$('form[name=joinForm] #join_idError').text("");
-			}
-		})
-		$('form[name=joinForm] #join_id').keyup(function() { // 아이디 제약조건 keyup
-			if (!isId($('form[name=joinForm] #join_id').val())) {
-				$('form[name=joinForm] #join_idError').text("첫글자는 영문 소문자, 3~8자리, 특수문자 제외해주세요").css("color", "red");
+				$('form[name=joinForm] #join_idError').text("이메일형식으로 입력해주세요").css("color", "red");
 			} else {
 				$('form[name=joinForm] #join_idError').text("");
 			}
@@ -133,7 +131,7 @@
 	function validCheck() { // 제약조건 alert창 안내 
 		var id = $('#join_id').val();
 		if (!isId(id)) {
-			alert('아이디 첫글자는 영문 소문자, 3~8자리, 특수문자 제외로 입력해주세요');
+			alert('아이디는 이메일 형식으로 입력해주세요.');
 			$('#join_id').focus();
 			return false;
 		}
@@ -162,6 +160,11 @@
 			$('#join_alias').focus();
 			return false;
 		}
+		var phoneCheckValue = $('#join_phoneCheck').val();
+	    if (phoneCheckValue === "N") {
+	        alert('전화번호 중복 확인을 해주세요.');
+	        return false;
+	    }
 		
 		var birth = $('#join_birth').val();
 		if (birth.length < 1) {
@@ -209,7 +212,7 @@
 				<div id="join_form_wrap">
 					<div class="join_form_container">
 						<label class="join_label" for="userid">아이디:</label> <input
-							class="join_input_field" type="text" id="join_id" name="id" maxlength="8" onkeydown="inputIdChk()">
+							class="join_input_field" type="text" id="join_id" name="id" maxlength="30" onkeydown="inputIdChk()">
 							<input
 							type="hidden" id="join_idCheck" name="join_idCheck" value="N">
 						<button type="button" id="join_DuplicateBtn">중복확인</button>
@@ -229,9 +232,11 @@
 							class="join_error_next_box"></span>
 					</div>
 					<div class="join_form_container">
-						<label class="join_label" for="username">닉네임:</label> <input
+						<label class="join_label" for="alias">닉네임:</label> <input
 							class="join_input_field" type="text" id="join_alias"
-							name="alias" maxlength="8"> <span id="join_aliasError"
+							name="alias" maxlength="8" onkeydown="inputAliasChk()"> <input type="hidden" id="join_aliasCheck"
+							name="join_aliasCheck" value="N">
+						<button type="button" id="join_DuplicateBtn3">중복확인</button> <span id="join_aliasError"
 							class="join_error_next_box"></span>
 					</div>
 					

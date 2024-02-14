@@ -47,7 +47,7 @@ if (cookie != null) {
 								<label for="username">아이디 : </label>
 							</div>
 							<div id="login_idbox_input">
-								<input type="text" id="login_userid" name="id" maxlength="8" value="<%=id%>">
+								<input type="text" id="login_userid" name="id" maxlength="30" value="<%=id%>">
 							</div>
 						</div>
 						<span class="login_hiddenbox"></span>

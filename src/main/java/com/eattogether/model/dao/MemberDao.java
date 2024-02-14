@@ -14,6 +14,8 @@ public class MemberDao extends SuperDao {
 	public static final int UNUSABLE_ID = 2;
 	public static final int USABLE_PHONE = 1;
 	public static final int UNUSABLE_PHONE = 2;
+	public static final int USABLE_ALIAS = 1;
+	public static final int UNUSABLE_ALIAS = 2;
 
 	public List<Member> getDataList(Paging paging) {
 		String sql = " select mem_id, mem_name, mem_alias, mem_password, mem_social_key, mem_social_host,mem_birth, mem_phone, mem_taste , mem_picture, mem_flag";
@@ -201,6 +203,52 @@ public class MemberDao extends SuperDao {
 			}
 		}
 		System.out.println("아이디 중복확인 결과([1]사용가능,[2]사용불가능 :  " + result + " , 아이디 : " + id);
+		return result;
+	}
+	
+	public int getDataByAlias(String alias) {
+		String sql = "select count(*) from members ";
+		sql += " where mem_alias = ?";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		int result = 0;
+		try {
+			super.conn = super.getConnection();
+			conn.setAutoCommit(false);
+
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, alias);
+
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				int cnt = rs.getInt(1);
+				if (cnt > 0) {
+					result = MemberDao.UNUSABLE_ALIAS;
+				} else {
+					result = MemberDao.USABLE_ALIAS;
+				}
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			try {
+				conn.rollback();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		} finally {
+			try {
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				super.closeConnection();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		System.out.println("닉네임 중복확인 결과([1]사용가능,[2]사용불가능 :  " + result + " , 닉네임 : " + alias);
 		return result;
 	}
 	

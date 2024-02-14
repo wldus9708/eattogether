@@ -97,7 +97,7 @@
 							id="recipeDetail_Id">${bean.mem_id}</span></a>
 					</div>
 					<div>
-						<a href="#" class="upBtn"><span id="recipeUp">${bean.rec_popularity}</span>
+						<a href="#" class="upBtn"><span id="recipeUp">${bean.rec_hit}</span>
 							<img src="/eattogether/image/upBtn.png" alt=""> </a>
 					</div>
 					<div>

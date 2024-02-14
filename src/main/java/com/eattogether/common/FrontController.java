@@ -28,20 +28,20 @@ public class FrontController extends HttpServlet {
 	private String imageUploadWebPath = null;
 
 	@Override
-	public void init(ServletConfig config) throws ServletException {
-		ServletContext application = config.getServletContext();
+    public void init(ServletConfig config) throws ServletException {
+        ServletContext application = config.getServletContext();
 
-		this.todolist = config.getInitParameter("todolist");
+        this.todolist = config.getInitParameter("todolist");
 
-	
-		this.todolistMap = MyUtility.getTodolistMap(application.getRealPath(todolist));
-		System.out.println("todolist Map Size : " + todolistMap.size());
-		System.out.println(todolistMap.toString());
-		
-		String imsiPath = "image";
-		this.imageUploadWebPath = application.getRealPath(imsiPath);
-		System.out.println("이미지 업로드 경로 : \n" + imageUploadWebPath);
-	}
+
+        this.todolistMap = MyUtility.getTodolistMap(application.getRealPath(todolist));
+        System.out.println("todolist Map Size : " + todolistMap.size());
+        System.out.println(todolistMap.toString());
+
+        String imsiPath = "image";
+        this.imageUploadWebPath = application.getRealPath(imsiPath);
+        System.out.println("이미지 업로드 경로 : \n" + imageUploadWebPath);
+    }
 
 	protected void doprocess(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

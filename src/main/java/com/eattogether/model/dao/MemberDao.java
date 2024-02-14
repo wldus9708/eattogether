@@ -550,23 +550,23 @@ public int deleteData(String id) {
 		return findId;
 	}
 	
-	public String getDataByIdAndPhone(String id, String phone) {
+	public Member getDataByIdAndPhoneAndName(String id, String phone, String name) {
 
-		// 아이디와 전화번호를 이용하여 아이디 찾기
-		String sql = "select * from members where mem_id = ? and mem_phone = ?";
+		String sql = "select * from members where mem_id = ? and mem_phone = ? and mem_name = ?";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String findPwd = null;
-		System.out.println("입력한 이름: " + id + " / 입력한 전화번호 : " + phone);
+		Member bean = null;
+		System.out.println("입력한 이름: " + id + " / 입력한 전화번호 : " + phone + "입력한 이름 : " + name);
 		super.conn = super.getConnection();
 		try {
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, id);
 			pstmt.setString(2, phone);
+			pstmt.setString(3, name);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				findPwd = rs.getString("mem_password");
+				bean = this.resultSet2Bean(rs);
 			}
 
 		} catch (SQLException e) {
@@ -585,8 +585,7 @@ public int deleteData(String id) {
 				e2.printStackTrace();
 			}
 		}
-		System.out.println("비밀번호 찾기한 비밀번호 : " + findPwd);
-		return findPwd;
+		return bean;
 	}
 
 }

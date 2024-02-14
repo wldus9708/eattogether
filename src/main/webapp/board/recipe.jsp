@@ -177,7 +177,9 @@
 				<div class="recipe_latest">
 					<a href="<%=notWithFormTag%>reList&mode=${requestScope.paging.mode}&keyword=${requestScope.paging.keyword}">최신순</a>
 				</div>
-				<div class="recipe_re">조회수</div>
+				<div class="recipe_re">
+					<a href="<%=notWithFormTag%>reList&rec_hit=${bean.rec_hit}&mode=${requestScope.paging.mode}&keyword=${requestScope.paging.keyword}">조회수</a>
+				</div>
 			</div>
 			<div class="col-sm-1 "></div>
 			<div class="col-sm-10">
@@ -195,7 +197,7 @@
 													<option value="all">--- 선택해주세요.
 													<option value="mem_id">작성자명
 													<option value="rec_header">레시피제목
-													<option value="${requestScope.category.cat_name})">음식이름
+													<option value="cat_no">음식이름
 													
 												</select> <input class="form-control-sm" type="text" id="keyword"
 													name="keyword">

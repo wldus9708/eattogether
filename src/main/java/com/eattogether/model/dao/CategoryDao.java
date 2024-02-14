@@ -16,6 +16,8 @@ public class CategoryDao extends SuperDao{
 		try {
 			bean.setCat_no(rs.getInt("cat_no"));
 			bean.setCat_name(rs.getString("cat_name"));
+			bean.setCat_recipe(rs.getString("cat_recipe"));
+			
 			
 			return bean;
 		}catch(Exception e) {
@@ -25,14 +27,14 @@ public class CategoryDao extends SuperDao{
 	}
 	
 	
-	public List<Category> getDataList(String module, String field) {
+	public List<Category> getDataList() {
 		//세미콜론위치, 띄어쓰기 위치 정확히 파악하셔라
 		//?를 placeholder(1베이스입니다.)라고 합니다.
 		//어떠한 값으로 치환될 대상입니다. 
 		//치환은 뭐로? setxxx메소드로. executeQuery실행전에 해야하는거 알쥬
-		String sql = "select * from fillitems";
-		sql += " where module = ? and field = ?";
-		sql += " order by ordering asc";
+		String sql = "select recipe.cat_no, category.cat_name";
+		sql += " FROM recipe, category";
+		sql += " where recipe.cat_no = category.cat_no";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -42,9 +44,6 @@ public class CategoryDao extends SuperDao{
 		super.conn = super.getConnection();
 		try {
 			pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setString(1, module);
-			pstmt.setString(2, field);
 			
 			rs = pstmt.executeQuery();
 			

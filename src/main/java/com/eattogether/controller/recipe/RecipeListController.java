@@ -28,6 +28,7 @@ private final String PREFIX = "board/";
 		
 		RecipeDao dao = new RecipeDao();
 		MemberDao mdao = new MemberDao();
+		
 		int totalCount = dao.getTotalRecordCount("recipe", mode, keyword);
 		String url = super.getUrlInformation("reList");
 		boolean isGrid = true;//상품이라면 true가 됩니다.

@@ -20,6 +20,36 @@
 	visibility: hidden;
 }
 </style>
+<script type="text/javascript">
+  		$(document).ready(function(){ 
+  			/* 이전에 선택했던 카테고리 정보가 자동으로 선택되어 있도록 합니다. */
+ 	       var categroyInfo = '${requestScope.bean.cat_no}';
+ 	        alert(categroyInfo);
+ 	        
+ 	       var optionList = $('#category option');
+	         optionList.each(function(){
+	            console.log($(this).val());
+	            if($(this).val() == category){
+	               $('option[value="' + category + '"').attr('selected', true);
+	            }
+	         });
+  		}
+  		
+  		function validCheck(){
+  			var rec_header = $('#rec_header').val();
+  			if(rec_header.length < 4 || rec_header.length > 30){
+  				alert('상품명은 4글자 이상 30글자 이하이어야 합니다.');
+  				$('#rec_header').focus() ;
+  				return false ;
+  			}
+  			var cat_no = $('#cat_no').val();
+  			if(cat_no == '-'){ /* 코딩할 때 option의 value 속성을 하이폰으로 설정했습니다. */
+  				alert('카테고리를 선택해 주세요.');
+	  			$('#cat_no').focus();
+	  			return false ;
+  			}  
+  		}
+</script>
 </head>
 <body>
 	<form action="<%=withFormTag%>" method="post"
@@ -73,9 +103,9 @@
 						value="${sessionScope.loginfo.id}">
 				</div>
 				<div class="recipe_Update_food-basic">
-					<select id="category" name="cat_no" class="recipe_text_basic">
-						<c:set var="categroyInfo" value="${bean.cat_no}" />
-						<option value="카테고리">--------카테고리를 선택해주세요.--------</option>
+					<select id="cat_no" name="cat_no" class="recipe_text_basic">
+						<c:set var="cat_no" value="${bean.cat_no}" />
+						<option value="-">--------카테고리를 선택해주세요.--------</option>
 						<option value="1">양식</option>
 						<option value="2">한식</option>
 						<option value="3">중식</option>
@@ -106,7 +136,7 @@
 
 		<div class="button">
 			<button class="btn recipe_Update_button" type="submit"
-				id="update_btn01">수정</button>
+				id="update_btn01" onclick="return validCheck();">수정</button>
 		</div>
 	</form>
 	<script>

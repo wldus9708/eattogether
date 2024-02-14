@@ -9,16 +9,14 @@
 <head>
 <meta charset="UTF-8">
 <title>recipe_demo</title>
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
-<link rel="stylesheet" type="text/css"
-	href="/eattogether/css/recipe.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/eattogether/css/recipedetailStyle.css">
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<link rel="stylesheet" type="text/css" href="/eattogether/css/recipe.css">
 
 <script>
-$(document).ready(function(){
+	$(document).ready(function(){
 		/* 필드 검색시 체크한 콤보 박스 상태 보존 */
 		var optionList = $('#mode option');/* 옵션 목록 */
 		for(var i=0 ; i<optionList.length ; i++){
@@ -52,8 +50,7 @@ $(document).ready(function(){
 	}
 	
 	function writeForm(){
-		location.href = '<%=notWithFormTag%>
-	reInsert';
+		location.href = '<%=notWithFormTag%>reInsert';
 	}
 
 	$(function() {
@@ -91,8 +88,7 @@ $(document).ready(function(){
 	<aside class="recipe_sidebar">
 
 		<div class="recipe_side0">
-			<a href="<%=notWithFormTag%>reList"><p>레시피
-				<p></a>
+			<a href="<%=notWithFormTag%>reList"><p>레시피<p></a>
 		</div>
 
 		<div id="accordion">
@@ -179,7 +175,7 @@ $(document).ready(function(){
 			<div id="lastrecommend"
 				style="display: flex; justify-content: flex-end;">
 				<div class="recipe_latest">
-					<a href="<%=notWithFormTag%>reList">최신순</a>
+					<a href="<%=notWithFormTag%>reList&mode=${requestScope.paging.mode}&keyword=${requestScope.paging.keyword}">최신순</a>
 				</div>
 				<div class="recipe_re">조회수</div>
 			</div>

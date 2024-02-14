@@ -11,10 +11,42 @@ import com.eattogether.utility.MyUtility;
 import com.eattogether.utility.Paging;
 
 public class RecipeDao extends SuperDao {
+	public void updateReadhit(int rec_no) {
+		String sql = " update recipe set rec_hit = rec_hit + 1 where rec_no = ? ";
+		PreparedStatement pstmt = null;
+		int cnt = -9999999;
+
+		try {
+			super.conn = super.getConnection();
+			conn.setAutoCommit(false);
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, rec_no);
+			cnt = pstmt.executeUpdate();
+			conn.commit();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		} finally {
+			try {
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				super.closeConnection();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
+
 	public Recipe getDataBean2(String mem_id) {
 		String sql = "select * from members";
 		sql += " where mem_id = ?";
-		
+
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		Recipe bean = null;
@@ -51,8 +83,7 @@ public class RecipeDao extends SuperDao {
 
 		return bean;
 	}
-	
-	
+
 	public Recipe getDataBean(int rec_no) {
 		String sql = "select * from recipe";
 		sql += " where rec_no = ?";
@@ -209,7 +240,7 @@ public class RecipeDao extends SuperDao {
 			bean.setRec_popularity(rs.getInt("rec_popularity"));
 			bean.setRec_bookmark(rs.getString("rec_bookmark"));
 			bean.setRec_material(rs.getString("rec_material"));
-			
+
 			// rec_contents 설정
 			List<String> recContents = new ArrayList<>();
 			for (int i = 1; i <= 10; i++) {

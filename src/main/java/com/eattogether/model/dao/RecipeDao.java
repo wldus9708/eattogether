@@ -11,6 +11,48 @@ import com.eattogether.utility.MyUtility;
 import com.eattogether.utility.Paging;
 
 public class RecipeDao extends SuperDao {
+	public Recipe getDataBean2(String mem_id) {
+		String sql = "select * from members";
+		sql += " where mem_id = ?";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Recipe bean = null;
+
+		super.conn = super.getConnection();
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, mem_id);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				bean = this.resultSet2Bean(rs);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				super.closeConnection();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		System.out.println("bean 데이터 조회 결과 : ");
+		System.out.println(bean);
+
+		return bean;
+	}
+	
+	
 	public Recipe getDataBean(int rec_no) {
 		String sql = "select * from recipe";
 		sql += " where rec_no = ?";

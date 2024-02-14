@@ -3,8 +3,14 @@ package com.eattogether.model.bean;
 public class Category {
 	private int cat_no;
 	private String cat_name;
+	private String cat_recipe;
 	
-	
+	public String getCat_recipe() {
+		return cat_recipe;
+	}
+	public void setCat_recipe(String cat_recipe) {
+		this.cat_recipe = cat_recipe;
+	}
 	public int getCat_no() {
 		return cat_no;
 	}

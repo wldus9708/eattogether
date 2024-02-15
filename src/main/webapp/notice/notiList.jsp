@@ -11,6 +11,16 @@
 <link rel="stylesheet" href="/eattogether/css/notiListStyle.css">
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+<style type="text/css">
+#footer_butt {
+	width: 160px;
+	background-color: #FFCD1D;
+}
+
+#inquirybox {
+	margin-top: 130px;
+}
+</style>
 <script type="text/javascript">
 $( function() {
     $( "#accordion" ).accordion({
@@ -122,6 +132,17 @@ $( function() {
 						<li><a href="#">덴뿌라</a></li>
 					</ul>
 				</div>
+				<c:if test="${whologin eq 1 }">
+				<form action="<%=withFormTag%>" method="post">
+					<input type="hidden" name="command" value="inquInsert">
+					<div id="inquirybox">
+					<input type="hidden" id="id" name="id" value="${sessionScope.loginfo.id}">					
+						<textarea id="inq_content" name="inq_content" rows="2" placeholder="문의사항 적는곳"></textarea>
+						<button type="submit" id="footer_butt"
+							onclick="return validCheck();">전송</button>
+					</div>
+				</form>
+			</c:if>
 			</div>
 		</c:if>
 		<div id="box2">

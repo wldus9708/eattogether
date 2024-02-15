@@ -3,8 +3,8 @@ body{
 	background: #F8EBCE;
 }
 #checkphone_wrap{
-	margin-top:30px;
-	margin-left: 30px;
+    margin-top: 50px;
+    margin-left: 100px;
 }
 #check_submit, #check_btUse{
 	background: #ED6D35;

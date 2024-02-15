@@ -10,48 +10,160 @@
 	href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="/eattogether/css/main.css">
 <style>
-@keyframes moveLR {
-    0% { transform: translateX(0) rotate(0deg); }
-    50% { transform: translateX(-15px) rotate(-30deg); }
-    100% { transform: translateX(15px) rotate(30deg); } 
-}
-#main_loadDiv
-{
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    position: fixed;
-    background : #F8EBCE;
-    display: flex;
-    z-index: 999;
-    opacity: 0.9;
+@
+keyframes moveLR { 0% {
+	transform: translateX(0) rotate(0deg);
 }
 
+50
 
-#main_loadImg
+
+
+
+%
 {
-    display: flex;
-    width: fit-content;
-    height: fit-content;
-    margin: auto;
-    animation: moveLR 0.5s ease infinite alternate;
-}	
+transform
+
+
+
+
+:
+
+
+
+
+translateX
+
+
+(
+
+
+
+
+-15px
+
+
+
+
+)
+
+
+
+
+rotate
+
+
+(
+
+
+
+
+-30deg
+
+
+
+
+)
+
+
+;
+}
+100
+
+
+
+
+%
+{
+transform
+
+
+
+
+:
+
+
+
+
+translateX
+
+
+(
+
+
+
+
+15px
+
+
+
+
+)
+
+
+
+
+rotate
+
+
+(
+
+
+
+
+30deg
+
+
+
+
+)
+
+
+;
+}
+}
+#main_loadDiv {
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	position: fixed;
+	background: #F8EBCE;
+	display: flex;
+	z-index: 999;
+	opacity: 0.9;
+}
+
+#main_loadImg {
+	display: flex;
+	width: fit-content;
+	height: fit-content;
+	margin: auto;
+	animation: moveLR 0.5s ease infinite alternate;
+}
+
+#footer_butt {
+	width: 160px;
+	background-color: #FFCD1D;
+}
+
+#inquirybox {
+	margin-top: 130px;
+}
 </style>
 <script>
-$(function() {
+	$(function() {
 		$("#accordion").accordion({
 			collapsible : true
 
 		});
-		
-		
+
 	});
-$(window).on('load', function() {
-    setTimeout(function(){
-        $("#main_loadDiv").fadeOut();
-    }, 300);
-});
+	$(window).on('load', function() {
+		setTimeout(function() {
+			$("#main_loadDiv").fadeOut();
+		}, 300);
+	});
 	function changeImg() {
 		var imageElement = $("#myImage");
 
@@ -60,69 +172,97 @@ $(window).on('load', function() {
 		} else {
 			imageElement.attr('src', './../image/emptystar.png');
 		}
-	} 
+	}
+	function validCheck() {/* 폼 유효성 검사 */
+		var inq_content = $('#inq_content').val();
+		if (inq_content.trim() === '') {
+			alert('글내용이 없습니다.');
+			$('#inq_content').focus();
+			return false;
+		}
+	}
 </script>
 </head>
 <body>
 	<div id="main_loadDiv">
-    	<img id="main_loadImg" src="/eattogether/image/cooker.png">
+		<img id="main_loadImg" src="/eattogether/image/cooker.png">
 	</div>
-		<div id="main_wrap">
-			<div id="main_materialBox00">
-				<div class="recipe_side0">
-					<h3 id="recipe">
-						<a href="<%=notWithFormTag%>reList"><p>레시피</p></a>
-					</h3>
-				</div>
-
-				<div id="accordion">
-					<h3>
-						<a href="<%=notWithFormTag%>reList&mode=cat_no&keyword=1">양식</a>
-					</h3>
-					<ul>
-						<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=파스타">파스타</a></li>
-						<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=리조또">리조또</a></li>
-						<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=스테이크">스테이크</a></li>
-						<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=피자">피자</a></li>
-						<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=오믈렛">오믈렛</a></li>
-					</ul>
-
-					<h3>
-						<a href="#">한식</a>
-					</h3>
-					<ul>
-						<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=김치볶음밥">김치볶음밥</a></li>
-						<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=된장찌개">된장찌개</a></li>
-						<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=김치찌개">김치찌개</a></li>
-						<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=고등어조림">고등어조림</a></li>
-						<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=떡볶이">떡볶이</a></li>
-					</ul>
-
-					<h3>
-						<a href="#">중식</a>
-					</h3>
-					<ul>
-						<li><a href="#">마라탕</a></li>
-						<li><a href="#">탕후루</a></li>
-						<li><a href="#">짬뽕</a></li>
-						<li><a href="#">잡채밥</a></li>
-						<li><a href="#">유린기</a></li>
-					</ul>
-
-					<h3>
-						<a href="#">일식</a>
-					</h3>
-					<ul>
-						<li><a href="#">초밥</a></li>
-						<li><a href="#">호토마키</a></li>
-						<li><a href="#">우동</a></li>
-						<li><a href="#">가라아게</a></li>
-						<li><a href="#">덴뿌라</a></li>
-					</ul>
-				</div>
+	<div id="main_wrap">
+		<div id="main_materialBox00">
+			<div class="recipe_side0">
+				<h3 id="recipe">
+					<a href="<%=notWithFormTag%>reList"><p>레시피</p></a>
+				</h3>
 			</div>
-		<form action="<%=withFormTag %>" method="post">
-		<input type="hidden" name="command" value="main">
+			<div id="accordion">
+				<h3>
+					<a href="<%=notWithFormTag%>reList&mode=cat_no&keyword=1">양식</a>
+				</h3>
+				<ul>
+					<li><a
+						href="<%=notWithFormTag%>reList&mode=rec_header&keyword=파스타">파스타</a></li>
+					<li><a
+						href="<%=notWithFormTag%>reList&mode=rec_header&keyword=리조또">리조또</a></li>
+					<li><a
+						href="<%=notWithFormTag%>reList&mode=rec_header&keyword=스테이크">스테이크</a></li>
+					<li><a
+						href="<%=notWithFormTag%>reList&mode=rec_header&keyword=피자">피자</a></li>
+					<li><a
+						href="<%=notWithFormTag%>reList&mode=rec_header&keyword=오믈렛">오믈렛</a></li>
+				</ul>
+
+				<h3>
+					<a href="#">한식</a>
+				</h3>
+				<ul>
+					<li><a
+						href="<%=notWithFormTag%>reList&mode=rec_header&keyword=김치볶음밥">김치볶음밥</a></li>
+					<li><a
+						href="<%=notWithFormTag%>reList&mode=rec_header&keyword=된장찌개">된장찌개</a></li>
+					<li><a
+						href="<%=notWithFormTag%>reList&mode=rec_header&keyword=김치찌개">김치찌개</a></li>
+					<li><a
+						href="<%=notWithFormTag%>reList&mode=rec_header&keyword=고등어조림">고등어조림</a></li>
+					<li><a
+						href="<%=notWithFormTag%>reList&mode=rec_header&keyword=떡볶이">떡볶이</a></li>
+				</ul>
+
+				<h3>
+					<a href="#">중식</a>
+				</h3>
+				<ul>
+					<li><a href="#">마라탕</a></li>
+					<li><a href="#">탕후루</a></li>
+					<li><a href="#">짬뽕</a></li>
+					<li><a href="#">잡채밥</a></li>
+					<li><a href="#">유린기</a></li>
+				</ul>
+
+				<h3>
+					<a href="#">일식</a>
+				</h3>
+				<ul>
+					<li><a href="#">초밥</a></li>
+					<li><a href="#">호토마키</a></li>
+					<li><a href="#">우동</a></li>
+					<li><a href="#">가라아게</a></li>
+					<li><a href="#">덴뿌라</a></li>
+				</ul>
+			</div>
+			<c:if test="${whologin eq 1 }">
+				<form action="<%=withFormTag%>" method="post">
+					<input type="hidden" name="command" value="inquInsert">
+					<div id="inquirybox">
+					<input type="hidden" id="id" name="id" value="${sessionScope.loginfo.id}">					
+						<textarea id="inq_content" name="inq_content" rows="2" placeholder="문의사항 적는곳"></textarea>
+						<button type="submit" id="footer_butt"
+							onclick="return validCheck();">전송</button>
+					</div>
+				</form>
+			</c:if>
+		</div>
+		<form action="<%=withFormTag%>" method="post">
+			<input type="hidden" name="command" value="main">
 			<div id="main_materialBox">
 				<div id="main_materialBox_left">
 					<div id="main_materialBox_left_1">
@@ -160,66 +300,91 @@ $(window).on('load', function() {
 			</div>
 		</form>
 	</div>
-<script>
-    $(document).ready(function () {
-        var maxElementsUpper = 3;
-        var maxElementsLower = 3;
-        var maxInputLength = 7;
+	<script>
+		$(document)
+				.ready(
+						function() {
+							var maxElementsUpper = 3;
+							var maxElementsLower = 3;
+							var maxInputLength = 7;
 
-        function addElement(inputSelector, containerSelector, maxElements, className) {
-            var inputValue = $(inputSelector + " input").val().trim();
+							function addElement(inputSelector,
+									containerSelector, maxElements, className) {
+								var inputValue = $(inputSelector + " input")
+										.val().trim();
 
-            if (inputValue === "") {
-                if (inputSelector === "#main_input1") {
-                    alert("재료를 입력하세요.");
-                } else if (inputSelector === "#main_input2") {
-                    alert("원하지 않는 재료를 입력하세요.");
-                }
-                return;
-            }
+								if (inputValue === "") {
+									if (inputSelector === "#main_input1") {
+										alert("재료를 입력하세요.");
+									} else if (inputSelector === "#main_input2") {
+										alert("원하지 않는 재료를 입력하세요.");
+									}
+									return;
+								}
 
-            if (inputValue.length > maxInputLength) {
-                alert("입력값은 7글자 이내로 입력하세요.");
-                return;
-            }
+								if (inputValue.length > maxInputLength) {
+									alert("입력값은 7글자 이내로 입력하세요.");
+									return;
+								}
 
-            if ($(containerSelector + " ." + className).length >= maxElements) {
-                alert("최대 " + maxElements + "개까지만 추가할 수 있습니다.");
-                return;
-            }
+								if ($(containerSelector + " ." + className).length >= maxElements) {
+									alert("최대 " + maxElements
+											+ "개까지만 추가할 수 있습니다.");
+									return;
+								}
 
-            var newItem = $("<div>").addClass("inline-block-item " + className);
-            newItem.append($("<span>").text(inputValue));
-            newItem.append($("<span>").addClass("close-icon").text("-").on("click", function () {
-                $(this).parent().remove();
-            }));
+								var newItem = $("<div>").addClass(
+										"inline-block-item " + className);
+								newItem.append($("<span>").text(inputValue));
+								newItem.append($("<span>").addClass(
+										"close-icon").text("-").on("click",
+										function() {
+											$(this).parent().remove();
+										}));
 
-            $(containerSelector).append(newItem);
-            $(inputSelector + " input").val('');
-        }
+								$(containerSelector).append(newItem);
+								$(inputSelector + " input").val('');
+							}
 
-        // 상단 버튼(main_addButton1) 클릭 시 이벤트 처리
-        $("#main_addButton1").on("click", function () {
-            addElement("#main_input1", ".main_selectbox", maxElementsUpper, "upper-item");
-        });
+							// 상단 버튼(main_addButton1) 클릭 시 이벤트 처리
+							$("#main_addButton1")
+									.on(
+											"click",
+											function() {
+												addElement("#main_input1",
+														".main_selectbox",
+														maxElementsUpper,
+														"upper-item");
+											});
 
-        // 하단 버튼(main_addButton2) 클릭 시 이벤트 처리
-        $("#main_addButton2").on("click", function () {
-            addElement("#main_input2", "#main_materialBox_right", maxElementsLower, "lower-item");
-        });
-        
-        // 검색 버튼(main_searchButton) 클릭 시 이벤트 처리
-        $("#main_searchButton").on("click", function () {
-            var upperItemCount = $(".main_selectbox .upper-item").length;
-            var lowerItemCount = $("#main_materialBox_right .lower-item").length;
+							// 하단 버튼(main_addButton2) 클릭 시 이벤트 처리
+							$("#main_addButton2")
+									.on(
+											"click",
+											function() {
+												addElement(
+														"#main_input2",
+														"#main_materialBox_right",
+														maxElementsLower,
+														"lower-item");
+											});
 
-            if (upperItemCount === 0 && lowerItemCount === 0) {
-                alert("재료 또는 먹고싶지않은 재료를 입력하세요.");
-            }
-        });
-   
-    });
-</script>
+							// 검색 버튼(main_searchButton) 클릭 시 이벤트 처리
+							$("#main_searchButton")
+									.on(
+											"click",
+											function() {
+												var upperItemCount = $(".main_selectbox .upper-item").length;
+												var lowerItemCount = $("#main_materialBox_right .lower-item").length;
+
+												if (upperItemCount === 0
+														&& lowerItemCount === 0) {
+													alert("재료 또는 먹고싶지않은 재료를 입력하세요.");
+												}
+											});
+
+						});
+	</script>
 
 </body>
 </html>

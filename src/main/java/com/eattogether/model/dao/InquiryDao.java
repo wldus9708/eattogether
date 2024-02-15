@@ -82,4 +82,45 @@ public class InquiryDao extends SuperDao{
 			return null;
 		}
 	}
+
+	public int insertData(Inquiry bean) {
+		String sql = " insert into inquiry(inq_no, mem_id, inq_content, inq_regdate)" ;
+		sql += " values(seq_inquiry.nextval, ?, ?, sysdate)" ;
+		
+		PreparedStatement pstmt = null ;
+		int cnt = -1 ;
+		
+		try {
+			super.conn = super.getConnection() ;
+			// 자동 커밋 기능을 비활성화 시킵니다.
+			// 실행이 성공적으로 완료된 이후 commit() 메소드를 명시해 줍니다. 
+			conn.setAutoCommit(false);			
+			pstmt = conn.prepareStatement(sql) ;
+			
+			pstmt.setString(1, bean.getMem_id());
+			pstmt.setString(2, bean.getInq_content());
+			
+			cnt = pstmt.executeUpdate() ;			
+			conn.commit();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			
+		} finally {
+			try {
+				if(pstmt != null) {pstmt.close();}
+				super.closeConnection();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		
+		return cnt ;
+	}
 }

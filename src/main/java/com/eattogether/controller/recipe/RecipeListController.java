@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.eattogether.common.Superclass;
 import com.eattogether.model.bean.Recipe;
+import com.eattogether.model.bean.combo01;
 import com.eattogether.model.dao.MemberDao;
 import com.eattogether.model.dao.RecipeDao;
 import com.eattogether.utility.Paging;
@@ -38,7 +39,7 @@ private final String PREFIX = "board/";
 		//int beginRow = 1;
 		//int endRow = 10;
 		
-		List<Recipe> dataList = dao.getDataList(paging);
+		List<combo01> dataList = dao.getDataList(paging);
 		
 		System.out.println("recipe 데이터목록개수 :" + dataList.size());
 		

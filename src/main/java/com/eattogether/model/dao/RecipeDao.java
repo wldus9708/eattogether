@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.eattogether.model.bean.Recipe;
-import com.eattogether.utility.MyUtility;
+import com.eattogether.model.bean.combo01;
 import com.eattogether.utility.Paging;
 
 public class RecipeDao extends SuperDao {
@@ -124,8 +124,7 @@ public class RecipeDao extends SuperDao {
 
 		return bean;
 	}
-
-	public List<Recipe> getDataList(Paging paging) {
+	/*public List<Recipe> getDataList(Paging paging) {
 		String sql = "select rec_no, mem_id, cat_no, rec_header, rec_regdate, rec_photo, rec_hit, rec_popularity, rec_bookmark, rec_material";
 		sql += " , rec_content01, rec_content02, rec_content03, rec_content04, rec_content05, rec_content06, rec_content07, rec_content08, rec_content09, rec_content10";
 		sql += " from (select rank() over(order by rec_regdate desc, rec_no desc) as ranking, rec_no, mem_id, cat_no, rec_header, rec_regdate, rec_photo, rec_hit, rec_popularity, rec_bookmark, rec_material";
@@ -178,6 +177,95 @@ public class RecipeDao extends SuperDao {
 			}
 		}
 		return dataList;
+	}
+*/
+	public List<combo01> getDataList(Paging paging) {
+		String sql = "SELECT r.rec_no, r.mem_id, r.cat_no, r.rec_header, r.rec_regdate, r.rec_photo, r.rec_hit, r.rec_popularity, r.rec_bookmark, r.rec_material";
+		sql += " , r.rec_content01, r.rec_content02, r.rec_content03, r.rec_content04, r.rec_content05, r.rec_content06, r.rec_content07, r.rec_content08, r.rec_content09, r.rec_content10";
+		sql += " , m.mem_name, m.mem_alias, m.mem_birth, m.mem_phone, m.mem_taste, m.mem_picture";
+		sql += " FROM ( SELECT rec_no, mem_id, cat_no, rec_header, rec_regdate, rec_photo, rec_hit, rec_popularity, rec_bookmark, rec_material";
+		sql += " , rec_content01, rec_content02, rec_content03, rec_content04, rec_content05, rec_content06, rec_content07, rec_content08, rec_content09, rec_content10";
+		sql += "  , RANK() OVER (ORDER BY rec_regdate DESC, rec_no DESC) AS ranking";
+		sql += "  FROM recipe r ";
+		
+		String mode = paging.getMode();
+		String keyword = paging.getKeyword();
+
+		if (mode == null || mode.equals("all") || mode.equals("null") || mode.equals("")) {
+		} else {// 전체 모드가 아니면
+			sql += " where " + mode + " like '%" + keyword + "%'";
+		}
+
+		sql += ")r";
+		sql += " JOIN members m ON r.mem_id = m.mem_id";
+		sql += " where ranking between ? and ?";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		List<combo01> dataList = new ArrayList<combo01>();
+		super.conn = super.getConnection();
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, paging.getBeginRow());
+			pstmt.setInt(2, paging.getEndRow());
+
+			rs = pstmt.executeQuery();
+
+			// 요소들 읽어서 컬렉션에 담습니다.
+			while (rs.next()) {
+				dataList.add(this.makeBeanCombo01(rs));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (pstmt != null) {
+					rs.close();
+				}
+				super.closeConnection();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return dataList;
+	}
+	private combo01 makeBeanCombo01(ResultSet rs) {
+		combo01 bean = new combo01();
+		
+		try {
+			bean.setName(rs.getString("mem_name"));
+			bean.setAlias(rs.getString("mem_alias"));			
+			bean.setTaste(rs.getString("mem_taste"));		
+			bean.setRec_no(rs.getString("rec_no"));  
+			bean.setMem_id(rs.getString("mem_id"));  
+			bean.setCat_no(rs.getString("cat_no"));  
+			bean.setRec_header(rs.getString("rec_header"));  
+			bean.setRec_regdate(rs.getString("rec_regdate"));  
+			bean.setRec_photo(rs.getString("rec_photo"));  
+			bean.setRec_hit(rs.getString("rec_hit"));  
+			bean.setRec_popularity(rs.getString("rec_popularity"));  
+			bean.setRec_bookmark(rs.getString("rec_bookmark"));  
+			bean.setRec_material(rs.getString("rec_material"));  
+			bean.setRec_content01(rs.getString("rec_content01"));  
+			bean.setRec_content02(rs.getString("rec_content02"));  
+			bean.setRec_content03(rs.getString("rec_content03"));  
+			bean.setRec_content04(rs.getString("rec_content04"));  
+			bean.setRec_content05(rs.getString("rec_content05")); 
+			bean.setRec_content06(rs.getString("rec_content06"));  
+			bean.setRec_content07(rs.getString("rec_content07"));  
+			bean.setRec_content08(rs.getString("rec_content08"));  
+			bean.setRec_content09(rs.getString("rec_content09"));  
+			bean.setRec_content10(rs.getString("rec_content10"));  
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return bean;
 	}
 
 	public List<Recipe> getDataList(int beginRow, int endRow) {

@@ -80,7 +80,7 @@
 
 		<div class="rec_file">
 			<input type="file" id="image-input" name="rec_photo" accept="image/*">
-			<img src="/eattogether/image/basicicon.png" id="image-preview"
+			<img src="/eattogether/image/${bean.rec_photo}" id="image-preview"
 				alt="사진"> <input type="hidden" name="deleterec_photo"
 				value="${bean.rec_photo}">
 		</div>

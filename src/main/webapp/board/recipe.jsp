@@ -173,10 +173,10 @@
 			<div id="lastrecommend"
 				style="display: flex; justify-content: flex-end;">
 				<div class="recipe_latest">
-					<a href="<%=notWithFormTag%>reList&mode=${requestScope.paging.mode}&keyword=${requestScope.paging.keyword}">최신순</a>
+					<a href="<%=notWithFormTag%>reList&mode=${requestScope.paging.mode}&keyword=${requestScope.paging.keyword}&p=s">최신순</a>
 				</div>
 				<div class="recipe_re">
-					<a href="<%=notWithFormTag%>reList&mode=${requestScope.paging.mode}&keyword=${requestScope.paging.keyword}">조회수</a>
+					<a href="<%=notWithFormTag%>reList&mode=${requestScope.paging.mode}&keyword=${requestScope.paging.keyword}&p=o">조회수</a>
 				</div>
 			</div>
 			<div class="col-sm-1 "></div>

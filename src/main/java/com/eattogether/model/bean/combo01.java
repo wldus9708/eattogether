@@ -4,14 +4,14 @@ public class combo01 {
     private String name;
     private String alias;
     private String taste;
-    private String rec_no;
+    private Integer rec_no;
     private String mem_id;
-    private String cat_no;
+    private Integer cat_no;
     private String rec_header;
     private String rec_regdate;
     private String rec_photo;
-    private String rec_hit;
-    private String rec_popularity;
+    private Integer rec_hit;
+    private Integer rec_popularity;
     private String rec_bookmark;
     private String rec_material;
     private String rec_content01;
@@ -27,49 +27,6 @@ public class combo01 {
 
     public combo01() {
     }
-
-	public combo01(String name, String alias, String taste, String rec_no, String mem_id, String cat_no,
-			String rec_header, String rec_regdate, String rec_photo, String rec_hit, String rec_popularity,
-			String rec_bookmark, String rec_material, String rec_content01, String rec_content02, String rec_content03,
-			String rec_content04, String rec_content05, String rec_content06, String rec_content07,
-			String rec_content08, String rec_content09, String rec_content10) {
-		super();
-		this.name = name;
-		this.alias = alias;
-		this.taste = taste;
-		this.rec_no = rec_no;
-		this.mem_id = mem_id;
-		this.cat_no = cat_no;
-		this.rec_header = rec_header;
-		this.rec_regdate = rec_regdate;
-		this.rec_photo = rec_photo;
-		this.rec_hit = rec_hit;
-		this.rec_popularity = rec_popularity;
-		this.rec_bookmark = rec_bookmark;
-		this.rec_material = rec_material;
-		this.rec_content01 = rec_content01;
-		this.rec_content02 = rec_content02;
-		this.rec_content03 = rec_content03;
-		this.rec_content04 = rec_content04;
-		this.rec_content05 = rec_content05;
-		this.rec_content06 = rec_content06;
-		this.rec_content07 = rec_content07;
-		this.rec_content08 = rec_content08;
-		this.rec_content09 = rec_content09;
-		this.rec_content10 = rec_content10;
-	}
-
-	@Override
-	public String toString() {
-		return "combo01 [name=" + name + ", alias=" + alias + ", taste=" + taste + ", rec_no=" + rec_no + ", mem_id="
-				+ mem_id + ", cat_no=" + cat_no + ", rec_header=" + rec_header + ", rec_regdate=" + rec_regdate
-				+ ", rec_photo=" + rec_photo + ", rec_hit=" + rec_hit + ", rec_popularity=" + rec_popularity
-				+ ", rec_bookmark=" + rec_bookmark + ", rec_material=" + rec_material + ", rec_content01="
-				+ rec_content01 + ", rec_content02=" + rec_content02 + ", rec_content03=" + rec_content03
-				+ ", rec_content04=" + rec_content04 + ", rec_content05=" + rec_content05 + ", rec_content06="
-				+ rec_content06 + ", rec_content07=" + rec_content07 + ", rec_content08=" + rec_content08
-				+ ", rec_content09=" + rec_content09 + ", rec_content10=" + rec_content10 + "]";
-	}
 
 	public String getName() {
 		return name;
@@ -95,11 +52,11 @@ public class combo01 {
 		this.taste = taste;
 	}
 
-	public String getRec_no() {
+	public Integer getRec_no() {
 		return rec_no;
 	}
 
-	public void setRec_no(String rec_no) {
+	public void setRec_no(Integer rec_no) {
 		this.rec_no = rec_no;
 	}
 
@@ -111,11 +68,11 @@ public class combo01 {
 		this.mem_id = mem_id;
 	}
 
-	public String getCat_no() {
+	public Integer getCat_no() {
 		return cat_no;
 	}
 
-	public void setCat_no(String cat_no) {
+	public void setCat_no(Integer cat_no) {
 		this.cat_no = cat_no;
 	}
 
@@ -143,19 +100,19 @@ public class combo01 {
 		this.rec_photo = rec_photo;
 	}
 
-	public String getRec_hit() {
+	public Integer getRec_hit() {
 		return rec_hit;
 	}
 
-	public void setRec_hit(String rec_hit) {
+	public void setRec_hit(Integer rec_hit) {
 		this.rec_hit = rec_hit;
 	}
 
-	public String getRec_popularity() {
+	public Integer getRec_popularity() {
 		return rec_popularity;
 	}
 
-	public void setRec_popularity(String rec_popularity) {
+	public void setRec_popularity(Integer rec_popularity) {
 		this.rec_popularity = rec_popularity;
 	}
 
@@ -255,5 +212,61 @@ public class combo01 {
 		this.rec_content10 = rec_content10;
 	}
 
+	@Override
+	public String toString() {
+		return "combo01 [name=" + name + ", alias=" + alias + ", taste=" + taste + ", rec_no=" + rec_no + ", mem_id="
+				+ mem_id + ", cat_no=" + cat_no + ", rec_header=" + rec_header + ", rec_regdate=" + rec_regdate
+				+ ", rec_photo=" + rec_photo + ", rec_hit=" + rec_hit + ", rec_popularity=" + rec_popularity
+				+ ", rec_bookmark=" + rec_bookmark + ", rec_material=" + rec_material + ", rec_content01="
+				+ rec_content01 + ", rec_content02=" + rec_content02 + ", rec_content03=" + rec_content03
+				+ ", rec_content04=" + rec_content04 + ", rec_content05=" + rec_content05 + ", rec_content06="
+				+ rec_content06 + ", rec_content07=" + rec_content07 + ", rec_content08=" + rec_content08
+				+ ", rec_content09=" + rec_content09 + ", rec_content10=" + rec_content10 + ", getName()=" + getName()
+				+ ", getAlias()=" + getAlias() + ", getTaste()=" + getTaste() + ", getRec_no()=" + getRec_no()
+				+ ", getMem_id()=" + getMem_id() + ", getCat_no()=" + getCat_no() + ", getRec_header()="
+				+ getRec_header() + ", getRec_regdate()=" + getRec_regdate() + ", getRec_photo()=" + getRec_photo()
+				+ ", getRec_hit()=" + getRec_hit() + ", getRec_popularity()=" + getRec_popularity()
+				+ ", getRec_bookmark()=" + getRec_bookmark() + ", getRec_material()=" + getRec_material()
+				+ ", getRec_content01()=" + getRec_content01() + ", getRec_content02()=" + getRec_content02()
+				+ ", getRec_content03()=" + getRec_content03() + ", getRec_content04()=" + getRec_content04()
+				+ ", getRec_content05()=" + getRec_content05() + ", getRec_content06()=" + getRec_content06()
+				+ ", getRec_content07()=" + getRec_content07() + ", getRec_content08()=" + getRec_content08()
+				+ ", getRec_content09()=" + getRec_content09() + ", getRec_content10()=" + getRec_content10()
+				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
+				+ "]";
+	}
+
+	public combo01(String name, String alias, String taste, Integer rec_no, String mem_id, Integer cat_no,
+			String rec_header, String rec_regdate, String rec_photo, Integer rec_hit, Integer rec_popularity,
+			String rec_bookmark, String rec_material, String rec_content01, String rec_content02, String rec_content03,
+			String rec_content04, String rec_content05, String rec_content06, String rec_content07,
+			String rec_content08, String rec_content09, String rec_content10) {
+		super();
+		this.name = name;
+		this.alias = alias;
+		this.taste = taste;
+		this.rec_no = rec_no;
+		this.mem_id = mem_id;
+		this.cat_no = cat_no;
+		this.rec_header = rec_header;
+		this.rec_regdate = rec_regdate;
+		this.rec_photo = rec_photo;
+		this.rec_hit = rec_hit;
+		this.rec_popularity = rec_popularity;
+		this.rec_bookmark = rec_bookmark;
+		this.rec_material = rec_material;
+		this.rec_content01 = rec_content01;
+		this.rec_content02 = rec_content02;
+		this.rec_content03 = rec_content03;
+		this.rec_content04 = rec_content04;
+		this.rec_content05 = rec_content05;
+		this.rec_content06 = rec_content06;
+		this.rec_content07 = rec_content07;
+		this.rec_content08 = rec_content08;
+		this.rec_content09 = rec_content09;
+		this.rec_content10 = rec_content10;
+	}
+
+	
 
 }

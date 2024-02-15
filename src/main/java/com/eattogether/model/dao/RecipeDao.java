@@ -241,14 +241,14 @@ public class RecipeDao extends SuperDao {
 			bean.setName(rs.getString("mem_name"));
 			bean.setAlias(rs.getString("mem_alias"));			
 			bean.setTaste(rs.getString("mem_taste"));		
-			bean.setRec_no(rs.getString("rec_no"));  
+			bean.setRec_no(rs.getInt("rec_no"));  
 			bean.setMem_id(rs.getString("mem_id"));  
-			bean.setCat_no(rs.getString("cat_no"));  
+			bean.setCat_no(rs.getInt("cat_no"));  
 			bean.setRec_header(rs.getString("rec_header"));  
 			bean.setRec_regdate(rs.getString("rec_regdate"));  
 			bean.setRec_photo(rs.getString("rec_photo"));  
-			bean.setRec_hit(rs.getString("rec_hit"));  
-			bean.setRec_popularity(rs.getString("rec_popularity"));  
+			bean.setRec_hit(rs.getInt("rec_hit"));  
+			bean.setRec_popularity(rs.getInt("rec_popularity"));  
 			bean.setRec_bookmark(rs.getString("rec_bookmark"));  
 			bean.setRec_material(rs.getString("rec_material"));  
 			bean.setRec_content01(rs.getString("rec_content01"));  

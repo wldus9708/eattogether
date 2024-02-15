@@ -70,11 +70,15 @@
 					<input type="text" name="rec_material" class="recipe_text_basic"
 						id="basic">
 				</div>
-				<div class="recipe_Update_food-recipe">
-					<span class="recipe_Update_food">1</span> <input type="text"
-						name="rec_content[]" class="recipe_text" id="contents">
+				<div id="recipeFields">
+					<div class="recipe_Update_food-recipe" style="display: flex">
+						<span class="recipe_Update_food" style="margin-right: 10px;">1</span>
+						<input type="text" name="rec_content[]" class="recipe_text"
+							id="contents" style="margin-right: 10px;">
+						<button type="button" class="btn btn-danger remove-field">X</button>
+					</div>
+					<button type="button" class="btn" id="add-recipe">추가</button>
 				</div>
-				<button type="button" class="btn" id="add-recipe">추가</button>
 			</div>
 		</div>
 		<div class="button">
@@ -86,11 +90,19 @@
 	</form>
 	<script>
 		document.addEventListener('DOMContentLoaded', function() {
+			var removeButtons = document.querySelectorAll('.remove-field');
+			removeButtons.forEach(function(button) {
+				button.addEventListener('click', function(event) {
+					var parentElement = event.target.parentNode; // 삭제할 요소의 부모 요소를 가져옵니다.
+					parentElement.remove(); // 부모 요소를 삭제합니다.
+					adjustIndexes(); // 인덱스를 조정합니다.
+				});
+			});
+
 			var addButton = document.getElementById('add-recipe');
 			addButton.addEventListener('click', function() {
 				var recipeUpdateFoodRecipe = document
 						.getElementsByClassName('recipe_Update_food-recipe');
-				// 새로운 입력 필드가 10개 이상이면 더 이상 추가하지 않음
 				if (recipeUpdateFoodRecipe.length >= 10) {
 					alert('최대 10개의 입력 필드만 추가할 수 있습니다.');
 					return;
@@ -98,23 +110,49 @@
 				var newDiv = document.createElement('div');
 				newDiv.className = 'recipe_Update_food-recipe';
 
+				var newContainer = document.createElement('div'); // 텍스트와 x 버튼을 감싸는 컨테이너 추가
+				newContainer.style.display = 'flex'; // 가로로 배치하기 위해 Flexbox 사용
+				newContainer.style.alignItems = 'center'; // 요소들을 세로 중앙 정렬
+
 				var newSpan = document.createElement('span');
 				newSpan.className = 'recipe_Update_food';
 				newSpan.textContent = recipeUpdateFoodRecipe.length + 1;
-				newDiv.appendChild(newSpan);
+				newContainer.appendChild(newSpan);
 
 				var newInput = document.createElement('input');
 				newInput.type = 'text';
 				newInput.className = 'recipe_text';
-				newInput.name = 'rec_content[]'; // 배열 형태로 이름 지정
-				newDiv.appendChild(newInput);
+				newInput.name = 'rec_content[]';
+				newContainer.appendChild(newInput);
+
+				var removeButton = document.createElement('button');
+				removeButton.type = 'button';
+				removeButton.className = 'btn btn-danger remove-field';
+				removeButton.textContent = 'X';
+				removeButton.addEventListener('click', function(event) {
+					var parentElement = event.target.parentNode.parentNode; // 텍스트 입력 필드와 삭제 버튼을 감싸는 부모 요소
+					parentElement.remove(); // 텍스트 입력 필드를 포함하는 부모 요소를 삭제
+					adjustIndexes(); // 인덱스를 조정합니다.
+				});
+				newContainer.appendChild(removeButton);
+
+				newDiv.appendChild(newContainer); // 컨테이너를 새로운 div에 추가
 
 				document.getElementById('add-recipe').parentNode.insertBefore(
 						newDiv, addButton);
+				adjustIndexes(); // 인덱스를 조정합니다.
 			});
-		});	
-	
-		
+		});
+
+		function adjustIndexes() {
+			var recipeUpdateFoodRecipe = document
+					.querySelectorAll('.recipe_Update_food-recipe');
+			recipeUpdateFoodRecipe.forEach(function(item, index) {
+				var span = item.querySelector('.recipe_Update_food');
+				span.textContent = index + 1;
+			});
+		}
+
 		// 파일 입력(input) 엘리먼트
 		const imageInput = document.getElementById('image-input');
 
@@ -147,4 +185,4 @@
 	</script>
 </body>
 </html>
-<%@include file="./../common/mangerfooter.jsp"%>
+<%@ include file="./../common/footer.jsp"%>

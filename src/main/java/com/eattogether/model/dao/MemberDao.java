@@ -24,12 +24,13 @@ public class MemberDao extends SuperDao {
 	    String sql = "SELECT m.mem_id, r.rec_no, r.rec_photo";
 	    sql += " FROM recipe r";
 	    sql += " JOIN members m ON r.mem_id = m.mem_id";
+	    sql += " where r.mem_id =?";
 	    List<combo02> dataList = new ArrayList<>();
 	    super.conn = super.getConnection();
 
 	    try {
 	        pstmt = conn.prepareStatement(sql);
-
+	        pstmt.setString(1, id);
 	        rs = pstmt.executeQuery();
 
 	        // 요소들 읽어서 컬렉션에 담습니다.

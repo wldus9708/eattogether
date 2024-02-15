@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.eattogether.common.Superclass;
 import com.eattogether.model.bean.Member;
+import com.eattogether.model.bean.SHA256Encryption;
 import com.eattogether.model.dao.MemberDao;
 import com.oreilly.servlet.MultipartRequest;
 
@@ -35,6 +36,8 @@ public class MemberUpdateController extends Superclass{
 		bean.setName(mr.getParameter("name"));
 		bean.setAlias(mr.getParameter("alias"));
 		bean.setPassword(mr.getParameter("password"));
+		// 비밀번호를 SHA256으로 암호화 나중에 주석 해제예정
+	    //bean.setPassword(SHA256Encryption.encrypt(mr.getParameter("password")));
 		bean.setPhone(mr.getParameter("phone"));
 		bean.setTaste(mr.getParameter("taste"));
 		bean.setPicture(mr.getFilesystemName("picture"));

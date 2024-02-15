@@ -31,7 +31,7 @@ public class MemberLoginController extends Superclass {
 		System.out.println("아이디 저장 여부:" + checkbox);
 		
 		// 주석 나중에 해제 예정
-		//String hashedPassword = SHA256Encryption.encrypt(password);
+		String hashedPassword = SHA256Encryption.encrypt(password);
 
 
 		MemberDao dao = new MemberDao();

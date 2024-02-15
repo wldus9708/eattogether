@@ -23,16 +23,15 @@
 <script type="text/javascript">
   		$(document).ready(function(){ 
   			/* 이전에 선택했던 카테고리 정보가 자동으로 선택되어 있도록 합니다. */
- 	       var categroyInfo = '${requestScope.bean.cat_no}';
- 	        alert(categroyInfo);
- 	        
- 	       var optionList = $('#category option');
-	         optionList.each(function(){
-	            console.log($(this).val());
-	            if($(this).val() == category){
-	               $('option[value="' + category + '"').attr('selected', true);
+ 	        /* var category = '${bean.cat_no}';
+    
+		    var optionList = $('#cat_no option');
+		    optionList.each(function(){
+		        console.log($(this).val());
+		        if ($(this).val() === category) {
+		            $(this).prop('selected', true);
 	            }
-	         });
+	         }); */
   		}
   		
   		function validCheck(){
@@ -103,15 +102,25 @@
 						value="${sessionScope.loginfo.id}">
 				</div>
 				<div class="recipe_Update_food-basic">
-					<select id="cat_no" name="cat_no" class="recipe_text_basic">
-						<c:set var="cat_no" value="${bean.cat_no}" />
+					
+					<%-- <select id="cat_no" name="categroy" class="recipe_text_basic">
+						<c:set var="cat_no" value="${bean.cat_no}"/>
 						<option value="-">--------카테고리를 선택해주세요.--------</option>
 						<option value="1">양식</option>
 						<option value="2">한식</option>
 						<option value="3">중식</option>
 						<option value="4">일식</option>
+					</select> --%>
+					<select id="cat_no" name="category" class="recipe_text_basic">
+					  <c:set var="selectedValue" value="${bean.cat_no}" />
+					  <option value="-">--------카테고리를 선택해주세요.--------</option>
+					  <option value="1" ${selectedValue eq '1' ? 'selected' : ''}>양식</option>
+					  <option value="2" ${selectedValue eq '2' ? 'selected' : ''}>한식</option>
+					  <option value="3" ${selectedValue eq '3' ? 'selected' : ''}>중식</option>
+					  <option value="4" ${selectedValue eq '4' ? 'selected' : ''}>일식</option>
 					</select>
 				</div>
+				
 				<div class="recipe_Update_food-basic">
 					<input type="text" class="recipe_text_basic" id="basic"
 						name="rec_material" value="${bean.rec_material}">

@@ -46,8 +46,6 @@ private final String PREFIX = "board/";
 		request.setAttribute("paging", paging);//페이징 객체도 바인딩
 		request.setAttribute("dataList", dataList);//상품 목록 reqest 영역에 바인딩
 		
-		request.setAttribute("dataList", dataList);
-		
 		
 		super.gotoPage(PREFIX + "recipe.jsp");
 	}

@@ -176,7 +176,7 @@
 					<a href="<%=notWithFormTag%>reList&mode=${requestScope.paging.mode}&keyword=${requestScope.paging.keyword}">최신순</a>
 				</div>
 				<div class="recipe_re">
-					<a href="<%=notWithFormTag%>reList&rec_hit=${bean.rec_hit}&mode=${requestScope.paging.mode}&keyword=${requestScope.paging.keyword}">조회수</a>
+					<a href="<%=notWithFormTag%>reList&mode=${requestScope.paging.mode}&keyword=${requestScope.paging.keyword}">조회수</a>
 				</div>
 			</div>
 			<div class="col-sm-1 "></div>

@@ -40,12 +40,15 @@ private final String PREFIX = "board/";
 		//int endRow = 10;
 		
 		List<combo01> dataList = dao.getDataList(paging);
+		List<combo01> dataList2 = dao.getDataList2(paging);
 		
 		System.out.println("recipe 데이터목록개수 :" + dataList.size());
 		
 		request.setAttribute("paging", paging);//페이징 객체도 바인딩
 		request.setAttribute("dataList", dataList);//상품 목록 reqest 영역에 바인딩
 		
+		request.setAttribute("dataList", dataList);//상품 목록 reqest 영역에 바인딩
+		request.setAttribute("dataList2", dataList2);
 		
 		super.gotoPage(PREFIX + "recipe.jsp");
 	}

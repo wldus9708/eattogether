@@ -22,11 +22,15 @@ if (phone != null && !phone.isEmpty()) {
 
     $(function(){
         $('#check_submit').click(function(event){
-            var phone = $('#phone').val();
-            var newAction = "checkPhone.jsp?phone=" + phone;
-            $('form[name="frmPhone"]').attr('action', newAction);
-            $('form[name="frmPhone"]').submit(); 
-           
+            if (!validateForm()) {
+                event.preventDefault(); // 폼 제출을 중단
+                alert("전화번호를 입력하세요."); // 알림창 표시
+            } else {
+                var phone = $('#phone').val();
+                var newAction = "checkPhone.jsp?phone=" + phone;
+                $('form[name="frmPhone"]').attr('action', newAction);
+                $('form[name="frmPhone"]').submit(); 
+            }
         });
 
         $('#check_btUse').click(function(){
@@ -36,12 +40,19 @@ if (phone != null && !phone.isEmpty()) {
             window.close();
         });
         
+        function validateForm() {
+            var phone = $('#phone').val();
+            if (phone.trim() === "") {
+                return false; // 입력값이 비어있으면 false 반환
+            }
+            return true; // 유효한 경우 true 반환
+        }
     });
 </script>
 </head>
 <body>
 <div id="checkphone_wrap">
-	<h2>전화번호 중복 검사</h2>
+    <h2>전화번호 중복 검사</h2>
 <br>
 <form name="frmPhone" method="post" action="checkphone.jsp?phone=<%=phone%>">
     <input type="text" name="phone" id="phone" value="<%=phone%>" maxlength="11" placeholder="'-'빼고 입력해주세요" title="전화번호입력">

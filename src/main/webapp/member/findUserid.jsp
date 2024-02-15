@@ -21,13 +21,21 @@ if (name != null && !name.isEmpty() && phone != null && !phone.isEmpty()) {
 <title>아이디 찾기</title>
 <script type="text/javascript">
     $(function() {
-        $('#submit').click(function(event) {
+        $('#findId_submit').click(function(event) {
+            if (!validateForm()) {
+                event.preventDefault(); // 폼 제출을 중단
+                alert("모든 정보를 입력하세요."); // 알림창 표시
+            }
+        });
+        
+        function validateForm() {
             var name = $('#findId_name').val();
             var phone = $('#findId_phone').val();
-            var newAction = "findUserid.jsp?name=" + name + "&phone=" + phone;
-            $('form[name="frmfindId"]').attr('action', newAction);
-            $('form[name="frmfindId"]').submit();
-        });
+            if (name.trim() === "" || phone.trim() === "") {
+                return false; // 입력값이 비어있으면 false 반환
+            }
+            return true; // 유효한 경우 true 반환
+        }
     });
 </script>
 </head>

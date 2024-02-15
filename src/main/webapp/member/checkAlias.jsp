@@ -22,11 +22,15 @@ if (alias != null && !alias.isEmpty()) {
 
     $(function(){
         $('#check_submit').click(function(event){
-            var alias = $('#alias').val();
-            var newAction = "checkAlias.jsp?alias=" + alias;
-            $('form[name="frmAlias"]').attr('action', newAction);
-            $('form[name="frmAlias"]').submit(); 
-           
+            if (!validateForm()) {
+                event.preventDefault(); // 폼 제출을 중단
+                alert("닉네임을 입력하세요."); // 알림창 표시
+            } else {
+                var alias = $('#alias').val();
+                var newAction = "checkAlias.jsp?alias=" + alias;
+                $('form[name="frmAlias"]').attr('action', newAction);
+                $('form[name="frmAlias"]').submit(); 
+            }
         });
 
         $('#check_btUse').click(function(){
@@ -36,25 +40,40 @@ if (alias != null && !alias.isEmpty()) {
             window.close();
         });
         
+        function validateForm() {
+            var alias = $('#alias').val();
+            if (alias.trim() === "") {
+                return false; // 입력값이 비어있으면 false 반환
+            }
+            return true; // 유효한 경우 true 반환
+        }
     });
 </script>
 </head>
 <body>
-<div id="checkAlias_wrap">
-	<h2>닉네임 중복 검사</h2>
-<br>
-<form name="frmAlias" method="post" action="checkAlias.jsp?alias=<%=alias%>">
-    <input type="text" name="alias" id="alias" value="<%=alias%>" title="닉네임 입력">
-    <input type="submit" id="check_submit" value="닉네임 확인">
-    
-    <% if (result == MemberDao.UNUSABLE_ALIAS) { %>
-        <p style="color: red">이미 등록된 닉네임입니다. 다른 아이디를 입력하세요</p>
-    <% } else if (result == MemberDao.USABLE_ALIAS) { %>
-        <input type="button" value="사용하기" id="check_btUse">
-        <p style="color: green">사용 가능한 닉네임입니다. [사용하기] 버튼을 클릭하세요</p>
-    <% } %>
-</form>
-</div>
+	<div id="checkAlias_wrap">
+		<h2>닉네임 중복 검사</h2>
+		<br>
+		<form name="frmAlias" method="post"
+			action="checkAlias.jsp?alias=<%=alias%>">
+			<input type="text" name="alias" id="alias" value="<%=alias%>"
+				title="닉네임 입력"> <input type="submit" id="check_submit"
+				value="닉네임 확인">
+
+			<%
+			if (result == MemberDao.UNUSABLE_ALIAS) {
+			%>
+			<p style="color: red">이미 등록된 닉네임입니다. 다른 아이디를 입력하세요</p>
+			<%
+			} else if (result == MemberDao.USABLE_ALIAS) {
+			%>
+			<input type="button" value="사용하기" id="check_btUse">
+			<p style="color: green">사용 가능한 닉네임입니다. [사용하기] 버튼을 클릭하세요</p>
+			<%
+			}
+			%>
+		</form>
+	</div>
 
 </body>
 </html>

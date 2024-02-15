@@ -110,7 +110,7 @@
 							value="${sessionScope.testList.size() + itemsPerPage - 1}" />
 						<c:if test="${currentPage > 1}">
 							<li class="page-item"><a class="page-link"
-								href="<%=notWithFormTag%>meList&mypage2?page=${currentPage - 1}">Previous</a></li>
+								href="<%=notWithFormTag%>meList&page=${currentPage - 1}">Previous</a></li>
 						</c:if>
 
 						<c:forEach var="pageNumber" begin="1"
@@ -118,13 +118,13 @@
 							<li
 								class="page-item <c:if test='${pageNumber == currentPage}'>active</c:if>'">
 								<a class="page-link"
-								href="<%=notWithFormTag%>meList&mypage2?page=${pageNumber}">${pageNumber}</a>
+								href="<%=notWithFormTag%>meList&page=${pageNumber}">${pageNumber}</a>
 							</li>
 						</c:forEach>
 
 						<c:if test="${currentPage < (totalPages/itemsPerPage)}">
 							<li class="page-item"><a class="page-link"
-								href="<%=notWithFormTag%>meList&mypage2?page=${currentPage + 1}">Next</a></li>
+								href="<%=notWithFormTag%>meList&page=${currentPage + 1}">Next</a></li>
 						</c:if>
 					</ul>
 				</div>

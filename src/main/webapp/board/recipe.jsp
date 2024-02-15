@@ -76,6 +76,7 @@
 		}
 	}
 </script>
+
 </head>
 <body>
 	<br />
@@ -119,7 +120,7 @@
 				<li><a
 					href="<%=notWithFormTag%>reList&mode=rec_header&keyword=김치찌개">김치찌개</a></li>
 				<li><a
-					href="<%=notWithFormTag%>reList&mode=rec_header&keyword=고등어조림">고등어조림</a></li>
+					href="<%=notWithFormTag%>reList&mode=rec_header&keyword=고등어">고등어조림</a></li>
 				<li><a
 					href="<%=notWithFormTag%>reList&mode=rec_header&keyword=떡볶이">떡볶이</a></li>
 			</ul>
@@ -167,16 +168,28 @@
 		<br />
 	</aside>
 
+	<c:set var="a" value="0"></c:set>
 
+    <script>
+        function a() {
+            var newValue = 1;
+            <c:set var="a" value="${newValue}" />
+        }
+        function b() {
+            var newValue = 0;
+            <c:set var="a" value="${newValue}" />
+        }
+    </script>
+	
 	<div class="container mt-3  ">
 		<div class="row ">
 			<div id="lastrecommend"
 				style="display: flex; justify-content: flex-end;">
 				<div class="recipe_latest">
-					<a href="<%=notWithFormTag%>reList&mode=${requestScope.paging.mode}&keyword=${requestScope.paging.keyword}&p=s">최신순</a>
+					<a onclick="a()"; href="<%=notWithFormTag%>reList&mode=${requestScope.paging.mode}&keyword=${requestScope.paging.keyword}&p=${a}">최신순</a>
 				</div>
 				<div class="recipe_re">
-					<a href="<%=notWithFormTag%>reList&mode=${requestScope.paging.mode}&keyword=${requestScope.paging.keyword}&p=o">조회수</a>
+					<a onclick="b()"; href="<%=notWithFormTag%>reList&mode=${requestScope.paging.mode}&keyword=${requestScope.paging.keyword}&p=${a}">조회수</a>
 				</div>
 			</div>
 			<div class="col-sm-1 "></div>
@@ -251,6 +264,7 @@
 												src="/eattogether/image/eye3.png" style="width: 25px" height="25px">&nbsp
 											</a>
 										</div>
+										<a class="user-rocomend" href="<%=notWithFormTag%>reList&rec_regdate=${bean.rec_regdate}">${bean.rec_regdate}
 										<c:if test="${whologin == 1 }">
 											<c:if test="${sessionScope.loginfo.id == bean.mem_id}">
 												<div class="card-body03">

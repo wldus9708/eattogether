@@ -58,7 +58,7 @@
 					<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=김치볶음밥">김치볶음밥</a></li>
 					<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=된장찌개">된장찌개</a></li>
 					<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=김치찌개">김치찌개</a></li>
-					<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=고등어조림">고등어조림</a></li>
+					<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=고등어">고등어조림</a></li>
 					<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=떡볶이">떡볶이</a></li>
 				</ul>
 

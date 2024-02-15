@@ -244,7 +244,7 @@
 											<a class="user-id"
 												href="<%=notWithFormTag%>meDetail&mem_id=${bean.mem_id}">
 												<img src="/eattogether/image/user.png" style="width: 45px"
-												height="45px">${bean.mem_id}
+												height="45px">${bean.alias}
 											</a> <a class="user-rocomend"
 												href="<%=notWithFormTag%>reList&rec_hit=${bean.rec_hit}">
 												${bean.rec_hit}&nbsp&nbsp<img

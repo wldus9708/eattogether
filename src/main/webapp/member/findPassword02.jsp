@@ -8,9 +8,9 @@ String id = request.getParameter("id");
 String phone = request.getParameter("phone");
 MemberDao dao = new MemberDao();
 String result = "";
-if (id != null && !id.isEmpty() && phone != null && !phone.isEmpty()) {
+/* if (id != null && !id.isEmpty() && phone != null && !phone.isEmpty()) {
     result = dao.getDataByIdAndPhone(id, phone);
-}
+} */
 %>
 
 <!DOCTYPE html>

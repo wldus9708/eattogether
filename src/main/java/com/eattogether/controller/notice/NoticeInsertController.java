@@ -24,9 +24,11 @@ public class NoticeInsertController extends Superclass{
 		Notice bean  = new Notice();
 		
 
+		String mem_id = request.getParameter("id");
 		String noti_header = request.getParameter("noti_header");
 		String noti_content = request.getParameter("noti_content");
 
+		bean.setMem_id(mem_id);
 		bean.setNoti_header(noti_header);
 		bean.setNoti_content(noti_content);
 		

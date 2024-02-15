@@ -33,8 +33,7 @@ function deleteNotice(id, paramList){
 	var response = window.confirm('해당 회원을 삭제하시겠습니까?');
 	
 	if(response==true){
-		var url = '<%=notWithFormTag%>
-	manDelete&id=' + id + paramList;
+		var url = '<%=notWithFormTag%>manDelete&id=' + id + paramList;
 			/* alert(url); */
 			location.href = url;
 

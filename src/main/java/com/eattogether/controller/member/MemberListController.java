@@ -21,9 +21,9 @@ public class MemberListController extends Superclass{
 		MemberDao dao = new MemberDao();
 		
 		List<Member> dataList = dao.getDataList(id);
-		//List<combo02> cdataList=dao.getDataList1(id);
+		List<combo02> cdataList=dao.getDataList1(id);
 		request.setAttribute("dataList", dataList);
-		//request.setAttribute("cdataList", cdataList);
+		request.setAttribute("cdataList", cdataList);
 		super.gotoPage(PREFIX + "meList.jsp");
 	}
 	@Override

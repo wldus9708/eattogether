@@ -54,7 +54,7 @@
 					<tr>
 						<td id="myUp05">핸드폰번호</td>
 						<td><input type="text" class="form-control custom-textbox"
-							id=" phone" name=" phone" value="${bean.phone}"></td>
+							id="phone" name="phone" value="${bean.phone}"></td>
 					</tr>
 
 					<tr>

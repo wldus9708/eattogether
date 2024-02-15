@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.eattogether.model.bean.Member;
+import com.eattogether.model.bean.combo02;
 import com.eattogether.utility.Paging;
 
 public class MemberDao extends SuperDao {
@@ -16,6 +17,56 @@ public class MemberDao extends SuperDao {
 	public static final int UNUSABLE_PHONE = 2;
 	public static final int USABLE_ALIAS = 1;
 	public static final int UNUSABLE_ALIAS = 2;
+	
+	public List<combo02> getDataList1(String id) {
+	    PreparedStatement pstmt = null;
+	    ResultSet rs = null;
+	    String sql = "SELECT m.mem_id, r.rec_no, r.rec_photo";
+	    sql += " FROM recipe r";
+	    sql += " JOIN members m ON r.mem_id = m.mem_id";
+	    List<combo02> dataList = new ArrayList<>();
+	    super.conn = super.getConnection();
+
+	    try {
+	        pstmt = conn.prepareStatement(sql);
+
+	        rs = pstmt.executeQuery();
+
+	        // 요소들 읽어서 컬렉션에 담습니다.
+	        while (rs.next()) {
+	            dataList.add(this.makeBeanCombo01(rs));
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            if (rs != null) {
+	                rs.close();
+	            }
+	            if (pstmt != null) {
+	                pstmt.close(); // pstmt로 수정
+	            }
+	            super.closeConnection();
+	        } catch (Exception e2) {
+	            e2.printStackTrace();
+	        }
+	    }
+	    return dataList;
+	}
+	
+	private combo02 makeBeanCombo01(ResultSet rs) {
+	    combo02 bean = new combo02();
+
+	    try {
+	        bean.setId(rs.getString("mem_id")); // "id"를 "mem_id"로 수정
+	        bean.setRec_no(rs.getInt("rec_no"));
+	        bean.setRec_photo(rs.getString("rec_photo"));
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	    return bean;
+	}
 
 	public List<Member> getDataList(Paging paging) {
 		String sql = " select mem_id, mem_name, mem_alias, mem_password, mem_social_key, mem_social_host,mem_birth, mem_phone, mem_taste , mem_picture, mem_flag";

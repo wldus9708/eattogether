@@ -23,8 +23,6 @@
 } /* 상품 번호는 안보이게 지정*/
 </style>
 <body>
-	<h2>상품 등록</h2>
-	<p>관리자가 구매할 상품을 등록하는 페이지입니다.</p>
 	<form action="<%=withFormTag%>" method="post"
 		enctype="multipart/form-data">
 		<input type="hidden" name="command" value="reInsert">

@@ -170,8 +170,6 @@
 
 	<div class="container mt-3  ">
 		<div class="row ">
-			<h2>레시피 목록</h2>
-			<p>레시피 목록이 보여지는 페이지 입니다.</p>
 			<div id="lastrecommend"
 				style="display: flex; justify-content: flex-end;">
 				<div class="recipe_latest">
@@ -250,8 +248,7 @@
 											</a> <a class="user-rocomend"
 												href="<%=notWithFormTag%>reList&rec_hit=${bean.rec_hit}">
 												${bean.rec_hit}&nbsp&nbsp<img
-												src="/eattogether/image/eye3.png" style="width: 25px"
-												height="25px">&nbsp
+												src="/eattogether/image/eye3.png" style="width: 25px" height="25px">&nbsp
 											</a>
 										</div>
 										<c:if test="${whologin == 1 }">

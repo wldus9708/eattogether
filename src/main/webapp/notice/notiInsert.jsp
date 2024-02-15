@@ -46,6 +46,7 @@ body {
 
 		<form action="<%=withFormTag%>" method="post">
 			<input type="hidden" name="command" value="notiInsert">
+			<input type="hidden" id="id" name="id" value="${sessionScope.loginfo.id}">	
 			<div id="noti_no" class="input-group mb-3">
 				<span class="input-group-text">글번호</span> <input type="text"
 					class="form-control" id="noti_no" name="noti_no">

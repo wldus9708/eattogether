@@ -14,7 +14,7 @@ public class NoticeDao extends SuperDao{
 	public int insertData(Notice bean) {
 		// no 컬럼은 시퀀스가 알아서 처리합니다.				
 		String sql = " insert into Notice(noti_no, mem_id, noti_header, noti_content, noti_regdate)" ;
-		sql += " values(seq_Notice.nextval, default, ?, ?, sysdate)" ;
+		sql += " values(seq_Notice.nextval, ?, ?, ?, sysdate)" ;
 		
 		PreparedStatement pstmt = null ;
 		int cnt = -1 ;
@@ -26,8 +26,9 @@ public class NoticeDao extends SuperDao{
 			conn.setAutoCommit(false);			
 			pstmt = conn.prepareStatement(sql) ;
 			
-			pstmt.setString(1, bean.getNoti_header());
-			pstmt.setString(2, bean.getNoti_content());
+			pstmt.setString(1, bean.getMem_id());
+			pstmt.setString(2, bean.getNoti_header());
+			pstmt.setString(3, bean.getNoti_content());
 			
 			cnt = pstmt.executeUpdate() ;			
 			conn.commit();

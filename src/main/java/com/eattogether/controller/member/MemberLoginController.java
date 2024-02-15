@@ -64,15 +64,26 @@ public class MemberLoginController extends Superclass {
 			}
 			
 			
+			Boolean temporaryPasswordUpdated = (Boolean) session.getAttribute("temporaryPasswordUpdated");
+			if (temporaryPasswordUpdated != null && temporaryPasswordUpdated.booleanValue()) {
+			    session.removeAttribute("temporaryPasswordUpdated");
+			    String script = "<script>alert('임시 비밀번호로 로그인되었습니다. 비밀번호를 변경해주세요.'); window.location.href='" + request.getContextPath() + "/member/meUpdate.jsp';</script>";
+			    response.setContentType("text/html;charset=UTF-8");
+			    response.getWriter().println(script);
+			    System.out.println("임시비밀번호로 로그인하여 비밀번호 변경 안내하며 마이페이지로 이동");
+			}else {
+	        	if (bean.getFlag().equals("1")) {
+					System.out.println("회원 메인페이지로 이동합니다.");
+					super.gotoPage("common/main.jsp");
 
-			if (bean.getFlag().equals("1")) {
-				System.out.println("회원 메인페이지로 이동합니다.");
-				super.gotoPage("common/main.jsp");
+				} else if (bean.getFlag().equals("2")) {
+					System.out.println("관리자 메인페이지로 이동합니다.");
+					new ManagerListController().doGet(request, response);
+				}
+	        }
+			
 
-			} else if (bean.getFlag().equals("2")) {
-				System.out.println("관리자 메인페이지로 이동합니다.");
-				new ManagerListController().doGet(request, response);
-			}
+			
 		}
 	}
 

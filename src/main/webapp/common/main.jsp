@@ -10,147 +10,48 @@
 	href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="/eattogether/css/main.css">
 <style>
-@
-keyframes moveLR { 0% {
-	transform: translateX(0) rotate(0deg);
-}
-
-50
-
-
-
-
-%
-{
-transform
-
-
-
-
-:
-
-
-
-
-translateX
-
-
-(
-
-
-
-
--15px
-
-
-
-
-)
-
-
-
-
-rotate
-
-
-(
-
-
-
-
--30deg
-
-
-
-
-)
-
-
-;
-}
-100
-
-
-
-
-%
-{
-transform
-
-
-
-
-:
-
-
-
-
-translateX
-
-
-(
-
-
-
-
-15px
-
-
-
-
-)
-
-
-
-
-rotate
-
-
-(
-
-
-
-
-30deg
-
-
-
-
-)
-
-
-;
-}
-}
-#main_loadDiv {
-	width: 100%;
-	height: 100%;
-	top: 0;
-	left: 0;
-	position: fixed;
-	background: #F8EBCE;
-	display: flex;
-	z-index: 999;
-	opacity: 0.9;
-}
-
-#main_loadImg {
-	display: flex;
-	width: fit-content;
-	height: fit-content;
-	margin: auto;
-	animation: moveLR 0.5s ease infinite alternate;
-}
-
-#footer_butt {
-	width: 160px;
-	background-color: #FFCD1D;
-}
-
-#inquirybox {
-	margin-top: 130px;
-}
+    @keyframes moveLR {
+        0% {
+            transform: translateX(0) rotate(0deg);
+        }
+        50% {
+            transform: translateX(-15px) rotate(-30deg);
+        }
+        100% {
+            transform: translateX(15px) rotate(30deg);
+        }
+    }
+
+    #main_loadDiv {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        position: fixed;
+        background: #F8EBCE;
+        display: flex;
+        z-index: 999;
+        opacity: 0.9;
+    }
+
+    #main_loadImg {
+        display: flex;
+        width: fit-content;
+        height: fit-content;
+        margin: auto;
+        animation: moveLR 0.5s ease infinite alternate;
+    }
+
+    #footer_butt {
+        width: 160px;
+        background-color: #FFCD1D;
+    }
+
+    #inquirybox {
+        margin-top: 130px;
+    }
 </style>
+
 <script>
 	$(function() {
 		$("#accordion").accordion({
@@ -301,90 +202,64 @@ rotate
 		</form>
 	</div>
 	<script>
-		$(document)
-				.ready(
-						function() {
-							var maxElementsUpper = 3;
-							var maxElementsLower = 3;
-							var maxInputLength = 7;
+    $(document).ready(function() {
+        var maxElementsUpper = 3;
+        var maxElementsLower = 3;
+        var maxInputLength = 7;
 
-							function addElement(inputSelector,
-									containerSelector, maxElements, className) {
-								var inputValue = $(inputSelector + " input")
-										.val().trim();
+        function addElement(inputSelector, containerSelector, maxElements, className) {
+            var inputValue = $(inputSelector + " input").val().trim();
 
-								if (inputValue === "") {
-									if (inputSelector === "#main_input1") {
-										alert("재료를 입력하세요.");
-									} else if (inputSelector === "#main_input2") {
-										alert("원하지 않는 재료를 입력하세요.");
-									}
-									return;
-								}
+            if (inputValue === "") {
+                if (inputSelector === "#main_input1") {
+                    alert("재료를 입력하세요.");
+                } else if (inputSelector === "#main_input2") {
+                    alert("원하지 않는 재료를 입력하세요.");
+                }
+                return;
+            }
 
-								if (inputValue.length > maxInputLength) {
-									alert("입력값은 7글자 이내로 입력하세요.");
-									return;
-								}
+            if (inputValue.length > maxInputLength) {
+                alert("입력값은 7글자 이내로 입력하세요.");
+                return;
+            }
 
-								if ($(containerSelector + " ." + className).length >= maxElements) {
-									alert("최대 " + maxElements
-											+ "개까지만 추가할 수 있습니다.");
-									return;
-								}
+            if ($(containerSelector + " ." + className).length >= maxElements) {
+                alert("최대 " + maxElements + "개까지만 추가할 수 있습니다.");
+                return;
+            }
 
-								var newItem = $("<div>").addClass(
-										"inline-block-item " + className);
-								newItem.append($("<span>").text(inputValue));
-								newItem.append($("<span>").addClass(
-										"close-icon").text("-").on("click",
-										function() {
-											$(this).parent().remove();
-										}));
+            var newItem = $("<div>").addClass("inline-block-item " + className);
+            newItem.append($("<span>").text(inputValue));
+            newItem.append($("<span>").addClass("close-icon").text("-").on("click", function() {
+                $(this).parent().remove();
+            }));
 
-								$(containerSelector).append(newItem);
-								$(inputSelector + " input").val('');
-							}
+            $(containerSelector).append(newItem);
+            $(inputSelector + " input").val('');
+        }
 
-							// 상단 버튼(main_addButton1) 클릭 시 이벤트 처리
-							$("#main_addButton1")
-									.on(
-											"click",
-											function() {
-												addElement("#main_input1",
-														".main_selectbox",
-														maxElementsUpper,
-														"upper-item");
-											});
+        // 상단 버튼(main_addButton1) 클릭 시 이벤트 처리
+        $("#main_addButton1").on("click", function() {
+            addElement("#main_input1", ".main_selectbox", maxElementsUpper, "upper-item");
+        });
 
-							// 하단 버튼(main_addButton2) 클릭 시 이벤트 처리
-							$("#main_addButton2")
-									.on(
-											"click",
-											function() {
-												addElement(
-														"#main_input2",
-														"#main_materialBox_right",
-														maxElementsLower,
-														"lower-item");
-											});
+        // 하단 버튼(main_addButton2) 클릭 시 이벤트 처리
+        $("#main_addButton2").on("click", function() {
+            addElement("#main_input2", "#main_materialBox_right", maxElementsLower, "lower-item");
+        });
 
-							// 검색 버튼(main_searchButton) 클릭 시 이벤트 처리
-							$("#main_searchButton")
-									.on(
-											"click",
-											function() {
-												var upperItemCount = $(".main_selectbox .upper-item").length;
-												var lowerItemCount = $("#main_materialBox_right .lower-item").length;
+        // 검색 버튼(main_searchButton) 클릭 시 이벤트 처리
+        $("#main_searchButton").on("click", function() {
+            var upperItemCount = $(".main_selectbox .upper-item").length;
+            var lowerItemCount = $("#main_materialBox_right .lower-item").length;
 
-												if (upperItemCount === 0
-														&& lowerItemCount === 0) {
-													alert("재료 또는 먹고싶지않은 재료를 입력하세요.");
-												}
-											});
-
-						});
-	</script>
+            if (upperItemCount === 0 && lowerItemCount === 0) {
+                alert("재료 또는 먹고싶지않은 재료를 입력하세요.");
+            }
+        });
+    });
+</script>
 
 </body>
 </html>

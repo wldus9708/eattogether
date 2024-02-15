@@ -3,11 +3,9 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="./../common/common.jsp"%>
 <%
-//appName : 애플리케이션 컨텍스트 이름(프로젝트 이름)
 String appName = request.getContextPath();
-String mappingName = "/Eat"; //in FrontController.java file
+String mappingName = "/Eat";
 
-//폼 태그에서 사용할 전역 변수
 String withFormTag = appName + mappingName;
 
 String notWithFormTag = withFormTag + "?command=";
@@ -33,7 +31,16 @@ String notWithFormTag = withFormTag + "?command=";
         }
         return true;
     }
-  
+
+    // 페이지 로드 후 실행되는 함수
+    window.onload = function() {
+        // 임시 비밀번호가 존재하는 경우
+        <% if (session.getAttribute("temporaryPassword") != null) { %>
+            alert("이메일로 임시 비밀번호를 전송했습니다.");
+            <% session.removeAttribute("temporaryPassword"); %> // 세션에서 임시 비밀번호 제거
+            window.close();
+        <% } %>
+    };
 </script>
 </head>
 <body>

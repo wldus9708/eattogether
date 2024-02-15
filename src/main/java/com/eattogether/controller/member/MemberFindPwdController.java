@@ -17,91 +17,96 @@ import com.eattogether.common.Superclass;
 import com.eattogether.model.bean.Member;
 import com.eattogether.model.dao.MemberDao;
 
-public class MemberFindPwdController extends Superclass { 
-    @Override
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws Exception { 
-        super.doPost(request, response); 
+public class MemberFindPwdController extends Superclass {
+    // 이메일 인증 정보
+    private static final String RECIPIENT_ID = "eattogethers@naver.com";
+    private static final String PASSWORD = "abc1234!@";
 
-        String id = request.getParameter("id"); 
-        String name = request.getParameter("name"); 
-        String phone = request.getParameter("phone"); 
-        
-        MemberDao dao = new MemberDao(); // MemberDao 객체 생성
-        Member bean = dao.getDataByIdAndPhoneAndName(id, phone, name); // 아이디, 전화번호, 이름으로 회원 정보 조회
-        System.out.println(bean); // 조회된 회원 정보 출력
-        if (bean == null) { // 회원 정보가 없는 경우
+    @Override
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        super.doPost(request, response);
+
+        String id = request.getParameter("id");
+        String name = request.getParameter("name");
+        String phone = request.getParameter("phone");
+
+        MemberDao dao = new MemberDao();
+        Member bean = dao.getDataByIdAndPhoneAndName(id, phone, name);
+        System.out.println(bean);
+        if (bean == null) {
             setAlertMessage("입력하신 정보가 맞지 않습니다");
-            super.gotoPage("member/findPassword.jsp"); 
-        } else { // 회원 정보가 있는 경우
-            String recipient_id = "eattogethers@naver.com"; // 발신자 이메일 주소
-            String password = "abc1234!@"; // 발신자 이메일 비밀번호
-            
-            String recipient_email = bean.getId(); // 수신자 이메일 주소
-            Properties props = new Properties(); // 속성 객체 생성
-            props.put("mail.smtp.host", "smtp.naver.com"); // SMTP 호스트 설정
-            props.put("mail.smtp.port", "465"); // SMTP 포트 설정
-            props.put("mail.smtp.auth", "true"); // SMTP 인증 설정
-            props.put("mail.smtp.ssl.enable", "true"); // SSL 사용 설정
-            props.put("mail.smtp.starttls.enable", "true"); // STARTTLS 사용 설정
-            props.put("mail.smtp.ssl.protocols", "TLSv1.2"); // SSL 프로토콜 설정
-            
+            super.gotoPage("member/findPassword.jsp");
+        } else {
             // 랜덤 비밀번호 생성
-            String temporaryPassword = generateRandomPassword(); // 임시 비밀번호 생성
-            System.out.println(temporaryPassword); // 생성된 임시 비밀번호 콘솔 출력
-            
+            String temporaryPassword = generateRandomPassword();
+            System.out.println(temporaryPassword);
+
             // 이메일 전송
-            sendEmail(recipient_id, password, recipient_email, bean.getName(), temporaryPassword);
-            
+            boolean emailSent = sendEmail(RECIPIENT_ID, PASSWORD, bean.getId(), bean.getName(), temporaryPassword);
+            if (emailSent) {
+                System.out.println("이메일로 임시 비밀번호 전송 성공");
+                // 비밀번호 업데이트
+                boolean updateSuccess = dao.tempPassword(id, temporaryPassword);
+                if (updateSuccess) {
+                    System.out.println("임시 비밀번호로 업데이트 성공");
+                    // 세션에 임시 비밀번호 업데이트 성공 플래그 설정
+                    HttpSession session = request.getSession();
+                    session.setAttribute("temporaryPasswordUpdated", true);
+                } else {
+                    System.out.println("임시 비밀번호로 업데이트 실패");
+                }
+            } else {
+                System.out.println("이메일로 임시 비밀번호 전송 실패");
+            }
+
             // 세션에 임시 비밀번호 저장
-            HttpSession session = request.getSession(); // 현재 요청에 대한 세션 가져오기
-            session.setAttribute("temporaryPassword", temporaryPassword); // 임시 비밀번호 세션에 저장
-            request.setAttribute("id", id); // 아이디 속성 설정
-            request.getRequestDispatcher("member/findPassword.jsp").forward(request, response); 
+            HttpSession session = request.getSession();
+            session.setAttribute("temporaryPassword", temporaryPassword);
+            request.setAttribute("id", id);
+            response.sendRedirect("member/findPassword.jsp");
         }
     }
 
     // 랜덤 비밀번호 생성 메서드
-    private String generateRandomPassword() { // 랜덤 비밀번호 생성 메소드 선언
-        SecureRandom random = new SecureRandom(); // SecureRandom 객체 생성
-        StringBuilder sb = new StringBuilder(); // StringBuilder 객체 생성
-        String upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // 대문자 알파벳
-        String lowerCase = "abcdefghijklmnopqrstuvwxyz"; // 소문자 알파벳
-        String digits = "0123456789"; // 숫자
-        String specialChars = "!@#$%^&*-_=?~"; // 특수문자
+    private String generateRandomPassword() {
+        SecureRandom random = new SecureRandom();
+        StringBuilder sb = new StringBuilder();
+        String upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String lowerCase = "abcdefghijklmnopqrstuvwxyz";
+        String digits = "0123456789";
+        String specialChars = "!@#$%^&*-_=?~";
 
-        String allChars = upperCase + lowerCase + digits + specialChars; // 모든 문자 조합
-        for (int i = 0; i < 8; i++) { // 8자리 임시 비밀번호 생성
-            int index = random.nextInt(allChars.length()); // 랜덤 인덱스 생성
-            sb.append(allChars.charAt(index)); // 임시 비밀번호에 문자 추가
+        String allChars = upperCase + lowerCase + digits + specialChars;
+        for (int i = 0; i < 8; i++) {
+            int index = random.nextInt(allChars.length());
+            sb.append(allChars.charAt(index));
         }
-        return sb.toString(); // 임시 비밀번호 반환
+        return sb.toString();
     }
 
     // 이메일 전송 메서드
-    private void sendEmail(String recipient_id, String password, String recipient_email, String name, String temporaryPassword) { // 이메일 전송 메소드 선언
-        Properties props = new Properties(); // 속성 객체 생성
-        props.put("mail.smtp.host", "smtp.naver.com"); // SMTP 호스트 설정
-        props.put("mail.smtp.port", "465"); // SMTP 포트 설정
-        props.put("mail.smtp.auth", "true"); // SMTP 인증 설정
-        props.put("mail.smtp.ssl.enable", "true"); // SSL 사용 설정
-        props.put("mail.smtp.starttls.enable", "true"); // STARTTLS 사용 설정
-        props.put("mail.smtp.ssl.protocols", "TLSv1.2"); // SSL 프로토콜 설정
+    private boolean sendEmail(String recipient_id, String password, String recipient_email, String name, String temporaryPassword) {
+        Properties props = new Properties();
+        props.put("mail.smtp.host", "smtp.naver.com");
+        props.put("mail.smtp.port", "465");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.ssl.enable", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.ssl.protocols", "TLSv1.2");
 
-        Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() { // 세션 생성
-            protected PasswordAuthentication getPasswordAuthentication() { // 비밀번호 인증
-                return new PasswordAuthentication(recipient_id, password); // 발신자 이메일 인증 정보 반환
+        Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(recipient_id, password);
             }
         });
 
-        try { // 예외 처리
-            MimeMessage msg = new MimeMessage(session); // MIME 메시지 객체 생성
-            msg.setFrom(new InternetAddress(recipient_id, "(주)오늘 뭐먹지?")); // 발신자 설정
-            msg.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient_email)); // 수신자 설정
-            
-            // 메일 제목 설정
-            msg.setSubject("오늘 뭐먹지?에 요청하신 "+ name + " 님의 임시비밀번호 입니다.");
-            
-            // 메일 내용 설정
+        try {
+            MimeMessage msg = new MimeMessage(session);
+            msg.setFrom(new InternetAddress(recipient_id, "(주)오늘 뭐먹지?"));
+            msg.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient_email));
+
+            msg.setSubject("오늘 뭐먹지?에 요청하신 " + name + " 님의 임시비밀번호 입니다.");
+
             String message = String.format("안녕하세요 %s 회원님!\n\n" +
                                             "비밀번호찾기 요청에 따라 임시 비밀번호를 발급해 드립니다.\n" +
                                             "임시 비밀번호는  %s  입니다.\n" +
@@ -109,13 +114,13 @@ public class MemberFindPwdController extends Superclass {
                                             "--------------------------------------------------------------------\n" +
                                             "감사합니다!\n" +
                                             "(주)오늘 뭐먹지?", name, temporaryPassword);
-            msg.setText(message); // 메일 내용 설정
-            
-            Transport.send(msg); // 메일 전송
-            System.out.println("이메일로 임시 비밀번호 전송 성공"); 
-        } catch (Exception e) { 
-            e.printStackTrace(); 
-            System.out.println("이메일로 임시 비밀번호 전송 실패"); 
+            msg.setText(message);
+
+            Transport.send(msg);
+            return true; // 이메일 전송 성공
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false; // 이메일 전송 실패
         }
     }
 }

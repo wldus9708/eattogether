@@ -12,7 +12,7 @@
 </style>
 </head>
 <body>
-	<c:set var="bean" value="${bean}"></c:set>
+	<c:set var="bean" value="${sessionScope.loginfo}"></c:set>
 	<div id="updateMypage_entir">
 
 		<div id="myupdate_box00">
@@ -33,16 +33,16 @@
 							name="id" value="${bean.id}"></td>
 					</tr>
 					<tr>
-						<td id="myUp02">닉네임</td>
+						<td id="myUp02">이름</td>
 						<td><input type="text" class="form-control" id="fakename"
-							name="fakename" disabled="disabled" value="${bean.alias}">
+							name="fakename" disabled="disabled" value="${bean.name}">
 							<input type="hidden" class="form-control custom-textbox"
-							id="alias" name="alias" value="${bean.alias}"></td>
+							id="name" name="name" value="${bean.name}"></td>
 					</tr>
 					<tr>
-						<td id="myUp03">이름</td>
+						<td id="myUp03">닉네임</td>
 						<td><input type="text" class="form-control custom-textbox"
-							id="name" name="name" value="${bean.name}"></td>
+							id="alias" name="alias" value="${bean.alias}"></td>
 					</tr>
 					<tr>
 						<td id="myUp04">비밀번호</td>
@@ -54,7 +54,7 @@
 					<tr>
 						<td id="myUp05">핸드폰번호</td>
 						<td><input type="text" class="form-control custom-textbox"
-							id="phone" name="phone" value="${bean.phone}"></td>
+							id=" phone" name=" phone" value="${bean.phone}"></td>
 					</tr>
 
 					<tr>
@@ -77,11 +77,8 @@
 				</table>
 				<div class="myupdate_button">
 
-					<div id="update_binselt0">
+					<div id="update_binselt">
 						<button type="submit" id="update_od01">수정</button>
-					</div>
-					<div id="update_binselt1">
-						<button onclick="window.history.back();" id="update_od01">돌아가기</button>
 					</div>
 				</div>
 			</form>

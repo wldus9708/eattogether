@@ -49,7 +49,7 @@ function searchAll(){ /* 전체 검색  */
 </head>
 <body>
 	<div id="contain">
-	<c:if test="${whologin eq 1 }">
+		<c:if test="${whologin != 2 }">
 			<div id="box1">
 				<div class="recipe_side0">
 					<h3 id="recipe">
@@ -125,8 +125,8 @@ function searchAll(){ /* 전체 검색  */
 				</div>
 			</form>
 			<table>
-				
-					<tbody>
+
+				<tbody>
 					<c:forEach var="bean" items="${dataList}">
 						<tr id="inq_header">
 							<th style="width: 5%;" id="in-Information">${bean.inq_no}</th>
@@ -147,13 +147,13 @@ function searchAll(){ /* 전체 검색  */
 								</td>
 							</tr>
 						</c:if>
-						</c:forEach>
-					</tbody>
-				
+					</c:forEach>
+				</tbody>
+
 			</table>
 		</div>
 	</div>
-		${requestScope.paging.pagingHtml}
+	${requestScope.paging.pagingHtml}
 </body>
 </html>
 <%@include file="./../common/mangerfooter.jsp"%>

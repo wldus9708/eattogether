@@ -68,3 +68,4 @@ body {
 	</div>
 </body>
 </html>
+<%@include file="./../common/mangerfooter.jsp"%>

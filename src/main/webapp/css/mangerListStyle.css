@@ -10,6 +10,7 @@ body {
   display: flex;
   align-items: center; /* 세로 중앙 정렬 */
   margin: 50px;
+
 }
 
 #box1,#box2 {
@@ -53,9 +54,8 @@ body {
       background-color: #F8EBCE;
       width: 100%;
       margin: 0 auto;
-      height: 600px;
       display: flex;
-        margin-right: 500px;
+      justify-content: center;
       flex-direction: column;
       padding: 20px;
       box-sizing: border-box;
@@ -112,7 +112,7 @@ body {
     .manger_member table {
         margin: auto; /* 테이블을 가운데 정렬 */
         border-collapse: collapse;
-        width: 700px;
+        width: 800px;
         margin-top: 20px; /* 테이블과 상단 간격 조절 */
         background-color: #fff;
     }

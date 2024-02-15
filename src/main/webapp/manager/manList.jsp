@@ -6,7 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/eattogether/css/mangerListStyle.css">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	/* 필드 검색시 체크한 콤보 박스 상태 보존 */
@@ -29,7 +33,8 @@ function deleteNotice(id, paramList){
 	var response = window.confirm('해당 회원을 삭제하시겠습니까?');
 	
 	if(response==true){
-		var url = '<%=notWithFormTag%>manDelete&id=' + id+ paramList;
+		var url = '<%=notWithFormTag%>
+	manDelete&id=' + id + paramList;
 			/* alert(url); */
 			location.href = url;
 
@@ -74,33 +79,32 @@ function deleteNotice(id, paramList){
 			<div class="manger_member">
 				<table id="man_search">
 					<tr id="man_header">
-						<td style="width: 10%">아이디</td>
-						<td style="width: 10%">이름</td>
-						<td style="width: 10%">닉네임</td>
-						<td style="width: 10%">생일</td>
-						<td style="width: 10%">전화</td>
-						<td style="width: 10%">취향</td>
-						<td style="width: 10%">회원유형</td>
-						<td style="width: 10%">삭제</td>
+						<td style="width: 15%">아이디</td>
+						<td style="width: 15%">이름</td>
+						<td style="width: 15%">닉네임</td>
+						<td style="width: 15%">생일</td>
+						<td style="width: 15%">전화</td>
+						<td style="width: 15%">취향</td>
+						<td style="width: 15%">회원유형</td>
+						<td style="width: 15%"></td>
 					</tr>
 					<c:forEach var="bean" items="${dataList}">
-					<tr>
-						<td>${bean.id}</td>
-						<td>${bean.name}</td>
-						<td>${bean.alias}</td>
-						<td>${bean.birth}</td>
-						<td>${bean.phone}</td>
-						<td>${bean.taste}</td>
-						<td>${bean.flag}</td>
-						<td>
-							<a href="#" id="deleteButton"
-								onclick="return deleteNotice('${bean.id}', '${requestScope.paging.flowParameter}');">삭제</a>
-						</td>
-					</tr>
+						<tr>
+							<td>${bean.id}</td>
+							<td>${bean.name}</td>
+							<td>${bean.alias}</td>
+							<td>${bean.birth}</td>
+							<td>${bean.phone}</td>
+							<td>${bean.taste}</td>
+							<td>${bean.flag}</td>
+							<td><a href="#" id="deleteButton"
+								onclick="return deleteNotice('${bean.id}', '${requestScope.paging.flowParameter}');"><img
+									alt="탈퇴" src="/eattogether/image/minus.png"></a></td>
+						</tr>
 					</c:forEach>
 				</table>
 			</div>
-
+			${requestScope.paging.pagingHtml}
 		</div>
 	</div>
 </body>

@@ -44,6 +44,7 @@ public class MemberUpdateController extends Superclass{
 		int cnt =-1;
 		cnt=dao.updateData(bean);
 		if(cnt==1){//수정 성공
+			super.session.setAttribute("loginfo", bean);
 			new MemberListController().doGet(request, response);
 		}else{//수정 실패	
 			new MemberUpdateController().doGet(request, response);

@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import com.eattogether.common.Superclass;
 import com.eattogether.model.bean.Member;
+import com.eattogether.model.bean.SHA256Encryption;
 import com.eattogether.model.dao.MemberDao;
 
 public class MemberFindPwdController extends Superclass {
@@ -38,15 +39,22 @@ public class MemberFindPwdController extends Superclass {
             super.gotoPage("member/findPassword.jsp");
         } else {
             // 랜덤 비밀번호 생성
+        	
             String temporaryPassword = generateRandomPassword();
-            System.out.println(temporaryPassword);
+            String hashedPassword = SHA256Encryption.encrypt(temporaryPassword);
+            //System.out.println("랜덤으로 생성된 임시 비밀번호 : " + temporaryPassword);
+            //주석해제 예정
+            System.out.println("랜덤으로 생성된 암호화 된 임시 비밀번호 : " + hashedPassword);
 
             // 이메일 전송
             boolean emailSent = sendEmail(RECIPIENT_ID, PASSWORD, bean.getId(), bean.getName(), temporaryPassword);
             if (emailSent) {
                 System.out.println("이메일로 임시 비밀번호 전송 성공");
                 // 비밀번호 업데이트
-                boolean updateSuccess = dao.tempPassword(id, temporaryPassword);
+                
+                //boolean updateSuccess = dao.tempPassword(id, temporaryPassword);
+                //주석 해제 예정
+                boolean updateSuccess = dao.tempPassword(id, hashedPassword);
                 if (updateSuccess) {
                     System.out.println("임시 비밀번호로 업데이트 성공");
                     // 세션에 임시 비밀번호 업데이트 성공 플래그 설정

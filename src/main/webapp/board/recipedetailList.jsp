@@ -20,13 +20,14 @@
 	});
 
 	function changeImg() {
-		var imageElement = $("#myImage");
+	    var imageElement = $("#myImage");
+	    var currentSrc = imageElement.attr('src');
 
-		if (imageElement.attr('src').endsWith('./../image/emptystar.png')) {
-			imageElement.attr('src', './../image/star.png');
-		} else {
-			imageElement.attr('src', './../image/emptystar.png');
-		}
+	    if (currentSrc.includes('/eattogether/image/emptystar.png')) {
+	    	window.location.href ="<%=notWithFormTag%>reStar&rec_no=${bean.rec_no}&tp=0";
+	    } else {
+	    	window.location.href ="<%=notWithFormTag%>reStar&rec_no=${bean.rec_no}&tp=1";
+	    }
 	}
 </script>
 </head>
@@ -105,10 +106,24 @@
 							src="/eattogether/image/likes.png" alt=""> </a>
 					</div>
 					<div>
+					<c:if test="${a==0}">
 						<img id="myImage" class="overlay-image right-align"
 							src="/eattogether/image/emptystar.png" onclick="changeImg()"
 							alt="${bean.rec_bookmark}">
 						<!-- 즐겨찾기 -->
+						</c:if>
+						<c:if test="${a==1}">
+						<img id="myImage" class="overlay-image right-align"
+							src="/eattogether/image/star.png" onclick="changeImg()"
+							alt="${bean.rec_bookmark}">
+						<!-- 즐겨찾기 -->
+						</c:if>
+						<c:if test="${a==null}">
+						<img id="myImage" class="overlay-image right-align"
+							src="/eattogether/image/emptystar.png" onclick="changeImg()"
+							alt="${bean.rec_bookmark}">
+						<!-- 즐겨찾기 -->
+						</c:if>
 					</div>
 				</div>
 				<div id="recipedetail2">

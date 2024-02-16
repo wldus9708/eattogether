@@ -102,10 +102,6 @@
 							<img src="/eattogether/image/eye3.png" style="width: 25px" height="25px" alt=""> </a>
 					</div>
 					<div>
-						<a href="#" class="playBtn"><img
-							src="/eattogether/image/likes.png" alt=""> </a>
-					</div>
-					<div>
 					<c:if test="${a==0}">
 						<img id="myImage" class="overlay-image right-align"
 							src="/eattogether/image/emptystar.png" onclick="changeImg()"

@@ -557,5 +557,85 @@ public class RecipeDao extends SuperDao {
 
 		return cnt;
 	}
+	public int insertData1(Recipe bean,String id) {
+		String sql = " insert into stars(rec_no, mem_id,  rec_photo )";
+		sql += " values(?, ?, ?)";
 
+		PreparedStatement pstmt = null;
+		int cnt = -999999;
+
+		try {
+			super.conn = super.getConnection();
+			conn.setAutoCommit(false);
+
+			pstmt = conn.prepareStatement(sql);
+
+			// 치환은 실행 앞에서 하는거다!!
+			pstmt.setInt(1, bean.getRec_no());
+			pstmt.setString(2, id);
+			pstmt.setString(3, bean.getRec_photo());		
+
+			// 여기가 실행
+			cnt = pstmt.executeUpdate();
+			conn.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			try {
+				conn.rollback();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		} finally {
+			try {
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				super.closeConnection();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return cnt;
+	}
+	public int deleteData1(int rec_no) {
+
+		// 상품은 주문 상세 테이블과 참조 무결성 제약 조건 set null을 가지고 있습니다.
+		// 상품 삭제시 주문 상세 테이블의 remark 컬럼을 갱신하도록 합니다.
+		String sql = "delete from stars where rec_no=? ";
+		PreparedStatement pstmt = null;
+		int cnt = -1;
+
+		try {
+			super.conn = super.getConnection();
+
+			// 자동 커밋 기능을 비활성화 시킵니다.
+			// 실행이 성공적으로 완료된 이후 commit() 메소드를 명시해 줍니다.
+			conn.setAutoCommit(false);
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, rec_no);
+
+			cnt = pstmt.executeUpdate();
+			conn.commit();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		} finally {
+			try {
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				super.closeConnection();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+
+		return cnt;
+	}
 }

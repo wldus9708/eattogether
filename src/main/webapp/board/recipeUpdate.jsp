@@ -23,7 +23,7 @@
 <script type="text/javascript">
   		$(document).ready(function(){ 
   			/* 이전에 선택했던 카테고리 정보가 자동으로 선택되어 있도록 합니다. */
- 	        /* var category = '${bean.cat_no}';
+ 	        var category = '${bean.cat_no}';
     
 		    var optionList = $('#cat_no option');
 		    optionList.each(function(){
@@ -31,7 +31,7 @@
 		        if ($(this).val() === category) {
 		            $(this).prop('selected', true);
 	            }
-	         }); */
+	         }); 
   		}
   		
   		function validCheck(){
@@ -111,7 +111,7 @@
 						<option value="3">중식</option>
 						<option value="4">일식</option>
 					</select> --%>
-					<select id="cat_no" name="category" class="recipe_text_basic">
+					<select id="cat_no" name="cat_no" class="recipe_text_basic">
 					  <c:set var="selectedValue" value="${bean.cat_no}" />
 					  <option value="-">--------카테고리를 선택해주세요.--------</option>
 					  <option value="1" ${selectedValue eq '1' ? 'selected' : ''}>양식</option>

@@ -18,6 +18,7 @@ reUpdate=com.eattogether.controller.recipe.RecipeUpdateController
 reList=com.eattogether.controller.recipe.RecipeListController
 reDelete=com.eattogether.controller.recipe.RecipeDeleteController
 reDetail=com.eattogether.controller.recipe.RecipeDetailController
+reStar=com.eattogether.controller.recipe.RecipeStarController
 # files section
 #fiInsert=com.eattogether.controller.files.FilesInsertController
 #fiUpdate=com.eattogether.controller.files.FilesUpdateController

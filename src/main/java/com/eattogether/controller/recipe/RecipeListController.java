@@ -41,7 +41,7 @@ private final String PREFIX = "board/";
 		
 		List<combo01> dataList = dao.getDataList(paging);
 		List<combo01> dataList2 = dao.getDataList2(paging);
-		
+
 		String p = request.getParameter("p");
 		
 		System.out.println("recipe 데이터목록개수 :" + dataList.size());

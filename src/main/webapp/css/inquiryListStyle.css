@@ -122,7 +122,7 @@
       margin-top: 15px; /* 수정된 부분: 상단 간격 조절 */
 
     }
-    #textBox {   
+    #inq_content {   
       width: calc(100% - 10px);
       margin-bottom: 10px;
      box-sizing: border-box;

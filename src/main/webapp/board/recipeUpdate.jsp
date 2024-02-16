@@ -102,7 +102,7 @@
 						value="${sessionScope.loginfo.id}">
 				</div>
 				<div class="recipe_Update_food-basic">
-					
+
 					<%-- <select id="cat_no" name="categroy" class="recipe_text_basic">
 						<c:set var="cat_no" value="${bean.cat_no}"/>
 						<option value="-">--------카테고리를 선택해주세요.--------</option>
@@ -112,15 +112,15 @@
 						<option value="4">일식</option>
 					</select> --%>
 					<select id="cat_no" name="cat_no" class="recipe_text_basic">
-					  <c:set var="selectedValue" value="${bean.cat_no}" />
-					  <option value="-">--------카테고리를 선택해주세요.--------</option>
-					  <option value="1" ${selectedValue eq '1' ? 'selected' : ''}>양식</option>
-					  <option value="2" ${selectedValue eq '2' ? 'selected' : ''}>한식</option>
-					  <option value="3" ${selectedValue eq '3' ? 'selected' : ''}>중식</option>
-					  <option value="4" ${selectedValue eq '4' ? 'selected' : ''}>일식</option>
+						<c:set var="selectedValue" value="${bean.cat_no}" />
+						<option value="-">--------카테고리를 선택해주세요.--------</option>
+						<option value="1" ${selectedValue eq '1' ? 'selected' : ''}>양식</option>
+						<option value="2" ${selectedValue eq '2' ? 'selected' : ''}>한식</option>
+						<option value="3" ${selectedValue eq '3' ? 'selected' : ''}>중식</option>
+						<option value="4" ${selectedValue eq '4' ? 'selected' : ''}>일식</option>
 					</select>
 				</div>
-				
+
 				<div class="recipe_Update_food-basic">
 					<input type="text" class="recipe_text_basic" id="basic"
 						name="rec_material" value="${bean.rec_material}">
@@ -146,6 +146,11 @@
 		<div class="button">
 			<button class="btn recipe_Update_button" type="submit"
 				id="update_btn01" onclick="return validCheck();">수정</button>
+			<button type="button"  class="btn recipe_Insert_button"
+						onclick="location.href='<%=notWithFormTag%>reList'" 
+				id="update_btn01">
+				돌아가기
+			</button>
 		</div>
 	</form>
 	<script>

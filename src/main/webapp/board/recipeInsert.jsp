@@ -24,59 +24,60 @@
 </style>
 
 <script type="text/javascript">
-		function validCheck(){ 
-			var name = $('#rec_header').val();
-  			if(name.length < 4 || name.length > 10){
-  				alert('제목을 작성해 주세요.');
-  				$('#rec_header').focus() ;
-  				return false ;
-  			}
-  			
-  			var image01 = $('#image-input').val();
-  			if(image01 == ''){
-  				alert('이미지를 넣어주세요.');
-  				return false ;
-  			}
-  			
-  			var isCheck = false ; /* 확장자 체크에 충족하면 true가 됩니다. */
-  			const imgCheck = ['.png', '.jpg'] ; /* 확장자 체크용 배열 */
-  			for(var i=0 ; i < imgCheck.length ; i++){
-  				if(image01.endsWith(imgCheck[i])){
-  					isCheck = true ;
-  					break ;
-  				}	
-  			}
-  			
-  			if(isCheck == false){
-  				alert('이미지의 확장자는 png 또는 jpg 형식이어야 합니다.');
-  				return false ;
-  			}
-  			
-  			var category = $('#category').val();
-  			if(category == '카테고리'){
-  				alert('카테고리를 선택해 주세요.');
-	  			$('#category').focus();
-	  			return false ;
-  			}
+    function validCheck() { 
+        var name = $('#rec_header').val();
+        if(name.length < 4 || name.length > 10){
+            alert('제목을 작성해 주세요.');
+            $('#rec_header').focus() ;
+            return false ;
+        }
+        
+        var image01 = $('#image-input').val();
+        if(image01 == ''){
+            alert('이미지를 넣어주세요.');
+            return false ;
+        }
+        
+        var isCheck = false ; /* 확장자 체크에 충족하면 true가 됩니다. */
+        const imgCheck = ['.png', '.jpg'] ; /* 확장자 체크용 배열 */
+        for(var i=0 ; i < imgCheck.length ; i++){
+            if(image01.endsWith(imgCheck[i])){
+                isCheck = true ;
+                break ;
+            }   
+        }
+        
+        if(isCheck == false){
+            alert('이미지의 확장자는 png 또는 jpg 형식이어야 합니다.');
+            return false ;
+        }
+        
+        var category = $('#category').val();
+        if(category == '카테고리'){
+            alert('카테고리를 선택해 주세요.');
+            $('#category').focus();
+            return false ;
+        }
 
-  			var material = $('#basic').val();
-  			if(material == ''){
-  				alert('재료를 최소 한개 이상 적어주세요.');
-  				$('#basic').focus() ;
-  				return false ;
-  			}  		
-  			
-  			var contents = $('#contents').val();
-  			if(contents == ''){
-  				alert('레시피를 한 개 이상 적어주세요.');
-  				$('#contents').focus() ;
-  				return false ;
-  			} 
+        var material = $('#basic').val();
+        if(material == ''){
+            alert('재료를 최소 한개 이상 적어주세요.');
+            $('#basic').focus() ;
+            return false ;
+        }       
+        
+        var contents = $('#contents').val();
+        if(contents == ''){
+            alert('레시피를 한 개 이상 적어주세요.');
+            $('#contents').focus() ;
+            return false ;
+        } 
 
-  			
-  		}
+        // 나머지 유효성 검사가 있으면 여기에 추가
+        
+        return true; // 모든 검사가 통과되었을 때만 true 반환
+    }
 </script>
-
 <body>
 	<form action="<%=withFormTag%>" method="post"
 		enctype="multipart/form-data">
@@ -108,8 +109,8 @@
 					<c:set var="userInfo"
 						value="${sessionScope.loginfo.name}(${sessionScope.loginfo.id})" />
 					<input type="text" class="form-control" id="fakeid" name="fakeid"
-						value="${userInfo}" disabled="disabled"> 
-					<input type="hidden" id="id" name="mem_id"
+						value="${userInfo}" disabled="disabled"> <input
+						type="hidden" id="id" name="mem_id"
 						value="${sessionScope.loginfo.id}">
 				</div>
 				<div class="recipe_Update_food-basic">
@@ -138,9 +139,14 @@
 		</div>
 		<div class="button">
 			<a>
-				<button type="submit" class="btn recipe_Insert_button" onclick="return validCheck();"
-					id="insert_btn01">등록</button>
+				<button type="submit" class="btn recipe_Insert_button"
+					onclick="return validCheck();" id="insert_btn01">등록</button>
 			</a>
+			<button type="button"  class="btn recipe_Insert_button"
+						onclick="location.href='<%=notWithFormTag%>reList'" 
+				id="insert_btn01">
+				돌아가기
+			</button>
 		</div>
 	</form>
 	<script>

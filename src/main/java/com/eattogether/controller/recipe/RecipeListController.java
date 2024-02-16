@@ -40,7 +40,7 @@ private final String PREFIX = "board/";
 		//int endRow = 10;
 		
 		List<combo01> dataList = dao.getDataList(paging);
-		//List<combo01> dataList2 = dao.getDataList2(paging);
+		List<combo01> dataList2 = dao.getDataList2(paging);
 		
 		String p = request.getParameter("p");
 		
@@ -49,12 +49,13 @@ private final String PREFIX = "board/";
 		request.setAttribute("paging", paging);//페이징 객체도 바인딩
 		
 		request.setAttribute("dataList", dataList);
-//		if(p == "0") {
-//			request.setAttribute("dataList", dataList);
-//		}else {
-//			request.setAttribute("dataList", dataList2);
-//		}
-//		
+		
+		if("s".equals(p)) {
+			request.setAttribute("dataList", dataList);
+		}else {
+			request.setAttribute("dataList", dataList2);
+		}
+		
 		super.gotoPage(PREFIX + "recipe.jsp");
 	}
 }

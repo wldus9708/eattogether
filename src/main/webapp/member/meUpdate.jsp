@@ -80,6 +80,9 @@
 					<div id="update_binselt">
 						<button type="submit" id="update_od01">수정</button>
 					</div>
+					<div id="update_binselt">
+						<a href="<%=notWithFormTag%>meList&id=${sessionScope.loginfo.id}" id="update_od01">돌아가기</a>
+					</div>
 				</div>
 			</form>
 		</div>

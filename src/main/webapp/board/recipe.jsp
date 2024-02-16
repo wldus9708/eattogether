@@ -9,45 +9,15 @@
 <head>
 <meta charset="UTF-8">
 <title>recipe_demo</title>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/eattogether/css/recipedetailStyle.css">
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-<link rel="stylesheet" type="text/css" href="/eattogether/css/recipe.css">
+<link rel="stylesheet" type="text/css"
+	href="/eattogether/css/recipe.css">
 
 <script>
-$(document).ready(function(){
-    // 모든 아코디언 닫기
-    $('#accordion ul').slideUp();
-
-    // 메뉴 버튼 클릭 이벤트 처리
-    $('#accordion h3').click(function(){
-        var $targetUl = $(this).next('ul');
-
-        // 클릭한 메뉴가 이미 열려있는지 확인
-        var isOpen = $targetUl.is(':visible');
-
-        // 클릭한 아코디언이 이미 열려있는 경우는 그대로 유지하고 닫히지 않도록 조건 추가
-        if (!isOpen) {
-            // 다른 메뉴들은 닫도록 처리
-            $('#accordion ul').not($targetUl).slideUp();
-            $targetUl.slideDown();
-        }
-
-
-        // 다른 메뉴들은 닫도록 처리
-        $('#accordion ul').not($targetUl).slideUp();
-
-        // 클릭한 아코디언의 상태를 세션 스토리지에 저장
-        sessionStorage.setItem('selectedAccordion', $(this).text());
-    });
-
-    // 페이지 로드 시 세션 스토리지에서 아코디언 메뉴 상태를 복원
-    var selectedAccordion = sessionStorage.getItem('selectedAccordion');
-    if (selectedAccordion) {
-        $('#accordion h3:contains(' + selectedAccordion + ')').next('ul').slideDown();
-    }
-
     /* 필드 검색시 체크한 콤보 박스 상태 보존 */
     var optionList = $('#mode option');
     for(var i=0 ; i<optionList.length ; i++){
@@ -80,11 +50,6 @@ function writeForm(){
     location.href = '<%=notWithFormTag%>reInsert';
 }
 
-$(function() {
-    $("#accordion").accordion({
-        collapsible : true
-    });
-});
 
 $(".myImage").click(function() {
     changeImg();
@@ -113,7 +78,8 @@ function changeImg() {
 	<aside class="recipe_sidebar">
 
 		<div class="recipe_side0">
-			<a href="<%=notWithFormTag%>reList"><p>레시피<p></a>
+			<a href="<%=notWithFormTag%>reList"><p>레시피
+				<p></a>
 		</div>
 
 		<div id="accordion">
@@ -181,27 +147,51 @@ function changeImg() {
 					href="<%=notWithFormTag%>reList&mode=rec_header&keyword=덴뿌라">덴뿌라</a></li>
 			</ul>
 		</div>
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
+		<br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
 	</aside>
+	<script>
+	$(document).ready(function(){
+	    $("#accordion").accordion({
+	        collapsible: true,
+	        active: false, // 초기에는 모든 아코디언이 닫혀있도록 설정
+	        activate: function(event, ui) {
+	            var index = $(this).accordion("option", "active");
+	            sessionStorage.setItem('selectedAccordion', index);
+	        }
+	    });
 
+	    var selectedAccordion = sessionStorage.getItem('selectedAccordion');
+	    if (selectedAccordion !== null && selectedAccordion !== undefined) {
+	        $("#accordion").accordion("option", "active", parseInt(selectedAccordion));
+	    }
+
+	    // 아코디언 버튼 클릭 이벤트 처리
+	    $("#accordion h3").click(function() {
+	        var index = $(this).index() / 2; // 클릭한 아코디언의 인덱스
+
+	        // 클릭한 아코디언의 인덱스를 저장
+	        sessionStorage.setItem('selectedAccordion', index);
+	        
+	        // 클릭한 아코디언이 이미 열려있는 경우에는 클릭 이벤트 중지
+	        if ($(this).next("div").is(":visible")) {
+	            return false;
+	        }
+	    });
+	});
+
+</script>
 
 	<div class="container mt-3  ">
 		<div class="row ">
 			<div id="lastrecommend"
 				style="display: flex; justify-content: flex-end;">
 				<div class="recipe_latest">
-					<a href="<%=notWithFormTag%>reList&mode=${requestScope.paging.mode}&keyword=${requestScope.paging.keyword}">최신순</a>
+					<a
+						href="<%=notWithFormTag%>reList&mode=${requestScope.paging.mode}&keyword=${requestScope.paging.keyword}">최신순</a>
 				</div>
 				<div class="recipe_re">
-					<a href="<%=notWithFormTag%>reList&rec_hit=${bean.rec_hit}&mode=${requestScope.paging.mode}&keyword=${requestScope.paging.keyword}">조회수</a>
+					<a
+						href="<%=notWithFormTag%>reList&rec_hit=${bean.rec_hit}&mode=${requestScope.paging.mode}&keyword=${requestScope.paging.keyword}">조회수</a>
 				</div>
 			</div>
 			<div class="col-sm-1 "></div>
@@ -221,7 +211,6 @@ function changeImg() {
 													<option value="mem_id">작성자명
 													<option value="rec_header">레시피제목
 													<option value="cat_no">음식이름
-													
 												</select> <input class="form-control-sm" type="text" id="keyword"
 													name="keyword">
 												<button class="form-control-sm btn btn-warning"
@@ -273,7 +262,8 @@ function changeImg() {
 											</a> <a class="user-rocomend"
 												href="<%=notWithFormTag%>reList&rec_hit=${bean.rec_hit}">
 												${bean.rec_hit}&nbsp&nbsp<img
-												src="/eattogether/image/eye3.png" style="width: 25px" height="25px">&nbsp
+												src="/eattogether/image/eye3.png" style="width: 25px"
+												height="25px">&nbsp
 											</a>
 										</div>
 										<c:if test="${whologin == 1 }">

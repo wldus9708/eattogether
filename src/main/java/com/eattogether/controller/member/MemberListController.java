@@ -7,8 +7,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.eattogether.common.Superclass;
 import com.eattogether.model.bean.Member;
+import com.eattogether.model.bean.Star;
 import com.eattogether.model.bean.combo02;
 import com.eattogether.model.dao.MemberDao;
+import com.eattogether.model.dao.RecipeDao;
 
 public class MemberListController extends Superclass{
 	private final String PREFIX = "member/";
@@ -20,10 +22,14 @@ public class MemberListController extends Superclass{
 		System.out.println(id);
 		MemberDao dao = new MemberDao();
 		
+		RecipeDao mdao = new RecipeDao();
+		List<Star> mdataList = mdao.getDataBean1(id);
 		List<Member> dataList = dao.getDataList(id);
 		List<combo02> cdataList=dao.getDataList1(id);
 		request.setAttribute("dataList", dataList);
 		request.setAttribute("cdataList", cdataList);
+		request.setAttribute("mdataList", mdataList);
+		
 		super.gotoPage(PREFIX + "meList.jsp");
 	}
 	@Override

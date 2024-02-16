@@ -62,10 +62,47 @@
                <div>'닉네임'의 즐겨찾기</div>
             </div>
             <div class="submypage_Bookmark02">
-               <img src="/eattogether/image/steak_02.jpg" class="subima"> <img
-                  src="/eattogether/image/steak_02.jpg" class="subima"> <img
-                  src="/eattogether/image/steak_02.jpg" class="subima"> <img
-                  src="/eattogether/image/steak_02.jpg" class="subima">
+               <c:set var="itemsPerPage0" value="4" />
+               <c:set var="currentPage0"
+                  value="${empty param.page0 ? 1 : param.page0}" />
+               <c:set var="startIdx0" value="${(currentPage0 - 1) * itemsPerPage0}" />
+               <c:set var="endIdx0" value="${startIdx0 + itemsPerPage0 - 1}" />
+
+               <c:forEach var="item" items="${mdataList}"
+                  varStatus="loopStatus" begin="${startIdx0}" end="${endIdx0}">
+                  
+                  <a
+                     href="<%=notWithFormTag%>reDetail&rec_no=${item.rec_no}">
+                     <img
+                     src="/eattogether/image/${item.rec_photo}"
+                     class="subima">
+                  </a>
+               </c:forEach>
+               <!-- 부트스트랩 페이징 -->
+               <ul class="pagination pagination-sm justify-content-center">
+                  <c:set var="totalPages0"
+                     value="${mdataList.size() + itemsPerPage0 - 1/itemsPerPage0}" />
+                  <c:if test="${currentPage0 > 1}">
+                     <li class="page-item"><a class="page-link"
+                        href="<%=notWithFormTag%>meList&id=${sessionScope.loginfo.id}&page0=${currentPage0 - 1}">Previous</a></li>
+                  </c:if>
+                     <!-- 여기가 문제 -->
+                  <c:forEach var="pageNumber0" begin="1"
+                     end="${totalPages0/itemsPerPage0}">
+                     <li
+                        class="page-item <c:if test='${pageNumber0 == currentPage0}'>active</c:if>">
+                        <a class="page-link"
+                        href="<%=notWithFormTag%>meList&id=${sessionScope.loginfo.id}&page0=${pageNumber0}">${pageNumber0}</a>
+                     </li>
+                     
+                  </c:forEach>
+                  
+                  <c:if test="${currentPage0 < (totalPages0/itemsPerPage0)}">
+                     <li class="page-item"><a class="page-link"
+                        href="<%=notWithFormTag%>meList&id=${sessionScope.loginfo.id}&page0=${currentPage0 + 1}">Next</a></li>
+                  </c:if>
+               </ul>
+               
             </div>
          </div>
          <div class="mysubpage_box01">
@@ -100,7 +137,7 @@
                   </c:if>
                      <!-- 여기가 문제 -->
                   <c:forEach var="pageNumber1" begin="1"
-                     end="3">
+                     end="${totalPages1/itemsPerPage1}">
                      <li
                         class="page-item <c:if test='${pageNumber1 == currentPage1}'>active</c:if>">
                         <a class="page-link"
@@ -110,7 +147,8 @@
                   </c:forEach>
                   
                   <c:if test="${currentPage1 < (totalPages1/itemsPerPage1)}">
-                     <li class="page-item"><a class="page-link"
+                     <li class="page-item">
+                       <a class="page-link"
                         href="<%=notWithFormTag%>meList&id=${sessionScope.loginfo.id}&page1=${currentPage1 + 1}">Next</a></li>
                   </c:if>
                </ul>

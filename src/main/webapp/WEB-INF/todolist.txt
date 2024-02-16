@@ -43,6 +43,7 @@ notiDelete=com.eattogether.controller.notice.NoticeDeleteController
 #notiDetail=com.eattogether.controller.notice.NoticeDetailController
 # inquiry section
 inquInsert=com.eattogether.controller.inquiry.InquiryInsertController
+inquComment=com.eattogether.controller.inquiry.InquiryCommentController
 #inquUpdate=com.eattogether.controller.inquiry.InquiryUpdateController
 inquList=com.eattogether.controller.inquiry.InquiryListController
 #inquDelete=com.eattogether.controller.inquiry.InquiryDeleteController

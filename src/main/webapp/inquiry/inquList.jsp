@@ -45,6 +45,27 @@ $(document).ready(function(){
 function searchAll(){ /* 전체 검색  */
 	location.href = '<%=notWithFormTag%>inquList';
 	}
+	
+$(document).ready(function(){	
+	var caption = $('button[type="submit"]').text();
+	if(caption=='저장하기'){
+		var URL = '<%=notWithFormTag%>inquComment';
+		
+		var data = $('#comment_form').serialize() ;
+		
+		$.post(URL, data, function(data,status,xhr){
+			$('#inq_content').val(''); /* 입력한 글자 지우기 */
+			return true ;
+			
+		}).fail(function(){
+			alert('댓글 작성에 실패하였습니다.')
+			return false ;
+		});
+		
+		return false ;
+	}
+});
+	
 </script>
 </head>
 <body>
@@ -137,15 +158,20 @@ function searchAll(){ /* 전체 검색  */
 							<th colspan="3" style="width: 50%;" id="in-contents">${bean.inq_content}
 							</th>
 						</tr>
+						<tr><td>${bean.inq_reply}</td></tr>
 						<c:if test="${whologin eq 2 }">
+						<form id="comment_form" method="post" role="form"
+					class="form-horizontal">
 							<tr>
 								<td colspan="3">
 									<div id="textAreaContainer">
-										<textarea id="textBox" placeholder="답글다는곳"></textarea>
-										<button id="sendButton">전송</button>
+										<textarea id=inq_content name="inq_content"
+											placeholder="답글다는곳"></textarea>
+										<button type="submit" id="sendButton">전송</button>
 									</div>
 								</td>
 							</tr>
+							</form>
 						</c:if>
 					</c:forEach>
 				</tbody>

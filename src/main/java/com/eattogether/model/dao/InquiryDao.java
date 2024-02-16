@@ -84,8 +84,8 @@ public class InquiryDao extends SuperDao{
 	}
 
 	public int insertData(Inquiry bean) {
-		String sql = " insert into inquiry(inq_no, mem_id, inq_content, inq_regdate)" ;
-		sql += " values(seq_inquiry.nextval, ?, ?, sysdate)" ;
+		String sql = " insert into inquiry(inq_no, mem_id, inq_content, inq_regdate, inq_reply, inq_groupno, inq_orderno)" ;
+		sql += " values(seq_inquiry.nextval, ?, ?, sysdate,? , seqboard.currval , ?)" ;
 		
 		PreparedStatement pstmt = null ;
 		int cnt = -1 ;
@@ -122,5 +122,94 @@ public class InquiryDao extends SuperDao{
 		
 		
 		return cnt ;
+	}
+
+	public Integer getReplyCount(Integer inq_groupno) {
+		String sql = " select count(*) as cnt from inquiry " ;
+		sql += " where inq_groupno = ? " ;
+		
+		int cnt = -1 ; // 데이터 행 개수
+		
+		PreparedStatement pstmt = null ;
+		ResultSet rs = null ;
+		super.conn = super.getConnection() ;
+		
+		try {
+			pstmt = conn.prepareStatement(sql) ;
+			pstmt.setInt(1, inq_groupno);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				cnt = rs.getInt("cnt") ;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		}finally {
+			try {
+				if(rs!=null) {rs.close();}
+				if(pstmt!=null) {pstmt.close();}
+				super.closeConnection();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		return cnt ;
+	}
+
+	public int replyData(Inquiry bean, Integer inq_orderno) {
+		System.out.println("답글 달기 ");
+		System.out.println(bean);		
+		
+		String sql = "" ;
+		PreparedStatement pstmt = null ;
+		int cnt = - 1 ;
+		
+		super.conn = super.getConnection() ;
+		
+		try {
+			// step 01 : 동일한 그룹 번호에 대하여 orderno 컬럼의 숫자를 1씩 증가 시켜 주어야 합니다.
+			sql = " update inquiry set inq_orderno = inq_orderno + 1 " ;
+			sql += " where inq_groupno = ? and inq_orderno > ? " ;			
+			pstmt = conn.prepareStatement(sql) ;
+			pstmt.setInt(1, bean.getInq_groupno());
+			pstmt.setInt(2, inq_orderno);
+			cnt = pstmt.executeUpdate() ;
+			
+			if(pstmt!=null) {pstmt.close();}
+			
+			// step 02 : 답글(bean) 객체 정보를 이용하여 데이터 베이스에 추가합니다.
+			sql = " insert into inquiry(inq_no, mem_id, inq_content, inq_regdate, inq_reply, inq_groupno, inq_orderno)" ;
+			sql += " values(seq_inquiry.nextval,? ,? ,sysdate, ? , seqboard.currval , ?); " ;
+			pstmt = conn.prepareStatement(sql) ;
+			
+			pstmt.setString(1, bean.getMem_id());
+			pstmt.setString(2, bean.getInq_content());
+			pstmt.setString(3, bean.getInq_reply());
+			pstmt.setInt(4, bean.getInq_groupno());
+			pstmt.setInt(5, bean.getInq_orderno());
+			
+			cnt = pstmt.executeUpdate() ;
+			conn.commit();
+			
+		} catch (SQLException e) {			
+			e.printStackTrace();
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		} finally {
+			try {
+				if(pstmt!=null) {pstmt.close();}
+				super.closeConnection();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		return cnt;
 	}
 }

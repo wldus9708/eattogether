@@ -11,6 +11,7 @@ import com.eattogether.common.Superclass;
 import com.eattogether.model.bean.Member;
 import com.eattogether.model.bean.Recipe;
 import com.eattogether.model.bean.Star;
+import com.eattogether.model.bean.combo01;
 import com.eattogether.model.dao.RecipeDao;
 
 public class RecipeDetailController extends Superclass {
@@ -26,10 +27,18 @@ public class RecipeDetailController extends Superclass {
 		Recipe bean = dao.getDataBean(rec_no);
 	
 		Star mbean =dao.getDataBean0(rec_no);
+		combo01 combo=dao.getDateBean3(rec_no);
+		
+		request.setAttribute("combo", combo);
 		System.out.println(mbean);
-		if (rec_no == mbean.getRec_no()) {
-			request.setAttribute("a", 1);
+		if(mbean==null) {
+			request.setAttribute("a", 0);
+		}else {
+			if (rec_no == mbean.getRec_no()) {
+				request.setAttribute("a", 1);
+			}
 		}
+		
 		if (bean == null) {
 			super.setAlertMessage("로그인을 하셔야 합니다.");
 			super.gotoPage(PREFIX + "recipedetailList.jsp"); // 페이지 확인

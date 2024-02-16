@@ -95,7 +95,7 @@
 					</div>
 					<div>
 						<a href="/eattogether/member/Submypage2.jsp" class="userId"><span
-							id="recipeDetail_Id">${bean.mem_id}</span></a>
+							id="recipeDetail_Id">${combo.alias}</span></a>
 					</div>
 					<div>
 						<a href="#" class="upBtn"><span id="recipeUp">${bean.rec_hit}</span>

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.eattogether.common.Superclass;
 import com.eattogether.model.bean.Member;
 import com.eattogether.model.bean.Recipe;
+import com.eattogether.model.bean.combo01;
 import com.eattogether.model.dao.RecipeDao;
 
 public class RecipeStarController extends Superclass{
@@ -22,6 +23,10 @@ public void doGet(HttpServletRequest request, HttpServletResponse response) thro
 	List<String> recContents = bean.getRec_contents();
 	Member loginfo = (Member) session.getAttribute("loginfo");
 	String id=loginfo.getId();
+	
+	combo01 combo=dao.getDateBean3(rec_no);
+	
+	request.setAttribute("combo", combo);
 	// 각각의 텍스트 내용을 request에 저장합니다.
 	for (int i = 0; i < recContents.size(); i++) {
 		request.setAttribute("rec_content" + (i + 1), recContents.get(i));

@@ -733,4 +733,48 @@ public class RecipeDao extends SuperDao {
 		}
 		return bean;
 	}
+
+	public combo01 getDateBean3(int rec_no) {
+		String sql = "SELECT r.rec_no, r.mem_id, r.cat_no, r.rec_header, r.rec_regdate, r.rec_photo, r.rec_hit, r.rec_popularity, r.rec_bookmark,";
+		sql+= " r.rec_material, r.rec_content01, r.rec_content02, r.rec_content03, r.rec_content04, r.rec_content05, r.rec_content06,";
+		sql+= " r.rec_content07, r.rec_content08, r.rec_content09, r.rec_content10, m.mem_name, m.mem_alias, m.mem_birth, m.mem_phone,";
+		sql+= " m.mem_taste, m.mem_picture";
+		sql+= " FROM recipe r";
+		sql+= " JOIN members m ON r.mem_id = m.mem_id";				
+		sql += " where rec_no = ?";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		combo01 bean = null;
+		super.conn = super.getConnection();
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, rec_no);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				bean=this.makeBeanCombo01(rs);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				super.closeConnection();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		System.out.println("bean 데이터 조회 결과 : ");
+		System.out.println(bean);
+
+		return bean;
+	}
 }

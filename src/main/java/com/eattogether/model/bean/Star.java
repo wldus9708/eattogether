@@ -2,6 +2,8 @@ package com.eattogether.model.bean;
 
 public class Star {
 	private Integer rec_no;
+	private String mem_id;
+    private String rec_photo;
 	public Star() {}
 	public Star(Integer rec_no, String mem_id, String rec_photo) {
 		super();
@@ -31,6 +33,4 @@ public class Star {
 	public void setRec_photo(String rec_photo) {
 		this.rec_photo = rec_photo;
 	}
-	private String mem_id;
-    private String rec_photo;
 }

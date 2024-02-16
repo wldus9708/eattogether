@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.eattogether.model.bean.Recipe;
+import com.eattogether.model.bean.Star;
 import com.eattogether.model.bean.combo01;
 import com.eattogether.utility.Paging;
 
@@ -599,6 +600,8 @@ public class RecipeDao extends SuperDao {
 	}
 	public int deleteData1(int rec_no) {
 
+		
+
 		// 상품은 주문 상세 테이블과 참조 무결성 제약 조건 set null을 가지고 있습니다.
 		// 상품 삭제시 주문 상세 테이블의 remark 컬럼을 갱신하도록 합니다.
 		String sql = "delete from stars where rec_no=? ";
@@ -637,5 +640,57 @@ public class RecipeDao extends SuperDao {
 		}
 
 		return cnt;
+	}
+	public List<Star> getDataBean1(String id) {
+		String sql = "select * from stars";
+		sql += " where mem_id = ?";
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Recipe bean = null;
+		List<Star> dataList = new ArrayList<Star>();
+		super.conn = super.getConnection();
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, id);
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				dataList.add(this.makeBeanstars(rs));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				super.closeConnection();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+
+		return dataList;
+	}
+
+	private Star makeBeanstars(ResultSet rs) {
+		Star bean = new Star();
+		
+		try {	
+			bean.setRec_no(rs.getInt("rec_no"));  
+			bean.setMem_id(rs.getString("mem_id"));  
+			bean.setRec_photo(rs.getString("rec_photo"));  
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return bean;
 	}
 }

@@ -57,10 +57,29 @@
 							id="phone" name="phone" value="${bean.phone}"></td>
 					</tr>
 
-					<tr>
-						<td id="myUp06">좋아하는 음식</td>
-						<td><input type="text" class="form-control custom-textbox"
-							id="taste" name="taste" value="${bean.taste}"></td>
+					<tr class="join_form_container">
+						<td id="myUp06" class="join_label" for="favorite_food">좋아하는 음식:</td>
+						<td class="join_food_opt_container">
+							<label class="join_food_opt_label" for="join_favorite_food1">
+								<input class="join_food_opt" type="checkbox"
+								id="join_favorite_food1" name="taste" value="한식">
+								한식
+							</label> <label class="join_food_opt_label" for="join_favorite_food2">
+								<input class="join_food_opt" type="checkbox"
+								id="join_favorite_food2" name="taste" value="일식">
+								일식
+							</label> <label class="join_food_opt_label" for="join_favorite_food3">
+								<input class="join_food_opt" type="checkbox"
+								id="join_favorite_food3" name="taste" value="양식">
+								양식
+							</label> <label class="join_food_opt_label" for="join_favorite_food4">
+								<input class="join_food_opt" type="checkbox"
+								id="join_favorite_food4" name="taste" value="중식">
+								중식
+							</label>
+						</td>
+						<span id="join_favoriteFoodError" class="join_error_next_box"></span>
+					
 					</tr>
 					<tr>
 						<td id="myUp07">프로필사진</td>

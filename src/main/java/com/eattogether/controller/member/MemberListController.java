@@ -18,7 +18,8 @@ public class MemberListController extends Superclass{
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		super.doGet(request, response);
-		String id=request.getParameter("id");
+		Member loginfo = (Member) session.getAttribute("loginfo");
+		String id=loginfo.getId();
 		System.out.println(id);
 		MemberDao dao = new MemberDao();
 		

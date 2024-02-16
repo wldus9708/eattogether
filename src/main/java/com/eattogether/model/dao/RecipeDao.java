@@ -186,7 +186,7 @@ public class RecipeDao extends SuperDao {
 		sql += " , r.rec_content01, r.rec_content02, r.rec_content03, r.rec_content04, r.rec_content05, r.rec_content06, r.rec_content07, r.rec_content08, r.rec_content09, r.rec_content10";
 		sql += " , m.mem_name, m.mem_alias, m.mem_birth, m.mem_phone, m.mem_taste, m.mem_picture";
 		sql += " FROM ( SELECT rec_no, mem_id, cat_no, rec_header, rec_regdate, rec_photo, rec_hit, rec_popularity, rec_bookmark, rec_material";
-		sql += " , rec_content01, rec_content02, rec_content03, rec_content04, rec_content05, rec_content06, rec_content07, rec_content08, rec_content09, rec_content10";		
+		sql += " , rec_content01, rec_content02, rec_content03, rec_content04, rec_content05, rec_content06, rec_content07, rec_content08, rec_content09, rec_content10";
 		sql += "  , RANK() OVER (ORDER BY rec_regdate DESC, rec_no DESC) AS ranking";
 		sql += "  FROM recipe r ";
 		
@@ -194,19 +194,13 @@ public class RecipeDao extends SuperDao {
 		String keyword = paging.getKeyword();
 
 		if (mode == null || mode.equals("all") || mode.equals("null") || mode.equals("")) {
-			sql += ")r";
-			sql += " JOIN members m ON r.mem_id = m.mem_id";
-			sql += " where ranking between ? and ?";
 		} else {// 전체 모드가 아니면
 			sql += " where " + mode + " like '%" + keyword + "%'";
-			sql += ")r";
-			sql += " JOIN members m ON r.mem_id = m.mem_id";
-			sql += " where ranking between ? and ?";
-			sql += " order by r.rec_regdate desc, r.rec_no desc";
 		}
-		
-		System.out.println("sql : ");
-		System.out.println(sql);
+
+		sql += ")r";
+		sql += " JOIN members m ON r.mem_id = m.mem_id";
+		sql += " where ranking between ? and ?";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
@@ -256,20 +250,13 @@ public class RecipeDao extends SuperDao {
 		String keyword = paging.getKeyword();
 
 		if (mode == null || mode.equals("all") || mode.equals("null") || mode.equals("")) {
-			sql += ")r";
-			sql += " JOIN members m ON r.mem_id = m.mem_id";
-			sql += " where ranking between ? and ?";
-			
 		} else {// 전체 모드가 아니면
 			sql += " where " + mode + " like '%" + keyword + "%'";
-			sql += ")r";
-			sql += " JOIN members m ON r.mem_id = m.mem_id";
-			sql += " where ranking between ? and ?";
-			sql += " order by r.rec_hit DESC, r.rec_no desc";
 		}
 
-		
-
+		sql += ")r";
+		sql += " JOIN members m ON r.mem_id = m.mem_id";
+		sql += " where ranking between ? and ?";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
@@ -692,6 +679,46 @@ public class RecipeDao extends SuperDao {
 
 		return dataList;
 	}
+	
+	public Star getDataBean0(int rec_no) {
+		String sql = "select * from stars";
+		sql += " where rec_no = ?";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Star bean = null;
+		super.conn = super.getConnection();
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, rec_no);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				bean = this.makeBeanstars(rs);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				super.closeConnection();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		System.out.println("bean 데이터 조회 결과 : ");
+		System.out.println(bean);
+
+		return bean;
+	}
+
 
 	private Star makeBeanstars(ResultSet rs) {
 		Star bean = new Star();

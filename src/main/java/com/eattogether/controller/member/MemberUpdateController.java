@@ -39,7 +39,20 @@ public class MemberUpdateController extends Superclass{
 		// 비밀번호를 SHA256으로 암호화 나중에 주석 해제예정
 	    //bean.setPassword(SHA256Encryption.encrypt(mr.getParameter("password")));
 		bean.setPhone(mr.getParameter("phone"));
-		bean.setTaste(mr.getParameter("taste"));
+		String taste = "";
+        String[] tastes = mr.getParameterValues("taste");
+        if (tastes == null) {
+            taste = null;
+        } else { // 음식 체크박스 마지막 요소에는 ,가 안생기게 설정
+            for (int i = 0; i < tastes.length; i++) {
+                if(tastes.length-1 == i) {
+                    taste += tastes[i];
+                }else {
+                    taste += tastes[i] + ",";
+                }
+            }
+        }
+        bean.setTaste(taste);
 		bean.setPicture(mr.getFilesystemName("picture"));
 		System.out.println("post");
 		System.out.println(bean);

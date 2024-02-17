@@ -13,6 +13,7 @@ meList=com.eattogether.controller.member.MemberListController
 meDelete=com.eattogether.controller.member.MemberDeleteController
 meMessage=com.eattogether.controller.member.MemberMessageController
 #meDetail=com.eattogether.controller.member.MemberDetailController
+mePicture=com.eattogether.controller.member.MemberPictureController
 # recipe section
 reInsert=com.eattogether.controller.recipe.RecipeInsertController
 reUpdate=com.eattogether.controller.recipe.RecipeUpdateController

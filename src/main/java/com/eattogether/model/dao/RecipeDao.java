@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import com.eattogether.model.bean.Recipe;
@@ -12,7 +13,79 @@ import com.eattogether.model.bean.combo01;
 import com.eattogether.utility.Paging;
 
 public class RecipeDao extends SuperDao {
-	
+
+	public List<Recipe> getPicture(String[] a, String[] b) {
+		String sql = "select rec_no, rec_photo from recipe";
+
+		if (a != null && a[0]!="") {
+			sql += " where (";
+			for (int i = 0; i < a.length; i++) {
+				sql += " rec_material LIKE '%" + a[i] + "%'";
+				if (i < a.length - 1) {
+					sql += " or";
+				}
+			}
+			sql += ")";
+			if (b[0]!="") {
+				sql += " and";
+			}
+		}
+		if (b != null && b[0]!="") {
+			sql+=" (";
+			for (int i = 0; i < b.length; i++) {
+				sql += " rec_material NOT LIKE '%" + b[i] + "%'";
+				if (i < b.length - 1) {
+					sql += " and";
+				}
+			}
+			sql+=" )";
+		}
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		List<Recipe> dataList = new ArrayList<Recipe>();
+		super.conn = super.getConnection();
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			// 요소들 읽어서 컬렉션에 담습니다.
+			while (rs.next()) {
+				Recipe bean = new Recipe();
+				bean.setRec_no(rs.getInt("rec_no"));
+				bean.setRec_photo(rs.getString("rec_photo"));
+				dataList.add(bean);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				super.closeConnection();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		System.out.println(sql);
+		System.out.println(dataList);
+		List<Recipe> datalist = new ArrayList<>();
+		if (dataList.size() > 3) {
+		    for (int i = 0; i < 3; i++) {
+		        Collections.shuffle(dataList);
+		        datalist.add(dataList.get(0));
+		        dataList.remove(0);
+		    }
+		}
+		return datalist;
+	}
+
 	public void updateReadhit(int rec_no) {
 		String sql = " update recipe set rec_hit = rec_hit + 1 where rec_no = ? ";
 		PreparedStatement pstmt = null;
@@ -126,61 +199,43 @@ public class RecipeDao extends SuperDao {
 
 		return bean;
 	}
-	/*public List<Recipe> getDataList(Paging paging) {
-		String sql = "select rec_no, mem_id, cat_no, rec_header, rec_regdate, rec_photo, rec_hit, rec_popularity, rec_bookmark, rec_material";
-		sql += " , rec_content01, rec_content02, rec_content03, rec_content04, rec_content05, rec_content06, rec_content07, rec_content08, rec_content09, rec_content10";
-		sql += " from (select rank() over(order by rec_regdate desc, rec_no desc) as ranking, rec_no, mem_id, cat_no, rec_header, rec_regdate, rec_photo, rec_hit, rec_popularity, rec_bookmark, rec_material";
-		sql += " , rec_content01, rec_content02, rec_content03, rec_content04, rec_content05, rec_content06, rec_content07, rec_content08, rec_content09, rec_content10";
-		sql += " from recipe ";
 
-		String mode = paging.getMode();
-		String keyword = paging.getKeyword();
-
-		if (mode == null || mode.equals("all") || mode.equals("null") || mode.equals("")) {
-		} else {// 전체 모드가 아니면
-			sql += " where " + mode + " like '%" + keyword + "%'";
-		}
-
-		sql += ")";
-		sql += " where ranking between ? and ?";
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-
-		List<Recipe> dataList = new ArrayList<Recipe>();
-
-		super.conn = super.getConnection();
-
-		try {
-			pstmt = conn.prepareStatement(sql);
-
-			pstmt.setInt(1, paging.getBeginRow());
-			pstmt.setInt(2, paging.getEndRow());
-
-			rs = pstmt.executeQuery();
-
-			// 요소들 읽어서 컬렉션에 담습니다.
-			while (rs.next()) {
-				Recipe bean = this.resultSet2Bean(rs);
-				dataList.add(bean);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (rs != null) {
-					rs.close();
-				}
-				if (pstmt != null) {
-					rs.close();
-				}
-				super.closeConnection();
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
-		}
-		return dataList;
-	}
-*/
+	/*
+	 * public List<Recipe> getDataList(Paging paging) { String sql =
+	 * "select rec_no, mem_id, cat_no, rec_header, rec_regdate, rec_photo, rec_hit, rec_popularity, rec_bookmark, rec_material"
+	 * ; sql +=
+	 * " , rec_content01, rec_content02, rec_content03, rec_content04, rec_content05, rec_content06, rec_content07, rec_content08, rec_content09, rec_content10"
+	 * ; sql +=
+	 * " from (select rank() over(order by rec_regdate desc, rec_no desc) as ranking, rec_no, mem_id, cat_no, rec_header, rec_regdate, rec_photo, rec_hit, rec_popularity, rec_bookmark, rec_material"
+	 * ; sql +=
+	 * " , rec_content01, rec_content02, rec_content03, rec_content04, rec_content05, rec_content06, rec_content07, rec_content08, rec_content09, rec_content10"
+	 * ; sql += " from recipe ";
+	 * 
+	 * String mode = paging.getMode(); String keyword = paging.getKeyword();
+	 * 
+	 * if (mode == null || mode.equals("all") || mode.equals("null") ||
+	 * mode.equals("")) { } else {// 전체 모드가 아니면 sql += " where " + mode + " like '%"
+	 * + keyword + "%'"; }
+	 * 
+	 * sql += ")"; sql += " where ranking between ? and ?"; PreparedStatement pstmt
+	 * = null; ResultSet rs = null;
+	 * 
+	 * List<Recipe> dataList = new ArrayList<Recipe>();
+	 * 
+	 * super.conn = super.getConnection();
+	 * 
+	 * try { pstmt = conn.prepareStatement(sql);
+	 * 
+	 * pstmt.setInt(1, paging.getBeginRow()); pstmt.setInt(2, paging.getEndRow());
+	 * 
+	 * rs = pstmt.executeQuery();
+	 * 
+	 * // 요소들 읽어서 컬렉션에 담습니다. while (rs.next()) { Recipe bean =
+	 * this.resultSet2Bean(rs); dataList.add(bean); } } catch (SQLException e) {
+	 * e.printStackTrace(); } finally { try { if (rs != null) { rs.close(); } if
+	 * (pstmt != null) { rs.close(); } super.closeConnection(); } catch (Exception
+	 * e2) { e2.printStackTrace(); } } return dataList; }
+	 */
 	public List<combo01> getDataList(Paging paging) {
 		String sql = "SELECT r.rec_no, r.mem_id, r.cat_no, r.rec_header, r.rec_regdate, r.rec_photo, r.rec_hit, r.rec_popularity, r.rec_bookmark, r.rec_material";
 		sql += " , r.rec_content01, r.rec_content02, r.rec_content03, r.rec_content04, r.rec_content05, r.rec_content06, r.rec_content07, r.rec_content08, r.rec_content09, r.rec_content10";
@@ -189,7 +244,7 @@ public class RecipeDao extends SuperDao {
 		sql += " , rec_content01, rec_content02, rec_content03, rec_content04, rec_content05, rec_content06, rec_content07, rec_content08, rec_content09, rec_content10";
 		sql += "  , RANK() OVER (ORDER BY rec_regdate DESC, rec_no DESC) AS ranking";
 		sql += "  FROM recipe r ";
-		
+
 		String mode = paging.getMode();
 		String keyword = paging.getKeyword();
 
@@ -236,7 +291,7 @@ public class RecipeDao extends SuperDao {
 		}
 		return dataList;
 	}
-	
+
 	public List<combo01> getDataList2(Paging paging) {
 		String sql = "SELECT r.rec_no, r.mem_id, r.cat_no, r.rec_header, r.rec_regdate, r.rec_photo, r.rec_hit, r.rec_popularity, r.rec_bookmark, r.rec_material";
 		sql += " , r.rec_content01, r.rec_content02, r.rec_content03, r.rec_content04, r.rec_content05, r.rec_content06, r.rec_content07, r.rec_content08, r.rec_content09, r.rec_content10";
@@ -245,7 +300,7 @@ public class RecipeDao extends SuperDao {
 		sql += " , rec_content01, rec_content02, rec_content03, rec_content04, rec_content05, rec_content06, rec_content07, rec_content08, rec_content09, rec_content10";
 		sql += "  , RANK() OVER (ORDER BY rec_hit DESC, rec_no DESC) AS ranking";
 		sql += "  FROM recipe r ";
-		
+
 		String mode = paging.getMode();
 		String keyword = paging.getKeyword();
 
@@ -292,35 +347,35 @@ public class RecipeDao extends SuperDao {
 		}
 		return dataList2;
 	}
-	
+
 	private combo01 makeBeanCombo01(ResultSet rs) {
 		combo01 bean = new combo01();
-		
+
 		try {
 			bean.setName(rs.getString("mem_name"));
-			bean.setAlias(rs.getString("mem_alias"));			
-			bean.setTaste(rs.getString("mem_taste"));		
-			bean.setRec_no(rs.getInt("rec_no"));  
-			bean.setMem_id(rs.getString("mem_id"));  
-			bean.setCat_no(rs.getInt("cat_no"));  
-			bean.setRec_header(rs.getString("rec_header"));  
-			bean.setRec_regdate(rs.getString("rec_regdate"));  
-			bean.setRec_photo(rs.getString("rec_photo"));  
-			bean.setRec_hit(rs.getInt("rec_hit"));  
-			bean.setRec_popularity(rs.getInt("rec_popularity"));  
-			bean.setRec_bookmark(rs.getString("rec_bookmark"));  
-			bean.setRec_material(rs.getString("rec_material"));  
-			bean.setRec_content01(rs.getString("rec_content01"));  
-			bean.setRec_content02(rs.getString("rec_content02"));  
-			bean.setRec_content03(rs.getString("rec_content03"));  
-			bean.setRec_content04(rs.getString("rec_content04"));  
-			bean.setRec_content05(rs.getString("rec_content05")); 
-			bean.setRec_content06(rs.getString("rec_content06"));  
-			bean.setRec_content07(rs.getString("rec_content07"));  
-			bean.setRec_content08(rs.getString("rec_content08"));  
-			bean.setRec_content09(rs.getString("rec_content09"));  
-			bean.setRec_content10(rs.getString("rec_content10"));  
-			
+			bean.setAlias(rs.getString("mem_alias"));
+			bean.setTaste(rs.getString("mem_taste"));
+			bean.setRec_no(rs.getInt("rec_no"));
+			bean.setMem_id(rs.getString("mem_id"));
+			bean.setCat_no(rs.getInt("cat_no"));
+			bean.setRec_header(rs.getString("rec_header"));
+			bean.setRec_regdate(rs.getString("rec_regdate"));
+			bean.setRec_photo(rs.getString("rec_photo"));
+			bean.setRec_hit(rs.getInt("rec_hit"));
+			bean.setRec_popularity(rs.getInt("rec_popularity"));
+			bean.setRec_bookmark(rs.getString("rec_bookmark"));
+			bean.setRec_material(rs.getString("rec_material"));
+			bean.setRec_content01(rs.getString("rec_content01"));
+			bean.setRec_content02(rs.getString("rec_content02"));
+			bean.setRec_content03(rs.getString("rec_content03"));
+			bean.setRec_content04(rs.getString("rec_content04"));
+			bean.setRec_content05(rs.getString("rec_content05"));
+			bean.setRec_content06(rs.getString("rec_content06"));
+			bean.setRec_content07(rs.getString("rec_content07"));
+			bean.setRec_content08(rs.getString("rec_content08"));
+			bean.setRec_content09(rs.getString("rec_content09"));
+			bean.setRec_content10(rs.getString("rec_content10"));
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -558,7 +613,8 @@ public class RecipeDao extends SuperDao {
 
 		return cnt;
 	}
-	public int insertData1(Recipe bean,String id) {
+
+	public int insertData1(Recipe bean, String id) {
 		String sql = " insert into stars(rec_no, mem_id,  rec_photo )";
 		sql += " values(?, ?, ?)";
 
@@ -574,7 +630,7 @@ public class RecipeDao extends SuperDao {
 			// 치환은 실행 앞에서 하는거다!!
 			pstmt.setInt(1, bean.getRec_no());
 			pstmt.setString(2, id);
-			pstmt.setString(3, bean.getRec_photo());		
+			pstmt.setString(3, bean.getRec_photo());
 
 			// 여기가 실행
 			cnt = pstmt.executeUpdate();
@@ -598,9 +654,8 @@ public class RecipeDao extends SuperDao {
 		}
 		return cnt;
 	}
-	public int deleteData1(int rec_no) {
 
-		
+	public int deleteData1(int rec_no) {
 
 		// 상품은 주문 상세 테이블과 참조 무결성 제약 조건 set null을 가지고 있습니다.
 		// 상품 삭제시 주문 상세 테이블의 remark 컬럼을 갱신하도록 합니다.
@@ -641,6 +696,7 @@ public class RecipeDao extends SuperDao {
 
 		return cnt;
 	}
+
 	public List<Star> getDataBean1(String id) {
 		String sql = "select * from stars";
 		sql += " where mem_id = ?";
@@ -679,7 +735,7 @@ public class RecipeDao extends SuperDao {
 
 		return dataList;
 	}
-	
+
 	public Star getDataBean0(int rec_no) {
 		String sql = "select * from stars";
 		sql += " where rec_no = ?";
@@ -719,15 +775,14 @@ public class RecipeDao extends SuperDao {
 		return bean;
 	}
 
-
 	private Star makeBeanstars(ResultSet rs) {
 		Star bean = new Star();
-		
-		try {	
-			bean.setRec_no(rs.getInt("rec_no"));  
-			bean.setMem_id(rs.getString("mem_id"));  
-			bean.setRec_photo(rs.getString("rec_photo"));  
-			
+
+		try {
+			bean.setRec_no(rs.getInt("rec_no"));
+			bean.setMem_id(rs.getString("mem_id"));
+			bean.setRec_photo(rs.getString("rec_photo"));
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -736,11 +791,11 @@ public class RecipeDao extends SuperDao {
 
 	public combo01 getDateBean3(int rec_no) {
 		String sql = "SELECT r.rec_no, r.mem_id, r.cat_no, r.rec_header, r.rec_regdate, r.rec_photo, r.rec_hit, r.rec_popularity, r.rec_bookmark,";
-		sql+= " r.rec_material, r.rec_content01, r.rec_content02, r.rec_content03, r.rec_content04, r.rec_content05, r.rec_content06,";
-		sql+= " r.rec_content07, r.rec_content08, r.rec_content09, r.rec_content10, m.mem_name, m.mem_alias, m.mem_birth, m.mem_phone,";
-		sql+= " m.mem_taste, m.mem_picture";
-		sql+= " FROM recipe r";
-		sql+= " JOIN members m ON r.mem_id = m.mem_id";				
+		sql += " r.rec_material, r.rec_content01, r.rec_content02, r.rec_content03, r.rec_content04, r.rec_content05, r.rec_content06,";
+		sql += " r.rec_content07, r.rec_content08, r.rec_content09, r.rec_content10, m.mem_name, m.mem_alias, m.mem_birth, m.mem_phone,";
+		sql += " m.mem_taste, m.mem_picture";
+		sql += " FROM recipe r";
+		sql += " JOIN members m ON r.mem_id = m.mem_id";
 		sql += " where rec_no = ?";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -754,7 +809,7 @@ public class RecipeDao extends SuperDao {
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				bean=this.makeBeanCombo01(rs);
+				bean = this.makeBeanCombo01(rs);
 			}
 
 		} catch (SQLException e) {

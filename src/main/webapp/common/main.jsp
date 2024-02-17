@@ -158,19 +158,47 @@
 						<textarea id="inq_content" name="inq_content" rows="2" placeholder="문의사항 적는곳"></textarea>
 						<button type="submit" id="footer_butt"
 							onclick="return validCheck();">전송</button>
+						<input type="hidden" id="inq_reply" name="inq_reply">
 					</div>
 				</form>
 			</c:if>
 		</div>
-		<form action="<%=withFormTag%>" method="post">
-			<input type="hidden" name="command" value="main">
+		
 			<div id="main_materialBox">
 				<div id="main_materialBox_left">
 					<div id="main_materialBox_left_1">
-						<img src="/eattogether/image/left.png">
-						<div id="main_materialBox_left_2"></div>
-						<img src="/eattogether/image/right.png">
-					</div>
+    <img src="/eattogether/image/left.png">
+    <div id="main_materialBox_left_2" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <c:if test="${pictureCheck eq 1}">
+                <div class="carousel-item active">
+                    <a href="<%=notWithFormTag%>reDetail&rec_no=${pictureDatalist[0].rec_no}&readhitUpdate=true">
+                        <img src="/eattogether/image/${pictureDatalist[0].rec_photo}" class="d-block w-100">
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="<%=notWithFormTag%>reDetail&rec_no=${pictureDatalist[1].rec_no}&readhitUpdate=true">
+                        <img src="/eattogether/image/${pictureDatalist[1].rec_photo}" class="d-block w-100">
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="<%=notWithFormTag%>reDetail&rec_no=${pictureDatalist[2].rec_no}&readhitUpdate=true">
+                        <img src="/eattogether/image/${pictureDatalist[2].rec_photo}" class="d-block w-100">
+                    </a>
+                </div>
+            </c:if>
+        </div>
+    </div>
+    <img src="/eattogether/image/right.png">
+</div>
+
+<!-- Left and right controls/icons -->
+<button class="carousel-control-prev" type="button" data-bs-target="#main_materialBox_left_2" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+</button>
+<button class="carousel-control-next" type="button" data-bs-target="#main_materialBox_left_2" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+</button>
 					<div id="main_materialBox_right">
 						<div id="main_materialBox_right_1">
 							<p>냉장고 안엔 무슨재료가 있을까요</p>
@@ -199,66 +227,78 @@
 					</div>
 				</div>
 			</div>
-		</form>
 	</div>
 	<script>
-    $(document).ready(function() {
-        var maxElementsUpper = 3;
-        var maxElementsLower = 3;
-        var maxInputLength = 7;
+	$(document).ready(function() {
+	    var maxElementsUpper = 3;
+	    var maxElementsLower = 3;
+	    var maxInputLength = 7;
+	    var likeTaste = []; // 수정: 변수 이름 수정
+	    var dislikeTaste = []; // 수정: 변수 이름 수정
 
-        function addElement(inputSelector, containerSelector, maxElements, className) {
-            var inputValue = $(inputSelector + " input").val().trim();
+	    function addElement(inputSelector, containerSelector, maxElements, className) {
+	        var inputValue = $(inputSelector + " input").val().trim();
 
-            if (inputValue === "") {
-                if (inputSelector === "#main_input1") {
-                    alert("재료를 입력하세요.");
-                } else if (inputSelector === "#main_input2") {
-                    alert("원하지 않는 재료를 입력하세요.");
-                }
-                return;
-            }
+	        if (inputValue === "") {
+	            if (inputSelector === "#main_input1") {
+	                alert("재료를 입력하세요.");
+	            } else if (inputSelector === "#main_input2") {
+	                alert("원하지 않는 재료를 입력하세요.");
+	            }
+	            return;
+	        }
 
-            if (inputValue.length > maxInputLength) {
-                alert("입력값은 7글자 이내로 입력하세요.");
-                return;
-            }
+	        if (inputValue.length > maxInputLength) {
+	            alert("입력값은 7글자 이내로 입력하세요.");
+	            return;
+	        }
 
-            if ($(containerSelector + " ." + className).length >= maxElements) {
-                alert("최대 " + maxElements + "개까지만 추가할 수 있습니다.");
-                return;
-            }
+	        if ($(containerSelector + " ." + className).length >= maxElements) {
+	            alert("최대 " + maxElements + "개까지만 추가할 수 있습니다.");
+	            return;
+	        }
 
-            var newItem = $("<div>").addClass("inline-block-item " + className);
-            newItem.append($("<span>").text(inputValue));
-            newItem.append($("<span>").addClass("close-icon").text("-").on("click", function() {
-                $(this).parent().remove();
-            }));
+	        var newItem = $("<div>").addClass("inline-block-item " + className);
+	        newItem.append($("<span>").text(inputValue));
+	        newItem.append($("<span>").addClass("close-icon").text("-").on("click", function() {
+	            $(this).parent().remove();
+	        }));
 
-            $(containerSelector).append(newItem);
-            $(inputSelector + " input").val('');
+	        $(containerSelector).append(newItem);
+	        $(inputSelector + " input").val('');
+	    }
+
+	    // 상단 버튼(main_addButton1) 클릭 시 이벤트 처리
+	    $("#main_addButton1").on("click", function() {
+	    	var inputValue = $("#main_input1 input").val().trim();
+	        if (inputValue !== "") {
+	            likeTaste.push(inputValue);
+	        }
+	        addElement("#main_input1", ".main_selectbox", maxElementsUpper, "upper-item");
+	        console.log(likeTaste.join(","));
+	    });
+
+	    // 하단 버튼(main_addButton2) 클릭 시 이벤트 처리
+	    $("#main_addButton2").on("click", function() {	
+	    	var inputValue = $("#main_input2 input").val().trim();
+        if (inputValue !== "") {
+            dislikeTaste.push(inputValue);
         }
+	        addElement("#main_input2", "#main_materialBox_right", maxElementsLower, "lower-item");
+	        console.log("Button 2 clicked");
+	    });
 
-        // 상단 버튼(main_addButton1) 클릭 시 이벤트 처리
-        $("#main_addButton1").on("click", function() {
-            addElement("#main_input1", ".main_selectbox", maxElementsUpper, "upper-item");
-        });
+	    // 검색 버튼(main_searchButton) 클릭 시 이벤트 처리
+	    $("#main_searchButton").on("click", function() {
+	        var upperItemCount = $(".main_selectbox .upper-item").length;
+	        var lowerItemCount = $("#main_materialBox_right .lower-item").length;
 
-        // 하단 버튼(main_addButton2) 클릭 시 이벤트 처리
-        $("#main_addButton2").on("click", function() {
-            addElement("#main_input2", "#main_materialBox_right", maxElementsLower, "lower-item");
-        });
-
-        // 검색 버튼(main_searchButton) 클릭 시 이벤트 처리
-        $("#main_searchButton").on("click", function() {
-            var upperItemCount = $(".main_selectbox .upper-item").length;
-            var lowerItemCount = $("#main_materialBox_right .lower-item").length;
-
-            if (upperItemCount === 0 && lowerItemCount === 0) {
-                alert("재료 또는 먹고싶지않은 재료를 입력하세요.");
-            }
-        });
-    });
+	        if (upperItemCount === 0 && lowerItemCount === 0) {
+	            alert("재료 또는 먹고싶지않은 재료를 입력하세요.");
+	        }
+	        window.location.href = "<%=notWithFormTag%>mePicture&likeTaste=" + likeTaste.join(",") + "&dislikeTaste=" + dislikeTaste.join(",");
+	    });
+	});
 </script>
 
 </body>

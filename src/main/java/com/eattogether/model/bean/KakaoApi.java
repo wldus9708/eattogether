@@ -5,6 +5,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -115,11 +116,12 @@ public class KakaoApi {
 			System.out.println("저장값 : " + result);
 
 			if (cnt == 1) {
-				cnt = dao.insertKakaoData(bean);
-				System.out.println("카카오 회원가입 결과 : " + cnt);
+				/* cnt = dao.insertKakaoData(bean); */
+				System.out.println("카카오 회원가입 결과[1] 새 회원가입, [2] 기존회원 로그인 : " + cnt);
+				
 				
 			} else {
-
+				System.out.println("카카오 회원가입 결과[1] 새 회원가입, [2] 기존회원 로그인 : " + cnt);
 			}
 
 		} catch (

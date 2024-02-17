@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.eattogether.common.Superclass;
-import com.eattogether.model.bean.Member;
 import com.eattogether.model.bean.Recipe;
 import com.eattogether.model.bean.Star;
+import com.eattogether.model.bean.combo01;
 import com.eattogether.model.dao.RecipeDao;
 
 public class RecipeDetailController extends Superclass {
@@ -25,7 +25,19 @@ public class RecipeDetailController extends Superclass {
 		int rec_no = Integer.parseInt(request.getParameter("rec_no"));
 		Recipe bean = dao.getDataBean(rec_no);
 
-		Star mbean = dao.getDataBean0(rec_no);
+		Star mbean =dao.getDataBean0(rec_no);
+		combo01 combo=dao.getDateBean3(rec_no);
+
+		request.setAttribute("combo", combo);
+		System.out.println(mbean);
+		if(mbean==null) {
+			request.setAttribute("a", 0);
+		}else {
+			if (rec_no == mbean.getRec_no()) {
+				request.setAttribute("a", 1);
+			}		
+		}
+		
 		if (mbean != null && rec_no == mbean.getRec_no()) { // mbean이 null이 아니고, rec_no와 mbean의 rec_no가 같은 경우에만 실행
 			request.setAttribute("a", 1);
 		}
@@ -43,6 +55,8 @@ public class RecipeDetailController extends Superclass {
 
 			if (readhitUpdate.equals("true")) {
 				dao.updateReadhit(rec_no);
+
+		
 			}
 
 		}

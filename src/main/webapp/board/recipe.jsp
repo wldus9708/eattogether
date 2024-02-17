@@ -156,13 +156,13 @@
 			<!-- 최신순, 조회수 -->
 			<div id="lastrecommend" style="display: flex; justify-content: flex-end;">
 				<div class="recipe_latest">
-					<a href="<%=notWithFormTag%>reList&mode=${requestScope.paging.mode}
-						&keyword=${requestScope.paging.keyword}&rec_regdate=${bean.rec_regdate}&p=s">최신순
+					<a href="<%=notWithFormTag%>reList&p=s&mode=${requestScope.paging.mode}
+						&keyword=${requestScope.paging.keyword}&rec_regdate=${bean.rec_regdate}&pageNumber=${param.pageNumber}">최신순
 					</a>
 				</div>
 				<div class="recipe_re">
-					<a href="<%=notWithFormTag%>reList&mode=${requestScope.paging.mode}
-						&keyword=${requestScope.paging.keyword}&rec_hit=${bean.rec_hit}&p=o">조회수
+					<a href="<%=notWithFormTag%>reList&p=o&mode=${requestScope.paging.mode}
+						&keyword=${requestScope.paging.keyword}&rec_hit=${bean.rec_hit}&pageNumber=${param.pageNumber}"">조회수
 					</a>
 				</div>
 			</div>

@@ -25,53 +25,7 @@ public class Paging {
 	
 	private String flowParameter = "" ; // 페이지 이동시 같이 수반되는 파라미터 리스트	
 	
-	public Paging(String _pageNumber, String _pageSize, int totalCount, String url, String mode, String keyword, boolean isGrid) {
-		
-		if(_pageNumber == null || _pageNumber.equals("null") || _pageNumber.equals("")) {
-			_pageNumber = "1" ; // 의미 없는 페이지 번호가 넘어 오면 기본 값 "1"로 지정 
-		}
-		this.pageNumber = Integer.parseInt(_pageNumber);
-		
-		if(_pageSize == null || _pageSize.equals("null") || _pageSize.equals("")) {
-			if(isGrid == true) { // 격자 형식으로 보기
-				_pageSize = "15" ; // 상품 목록 보기 기본 값 "15"
-			}else {
-				_pageSize = "15" ; // 나머지 목록 보기 페이지 기본 값 "10" 	
-			} 
-		}
-		this.pageSize = Integer.parseInt(_pageSize);
-		
-		this.totalCount = totalCount ;
-		this.url = url ;
-		
-		// 모드가 "all"이면 전체 검색으로 간주합니다.
-		this.mode = mode == null || mode.equals("null") || mode.equals("") ? "all" : mode ;
-		
-		this.keyword = keyword == null || keyword.equals("null") || keyword.equals("") ? "" : keyword ;
-		
-		double _totalPage = Math.ceil((double)totalCount/pageSize)  ;
-		this.totalPage = (int)_totalPage ;
-		
-		this.beginRow = (pageNumber-1) * pageSize + 1;
-		this.endRow = pageNumber * pageSize ;
-		if(endRow > totalCount) {endRow = totalCount;}
-		
-		// pageNumber가 pageSize의 배수가 되면 어긋납니다.(-1 뺄셈해주기)
-		this.beginPage = (pageNumber-1) / pageCount * pageCount + 1 ;
-		this.endPage = beginPage + pageCount - 1 ; 
-		if(endPage > totalPage) {endPage = totalPage;}
-		
-		this.pagingStatus = "총 " + totalCount + "건[" + pageNumber + "/" + totalPage + "]" ;
-		
-		this.flowParameter = "" ;
-		this.flowParameter += "&pageNumber=" + pageNumber ;
-		this.flowParameter += "&pageSize=" + pageSize ;
-		this.flowParameter += "&mode=" + mode ;
-		this.flowParameter += "&keyword=" + keyword ;
-		
-		this.pagingHtml = this.getMakePagingHtml() ;
-	}	
-
+	
 public Paging(String _pageNumber, String _pageSize, int totalCount, String url, String mode, String keyword, boolean isGrid, String p) {
 		
 		if(_pageNumber == null || _pageNumber.equals("null") || _pageNumber.equals("")) {
@@ -90,7 +44,7 @@ public Paging(String _pageNumber, String _pageSize, int totalCount, String url, 
 		
 		this.totalCount = totalCount ;
 		this.url = url ;
-		
+		this.p=p;
 		// 모드가 "all"이면 전체 검색으로 간주합니다.
 		this.mode = mode == null || mode.equals("null") || mode.equals("") ? "all" : mode ;
 		
@@ -113,10 +67,11 @@ public Paging(String _pageNumber, String _pageSize, int totalCount, String url, 
 		this.flowParameter = "" ;
 		this.flowParameter += "&pageNumber=" + pageNumber ;
 		this.flowParameter += "&pageSize=" + pageSize ;
+		this.flowParameter += "&p="+p;
 		this.flowParameter += "&mode=" + mode ;
 		this.flowParameter += "&keyword=" + keyword ;
-		this.flowParameter += "&p="+p;
-	    this.pagingHtml = this.getMakePagingHtml(p);
+		
+	    this.pagingHtml = this.getMakePagingHtml(this.p);
 	}	
 	private String getMakePagingHtml() {
 		String html = "" ;		
@@ -175,15 +130,15 @@ public Paging(String _pageNumber, String _pageSize, int totalCount, String url, 
 				html += "</a></li>";	
 				
 			}else {
-				html += makeLiTag(String.valueOf(i), i); 
+				html += makeLiTag(String.valueOf(i), i, p); 
 			}
 		}
 		
 		if(pageNumber >= (totalPage/pageCount*pageCount+1)) {
 			/* '맨끝'과 '다음' 항목이 존재하지 않는 경우 */
 		}else {
-			html += makeLiTag("다음", endPage+1);
-			html += makeLiTag("맨끝", totalPage);			
+			html += makeLiTag("다음", endPage+1, p);
+			html += makeLiTag("맨끝", totalPage, p);			
 		}
 		
 		html += "</ul>" ;
@@ -217,10 +172,10 @@ public Paging(String _pageNumber, String _pageSize, int totalCount, String url, 
 		result += "<a class='page-link' href='" ;
 		result += this.url ;
 		result += "&pageNumber=" + currPageNumber;
+		result += "&p="+this.p;
 		result += "&pageSize=" + this.pageSize;
 		result += "&mode=" + this.mode;
 		result += "&keyword=" + this.keyword;
-		result += "&p="+p;
 		result += "'>" ;
 		result += caption ;
 		result += "</a></li>";		

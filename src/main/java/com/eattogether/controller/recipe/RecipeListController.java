@@ -28,6 +28,10 @@ private final String PREFIX = "board/";
 		String pageSize = request.getParameter("pageSize");
 		String mode = request.getParameter("mode");
 		String keyword = request.getParameter("keyword");
+		String p = request.getParameter("p");
+//		if (p == null) {
+//		    p = "s";
+//		}
 		if ("cat_no".equals(mode)) {
 		    if ("양식".equals(keyword)) {
 		        keyword = "1";
@@ -49,23 +53,28 @@ private final String PREFIX = "board/";
 		int totalCount = dao.getTotalRecordCount("recipe", mode, keyword);
 		String url = super.getUrlInformation("reList");
 		boolean isGrid = true;//상품이라면 true가 됩니다.
-		
-		Paging paging = new Paging(pageNumber, pageSize, totalCount, url, mode, keyword, isGrid);
+		Paging paging = new Paging(pageNumber, pageSize, totalCount, url, mode, keyword, isGrid, p);
 		
 		//int beginRow = 1;
 		//int endRow = 10;
 		
-		String p = request.getParameter("p");
+		
+		
 		
 		//System.out.println("recipe 데이터목록개수 :" + dataList.size());
 		
 		request.setAttribute("paging", paging);//페이징 객체도 바인딩
+		System.out.println("p의 값: " + p);
 		
 		if("s".equals(p)) {
 			List<combo01> dataList = dao.getDataList(paging);
+			request.setAttribute("pano", pageNumber);
 			request.setAttribute("dataList", dataList);
+			
 		}else {
+
 			List<combo01> dataList2 = dao.getDataList2(paging);
+			request.setAttribute("pano", pageNumber);
 			request.setAttribute("dataList", dataList2);
 		}
 		

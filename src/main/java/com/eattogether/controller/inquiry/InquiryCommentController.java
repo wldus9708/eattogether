@@ -14,7 +14,7 @@ public class InquiryCommentController extends Superclass {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		super.doGet(request, response);
 
-		final Integer MAX_GROUPNO_COUNT = 1;
+		final Integer MAX_GROUPNO_COUNT = 2;
 
 		InquiryDao dao = new InquiryDao();
 		Integer inq_groupno = Integer.parseInt(request.getParameter("inq_groupno"));
@@ -38,7 +38,6 @@ public class InquiryCommentController extends Superclass {
 		String mem_id = request.getParameter("mem_id");
 		String inq_content = request.getParameter("inq_content");
 		String inq_reply = request.getParameter("inq_reply");
-		Integer inq_groupno = Integer.parseInt(request.getParameter("inq_groupno")) ;
 		Integer inq_orderno = Integer.parseInt(request.getParameter("inq_orderno")) ;
 		
 		Inquiry bean = new Inquiry();
@@ -46,7 +45,6 @@ public class InquiryCommentController extends Superclass {
 		bean.setMem_id(mem_id);
 		bean.setInq_content(inq_content);
 		bean.setInq_reply(inq_reply);
-		bean.setInq_groupno(inq_groupno);
 		bean.setInq_orderno(inq_orderno+1);
 		
 		InquiryDao dao = new InquiryDao();
@@ -55,7 +53,8 @@ public class InquiryCommentController extends Superclass {
 		cnt = dao.replyData(bean, inq_orderno); 
 		
 		if(cnt == 1){ // 답글 작성 성공
-			new InquiryListController().doGet(request, response);
+			new InquiryCommentController().doGet(request, response);
+			super.gotoPage(PREFIX + "inquList.jsp");
 		}else{
 			new InquiryListController().doGet(request, response);
 		}

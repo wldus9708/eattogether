@@ -123,7 +123,7 @@
 
     }
     #inq_content {   
-      width: calc(100% - 10px);
+width: calc(100% - 10px);
       margin-bottom: 10px;
      box-sizing: border-box;
       margin: 10px;

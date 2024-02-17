@@ -249,13 +249,21 @@ public class RecipeDao extends SuperDao {
 		String keyword = paging.getKeyword();
 
 		if (mode == null || mode.equals("all") || mode.equals("null") || mode.equals("")) {
+			sql += ")r";
+			sql += " JOIN members m ON r.mem_id = m.mem_id";
+			sql += " where ranking between ? and ?";
+			sql += " order by r.rec_regdate desc, r.rec_no desc";
 		} else {// 전체 모드가 아니면
 			sql += " where " + mode + " like '%" + keyword + "%'";
+			sql += ")r";
+			sql += " JOIN members m ON r.mem_id = m.mem_id";
+			sql += " where ranking between ? and ?";
+			sql += " order by r.rec_regdate desc, r.rec_no desc";
 		}
 
-		sql += ")r";
-		sql += " JOIN members m ON r.mem_id = m.mem_id";
-		sql += " where ranking between ? and ?";
+		System.out.println("sql : \n"+sql);
+		System.out.println("최신순");
+		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
@@ -305,13 +313,21 @@ public class RecipeDao extends SuperDao {
 		String keyword = paging.getKeyword();
 
 		if (mode == null || mode.equals("all") || mode.equals("null") || mode.equals("")) {
+			sql += ")r";
+			sql += " JOIN members m ON r.mem_id = m.mem_id";
+			sql += " where ranking between ? and ?";
+			sql += " order by r.rec_hit DESC, r.rec_no desc";
 		} else {// 전체 모드가 아니면
 			sql += " where " + mode + " like '%" + keyword + "%'";
+			sql += ")r";
+			sql += " JOIN members m ON r.mem_id = m.mem_id";
+			sql += " where ranking between ? and ?";
+			sql += " order by r.rec_hit DESC, r.rec_no desc";
 		}
 
-		sql += ")r";
-		sql += " JOIN members m ON r.mem_id = m.mem_id";
-		sql += " where ranking between ? and ?";
+		System.out.println("sql : \n"+sql);
+		System.out.println("조회수");
+		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 

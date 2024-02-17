@@ -17,7 +17,7 @@ public class InquiryListController extends Superclass{
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		super.doGet(request, response);
 		System.out.println("문의사항 페이지로 이동합니다.");
-		int inq_no=Integer.parseInt(request.getParameter("inq_no"));
+		String id=request.getParameter("id");
 		String pageNumber = request.getParameter("pageNumber");
 		String pageSize = request.getParameter("pageSize");
 		String mode = request.getParameter("mode");
@@ -32,7 +32,7 @@ public class InquiryListController extends Superclass{
 		Paging paging = new Paging(pageNumber, pageSize, totalCount, url, mode, keyword, isGrid);
 		System.out.println(paging);
 		List<Inquiry> dataList = dao.getDataList(paging);
-		Inquiry bean=dao.getdatareply(inq_no);
+		Inquiry bean=dao.getdatareply(id);
 		System.out.println("문의사항 : " + dataList.size());
 		
 		request.setAttribute("paging", paging);

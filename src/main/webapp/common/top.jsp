@@ -92,7 +92,7 @@ String notWithFormTag = withFormTag + "?command=";
 									<li><a class="dropdown-item"
 										href="<%=notWithFormTag%>manList">회원관리</a></li>
 									<li><a class="dropdown-item"
-										href="<%=notWithFormTag%>inquList">문의사항</a></li>
+										href="<%=notWithFormTag%>inquList&id=${session.loginfo.id}">문의사항</a></li>
 									<li><a class="dropdown-item"
 										href="<%=notWithFormTag%>notiList">공지사항 관리</a></li>
 									<li><a class="dropdown-item"

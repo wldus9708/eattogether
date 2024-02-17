@@ -6,8 +6,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.eattogether.common.Superclass;
+import com.eattogether.model.bean.Category;
 import com.eattogether.model.bean.Recipe;
 import com.eattogether.model.bean.combo01;
+import com.eattogether.model.dao.CategoryDao;
 import com.eattogether.model.dao.MemberDao;
 import com.eattogether.model.dao.RecipeDao;
 import com.eattogether.utility.Paging;
@@ -26,7 +28,21 @@ private final String PREFIX = "board/";
 		String pageSize = request.getParameter("pageSize");
 		String mode = request.getParameter("mode");
 		String keyword = request.getParameter("keyword");
-		
+		if ("cat_no".equals(mode)) {
+		    if ("양식".equals(keyword)) {
+		        keyword = "1";
+		    }
+		    if ("한식".equals(keyword)) {
+		        keyword = "2";
+		    }
+		    if ("중식".equals(keyword)) {
+		        keyword = "3";
+		    }
+		    if ("일식".equals(keyword)) {
+		        keyword = "4";
+		    }
+		}
+		System.out.println(keyword);
 		RecipeDao dao = new RecipeDao();
 		MemberDao mdao = new MemberDao();
 		
@@ -39,20 +55,17 @@ private final String PREFIX = "board/";
 		//int beginRow = 1;
 		//int endRow = 10;
 		
-		List<combo01> dataList = dao.getDataList(paging);
-		List<combo01> dataList2 = dao.getDataList2(paging);
-
 		String p = request.getParameter("p");
 		
-		System.out.println("recipe 데이터목록개수 :" + dataList.size());
+		//System.out.println("recipe 데이터목록개수 :" + dataList.size());
 		
 		request.setAttribute("paging", paging);//페이징 객체도 바인딩
 		
-		request.setAttribute("dataList", dataList);
-		
 		if("s".equals(p)) {
+			List<combo01> dataList = dao.getDataList(paging);
 			request.setAttribute("dataList", dataList);
 		}else {
+			List<combo01> dataList2 = dao.getDataList2(paging);
 			request.setAttribute("dataList", dataList2);
 		}
 		

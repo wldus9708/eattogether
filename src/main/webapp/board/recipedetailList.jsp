@@ -20,15 +20,24 @@
 	});
 
 	function changeImg() {
-	    var imageElement = $("#myImage");
-	    var currentSrc = imageElement.attr('src');
+        var imageElement = $("#myImage");
+        var currentSrc = imageElement.attr('src');
 
-	    if (currentSrc.includes('/eattogether/image/emptystar.png')) {
-	    	window.location.href ="<%=notWithFormTag%>reStar&rec_no=${bean.rec_no}&tp=0";
-	    } else {
-	    	window.location.href ="<%=notWithFormTag%>reStar&rec_no=${bean.rec_no}&tp=1";
-	    }
-	}
+        // 로그인 여부 확인
+        <c:choose>
+            <c:when test="${empty sessionScope.loginfo}">
+                alert("즐겨찾기를 추가하려면 먼저 로그인하세요.");
+                return;
+            </c:when>
+            <c:otherwise>
+                if (currentSrc.includes('/eattogether/image/emptystar.png')) {
+                    window.location.href ="<%=notWithFormTag%>reStar&rec_no=${bean.rec_no}&tp=0";
+                } else {
+                    window.location.href ="<%=notWithFormTag%>reStar&rec_no=${bean.rec_no}&tp=1";
+                }
+            </c:otherwise>
+        </c:choose>
+    }
 </script>
 </head>
 <body>

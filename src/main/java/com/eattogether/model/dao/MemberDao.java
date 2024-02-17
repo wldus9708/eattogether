@@ -678,5 +678,49 @@ public class MemberDao extends SuperDao {
 		System.out.println("true : 성공, false: 실패,  결과: " + success);
 		return success;
 	}
+	public int insertKakaoData(Member bean) {
+		System.out.println(bean);
+		String sql = "insert into members(mem_id,mem_name,mem_alias,mem_password,mem_social_key,mem_social_host,mem_flag)";
+		sql += " values(?,?,?,?,?,'KAKAO',default)";
+
+		PreparedStatement pstmt = null;
+		int cnt = -1;
+
+		try {
+			super.conn = super.getConnection();
+			conn.setAutoCommit(false);
+
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, bean.getId());
+			pstmt.setString(2, bean.getAlias());
+			pstmt.setString(3, bean.getAlias());
+			pstmt.setString(4, bean.getPassword());
+			pstmt.setString(5, bean.getSocial_key());
+		
+
+			cnt = pstmt.executeUpdate();
+			conn.commit();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			try {
+				conn.rollback();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		} finally {
+			try {
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				super.closeConnection();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+
+		return cnt;
+	}
 
 }

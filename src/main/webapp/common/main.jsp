@@ -167,7 +167,6 @@
 			<div id="main_materialBox">
 				<div id="main_materialBox_left">
 					<div id="main_materialBox_left_1">
-    <img src="/eattogether/image/left.png">
     <div id="main_materialBox_left_2" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <c:if test="${pictureCheck eq 1}">
@@ -176,6 +175,14 @@
                         <img src="/eattogether/image/${pictureDatalist[0].rec_photo}" class="d-block w-100">
                     </a>
                 </div>
+                <c:if test="${pictureDatalist.size()==2}">
+                <div class="carousel-item">
+                    <a href="<%=notWithFormTag%>reDetail&rec_no=${pictureDatalist[1].rec_no}&readhitUpdate=true">
+                        <img src="/eattogether/image/${pictureDatalist[1].rec_photo}" class="d-block w-100">
+                    </a>
+                </div>
+                </c:if>
+                <c:if test="${pictureDatalist.size()==3}">
                 <div class="carousel-item">
                     <a href="<%=notWithFormTag%>reDetail&rec_no=${pictureDatalist[1].rec_no}&readhitUpdate=true">
                         <img src="/eattogether/image/${pictureDatalist[1].rec_photo}" class="d-block w-100">
@@ -186,19 +193,22 @@
                         <img src="/eattogether/image/${pictureDatalist[2].rec_photo}" class="d-block w-100">
                     </a>
                 </div>
+                </c:if>
             </c:if>
         </div>
-    </div>
-    <img src="/eattogether/image/right.png">
-</div>
-
-<!-- Left and right controls/icons -->
-<button class="carousel-control-prev" type="button" data-bs-target="#main_materialBox_left_2" data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#main_materialBox_left_2" data-bs-slide="prev">
     <span class="carousel-control-prev-icon"></span>
 </button>
 <button class="carousel-control-next" type="button" data-bs-target="#main_materialBox_left_2" data-bs-slide="next">
     <span class="carousel-control-next-icon"></span>
 </button>
+    </div>
+
+
+<!-- Left and right controls/icons -->
+
+
+</div>
 					<div id="main_materialBox_right">
 						<div id="main_materialBox_right_1">
 							<p>냉장고 안엔 무슨재료가 있을까요</p>

@@ -128,10 +128,10 @@ public class InquiryDao extends SuperDao{
 		
 		return cnt ;
 	}
-	public Inquiry getdatareply(int i){
+	public Inquiry getdatareply(String i){
 		
-		String sql=" select inq_reply from inquiry";
-		sql+= " where inq_no=?";
+		String sql=" select * from inquiry";
+		sql+= " where mem_id=?";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		Inquiry bean = null;
@@ -140,7 +140,7 @@ public class InquiryDao extends SuperDao{
 		try {
 			pstmt = conn.prepareStatement(sql);
 
-			pstmt.setInt(1, i);
+			pstmt.setString(1, i);
 
 			rs = pstmt.executeQuery();
 

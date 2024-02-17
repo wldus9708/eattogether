@@ -8,6 +8,84 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="/eattogether/css/mydataupdate2.css">
+<script type="text/javascript">
+
+function isPassword(asValue) {//비밀번호 첫글자는 영문 소문자, 6~8자리 특수문자 포함
+	var regExp = /^[a-z](?=.*[!@#$%^&*()_+,-./:;<=>?@[\\\]^_`{|}~])[a-z0-9!@#$%^&*()_+,-./:;<=>?@[\\\]^_`{|}~]{5,7}$/;
+				
+	return regExp.test(asValue);
+}
+
+function isAlias(asValue) { //닉네임 영어, 숫자, 한글이 2자 이상 8자 이하
+	var regExp = /^[a-zA-Z0-9가-힣]{2,8}$/;
+
+	return regExp.test(asValue);
+}
+function isPhone(asValue) { // 앞에 3자리 010,011,016,017,019 뒤에는 7자리또는 8자리 
+	var regExp = /^(010|011|016|017|019)\d{7,8}$/;
+
+	return regExp.test(asValue);
+}
+function resetIdCheckValue() {
+    $('#join_idCheck').val("N");
+}
+function resetPhoneCheckValue() {
+    $('#join_phoneCheck').val("N");
+}
+	$(document).ready(function() {
+		
+		var favoriteFood = "${bean.taste}";
+		$('#join_DuplicateBtn2').click(function(){
+		 	var phone = $("#join_phone").val();
+	    	window.open("/eattogether/member/checkPhone.jsp?phone="+phone,"phonechk",
+	   	"width=450,height=300, location=yes,resizable=yes,top=100,left=50");
+	 	});
+		$('#join_DuplicateBtn3').click(function(){
+		 	var alias = $("#join_alias").val();
+	    	window.open("/eattogether/member/checkAlias.jsp?alias="+alias,"aliaschk",
+	   	"width=450,height=300, location=yes,resizable=yes,top=100,left=50");
+	 	});
+	});
+	
+	function validCheck() { // 제약조건 alert창 안내 
+		
+		var alias = $('#join_alias').val();
+		if (!isAlias(alias)) {
+			alert('닉네임은 닉네임 영어, 숫자, 한글이 2자 이상 8자 이하로 입력해주세요');
+			$('#join_alias').focus();
+			return false;
+		}
+	    /* var aliasCheckValue = $('#join_aliasCheck').val();
+	    if (aliasCheckValue === "N") {
+	        alert('닉네임 중복 확인을 해주세요.');
+	        return false;
+	    } */
+		var password = $('#join_password').val();
+		if (!isPassword(password)) {
+			alert('비밀번호 첫글자는 영문 소문자, 6~8자리 특수문자 포함으로 입력해주세요');
+			$('#join_password').focus();
+			return false;
+		}
+		
+		
+		var phone = $('#join_phone').val();
+		if (phone.length < 1) {
+			alert('전화번호를 입력해주세요');
+			$('#join_phone').focus();
+			return false;
+		} else if (!isPhone(phone)) {
+			alert('앞에 3자리 010,011,016,017,019,"-"없이 뒤에는 7자리또는 8자리  입력해주세요');
+			$('#join_phone').focus();
+			return false;
+		}
+		/* var phoneCheckValue = $('#join_phoneCheck').val();
+	    if (phoneCheckValue === "N") {
+	        alert('전화번호 중복 확인을 해주세요.');
+	        return false;
+	    } */
+
+	}
+</script>
 <style>
 </style>
 </head>
@@ -42,19 +120,25 @@
 					<tr>
 						<td id="myUp03">닉네임</td>
 						<td><input type="text" class="form-control custom-textbox"
-							id="alias" name="alias" value="${bean.alias}"></td>
+							id="join_alias" name="alias" value="${bean.alias}"></td>
+						<td><input type="hidden" id="join_aliasCheck"
+							name="join_aliasCheck" value="N">
+						<button type="button" id="join_DuplicateBtn3">중복확인</button></td>
+							
 					</tr>
 					<tr>
 						<td id="myUp04">비밀번호</td>
 						<td><input type="password"
-							class="form-control custom-textbox" id="password" name="password"
-							value="${bean.password}"></td>
+							class="form-control custom-textbox" id="join_password" name="password"></td>
 					</tr>
 
 					<tr>
 						<td id="myUp05">핸드폰번호</td>
 						<td><input type="text" class="form-control custom-textbox"
-							id="phone" name="phone" value="${bean.phone}"></td>
+							id="join_phone" name="phone" value="${bean.phone}"></td>
+						<td><input type="hidden" id="join_phoneCheck"
+							name="join_phoneCheck" value="N">
+						<button type="button" id="join_DuplicateBtn2">중복확인</button></td>
 					</tr>
 
 					<tr class="join_form_container">
@@ -78,7 +162,6 @@
 								중식
 							</label>
 						</td>
-						<span id="join_favoriteFoodError" class="join_error_next_box"></span>
 					
 					</tr>
 					<tr>
@@ -97,7 +180,7 @@
 				<div class="myupdate_button">
 
 					<div id="update_binselt">
-						<button type="submit" id="update_od01">수정</button>
+						<button type="submit" id="update_od01" onclick="return validCheck();">수정</button>
 					</div>
 					<div id="update_binselt">
 						<a href="<%=notWithFormTag%>meList&id=${sessionScope.loginfo.id}" id="update_od01">돌아가기</a>

@@ -27,11 +27,11 @@ public class MemberKakaoLoginController extends Superclass {
 
             if (bean.getId() != null) {
                 session.setAttribute("email", bean.getId());
-                session.setAttribute("nickName", bean.getAlias());
+                session.setAttribute("nickName", bean.getName());
                 session.setAttribute("access_Token", access_Token);
 
                 System.out.println("access_Token : " + access_Token);
-                System.out.println("nickname : " + bean.getAlias());
+                System.out.println("nickname : " + bean.getName());
                 System.out.println("email : " + bean.getId());
             }
             super.session.setAttribute("email", bean.getId());
@@ -44,13 +44,13 @@ public class MemberKakaoLoginController extends Superclass {
             if (cnt == 1) { // cnt가 1일 때의 처리
             	cnt = dao.insertKakaoData(bean);
             	System.out.println("카카오 회원가입 결과[1] 새 회원가입, [2] 기존회원 로그인 : " + cnt);
-                message = bean.getAlias() + "님 카카오 가입을 환영합니다.\n마이페이지에서 추가정보를 입력해주세요.";
+                message = bean.getName() + "님 카카오 가입을 환영합니다.\n마이페이지에서 추가정보를 입력해주세요.";
                 String encodedMessage = URLEncoder.encode(message, "UTF-8").replaceAll("\\+", "%20");
                 String alertScript = "<script>alert(decodeURIComponent('" + encodedMessage + "')); window.location.href = 'member/meUpdate.jsp';</script>";
                 response.getWriter().write(alertScript);
             } else { // cnt가 1이 아닐 때의 처리
             	System.out.println("카카오 회원가입 결과[1] 새 회원가입, [2] 기존회원 로그인 : " + cnt);
-                message = bean.getAlias() + "님 카카오 로그인 하셨습니다.";
+                message = bean.getName() + "님 카카오 로그인 하셨습니다.";
                 String encodedMessage = URLEncoder.encode(message, "UTF-8").replaceAll("\\+", "%20");
                 String alertScript = "<script>alert(decodeURIComponent('" + encodedMessage + "')); window.location.href = 'common/main.jsp';</script>";
                 response.getWriter().write(alertScript);

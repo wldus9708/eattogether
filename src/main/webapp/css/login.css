@@ -150,8 +150,9 @@ body {
 }
 
 .login_image img {
-	width: 50px;
-	height: auto;
+	width: 431px;
+    height: auto;
+    margin-left: 15px;
 }
 
 #login_idbox_label {

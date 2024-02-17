@@ -75,10 +75,8 @@ if (cookie != null) {
 
 						<hr id="login_hr">
 						<div class="login_images">
-							<a class="login_image" href="#"> <img
-								src="/eattogether/image/google.png" alt="구글 로그인"></a> <a
-								class="login_image" href="https://kauth.kakao.com/oauth/authorize?client_id=5975a25df2fa8cac4ce9ba8863d45540&redirect_uri=http://localhost:8090<%=notWithFormTag%>meKakaoLogin&response_type=code"> <img
-								src="/eattogether/image/kakao.png" alt="카카오 로그인"></a>
+							<a class="login_image" href="https://kauth.kakao.com/oauth/authorize?client_id=5975a25df2fa8cac4ce9ba8863d45540&redirect_uri=http://localhost:8090<%=notWithFormTag%>meKakaoLogin&response_type=code"> <img
+								src="/eattogether/image/kakao_login_large_wide.png" alt="카카오 로그인"></a>
 						</div>
 					</div>
 				</div>

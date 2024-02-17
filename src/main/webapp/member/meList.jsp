@@ -59,7 +59,7 @@
       <div id="submypage_contain02">
          <div class="mysubpage_box01">
             <div class="submypage_Bookmark01">
-               <div>'닉네임'의 즐겨찾기</div>
+               <div>'${sessionScope.loginfo.alias}'의 즐겨찾기</div>
             </div>
             <div class="submypage_Bookmark02">
                <c:set var="itemsPerPage0" value="4" />
@@ -161,7 +161,7 @@
          
          <div class="mysubpage_box01">
             <div class="submypage_Bookmark01">
-               <div>닉네임'의 최근본 목록</div>
+               <div>'${sessionScope.loginfo.alias}'의 최근본 목록</div>
             </div>
             <div class="submypage_Bookmark02">
 
@@ -209,7 +209,6 @@
             </div>
          </div>
       </div>
-   </div>
    </div>
 </body>
 </html>

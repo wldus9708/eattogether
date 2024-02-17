@@ -47,6 +47,9 @@
 	function resetPhoneCheckValue() {
         $('#join_phoneCheck').val("N");
     }
+	function resetAliasCheckValue() {
+        $('#join_aliasCheck').val("N");
+    }
 	
 	$(document).ready(function() {
 		$('#join_birth').datepicker({ // 제이쿼리 생일
@@ -144,7 +147,7 @@
 		var password = $('#join_password').val();
 		if (!isPassword(password)) {
 			alert('비밀번호 첫글자는 영문 소문자, 6~8자리 특수문자 포함으로 입력해주세요');
-			$('#join_alias').focus();
+			$('#join_password').focus();
 			return false;
 		}
 		
@@ -160,9 +163,9 @@
 			$('#join_alias').focus();
 			return false;
 		}
-		var phoneCheckValue = $('#join_phoneCheck').val();
-	    if (phoneCheckValue === "N") {
-	        alert('전화번호 중복 확인을 해주세요.');
+		var aliasCheckValue = $('#join_aliasCheck').val();
+	    if (aliasCheckValue === "N") {
+	        alert('닉네임 중복 확인을 해주세요.');
 	        return false;
 	    }
 		

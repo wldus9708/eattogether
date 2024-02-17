@@ -680,8 +680,8 @@ public class MemberDao extends SuperDao {
 	}
 	public int insertKakaoData(Member bean) {
 		System.out.println(bean);
-		String sql = "insert into members(mem_id,mem_name,mem_alias,mem_password,mem_social_key,mem_social_host,mem_flag)";
-		sql += " values(?,?,?,?,?,'KAKAO',default)";
+		String sql = "insert into members(mem_id,mem_name,mem_password,mem_social_key,mem_social_host,mem_flag)";
+		sql += " values(?,?,?,?,'KAKAO',default)";
 
 		PreparedStatement pstmt = null;
 		int cnt = -1;
@@ -693,10 +693,9 @@ public class MemberDao extends SuperDao {
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(1, bean.getId());
-			pstmt.setString(2, bean.getAlias());
-			pstmt.setString(3, bean.getAlias());
-			pstmt.setString(4, bean.getPassword());
-			pstmt.setString(5, bean.getSocial_key());
+			pstmt.setString(2, bean.getName());
+			pstmt.setString(3, bean.getPassword());
+			pstmt.setString(4, bean.getSocial_key());
 		
 
 			cnt = pstmt.executeUpdate();
@@ -722,5 +721,6 @@ public class MemberDao extends SuperDao {
 
 		return cnt;
 	}
+
 
 }

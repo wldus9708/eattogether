@@ -105,7 +105,6 @@ public class KakaoApi {
 			String email = kakao_account.getAsJsonObject().get("email").getAsString();
 			String socialLoginKey = element.getAsJsonObject().get("id").getAsString();
 
-			bean.setAlias(nickname);
 			bean.setName(nickname);
 			bean.setId(email);
 			bean.setPassword(socialLoginKey); 

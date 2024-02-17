@@ -148,6 +148,18 @@
 				<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=덴뿌라&p=s">덴뿌라</a></li>
 			</ul>
 		</div>
+		<c:if test="${whologin eq 1 }">
+				<form action="<%=withFormTag%>" method="post">
+					<input type="hidden" name="command" value="inquInsert">
+					<div id="inquirybox">
+					<input type="hidden" id="id" name="id" value="${sessionScope.loginfo.id}">					
+						<textarea id="inq_content" name="inq_content" rows="2" placeholder="문의사항 적는곳"></textarea>
+						<button type="submit" id="footer_butt"
+							onclick="return validCheck();">전송</button>
+						<input type="hidden" id="inq_reply" name="inq_reply">
+					</div>
+				</form>
+			</c:if>
 		<br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
 	</aside>
 	
@@ -162,7 +174,7 @@
 				</div>
 				<div class="recipe_re">
 					<a href="<%=notWithFormTag%>reList&p=o&mode=${requestScope.paging.mode}
-						&keyword=${requestScope.paging.keyword}&rec_hit=${bean.rec_hit}&pageNumber=${param.pageNumber}"">조회수
+						&keyword=${requestScope.paging.keyword}&rec_hit=${bean.rec_hit}&pageNumber=${param.pageNumber}">조회수
 					</a>
 				</div>
 			</div>
@@ -218,9 +230,6 @@
 						</c:if>
 						<td>
 							<div class="card" style="width: 300px">
-								<img class="overlay-image right-align myImage"
-									src="/eattogether/image/emptystar.png" onclick="changeImg()"
-									alt="즐겨찾기"> 
 								<a class="removeUnderLine" 
 									href="<%=notWithFormTag%>reDetail&rec_no=${bean.rec_no}&readhitUpdate=true">
 									<img class="card-img-top" src="/eattogether/image/${bean.rec_photo}" alt="사진 이름">

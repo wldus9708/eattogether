@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.eattogether.model.bean.Inquiry;
+import com.eattogether.model.bean.Recipe;
 import com.eattogether.utility.Paging;
 
 public class InquiryDao extends SuperDao{
@@ -15,8 +16,8 @@ public class InquiryDao extends SuperDao{
 	}
 
 	public List<Inquiry> getDataList(Paging paging) {
-		String sql = " select inq_no, mem_id, inq_content, inq_regdate ";
-		sql += " from (select rank() over(order by inq_no asc) as ranking, inq_no, mem_id, inq_content, inq_regdate ";
+		String sql = " select inq_no, mem_id, inq_content, inq_regdate ,inq_reply, inq_groupno, inq_orderno";
+		sql += " from (select rank() over(order by inq_no asc) as ranking, inq_no, mem_id, inq_content, inq_regdate,inq_reply, inq_groupno, inq_orderno ";
 		sql += " from Inquiry " ;
 		
 		String mode = paging.getMode() ;
@@ -75,6 +76,9 @@ public class InquiryDao extends SuperDao{
 			bean.setMem_id(rs.getString("mem_id"));
 			bean.setInq_content(rs.getString("inq_content"));
 			bean.setInq_regdate(String.valueOf(rs.getDate("inq_regdate")));
+			bean.setInq_reply("inq_reply");
+			bean.setInq_groupno(rs.getInt("inq_groupno"));
+			bean.setInq_orderno(rs.getInt("inq_orderno"));
 			return bean;
 			
 		} catch (Exception e) {
@@ -85,7 +89,7 @@ public class InquiryDao extends SuperDao{
 
 	public int insertData(Inquiry bean) {
 		String sql = " insert into inquiry(inq_no, mem_id, inq_content, inq_regdate, inq_reply, inq_groupno, inq_orderno)" ;
-		sql += " values(seq_inquiry.nextval, ?, ?, sysdate,? , seqboard.currval , ?)" ;
+		sql += " values(seq_inquiry.nextval, ?, ?, sysdate,? , seq_inquiry.currval , default)" ;
 		
 		PreparedStatement pstmt = null ;
 		int cnt = -1 ;
@@ -99,6 +103,7 @@ public class InquiryDao extends SuperDao{
 			
 			pstmt.setString(1, bean.getMem_id());
 			pstmt.setString(2, bean.getInq_content());
+			pstmt.setString(3, bean.getInq_reply());
 			
 			cnt = pstmt.executeUpdate() ;			
 			conn.commit();
@@ -123,8 +128,50 @@ public class InquiryDao extends SuperDao{
 		
 		return cnt ;
 	}
+	public Inquiry getdatareply(int i){
+		
+		String sql=" select inq_reply from inquiry";
+		sql+= " where inq_no=?";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Inquiry bean = null;
 
+		super.conn = super.getConnection();
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, i);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				bean = this.resultSet2Bean(rs);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				super.closeConnection();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		System.out.println("bean 데이터 조회 결과 : ");
+		System.out.println(bean);
+
+		return bean;
+	}
 	public Integer getReplyCount(Integer inq_groupno) {
+		System.out.println("검색할 그룹 번호 : " + inq_groupno);
+		
+		
 		String sql = " select count(*) as cnt from inquiry " ;
 		sql += " where inq_groupno = ? " ;
 		
@@ -181,15 +228,14 @@ public class InquiryDao extends SuperDao{
 			if(pstmt!=null) {pstmt.close();}
 			
 			// step 02 : 답글(bean) 객체 정보를 이용하여 데이터 베이스에 추가합니다.
-			sql = " insert into inquiry(inq_no, mem_id, inq_content, inq_regdate, inq_reply, inq_groupno, inq_orderno)" ;
-			sql += " values(seq_inquiry.nextval,? ,? ,sysdate, ? , seqboard.currval , ?); " ;
+			sql = " INSERT INTO inquiry(inq_no, mem_id, inq_content, inq_regdate, inq_reply, inq_groupno, inq_orderno) " ;
+			sql +=" VALUES(seq_inquiry.nextval, ?, ?, SYSDATE, ?, seq_inquiry.currval, ?)";
 			pstmt = conn.prepareStatement(sql) ;
 			
 			pstmt.setString(1, bean.getMem_id());
 			pstmt.setString(2, bean.getInq_content());
 			pstmt.setString(3, bean.getInq_reply());
-			pstmt.setInt(4, bean.getInq_groupno());
-			pstmt.setInt(5, bean.getInq_orderno());
+			pstmt.setInt(4, bean.getInq_orderno());
 			
 			cnt = pstmt.executeUpdate() ;
 			conn.commit();

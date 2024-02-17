@@ -46,26 +46,41 @@ function searchAll(){ /* 전체 검색  */
 	location.href = '<%=notWithFormTag%>inquList';
 	}
 	
-$(document).ready(function(){	
-	var caption = $('button[type="submit"]').text();
-	if(caption=='저장하기'){
-		var URL = '<%=notWithFormTag%>inquComment';
+$(document).ready(function(){			
+	/* 사용자가 댓글을 입력하고, 전송 버튼을 눌렀습니다. */
+	$('#comment_form').submit(function(){
 		
-		var data = $('#comment_form').serialize() ;
+		/* 입력한 댓글이 없으면 전송이 불가능합니다. */
+		if(!$('#inq_reply').val()){
+			alert('댓글을 반드시 입력해 주세요.');
+			$('#inq_reply').focus();
+			return false;
+		}
 		
-		$.post(URL, data, function(data,status,xhr){
-			$('#inq_content').val(''); /* 입력한 글자 지우기 */
-			return true ;
+		/* submit 버튼의 캡션 정보 가져 오기 */
+		var caption = $('#sendButton').text();
+		/* alert(caption); */
+		
+		if(caption=='저장하기'){
+			/* jQuery의 Ajax 기능 중에서 post 방식을 이용하여 데이터를 전송합니다. */
 			
-		}).fail(function(){
-			alert('댓글 작성에 실패하였습니다.')
-			return false ;
+			var URL = '<%=notWithFormTag%>inquComment';
+
+				// 명시된 폼 양식 내의 모든 파라미터를 인코딩이 적용된 문자열을 만들어 줍니다.
+				var data = $('#comment_form').serialize();
+
+				$.post(URL, data, function(data, status, xhr) {
+					$('#inq_reply').val(''); /* 입력한 글자 지우기 */
+					return true;
+				}).fail(function() {
+					alert('댓글 작성에 실패하였습니다.')
+					return false;
+				});
+
+				return false;
+			} 
 		});
-		
-		return false ;
-	}
-});
-	
+	});
 </script>
 </head>
 <body>
@@ -158,21 +173,47 @@ $(document).ready(function(){
 							<th colspan="3" style="width: 50%;" id="in-contents">${bean.inq_content}
 							</th>
 						</tr>
-						<tr><td>${bean.inq_reply}</td></tr>
-						<c:if test="${whologin eq 2 }">
-						<form id="comment_form" method="post" role="form"
-					class="form-horizontal">
-							<tr>
-								<td colspan="3">
-									<div id="textAreaContainer">
-										<textarea id=inq_content name="inq_content"
-											placeholder="답글다는곳"></textarea>
-										<button type="submit" id="sendButton">전송</button>
-									</div>
-								</td>
-							</tr>
-							</form>
-						</c:if>
+						<tr>
+							<td>${rbean.inq_reply}</td>
+						</tr>
+						<form action="<%=withFormTag%>" id="comment_form" method="post" role="form"
+							class="form-horizontal" >
+							<input type="hidden" name="command" value="inquComment">
+							<c:if test="${whologin eq 2 }">
+								<tr>
+									<td><input type="hidden" name="inq_no"
+										value="${bean.inq_no}" /> 
+										<input type="hidden" name="mem_id"
+										id="mem_id" class="form-control" size="10"
+										value="${sessionScope.loginfo.id}">
+										<input type="hidden" name="inq_content" id="inq_content"
+										value="${bean.inq_content}">
+										<input type="text" name="fakein-contents"
+										id="fakein-contents" class="form-control" size="10" disabled="disabled"
+										value="${bean.inq_content}">
+										<input type="text" name="inq_regdate"
+										id="inq_regdate" class="form-control" size="10" 
+										value="${bean.inq_regdate}">
+										</td>
+								</tr>
+
+								<tr>
+									<!-- <td ><label for="contents"
+									class="col-xs-3 col-lg-3 control-label">댓글 내용</label></td> -->
+									<td colspan="2" style="width: 80%;">
+										<!-- <textarea id="inq_content" name="inq_content" placeholder="답글다는곳"> </textarea>-->
+										<div id="textAreaContainer">
+											<textarea id=inq_reply name="inq_reply"
+												placeholder="답글다는곳" cols="150"></textarea>
+												<input type="hidden" id="inq_orderno" name="inq_orderno" value="${bean.inq_orderno}">
+										</div>
+									</td>
+									<td style="width: 20%;">
+									<button type="submit" id="sendButton">전송</button>
+									</td>
+								</tr>
+							</c:if>
+						</form>
 					</c:forEach>
 				</tbody>
 

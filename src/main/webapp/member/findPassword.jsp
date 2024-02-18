@@ -58,6 +58,7 @@ String notWithFormTag = withFormTag + "?command=";
 			<ul>
 				<li>본인 이름과 가입하실때 입력한 전화번호, 아이디를 입력하시면</li>
 				<li>이메일로 임시 비밀 번호가 발송됩니다.</li>
+				<li>카카오 회원은 카카오홈페이지에서 가능합니다.</li>
 			</ul>
 		</div>
 

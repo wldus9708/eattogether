@@ -257,6 +257,97 @@ public class MemberDao extends SuperDao {
 		System.out.println("아이디 중복확인 결과([1]사용가능,[2]사용불가능 :  " + result + " , 아이디 : " + id);
 		return result;
 	}
+	public int getDataByIdChk(String id) {
+		String sql = "select count(*) from members ";
+		sql += " where mem_id = ? and mem_social_key is null ";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		int result = 0;
+		try {
+			super.conn = super.getConnection();
+			conn.setAutoCommit(false);
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				int cnt = rs.getInt(1);
+				if (cnt > 0) {
+					result = MemberDao.UNUSABLE_ID;
+				} else {
+					result = MemberDao.USABLE_ID;
+				}
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			try {
+				conn.rollback();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		} finally {
+			try {
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				super.closeConnection();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		System.out.println("아이디 중복확인 결과([1]사용가능,[2]사용불가능 :  " + result + " , 아이디 : " + id);
+		return result;
+	}
+	
+	public int getDataByKakaoIdChk(String id) {
+		String sql = "select count(*) from members ";
+		sql += " where mem_id = ? and mem_social_key is not null";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		int result = 0;
+		try {
+			super.conn = super.getConnection();
+			conn.setAutoCommit(false);
+
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, id);
+
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				int cnt = rs.getInt(1);
+				if (cnt > 0) {
+					result = MemberDao.UNUSABLE_ID;
+				} else {
+					result = MemberDao.USABLE_ID;
+				}
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			try {
+				conn.rollback();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		} finally {
+			try {
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				super.closeConnection();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		System.out.println("카카오아이디 중복확인 결과([1]사용가능,[2]사용불가능 :  " + result + " , 아이디 : " + id);
+		return result;
+	}
 	
 	public int getDataByAlias(String alias) {
 		String sql = "select count(*) from members ";

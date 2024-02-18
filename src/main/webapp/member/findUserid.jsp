@@ -43,6 +43,12 @@ if (name != null && !name.isEmpty() && phone != null && !phone.isEmpty()) {
     <div id="findUserid_wrap">
         <h2>아이디 찾기</h2>
         <br>
+        <div class="titleArea">
+			<ul>
+				<li>일반 회원만 가능합니다.</li>
+				<li>카카오 회원은 카카오홈페이지에서 가능합니다.</li>
+			</ul>
+		</div>
         <form name="frmfindId" method="post" action="findUserid.jsp">
             <div class="findId_form_container">
                 <label class="findId_label" for="name">이름:</label>

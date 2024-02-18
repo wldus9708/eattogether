@@ -4,6 +4,7 @@ main=com.eattogether.controller.main.MainController
 meLogin=com.eattogether.controller.member.MemberLoginController
 meKakaoLogin=com.eattogether.controller.member.MemberKakaoLoginController
 meLogout=com.eattogether.controller.member.MemberLogoutController
+meKakaoLogout=com.eattogether.controller.member.MemberKakaoLogoutController
 meInsert=com.eattogether.controller.member.MemberInsertController
 meAgree=com.eattogether.controller.member.MemberAgreementController
 meSuceess=com.eattogether.controller.member.MemberSuccessController

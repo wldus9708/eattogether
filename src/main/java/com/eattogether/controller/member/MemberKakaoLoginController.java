@@ -38,10 +38,10 @@ public class MemberKakaoLoginController extends Superclass {
             super.session.setAttribute("access_Token", access_Token);
             MemberDao dao = new MemberDao();
             int cnt = dao.getDataById(bean.getId()); // cnt 값 설정
-
+            int kakaoChk = dao.getDataByKakaoIdChk(bean.getId());
             String message = ""; // 메시지 초기화
 
-            if (cnt == 1) { // cnt가 1일 때의 처리
+            if (cnt == 1 && kakaoChk == 1) { // cnt가 1일 때의 처리
             	cnt = dao.insertKakaoData(bean);
             	session.setAttribute("loginfo", bean);
             	System.out.println("카카오 회원가입 결과[1] 새 회원가입, [2] 기존회원 로그인 : " + cnt);
@@ -49,13 +49,19 @@ public class MemberKakaoLoginController extends Superclass {
                 String encodedMessage = URLEncoder.encode(message, "UTF-8").replaceAll("\\+", "%20");
                 String alertScript = "<script>alert(decodeURIComponent('" + encodedMessage + "')); window.location.href = 'member/meUpdate.jsp';</script>";
                 response.getWriter().write(alertScript);
-            } else { // cnt가 1이 아닐 때의 처리
+            } else if(cnt == 2 && kakaoChk == 2) { // cnt가 1이 아닐 때의 처리
             	System.out.println("카카오 회원가입 결과[1] 새 회원가입, [2] 기존회원 로그인 : " + cnt);
             	session.setAttribute("loginfo", bean);
                 message = bean.getName() + "님 카카오 로그인 하셨습니다.";
                 String encodedMessage = URLEncoder.encode(message, "UTF-8").replaceAll("\\+", "%20");
                 String alertScript = "<script>alert(decodeURIComponent('" + encodedMessage + "')); window.location.href = 'common/main.jsp';</script>";
                 response.getWriter().write(alertScript);
+            } else {
+            	System.out.println("일반회원으로 이미 가입한 계정이 있어서 카카오 회원가입 실패");
+        		message = "일반회원으로 이미 가입하신 아이디 입니다.\n일반회원으로 로그인 해주세요.";
+            	 String encodedMessage = URLEncoder.encode(message, "UTF-8").replaceAll("\\+", "%20");
+                 String alertScript = "<script>alert(decodeURIComponent('" + encodedMessage + "')); window.location.href = 'member/login.jsp';</script>";
+                 response.getWriter().write(alertScript);
             }
 
 

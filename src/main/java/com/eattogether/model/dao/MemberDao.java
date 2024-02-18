@@ -736,7 +736,7 @@ public class MemberDao extends SuperDao {
 
 	public String getDataByNameAndPhone(String name, String phone) {
 
-		String sql = "select * from members where mem_name = ? and mem_phone = ?";
+		String sql = "select * from members where mem_name = ? and mem_phone = ? and mem_social_key is null";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String findId = null;

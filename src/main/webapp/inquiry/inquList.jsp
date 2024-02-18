@@ -174,7 +174,7 @@ $(document).ready(function(){
 							</th>
 						</tr>
 						<tr>
-							<td>${rbean.inq_reply}</td>
+							<td>${bean.inq_reply}</td>
 						</tr>
 						<form action="<%=withFormTag%>" id="comment_form" method="post" role="form"
 							class="form-horizontal" >
@@ -188,12 +188,11 @@ $(document).ready(function(){
 										value="${sessionScope.loginfo.id}">
 										<input type="hidden" name="inq_content" id="inq_content"
 										value="${bean.inq_content}">
-										<input type="text" name="fakein-contents"
-										id="fakein-contents" class="form-control" size="10" disabled="disabled"
+										<input type="hidden" name="inq_regdate" id="inq_regdate"
 										value="${bean.inq_content}">
-										<input type="text" name="inq_regdate"
-										id="inq_regdate" class="form-control" size="10" 
-										value="${bean.inq_regdate}">
+										<input type="text" name="inq_groupno"
+										id="inq_groupno" class="form-control"
+										value="${bean.inq_groupno}">
 										</td>
 								</tr>
 

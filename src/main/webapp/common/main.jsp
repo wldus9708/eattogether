@@ -154,7 +154,7 @@
 				<form action="<%=withFormTag%>" method="post">
 					<input type="hidden" name="command" value="inquInsert">
 					<div id="inquirybox">
-					<input type="hidden" id="id" name="id" value="${sessionScope.loginfo.id}">					
+					<input type="hidden" id="mem_id" name="mem_id" value="${sessionScope.loginfo.id}">					
 						<textarea id="inq_content" name="inq_content" rows="2" placeholder="문의사항 적는곳"></textarea>
 						<button type="submit" id="footer_butt"
 							onclick="return validCheck();">전송</button>

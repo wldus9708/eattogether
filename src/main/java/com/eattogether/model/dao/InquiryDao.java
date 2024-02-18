@@ -17,7 +17,7 @@ public class InquiryDao extends SuperDao{
 
 	public List<Inquiry> getDataList(Paging paging) {
 		String sql = " select inq_no, mem_id, inq_content, inq_regdate ,inq_reply, inq_groupno, inq_orderno";
-		sql += " from (select rank() over(order by inq_no asc) as ranking, inq_no, mem_id, inq_content, inq_regdate,inq_reply, inq_groupno, inq_orderno ";
+		sql += " from (select rank() over(order by inq_no asc, inq_groupno desc) as ranking, inq_no, mem_id, inq_content, inq_regdate,inq_reply, inq_groupno, inq_orderno ";
 		sql += " from Inquiry " ;
 		
 		String mode = paging.getMode() ;
@@ -131,7 +131,7 @@ public class InquiryDao extends SuperDao{
 	public Inquiry getdatareply(String i){
 		
 		String sql=" select * from inquiry";
-		sql+= " where mem_id=?";
+		sql+= " where inq_groupno=?";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		Inquiry bean = null;
@@ -229,13 +229,14 @@ public class InquiryDao extends SuperDao{
 			
 			// step 02 : 답글(bean) 객체 정보를 이용하여 데이터 베이스에 추가합니다.
 			sql = " INSERT INTO inquiry(inq_no, mem_id, inq_content, inq_regdate, inq_reply, inq_groupno, inq_orderno) " ;
-			sql +=" VALUES(seq_inquiry.nextval, ?, ?, SYSDATE, ?, seq_inquiry.currval, ?)";
+			sql +=" VALUES(seq_inquiry.nextval, ?, ?, SYSDATE, ?, ?, ?)";
 			pstmt = conn.prepareStatement(sql) ;
 			
 			pstmt.setString(1, bean.getMem_id());
 			pstmt.setString(2, bean.getInq_content());
 			pstmt.setString(3, bean.getInq_reply());
-			pstmt.setInt(4, bean.getInq_orderno());
+			pstmt.setInt(4, bean.getInq_groupno());
+			pstmt.setInt(5, bean.getInq_orderno());
 			
 			cnt = pstmt.executeUpdate() ;
 			conn.commit();

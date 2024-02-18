@@ -173,15 +173,21 @@ $(document).ready(function(){
 							<th colspan="3" style="width: 50%;" id="in-contents">${bean.inq_content}
 							</th>
 						</tr>
-						<tr>
-							<td>${bean.inq_reply}</td>
-						</tr>
+						<c:forEach var="test" items="${testinq}" varStatus="status">
+							<tr>									
+							</tr>
+							<c:if test="${test.getInq_groupno()==bean.getInq_groupno()}">
+								<tr>					
+							<td>답글 : ${test.inq_reply}</td>
+								</tr>
+							</c:if>
+						</c:forEach>
 						<form action="<%=withFormTag%>" id="comment_form" method="post" role="form"
 							class="form-horizontal" >
 							<input type="hidden" name="command" value="inquComment">
 							<c:if test="${whologin eq 2 }">
 								<tr>
-									<td><input type="hidden" name="inq_no"
+									<td><input type="hidden" id="inq_no" name="inq_no"
 										value="${bean.inq_no}" /> 
 										<input type="hidden" name="mem_id"
 										id="mem_id" class="form-control" size="10"

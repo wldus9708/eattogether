@@ -1,11 +1,14 @@
 package com.eattogether.controller.inquiry;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.eattogether.common.Superclass;
 import com.eattogether.model.bean.Inquiry;
 import com.eattogether.model.dao.InquiryDao;
+import com.eattogether.utility.Paging;
 
 public class InquiryCommentController extends Superclass {
 	private final String PREFIX = "inquiry/";
@@ -15,12 +18,29 @@ public class InquiryCommentController extends Superclass {
 		super.doGet(request, response);
 
 		final Integer MAX_GROUPNO_COUNT = 5;
-
+		
+		String id=request.getParameter("id");
+		String pageNumber = request.getParameter("pageNumber");
+		String pageSize = request.getParameter("pageSize");
+		String mode = request.getParameter("mode");
+		String keyword = request.getParameter("keyword");
+		
 		InquiryDao dao = new InquiryDao();
+		int totalCount = dao.getTotalRecordCount("Inquiry", mode, keyword);
+		String url = super.getUrlInformation("inquList");
+		boolean isGrid = false;
+		
+		Paging paging = new Paging(pageNumber, pageSize, totalCount, url, mode, keyword, isGrid);
+		List<Inquiry> dataList = dao.getDataList(paging);
 		Integer inq_groupno = Integer.parseInt(request.getParameter("inq_groupno"));
+		System.out.println("inq_groupno"+inq_groupno);
 		Integer replyCount = 0; // 총답글의 개수
+		List<Inquiry> testdata=dao.getReply();
+		
+		request.setAttribute("paging", paging);
+		request.setAttribute("dataList", dataList);
 		replyCount = dao.getReplyCount(inq_groupno);
-
+		request.setAttribute("testinq", testdata);
 		if (replyCount >= MAX_GROUPNO_COUNT) {
 			String message = "답글은 하나만 가능합니다.";
 			super.setAlertMessage(message);
@@ -28,9 +48,7 @@ public class InquiryCommentController extends Superclass {
 		} else {
 			super.gotoPage(PREFIX + "inquList.jsp");
 		}
-		super.gotoPage(PREFIX + "inquList.jsp");
 	}
-
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		super.doPost(request, response);

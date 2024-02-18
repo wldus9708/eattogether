@@ -29,7 +29,7 @@ public class InquiryDao extends SuperDao{
 		}
 		
 		sql += " )";
-		sql += " where ranking between ? and ? ";
+		sql += " where ranking between ? and ?  AND inq_reply IS NULL";
 		
 		System.out.println("sql 구문:\n" + sql);
 		
@@ -50,7 +50,7 @@ public class InquiryDao extends SuperDao{
 			// 요소들 읽어서 컬렉션에 담습니다.
 			while(rs.next()) {				
 				Inquiry bean = this.resultSet2Bean(rs) ;
-				
+				System.out.println("확인"+bean);
 				dataList.add(bean) ;
 			}
 			
@@ -76,7 +76,7 @@ public class InquiryDao extends SuperDao{
 			bean.setMem_id(rs.getString("mem_id"));
 			bean.setInq_content(rs.getString("inq_content"));
 			bean.setInq_regdate(String.valueOf(rs.getDate("inq_regdate")));
-			bean.setInq_reply("inq_reply");
+			bean.setInq_reply(rs.getString("inq_reply"));
 			bean.setInq_groupno(rs.getInt("inq_groupno"));
 			bean.setInq_orderno(rs.getInt("inq_orderno"));
 			return bean;
@@ -206,6 +206,51 @@ public class InquiryDao extends SuperDao{
 		return cnt ;
 	}
 
+	public List<Inquiry> getReply() {
+		
+		String sql = " select * from inquiry  where inq_reply is not null " ;
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Inquiry> dataList = new ArrayList<Inquiry>();
+		
+		
+		super.conn = super.getConnection();
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+
+			rs = pstmt.executeQuery();
+
+			while(rs.next()) {	
+				Inquiry bean =new Inquiry();
+				bean.setInq_no(rs.getInt("inq_no"));
+				bean.setMem_id(rs.getString("mem_id"));
+				bean.setInq_content(rs.getString("inq_content"));
+				bean.setInq_regdate(String.valueOf(rs.getDate("inq_regdate")));
+				bean.setInq_reply(rs.getString("inq_reply"));
+				bean.setInq_groupno(rs.getInt("inq_groupno"));
+				bean.setInq_orderno(rs.getInt("inq_orderno"));
+				System.out.println("확인"+bean);
+				dataList.add(bean) ;
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) {rs.close();}
+				if(pstmt != null) {pstmt.close();}
+				super.closeConnection();
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}	
+		return dataList ;
+	}
+	
 	public int replyData(Inquiry bean, Integer inq_orderno) {
 		System.out.println("답글 달기 ");
 		System.out.println(bean);		

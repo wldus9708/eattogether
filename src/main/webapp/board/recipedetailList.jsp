@@ -45,55 +45,64 @@
 		<div id="recipedetail_contain01">
 			<div class="recipe_side0">
 				<h3 id="recipe">
-					<a href="<%=notWithFormTag%>reList"><p>레시피</p></a>
+					<a href="<%=notWithFormTag%>reList&p=s"><p>레시피</p></a>
 				</h3>
 			</div>
 
 			<div id="accordion">
-				<h3>
-					<a href="<%=notWithFormTag%>reList&mode=cat_no&keyword=1">양식</a>
-				</h3>
-				<ul>
-					<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=파스타">파스타</a></li>
-					<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=리조또">리조또</a></li>
-					<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=스테이크">스테이크</a></li>
-					<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=피자">피자</a></li>
-					<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=오믈렛">오믈렛</a></li>
-				</ul>
-
-				<h3>
-					<a href="<%=notWithFormTag%>reList&mode=cat_no&keyword=2">한식</a>
-				</h3>
-				<ul>
-					<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=김치볶음밥">김치볶음밥</a></li>
-					<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=된장찌개">된장찌개</a></li>
-					<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=김치찌개">김치찌개</a></li>
-					<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=고등어">고등어조림</a></li>
-					<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=떡볶이">떡볶이</a></li>
-				</ul>
-
-				<h3>
-					<a href="<%=notWithFormTag%>reList&mode=cat_no&keyword=3">중식</a>
-				</h3>
-				<ul>
-					<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=마라탕">마라탕</a></li>
-					<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=탕후루">탕후루</a></li>
-					<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=짬뽕">짬뽕</a></li>
-					<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=잡채밥">잡채밥</a></li>
-					<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=유린기">유린기</a></li>
-				</ul>
-
-				<h3>
-					<a href="<%=notWithFormTag%>reList&mode=cat_no&keyword=4">일식</a>
-				</h3>
-				<ul>
-					<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=초밥">초밥</a></li>
-					<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=호토마키">호토마키</a></li>
-					<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=우동">우동</a></li>
-					<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=가라아게">가라아게</a></li>
-					<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=덴뿌라">덴뿌라</a></li>
-				</ul>
+			<h3>
+				<a href=" ">양식</a>
+			</h3>
+			<ul>
+				<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=파스타&p=s">파스타</a></li>
+				<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=리조또&p=s">리조또</a></li>
+				<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=스테이크&p=s">스테이크</a></li>
+				<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=피자&p=s">피자</a></li>
+				<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=오믈렛&p=s">오믈렛</a></li>
+			</ul>
+			<h3>
+				<a href=" ">한식</a>
+			</h3>
+			<ul>
+				<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=김치볶음밥&p=s">김치볶음밥</a></li>
+				<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=된장찌개&p=s">된장찌개</a></li>
+				<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=김치찌개&p=s">김치찌개</a></li>
+				<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=고등어&p=s">고등어</a></li>
+				<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=떡볶이&p=s">떡볶이</a></li>
+			</ul>
+			<h3>
+				<a href=" ">중식</a>
+			</h3>
+			<ul>
+				<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=마라탕&p=s">마라탕</a></li>
+				<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=탕후루&p=s">탕후루</a></li>
+				<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=짬뽕&p=s">짬뽕</a></li>
+				<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=잡채밥&p=s">잡채밥</a></li>
+				<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=유린기&p=s">유린기</a></li>
+			</ul>
+			<h3>
+				<a href=" ">일식</a>
+			</h3>
+			<ul>
+				<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=초밥&p=s">초밥</a></li>
+				<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=우동&p=s">우동</a></li>
+				<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=오코노미야끼&p=s">오코노미야키</a></li>
+				<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=가라아게&p=s">가라아게</a></li>
+				<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=덴뿌라&p=s">덴뿌라</a></li>
+			</ul>
 			</div>
+			<c:if test="${whologin eq 1 }">
+				<form action="<%=withFormTag%>" method="post">
+					<input type="hidden" name="command" value="inquInsert">
+					<div id="inquirybox">
+					<input type="hidden" id="mem_id" name="mem_id" value="${sessionScope.loginfo.id}">					
+						<textarea id="inq_content" name="inq_content" rows="2" placeholder="문의사항 적는곳"></textarea>
+						<button type="submit" id="footer_butt"
+							onclick="return validCheck();">전송</button>
+						<input type="hidden" id="inq_reply" name="inq_reply">
+					</div>
+				</form>
+			</c:if>
 		</div>
 		<div id="recipedetail_contain02">
 			<div id="recipedetail_box01">

@@ -142,8 +142,8 @@
 			</h3>
 			<ul>
 				<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=초밥&p=s">초밥</a></li>
-				<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=호토마키&p=s">호토마키</a></li>
 				<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=우동&p=s">우동</a></li>
+				<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=오코노미야끼&p=s">오코노미야키</a></li>
 				<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=가라아게&p=s">가라아게</a></li>
 				<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=덴뿌라&p=s">덴뿌라</a></li>
 			</ul>
@@ -152,7 +152,7 @@
 				<form action="<%=withFormTag%>" method="post">
 					<input type="hidden" name="command" value="inquInsert">
 					<div id="inquirybox">
-					<input type="hidden" id="id" name="id" value="${sessionScope.loginfo.id}">					
+					<input type="hidden" id="mem_id" name="mem_id" value="${sessionScope.loginfo.id}">					
 						<textarea id="inq_content" name="inq_content" rows="2" placeholder="문의사항 적는곳"></textarea>
 						<button type="submit" id="footer_butt"
 							onclick="return validCheck();">전송</button>
@@ -194,9 +194,9 @@
 										<div class="col-sm-12">
 											<select class="form-control-sm" id="mode" name="mode">
 												<option value="all">--- 선택해주세요.
-												<option value="mem_id">작성자명
+												<option value="mem_id">닉네임
 												<option value="rec_header">레시피제목
-												<option value="cat_no">음식이름
+												<option value="cat_no">음식카테고리
 											</select> 
 											<input class="form-control-sm" type="text" id="keyword" name="keyword">
 											<button class="form-control-sm btn btn-warning"

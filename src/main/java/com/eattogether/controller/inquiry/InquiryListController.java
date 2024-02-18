@@ -32,12 +32,12 @@ public class InquiryListController extends Superclass{
 		Paging paging = new Paging(pageNumber, pageSize, totalCount, url, mode, keyword, isGrid);
 		System.out.println(paging);
 		List<Inquiry> dataList = dao.getDataList(paging);
-		Inquiry bean=dao.getdatareply(id);
+		/* Inquiry bean=dao.getdatareply(id); */
 		System.out.println("문의사항 : " + dataList.size());
 		
 		request.setAttribute("paging", paging);
 		request.setAttribute("dataList", dataList);
-		request.setAttribute("rbean", bean);
+		/* request.setAttribute("rbean", bean); */
 		super.gotoPage(PREFIX + "inquList.jsp");
 	}
 

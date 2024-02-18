@@ -33,7 +33,6 @@ public class InquiryInsertController extends Superclass {
 		int cnt = dao.insertData(bean);
 		if(cnt ==1) {
 			new InquiryInsertController().doGet(request, response);
-			super.gotoPage(PREFIX + "inquList.jsp");
 		}else {
 			// 실패 시 현재 페이지로 redirect
 	        new InquiryListController().doGet(request, response);

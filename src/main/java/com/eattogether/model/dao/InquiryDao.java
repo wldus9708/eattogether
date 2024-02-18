@@ -17,7 +17,7 @@ public class InquiryDao extends SuperDao{
 
 	public List<Inquiry> getDataList(Paging paging) {
 		String sql = " select inq_no, mem_id, inq_content, inq_regdate ,inq_reply, inq_groupno, inq_orderno";
-		sql += " from (select rank() over(order by inq_no asc, inq_groupno desc) as ranking, inq_no, mem_id, inq_content, inq_regdate,inq_reply, inq_groupno, inq_orderno ";
+		sql += " from (select rank() over(order by  inq_groupno asc,inq_orderno asc) as ranking, inq_no, mem_id, inq_content, inq_regdate,inq_reply, inq_groupno, inq_orderno ";
 		sql += " from Inquiry " ;
 		
 		String mode = paging.getMode() ;

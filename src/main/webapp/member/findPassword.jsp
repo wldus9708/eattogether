@@ -45,7 +45,7 @@ String notWithFormTag = withFormTag + "?command=";
 </head>
 <body>
 	<c:if test="${not empty sessionScope.alertMessage }">
-		<div class="alert alert-danger alert-dismissible">
+		<div class="alert alert-danger alert-dismissible" style="background:#ED6D35;">
 			<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
 			<strong>경고 메시지 : </strong> ${sessionScope.alertMessage}
 		</div>

@@ -92,9 +92,10 @@ String notWithFormTag = withFormTag + "?command=";
 										href="<%=notWithFormTag%>meLogout">로그아웃</a></li>
 										</c:when>
 										<c:otherwise>
+										
 											<!-- 카카오 회원인 경우 -->
 											<li><a class="dropdown-item"
-												href="<%=notWithFormTag%>meKakaoLogout">카카오 로그아웃</a></li>
+												href="https://kauth.kakao.com/oauth/logout?client_id=5975a25df2fa8cac4ce9ba8863d45540&logout_redirect_uri=http://localhost:8090/eattogether/Eat?command=meKakaoLogout">카카오 로그아웃</a></li>
 										</c:otherwise>
 									</c:choose>
 								</c:if>
@@ -118,7 +119,7 @@ String notWithFormTag = withFormTag + "?command=";
 	</nav>
 	<!-- 사용자에게 주의/경고/오류 등을 알려주기 위한 Alert Box  -->
 	<c:if test="${not empty sessionScope.alertMessage }">
-		<div class="alert alert-danger alert-dismissible">
+		<div class="alert alert-danger alert-dismissible" style="background:#ED6D35;">
 			<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
 			<strong>경고 메시지 : </strong> ${sessionScope.alertMessage}
 		</div>

@@ -75,7 +75,7 @@ String notWithFormTag = withFormTag + "?command=";
 									<li><a class="dropdown-item"
 										href="<%=notWithFormTag%>meAgree">회원가입</a></li>
 								</c:if>
-								<c:if test="${whologin eq 1 }">
+								<c:if test="${whologin eq 1}">
 									<li><a class="dropdown-item"
 										href="<%=notWithFormTag%>meList&id=${sessionScope.loginfo.id}">마이페이지</a></li>
 									<li><a class="dropdown-item"
@@ -84,8 +84,19 @@ String notWithFormTag = withFormTag + "?command=";
 										href="<%=notWithFormTag%>notiList">공지사항</a></li>
 									<li><a class="dropdown-item"
 										href="<%=notWithFormTag%>inquList">문의사항</a></li>
-									<li><a class="dropdown-item"
+									<c:choose>
+										<c:when test="${sessionScope.loginfo.social_key == null}">
+											<!-- 일반회원인 경우 -->
+											<!-- 그냥 로그아웃 링크만 표시 -->
+											<li><a class="dropdown-item"
 										href="<%=notWithFormTag%>meLogout">로그아웃</a></li>
+										</c:when>
+										<c:otherwise>
+											<!-- 카카오 회원인 경우 -->
+											<li><a class="dropdown-item"
+												href="<%=notWithFormTag%>meKakaoLogout">카카오 로그아웃</a></li>
+										</c:otherwise>
+									</c:choose>
 								</c:if>
 								<c:if test="${whologin eq 2 }">
 
@@ -95,6 +106,7 @@ String notWithFormTag = withFormTag + "?command=";
 										href="<%=notWithFormTag%>inquList&id=${session.loginfo.id}">문의사항</a></li>
 									<li><a class="dropdown-item"
 										href="<%=notWithFormTag%>notiList">공지사항 관리</a></li>
+										
 									<li><a class="dropdown-item"
 										href="<%=notWithFormTag%>meLogout">로그아웃</a></li>
 								</c:if>

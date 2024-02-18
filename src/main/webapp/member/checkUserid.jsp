@@ -7,9 +7,10 @@
 request.setCharacterEncoding("utf-8");
 String id = request.getParameter("id");
 MemberDao dao = new MemberDao();
-int result = 0;
+int result = 0, kakaoChk=0;
 if (id != null && !id.isEmpty()) {
-    result = dao.getDataById(id);
+    result = dao.getDataByIdChk(id);
+    kakaoChk = dao.getDataByKakaoIdChk(id);
 }
 %>
 <!DOCTYPE html>
@@ -61,9 +62,13 @@ if (id != null && !id.isEmpty()) {
 
 			<% if (result == MemberDao.UNUSABLE_ID) { %>
 			<p style="color: red">이미 등록된 아이디입니다. 다른 아이디를 입력하세요</p>
-			<% } else if (result == MemberDao.USABLE_ID) { %>
+			<% }else if (kakaoChk == MemberDao.UNUSABLE_ID) { %>
+			<p style="color: red">카카오 계정으로 가입된 아이디입니다. 다른 아이디를 입력하세요</p>
+			<% }else if (result == MemberDao.USABLE_ID) { %>
+			<% if (kakaoChk == MemberDao.USABLE_ID) { %>
 			<input type="button" value="사용하기" id="check_btUse">
 			<p style="color: green">사용 가능한 아이디입니다. [사용하기] 버튼을 클릭하세요</p>
+			<% }%>
 			<% } %>
 		</form>
 	</div>

@@ -28,9 +28,18 @@ String notWithFormTag = withFormTag + "?command=";
 		</div>
 
 		<div id="delete_message03">
-		
-			<div id="delete_message_b1"><a href="<%=notWithFormTag%>meDelete&id=${sessionScope.loginfo.id}">예</a></div>
-			
+
+			<c:choose>
+				<c:when test="${sessionScope.loginfo.social_key == null}">
+					<!-- 일반회원인 경우 -->
+					<div id="delete_message_b1"><a href="<%=notWithFormTag%>meDelete&id=${sessionScope.loginfo.id}">예</a></div>
+				</c:when>
+				<c:otherwise>
+					<!-- 카카오 회원인 경우 -->
+					<div id="delete_message_b1"><a href="<%=notWithFormTag%>meKakaoDelete&id=${sessionScope.loginfo.id}">예</a></div>
+				</c:otherwise>
+			</c:choose>
+
 			
 			<div id="delete_message_b2"><a href="<%=notWithFormTag%>meList">아니오</a></div>
 			

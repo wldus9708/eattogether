@@ -240,7 +240,7 @@
 								</div>
 								<div class="card-body02">
 									<a class="user-id"
-										href="<%=notWithFormTag%>meDetail&mem_id=${bean.mem_id}">
+										href="<%=notWithFormTag%>meDetail&rec_no=${bean.rec_no}">
 									<img src="/eattogether/image/user.png" style="width: 45px"
 										height="45px">${bean.alias}
 									</a> 

@@ -59,9 +59,6 @@ public class MemberKakaoLoginController extends Superclass {
             }
 
 
-
-        
-
         } catch (Exception e) {
             e.printStackTrace();
         }

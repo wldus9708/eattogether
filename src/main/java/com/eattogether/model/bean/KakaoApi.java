@@ -114,6 +114,7 @@ public class KakaoApi {
 			bean.setBirth(bean.getAlias());
 			bean.setPhone(bean.getPhone());
 			bean.setPicture(bean.getPicture());
+			bean.setBirth(bean.getBirth());
 			bean.setTaste(bean.getTaste());
 			bean.setSocial_host(bean.getSocial_host());
 			

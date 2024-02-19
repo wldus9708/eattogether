@@ -578,7 +578,7 @@ public class MemberDao extends SuperDao {
 	}
 
 	public int updateData(Member bean) {
-		String sql = " update members set mem_alias = ?,mem_password = ?,mem_phone=?,mem_taste=?,mem_picture=?";
+		String sql = " update members set mem_alias = ?,mem_password = ?,mem_phone=?,mem_taste=?,mem_picture=?, mem_birth=?";
         sql += " where mem_id =?";
         PreparedStatement pstmt = null;
 		int cnt = -9999999;
@@ -592,7 +592,8 @@ public class MemberDao extends SuperDao {
             pstmt.setString(3, bean.getPhone());
             pstmt.setString(4, bean.getTaste());
             pstmt.setString(5, bean.getPicture());
-            pstmt.setString(6, bean.getId());
+            pstmt.setString(6, bean.getBirth());
+            pstmt.setString(7, bean.getId());
 			
 			cnt = pstmt.executeUpdate();
 			conn.commit();

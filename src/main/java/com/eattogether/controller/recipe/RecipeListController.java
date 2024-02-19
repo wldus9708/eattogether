@@ -29,9 +29,7 @@ private final String PREFIX = "board/";
 		String mode = request.getParameter("mode");
 		String keyword = request.getParameter("keyword");
 		String p = request.getParameter("p");
-//		if (p == null) {
-//		    p = "s";
-//		}
+		
 		if ("cat_no".equals(mode)) {
 		    if ("양식".equals(keyword)) {
 		        keyword = "1";
@@ -46,6 +44,13 @@ private final String PREFIX = "board/";
 		        keyword = "4";
 		    }
 		}
+		
+		if("rec_header".equals(mode)){
+			if ("오코노미야끼".equals(keyword) || "오코노미야키".equals(keyword)|| "오꼬노미야끼".equals(keyword)) {
+		        keyword = "노미야";
+		    }
+		}
+		
 		System.out.println(keyword);
 		RecipeDao dao = new RecipeDao();
 		MemberDao mdao = new MemberDao();
@@ -66,7 +71,7 @@ private final String PREFIX = "board/";
 		request.setAttribute("paging", paging);//페이징 객체도 바인딩
 		System.out.println("p의 값: " + p);
 		
-		if("s".equals(p)) {
+		if("s".equals(p)  || p == null) {
 			List<combo01> dataList = dao.getDataList(paging);
 			request.setAttribute("pano", pageNumber);
 			request.setAttribute("dataList", dataList);

@@ -241,7 +241,7 @@ public class MemberDao extends SuperDao {
 				e2.printStackTrace();
 			}
 		}
-
+		System.out.println(bean);
 		return bean;
 	}
 
@@ -851,7 +851,7 @@ public class MemberDao extends SuperDao {
 	public int insertKakaoData(Member bean) {
 		System.out.println(bean);
 		String sql = "insert into members(mem_id,mem_name,mem_password,mem_social_key,mem_social_host,mem_flag)";
-		sql += " values(?,?,?,?,'KAKAO',default)";
+		sql += " values(?,?,?,?,'KAKAO',3)";
 
 		PreparedStatement pstmt = null;
 		int cnt = -1;

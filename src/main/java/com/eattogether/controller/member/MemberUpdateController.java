@@ -22,7 +22,8 @@ public class MemberUpdateController extends Superclass{
 		Member bean=dao.getDataBean(id);
 		System.out.println("doget");
 		System.out.println(bean);
-		request.setAttribute("bean", bean);
+		super.session.setAttribute("loginfo", bean);
+		//request.setAttribute("bean", bean);
 		super.gotoPage(PREFIX+"meUpdate.jsp");
 	}
 	@Override

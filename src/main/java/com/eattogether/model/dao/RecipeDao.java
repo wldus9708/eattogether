@@ -200,6 +200,7 @@ public class RecipeDao extends SuperDao {
 		return bean;
 	}
 
+	
 	/*
 	 * public List<Recipe> getDataList(Paging paging) { String sql =
 	 * "select rec_no, mem_id, cat_no, rec_header, rec_regdate, rec_photo, rec_hit, rec_popularity, rec_bookmark, rec_material"
@@ -316,6 +317,8 @@ public class RecipeDao extends SuperDao {
 			sql += ")r";
 			sql += " JOIN members m ON r.mem_id = m.mem_id";
 			sql += " where ranking between ? and ?";
+			sql += " AND (r.mem_id LIKE '%" + keyword + "%' OR r.rec_header LIKE '%" + keyword + "%' OR r.rec_content01 LIKE '%" + keyword + "%' OR r.rec_content02 LIKE '%" + keyword + "%' OR r.rec_content03 LIKE '%" + keyword + "%' OR r.rec_content04 LIKE '%" + keyword + "%'";
+			sql += " OR r.rec_content05 LIKE '%" + keyword + "%' OR r.rec_content06 LIKE '%" + keyword + "%' OR r.rec_content07 LIKE '%" + keyword + "%' OR r.rec_content08 LIKE '%" + keyword + "%' OR r.rec_content09 LIKE '%" + keyword + "%' OR r.rec_content10 LIKE '%" + keyword + "%')";
 			sql += " order by r.rec_hit DESC, r.rec_no desc";
 		} else {// 전체 모드가 아니면
 			sql += " where " + mode + " like '%" + keyword + "%'";
@@ -364,6 +367,66 @@ public class RecipeDao extends SuperDao {
 		return dataList2;
 	}
 
+	
+	public List<combo01> getDataList3(Paging paging) {
+		String sql = "SELECT r.rec_no, r.mem_id, r.cat_no, r.rec_header, r.rec_regdate, r.rec_photo, r.rec_hit, r.rec_popularity, r.rec_bookmark, r.rec_material";
+		sql += " , r.rec_content01, r.rec_content02, r.rec_content03, r.rec_content04, r.rec_content05, r.rec_content06, r.rec_content07, r.rec_content08, r.rec_content09, r.rec_content10";
+		sql += " , m.mem_name, m.mem_alias, m.mem_birth, m.mem_phone, m.mem_taste, m.mem_picture";
+		sql += " FROM ( SELECT rec_no, mem_id, cat_no, rec_header, rec_regdate, rec_photo, rec_hit, rec_popularity, rec_bookmark, rec_material";
+		sql += " , rec_content01, rec_content02, rec_content03, rec_content04, rec_content05, rec_content06, rec_content07, rec_content08, rec_content09, rec_content10";
+		sql += "  , RANK() OVER (ORDER BY rec_hit DESC, rec_no DESC) AS ranking";
+		sql += "  FROM recipe r ";
+
+		String mode = paging.getMode();
+		String keyword = paging.getKeyword();
+
+		if (mode == null || mode.equals("all") || mode.equals("null") || mode.equals("")) {
+			sql += " where(r.mem_id LIKE '%" + keyword + "%' OR r.rec_header LIKE '%" + keyword + "%' OR r.rec_content01 LIKE '%" + keyword + "%' OR r.rec_content02 LIKE '%" + keyword + "%' OR r.rec_content03 LIKE '%" + keyword + "%' OR r.rec_content04 LIKE '%" + keyword + "%'";
+			sql += " OR r.rec_content05 LIKE '%" + keyword + "%' OR r.rec_content06 LIKE '%" + keyword + "%' OR r.rec_content07 LIKE '%" + keyword + "%' OR r.rec_content08 LIKE '%" + keyword + "%' OR r.rec_content09 LIKE '%" + keyword + "%' OR r.rec_content10 LIKE '%" + keyword + "%')";
+			sql += ")r";
+			sql += " JOIN members m ON r.mem_id = m.mem_id";			
+			 sql += " AND ranking BETWEEN ? AND ?";
+			sql += " order by r.rec_hit DESC, r.rec_no desc";
+		}
+		System.out.println("sql : \n"+sql);
+		System.out.println("검색");
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		List<combo01> dataList2 = new ArrayList<combo01>();
+		super.conn = super.getConnection();
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, paging.getBeginRow());
+			pstmt.setInt(2, paging.getEndRow());
+
+			rs = pstmt.executeQuery();
+
+			// 요소들 읽어서 컬렉션에 담습니다.
+			while (rs.next()) {
+				dataList2.add(this.makeBeanCombo01(rs));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (pstmt != null) {
+					rs.close();
+				}
+				super.closeConnection();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return dataList2;
+	}
+	
 	private combo01 makeBeanCombo01(ResultSet rs) {
 		combo01 bean = new combo01();
 

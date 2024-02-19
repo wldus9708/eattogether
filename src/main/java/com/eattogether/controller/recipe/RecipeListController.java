@@ -6,10 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.eattogether.common.Superclass;
-import com.eattogether.model.bean.Category;
-import com.eattogether.model.bean.Recipe;
+import com.eattogether.model.bean.Member;
 import com.eattogether.model.bean.combo01;
-import com.eattogether.model.dao.CategoryDao;
 import com.eattogether.model.dao.MemberDao;
 import com.eattogether.model.dao.RecipeDao;
 import com.eattogether.utility.Paging;
@@ -54,7 +52,23 @@ private final String PREFIX = "board/";
 		System.out.println(keyword);
 		RecipeDao dao = new RecipeDao();
 		MemberDao mdao = new MemberDao();
-		
+
+		request.setAttribute("ww", 0);
+		if("mem_id".equals(mode)) {
+			Member aa=mdao.getData5(keyword);
+			keyword=aa.getId(); 
+			request.setAttribute("aa",aa);
+			request.setAttribute("ww", 1);
+		}else {
+			Member aa=mdao.getData5(keyword);
+			System.out.println("aa : "+aa);
+			if(aa != null) {
+				System.out.println("aa : "+aa.getId());
+				keyword=aa.getId(); 
+				request.setAttribute("aa",aa);
+				request.setAttribute("ww", 1);
+			}
+		}
 		int totalCount = dao.getTotalRecordCount("recipe", mode, keyword);
 		String url = super.getUrlInformation("reList");
 		boolean isGrid = true;//상품이라면 true가 됩니다.
@@ -71,16 +85,21 @@ private final String PREFIX = "board/";
 		request.setAttribute("paging", paging);//페이징 객체도 바인딩
 		System.out.println("p의 값: " + p);
 		
-		if("s".equals(p)  || p == null) {
+		if("s".equals(p)) {
 			List<combo01> dataList = dao.getDataList(paging);
 			request.setAttribute("pano", pageNumber);
 			request.setAttribute("dataList", dataList);
 			
-		}else {
+		}else if("o".equals(p)){
 
 			List<combo01> dataList2 = dao.getDataList2(paging);
 			request.setAttribute("pano", pageNumber);
 			request.setAttribute("dataList", dataList2);
+		}else {
+
+			List<combo01> dataList3 = dao.getDataList3(paging);
+			request.setAttribute("pano", pageNumber);
+			request.setAttribute("dataList", dataList3);
 		}
 		
 		super.gotoPage(PREFIX + "recipe.jsp");

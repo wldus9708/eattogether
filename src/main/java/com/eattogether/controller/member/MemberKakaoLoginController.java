@@ -44,7 +44,7 @@ public class MemberKakaoLoginController extends Superclass {
 
             if (cnt == 1 && kakaoChk == 1) { // cnt가 1일 때의 처리
             	cnt = dao.insertKakaoData(bean);
-            	bean = dao.getDataByIdAndPassword(bean.getId(),access_Token);
+            	
             	session.setAttribute("loginfo",bean);
             	System.out.println(bean);
             	System.out.println("카카오 회원가입 결과[1] 새 회원가입, [2] 기존회원 로그인 : " + cnt);
@@ -54,6 +54,7 @@ public class MemberKakaoLoginController extends Superclass {
                 response.getWriter().write(alertScript);
             } else if(cnt == 2 && kakaoChk == 2) { // cnt가 1이 아닐 때의 처리
             	System.out.println("카카오 회원가입 결과[1] 새 회원가입, [2] 기존회원 로그인 : " + cnt);
+            	
             	session.setAttribute("loginfo", bean);
             	System.out.println(bean);
                 message = bean.getName() + "님 카카오 로그인 하셨습니다.";

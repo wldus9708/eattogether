@@ -57,7 +57,7 @@ String notWithFormTag = withFormTag + "?command=";
 				<c:if test="${whologin eq 0 }"> <img
 					src="/eattogether/image/user.png" alt="" id="header_img3">
 					</c:if>
-					<c:if test="${whologin eq 1 }"> <img
+					<c:if test="${whologin eq 1 || whologin eq 3 }"> <img
 					src="/eattogether/image/${sessionScope.loginfo.picture}" alt="" id="header_img3">
 					</c:if>
 				</a>

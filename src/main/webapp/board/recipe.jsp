@@ -27,20 +27,28 @@
     }		
 
     /* 필드 검색시 입력한 keyword 내용 보존 */
+   $(document).ready(function() {
     $('#keyword').val('${requestScope.paging.keyword}');
+    // 다른 코드들도 여기에 추가할 수 있습니다.
+});
 
     /* 상품 삭제 버튼 클릭 */
-    $('[id^=deleteAnchor]').click(function(){
+$(document).ready(function() {
+    $('.recipe-sakgie').click(function() {
+
+    	var rec_no = $(this).data('rec_no'); // .data()를 사용하여 데이터 속성을 가져옵니다
+        console.log(rec_no);
         var response = confirm('해당 상품을 삭제하시겠습니까?');
-        if(response==true){				
-            var rec_no = $(this).attr('data') ;
-            var url = '<%=notWithFormTag%>reDelete${requestScope.paging.flowParameter}&rec_no=' + rec_no ;
-            location.href = url ;
+        if (response) {
+            var rec_no = $(this).data('rec_no'); // .data()를 사용하여 데이터 속성을 가져옵니다
+            console.log(rec_no);
+            var url = '<%=notWithFormTag%>reDelete${requestScope.paging.flowParameter}&rec_no='+rec_no;
+            location.href = url;
         } else {
-            alert('상품 삭제가 취소되었습니다.') ;
+            alert('상품 삭제가 취소되었습니다.');
         }
-    	});
-	});
+    });
+});
 
 	function searchAll(){
 	    location.href = '<%=notWithFormTag%>reList'	;
@@ -259,7 +267,7 @@
 													href="<%=notWithFormTag%>reUpdate&rec_no=${bean.rec_no}${requestScope.paging.flowParameter}"> 수정 
 												</a> 
 												<a id="deleteAnchor_${bean.rec_no}"
-													class="recipe-sakgie" href="" data="${bean.rec_no}"> 삭제 
+													class="recipe-sakgie" href="" data-rec_no="${bean.rec_no}"> 삭제 
 												</a>
 											</div>
 										</c:if>

@@ -32,9 +32,9 @@ public class MemberInsertController extends Superclass {
         bean.setName(request.getParameter("name"));
         bean.setAlias(request.getParameter("alias"));
         System.out.println("암호화전 비밀번호 : " + request.getParameter("password"));
-        // 비밀번호를 SHA256으로 암호화 나중에 주석 해제예정
-        //bean.setPassword(SHA256Encryption.encrypt(request.getParameter("password")));
-        bean.setPassword(request.getParameter("password"));
+        //암호화 비밀번호
+        bean.setPassword(SHA256Encryption.encrypt(request.getParameter("password")));
+        //bean.setPassword(request.getParameter("password"));
         System.out.println("암호화후 비밀번호 : " + bean.getPassword());
         bean.setBirth(request.getParameter("birth"));
         bean.setPhone(request.getParameter("phone"));

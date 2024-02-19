@@ -35,9 +35,10 @@ public class MemberLoginController extends Superclass {
 
 
 		MemberDao dao = new MemberDao();
-		// 주석 나중에 해제 예정
-		//Member bean = dao.getDataByIdAndPassword(id, hashedPassword);
-		Member bean = dao.getDataByIdAndPassword(id, password);
+		//암호화 비밀번호
+		Member bean = dao.getDataByIdAndPassword(id, hashedPassword);
+		
+		//Member bean = dao.getDataByIdAndPassword(id, password);
 		System.out.println(bean);
 
 		if (bean == null) {

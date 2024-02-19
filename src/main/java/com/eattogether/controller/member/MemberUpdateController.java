@@ -35,9 +35,9 @@ public class MemberUpdateController extends Superclass{
 		bean.setId(mr.getParameter("id"));
 		bean.setName(mr.getParameter("name"));
 		bean.setAlias(mr.getParameter("alias"));
-		bean.setPassword(mr.getParameter("password"));
+		//bean.setPassword(mr.getParameter("password"));
 		// 비밀번호를 SHA256으로 암호화 나중에 주석 해제예정
-	    //bean.setPassword(SHA256Encryption.encrypt(mr.getParameter("password")));
+	    bean.setPassword(SHA256Encryption.encrypt(mr.getParameter("password")));
 		bean.setPhone(mr.getParameter("phone"));
 		String taste = "";
         String[] tastes = mr.getParameterValues("taste");

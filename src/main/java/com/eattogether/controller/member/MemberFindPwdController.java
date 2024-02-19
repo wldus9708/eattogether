@@ -50,7 +50,6 @@ public class MemberFindPwdController extends Superclass {
 				String temporaryPassword = generateRandomPassword();
 				String hashedPassword = SHA256Encryption.encrypt(temporaryPassword);
 				// System.out.println("랜덤으로 생성된 임시 비밀번호 : " + temporaryPassword);
-				// 주석해제 예정
 				System.out.println("랜덤으로 생성된 암호화 된 임시 비밀번호 : " + hashedPassword);
 
 				// 이메일 전송
@@ -60,7 +59,7 @@ public class MemberFindPwdController extends Superclass {
 					// 비밀번호 업데이트
 
 					// boolean updateSuccess = dao.tempPassword(id, temporaryPassword);
-					// 주석 해제 예정
+					// 암호화된 비밀번호
 					boolean updateSuccess = dao.tempPassword(id, hashedPassword);
 					if (updateSuccess) {
 						System.out.println("임시 비밀번호로 업데이트 성공");

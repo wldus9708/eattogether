@@ -174,7 +174,7 @@ $(document).ready(function(){
 							<tr>									
 							</tr>
 							<c:if test="${test.getInq_groupno()==bean.getInq_groupno()}">
-								<tr>					
+								<tr>			
 							<td>답글 : ${test.inq_reply}</td>
 								</tr>
 							</c:if>

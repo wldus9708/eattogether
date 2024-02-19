@@ -99,7 +99,7 @@ public class RecipeDetailController extends Superclass {
 		}
 		System.out.println(testlist);
 		session.setAttribute("testList", testlist);
-
+		request.setAttribute("mmmbena", bean);
 		// 텍스트 내용을 리스트로 가져옵니다.
 		List<String> recContents = bean.getRec_contents();
 

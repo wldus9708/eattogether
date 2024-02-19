@@ -387,6 +387,12 @@ public class RecipeDao extends SuperDao {
 			sql += " JOIN members m ON r.mem_id = m.mem_id";			
 			 sql += " AND ranking BETWEEN ? AND ?";
 			sql += " order by r.rec_hit DESC, r.rec_no desc";
+		}else {// 전체 모드가 아니면
+			sql += " where " + mode + " like '%" + keyword + "%'";
+			sql += ")r";
+			sql += " JOIN members m ON r.mem_id = m.mem_id";
+			sql += " where ranking between ? and ?";
+			sql += " order by r.rec_hit DESC, r.rec_no desc";
 		}
 		System.out.println("sql : \n"+sql);
 		System.out.println("검색");

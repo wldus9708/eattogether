@@ -18,8 +18,10 @@ public class SuperDao {
 			if(keyword == null|| keyword.equals("all") || keyword.equals("null")|| keyword.equals("")) {
 				
 			}else {
+				if(tableName=="recipe") {
 				sql += " where(mem_id LIKE '%" + keyword + "%' OR rec_header LIKE '%" + keyword + "%' OR rec_content01 LIKE '%" + keyword + "%' OR rec_content02 LIKE '%" + keyword + "%' OR rec_content03 LIKE '%" + keyword + "%' OR rec_content04 LIKE '%" + keyword + "%'";
 				sql += " OR rec_content05 LIKE '%" + keyword + "%' OR rec_content06 LIKE '%" + keyword + "%' OR rec_content07 LIKE '%" + keyword + "%' OR rec_content08 LIKE '%" + keyword + "%' OR rec_content09 LIKE '%" + keyword + "%' OR rec_content10 LIKE '%" + keyword + "%')";
+			}	
 			}
 		}
 		

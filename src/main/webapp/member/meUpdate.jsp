@@ -116,7 +116,6 @@ function resetPhoneCheckValue() {
 			<div class="custom-shape" id="myupdateicon">
 				<img src="/eattogether/image/${bean.picture}" id="myupdate_icon">
 			</div>
-
 		</div>
 		<div id="myupdate_box10">
 			<form action="<%=withFormTag%>" method="post" enctype="multipart/form-data">
@@ -146,7 +145,7 @@ function resetPhoneCheckValue() {
 							
 					</tr>
 					<tr>
-						<td id="myUp03">생일</td>
+						<td id="myUp07">생일</td>
 						<td><input type="text" class="form-control custom-textbox"
 							id="join_birth" name="birth"
 							value="${bean.birth.replace('-', '/')}"></td>

@@ -7,6 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="/eattogether/css/mydataupdate2.css">
 <script type="text/javascript">
 
@@ -34,6 +36,10 @@ function resetPhoneCheckValue() {
 }
 	$(document).ready(function() {
 		
+		$('#join_birth').datepicker({ // 제이쿼리 생일
+			dateFormat : "yy/mm/dd"
+		});
+		
 		var favoriteFood = "${bean.taste}";
 		$('#join_DuplicateBtn2').click(function(){
 		 	var phone = $("#join_phone").val();
@@ -60,13 +66,26 @@ function resetPhoneCheckValue() {
 	        alert('닉네임 중복 확인을 해주세요.');
 	        return false;
 	    } */
-		var password = $('#join_password').val();
-		if (!isPassword(password)) {
-			alert('비밀번호 첫글자는 영문 소문자, 6~8자리 특수문자 포함으로 입력해주세요');
-			$('#join_password').focus();
+	    
+	    
+	    if (${sessionScope.loginfo.social_key == null}) { // 일반회원인 경우에만 비밀번호 체크
+	        var password = $('#join_password').val();
+	        if (!isPassword(password)) {
+	            alert('비밀번호 첫글자는 영문 소문자, 6~8자리 특수문자 포함으로 입력해주세요');
+	            $('#join_password').focus();
+	            return false;
+	        }
+	    }
+	    var birth = $('#join_birth').val();
+		if (birth.length < 1) {
+			alert('생일을 입력해주세요.');
+			$('#join_birth').focus();
+			return false;
+		} else if (!isBirth(birth)) {
+			alert('생일은 yyyy/mm/dd 형식으로 입력해주세요');
+			$('#join_birth').focus();
 			return false;
 		}
-		
 		
 		var phone = $('#join_phone').val();
 		if (phone.length < 1) {
@@ -127,11 +146,26 @@ function resetPhoneCheckValue() {
 							
 					</tr>
 					<tr>
-						<td id="myUp04">비밀번호</td>
-						<td><input type="password"
-							class="form-control custom-textbox" id="join_password" name="password"></td>
+						<td id="myUp03">생일</td>
+						<td><input type="text" class="form-control custom-textbox"
+							id="join_birth" name="birth"
+							value="${bean.birth.replace('-', '/')}"></td>
 					</tr>
 
+					<c:if test="${sessionScope.loginfo.social_key == null}">
+						<!-- 일반회원인 경우 -->
+						<tr>
+							<td id="myUp04">비밀번호</td>
+							<td><input type="password"
+								class="form-control custom-textbox" id="join_password"
+								name="password"></td>
+						</tr>
+					</c:if>
+					<c:if test="${sessionScope.loginfo.social_key != null}">
+						<!-- 카카오회원인 경우 --><input type="hidden"
+								class="form-control custom-textbox" id="join_password"
+								name="password" value="${bean.password }">
+					</c:if>
 					<tr>
 						<td id="myUp05">핸드폰번호</td>
 						<td><input type="text" class="form-control custom-textbox"
@@ -140,7 +174,7 @@ function resetPhoneCheckValue() {
 							name="join_phoneCheck" value="N">
 						<button type="button" id="join_DuplicateBtn2">중복확인</button></td>
 					</tr>
-
+				
 					<tr class="join_form_container">
 						<td id="myUp06" class="join_label" for="favorite_food">좋아하는 음식:</td>
 						<td class="join_food_opt_container">

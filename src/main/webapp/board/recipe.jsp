@@ -20,15 +20,23 @@
 <script>
     /* 필드 검색시 체크한 콤보 박스 상태 보존 */
     var optionList = $('#mode option');
+    var atest=0;
     for(var i=0 ; i<optionList.length ; i++){
         if(optionList[i].value == '${requestScope.paging.mode}'){
             optionList[i].selected = true ;
         }
+      
     }		
 
     /* 필드 검색시 입력한 keyword 내용 보존 */
    $(document).ready(function() {
-    $('#keyword').val('${requestScope.paging.keyword}');
+	   
+	  if('${requestScope.ww}'==1){
+		  $('#keyword').val('${aa.alias}');
+	  }else{
+		  $('#keyword').val('${requestScope.paging.keyword}');
+	  }
+   
     // 다른 코드들도 여기에 추가할 수 있습니다.
 });
 

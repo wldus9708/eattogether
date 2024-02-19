@@ -18,6 +18,46 @@ public class MemberDao extends SuperDao {
 	public static final int USABLE_ALIAS = 1;
 	public static final int UNUSABLE_ALIAS = 2;
 	
+	
+	public Member getData5(String alias) {
+		PreparedStatement pstmt = null;
+	    ResultSet rs = null;
+	    String sql = "SELECT *";
+	    sql += " FROM members where mem_alias =?";
+	    Member bean = null;
+
+		super.conn = super.getConnection();
+		try {
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setString(1, alias);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				bean = this.resultSet2Bean(rs);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				super.closeConnection();
+
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+
+		return bean;
+	
+	}
+	
 	public Member getData5(int rec_no) {
 		PreparedStatement pstmt = null;
 	    ResultSet rs = null;

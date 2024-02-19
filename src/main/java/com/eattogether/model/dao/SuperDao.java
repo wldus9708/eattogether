@@ -15,7 +15,15 @@ public class SuperDao {
 		//제시한 tableName이라는 테이블의 총 행수를 구해줍니다. 이부분은 필드검색이랑 관계가 있습니다!
 		String sql = " select count(*) as cnt from " + tableName + " ";
 		if(mode == null|| mode.equals("all") || mode.equals("null")|| mode.equals("")) {
-		}else {//전체 모드가 아니면
+			if(keyword == null|| keyword.equals("all") || keyword.equals("null")|| keyword.equals("")) {
+				
+			}else {
+				sql += " where(mem_id LIKE '%" + keyword + "%' OR rec_header LIKE '%" + keyword + "%' OR rec_content01 LIKE '%" + keyword + "%' OR rec_content02 LIKE '%" + keyword + "%' OR rec_content03 LIKE '%" + keyword + "%' OR rec_content04 LIKE '%" + keyword + "%'";
+				sql += " OR rec_content05 LIKE '%" + keyword + "%' OR rec_content06 LIKE '%" + keyword + "%' OR rec_content07 LIKE '%" + keyword + "%' OR rec_content08 LIKE '%" + keyword + "%' OR rec_content09 LIKE '%" + keyword + "%' OR rec_content10 LIKE '%" + keyword + "%')";
+			}
+		}
+		
+		else {//전체 모드가 아니면
 			sql += " where "+mode+" like '%"+keyword+"%'";
 		}
 		

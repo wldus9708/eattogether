@@ -45,12 +45,15 @@ String notWithFormTag = withFormTag + "?command=";
 				id="header_span1">오늘뭐먹지?</span>
 			</a>
 			<c:if test="${whologin ne 2 }">
+				<form action="<%=withFormTag%>" method="get">
 				<div class="d-flex" style="flex: 0 0 60%;">
-					<input class="form-control" type="text" id="header_text">
+									<input type="hidden" name="command" value="reList">
+					<input class="form-control" type="text"  name="keyword">
 					<button class="btn btn-light" id="header_button" type="submit">
 						<img src="/eattogether/image/search.png" alt="" id="header_img2">
 					</button>
 				</div>
+					</form>
 			</c:if>
 			<div class="d-flex align-items-center">
 				<a href="#" class="d-flex flex-row align-items-center">

@@ -24,6 +24,9 @@ public class InquiryListController extends Superclass{
 		String keyword = request.getParameter("keyword");
 		
 		InquiryDao dao = new InquiryDao();
+		List<Inquiry> testdata=dao.getReply();
+		
+		request.setAttribute("testinq", testdata);
 		
 		int totalCount = dao.getTotalRecordCount("Inquiry", mode, keyword);
 		String url = super.getUrlInformation("inquList");

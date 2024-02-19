@@ -39,6 +39,36 @@
         </c:choose>
     }
 </script>
+<script>
+		$(document).ready(function(){
+		    $("#accordion").accordion({
+		        collapsible: true,
+		        active: false, // 초기에는 모든 아코디언이 닫혀있도록 설정
+		        activate: function(event, ui) {
+		            var index = $(this).accordion("option", "active");
+		            sessionStorage.setItem('selectedAccordion', index);
+		        }
+		    });
+		
+		    var selectedAccordion = sessionStorage.getItem('selectedAccordion');
+		    if (selectedAccordion !== null && selectedAccordion !== undefined) {
+		        $("#accordion").accordion("option", "active", parseInt(selectedAccordion));
+		    }
+		
+		    // 아코디언 버튼 클릭 이벤트 처리
+		    $("#accordion h3").click(function() {
+		        var index = $(this).index() / 2; // 클릭한 아코디언의 인덱스
+		
+		        // 클릭한 아코디언의 인덱스를 저장
+		        sessionStorage.setItem('selectedAccordion', index);
+		        
+		        // 클릭한 아코디언이 이미 열려있는 경우에는 클릭 이벤트 중지
+		        if ($(this).next("div").is(":visible")) {
+		            return false;
+		        }
+		    });
+		});
+	</script>
 </head>
 <body>
 	<div id="recipedetail_entire">
@@ -67,7 +97,7 @@
 				<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=김치볶음밥&p=s">김치볶음밥</a></li>
 				<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=된장찌개&p=s">된장찌개</a></li>
 				<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=김치찌개&p=s">김치찌개</a></li>
-				<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=고등어&p=s">고등어</a></li>
+				<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=고등어&p=s">고등어조림</a></li>
 				<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=떡볶이&p=s">떡볶이</a></li>
 			</ul>
 			<h3>

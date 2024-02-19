@@ -17,7 +17,6 @@
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="/eattogether/css/recipe.css">
-
 <script>
     /* 필드 검색시 체크한 콤보 박스 상태 보존 */
     var optionList = $('#mode option');
@@ -169,7 +168,7 @@
 			<div id="lastrecommend" style="display: flex; justify-content: flex-end;">
 				<div class="recipe_latest">
 					<a href="<%=notWithFormTag%>reList&p=s&mode=${requestScope.paging.mode}
-						&keyword=${requestScope.paging.keyword}&rec_regdate=${bean.rec_regdate}&pageNumber=${param.pageNumber}">최신순
+						&keyword=${requestScope.paging.keyword}&rec_regdate=${bean.rec_regdate}">최신순
 					</a>
 				</div>
 				<div class="recipe_re">
@@ -250,7 +249,9 @@
 									<img src="/eattogether/image/eye3.png" style="width: 25px" height="25px">&nbsp
 									</a>
 								</div>
-								<div>${bean.rec_regdate}</div>
+    							<div>
+        							${bean.rec_regdate.substring(0, 10)}
+    							</div>
 									<c:if test="${whologin == 1 }">
 										<c:if test="${sessionScope.loginfo.id == bean.mem_id}">
 											<div class="card-body03">

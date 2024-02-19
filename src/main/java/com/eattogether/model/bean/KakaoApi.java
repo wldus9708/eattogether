@@ -104,11 +104,19 @@ public class KakaoApi {
 			String nickname = properties.getAsJsonObject().get("nickname").getAsString();
 			String email = kakao_account.getAsJsonObject().get("email").getAsString();
 			String socialLoginKey = element.getAsJsonObject().get("id").getAsString();
-
+			bean = new Member();
 			bean.setName(nickname);
 			bean.setId(email);
 			bean.setPassword(socialLoginKey); 
 			bean.setSocial_key(socialLoginKey);
+			bean.setFlag("3");
+			bean.setAlias(bean.getAlias());
+			bean.setBirth(bean.getAlias());
+			bean.setPhone(bean.getPhone());
+			bean.setPicture(bean.getPicture());
+			bean.setTaste(bean.getTaste());
+			bean.setSocial_host(bean.getSocial_host());
+			
 			MemberDao dao = new MemberDao();
 			
 			int cnt = dao.getDataById(bean.getId());

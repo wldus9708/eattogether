@@ -50,7 +50,7 @@ public class MemberLoginController extends Superclass {
 			// session 영역(scope)에 나의 로그인 정보를 저장(바인딩)합니다.
 			// loginfo 속성을 사용하여 현재 로그인 상태를 확인할 수 있습니다.
 			super.session.setAttribute("loginfo", bean);
-			System.out.println("회원 유형 = 회원(1), 관리자(2) : " + bean.getFlag());
+			System.out.println("회원 유형 = 회원(1), 관리자(2), 카카오 회원(3) : " + bean.getFlag());
 			
 			if (checkbox != null) {
 				Cookie cookie = new Cookie("checkbox", id);

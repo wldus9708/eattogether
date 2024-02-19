@@ -4,12 +4,17 @@
 
 <c:set var="whologin" value="0" />
 <c:if test="${not empty sessionScope.loginfo}">
-	<c:if test="${sessionScope.loginfo.flag =='2'}">
-		<c:set var="whologin" value="2" />
-	</c:if>
-	<c:if test="${sessionScope.loginfo.flag !='2'}">
-		<c:set var="whologin" value="1" />
-	</c:if>
+    <c:choose>
+        <c:when test="${sessionScope.loginfo.flag eq '2'}">
+            <c:set var="whologin" value="2" />
+        </c:when>
+        <c:when test="${sessionScope.loginfo.flag eq '1'}">
+            <c:set var="whologin" value="1" />
+        </c:when>
+        <c:when test="${sessionScope.loginfo.flag eq '3'}">
+            <c:set var="whologin" value="3" />
+        </c:when>
+    </c:choose>
 </c:if>
 <%
 // appName : 애플리케이션 컨텍스트 이름(프로젝트 이름)
@@ -61,7 +66,7 @@ String notWithFormTag = withFormTag + "?command=";
 						<li class="header"><c:if test="${whologin eq 0 }">
 								<a class="header-toggle" role="button" href="#"
 									sdata-bs-toggle="dropdown" id="manger">로그인▼</a>
-							</c:if> <c:if test="${whologin eq 1}">
+							</c:if> <c:if test="${whologin eq 1 || whologin eq 3}">
 								<a class="header-toggle" role="button" href="#"
 									sdata-bs-toggle="dropdown" id="manger">${sessionScope.loginfo.alias}님▼</a>
 							</c:if> <c:if test="${whologin eq 2 }">
@@ -75,7 +80,7 @@ String notWithFormTag = withFormTag + "?command=";
 									<li><a class="dropdown-item"
 										href="<%=notWithFormTag%>meAgree">회원가입</a></li>
 								</c:if>
-								<c:if test="${whologin eq 1}">
+								<c:if test="${whologin eq 1 || whologin eq 3}">
 									<li><a class="dropdown-item"
 										href="<%=notWithFormTag%>meList&id=${sessionScope.loginfo.id}">마이페이지</a></li>
 									<li><a class="dropdown-item"
@@ -84,20 +89,17 @@ String notWithFormTag = withFormTag + "?command=";
 										href="<%=notWithFormTag%>notiList">공지사항</a></li>
 									<li><a class="dropdown-item"
 										href="<%=notWithFormTag%>inquList">문의사항</a></li>
-									<c:choose>
-										<c:when test="${sessionScope.loginfo.social_key == null}">
 											<!-- 일반회원인 경우 -->
 											<!-- 그냥 로그아웃 링크만 표시 -->
+											<c:if test="${whologin eq 1}">
 											<li><a class="dropdown-item"
 										href="<%=notWithFormTag%>meLogout">로그아웃</a></li>
-										</c:when>
-										<c:otherwise>
-										
+										</c:if>
+										<c:if test="${whologin eq 3}">
 											<!-- 카카오 회원인 경우 -->
 											<li><a class="dropdown-item"
 												href="https://kauth.kakao.com/oauth/logout?client_id=5975a25df2fa8cac4ce9ba8863d45540&logout_redirect_uri=http://localhost:8090/eattogether/Eat?command=meKakaoLogout">카카오 로그아웃</a></li>
-										</c:otherwise>
-									</c:choose>
+								</c:if>
 								</c:if>
 								<c:if test="${whologin eq 2 }">
 

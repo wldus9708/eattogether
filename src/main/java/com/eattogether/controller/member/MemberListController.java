@@ -24,6 +24,9 @@ public class MemberListController extends Superclass{
 		MemberDao dao = new MemberDao();
 		
 		RecipeDao mdao = new RecipeDao();
+		Member bean=dao.getDataBean(id);
+		super.session.setAttribute("loginfo", bean);
+		
 		List<Star> mdataList = mdao.getDataBean1(id);
 		List<Member> dataList = dao.getDataList(id);
 		List<combo02> cdataList=dao.getDataList1(id);

@@ -138,11 +138,11 @@
 			<div id="recipedetail_box01">
 				<div id="recipedetail1">
 					<div>
-						<a href="/eattogether/member/Submypage2.jsp" class="userBtn"><img
+						<a href="<%=notWithFormTag%>meDetail&rec_no=${mmmbena.rec_no}" class="userBtn"><img
 							src="/eattogether/image/user.png" alt=""></a>
 					</div>
 					<div>
-						<a href="/eattogether/member/Submypage2.jsp" class="userId"><span
+						<a href="<%=notWithFormTag%>meDetail&rec_no=${mmmbena.rec_no}" class="userId"><span
 							id="recipeDetail_Id">${combo.alias}</span></a>
 					</div>
 					<div>

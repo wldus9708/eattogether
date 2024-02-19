@@ -139,7 +139,7 @@ $(document).ready(function() {
 				<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=김치볶음밥&p=s">김치볶음밥</a></li>
 				<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=된장찌개&p=s">된장찌개</a></li>
 				<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=김치찌개&p=s">김치찌개</a></li>
-				<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=고등어&p=s">고등어</a></li>
+				<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=고등어&p=s">고등어조림</a></li>
 				<li><a href="<%=notWithFormTag%>reList&mode=rec_header&keyword=떡볶이&p=s">떡볶이</a></li>
 			</ul>
 			<h3>
@@ -251,7 +251,7 @@ $(document).ready(function() {
 								</a>
 							<div class="card-body">
 								<div class="card-body01">
-									<a href="recipeDetail.jsp" class="board_title">${bean.rec_header}</a>
+									<a href="<%=notWithFormTag%>reDetail&rec_no=${bean.rec_no}&readhitUpdate=true" class="board_title">${bean.rec_header}</a>
 								</div>
 								<div class="card-body02">
 									<a class="user-id"

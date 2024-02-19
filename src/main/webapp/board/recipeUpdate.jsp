@@ -20,36 +20,33 @@
 	visibility: hidden;
 }
 </style>
-<script type="text/javascript">
-  		$(document).ready(function(){ 
-  			/* 이전에 선택했던 카테고리 정보가 자동으로 선택되어 있도록 합니다. */
- 	        var category = '${bean.cat_no}';
-    
-		    var optionList = $('#cat_no option');
-		    optionList.each(function(){
-		        console.log($(this).val());
-		        if ($(this).val() === category) {
-		            $(this).prop('selected', true);
-	            }
-	         }); 
-  		}
-  		
-  		function validCheck(){
-  			var rec_header = $('#rec_header').val();
-  			if(rec_header.length < 4 || rec_header.length > 30){
-  				alert('상품명은 4글자 이상 30글자 이하이어야 합니다.');
-  				$('#rec_header').focus() ;
-  				return false ;
-  			}
-  			var cat_no = $('#cat_no').val();
-  			if(cat_no == '-'){ /* 코딩할 때 option의 value 속성을 하이폰으로 설정했습니다. */
-  				alert('카테고리를 선택해 주세요.');
-	  			$('#cat_no').focus();
-	  			return false ;
-  			}  
-  		}
-</script>
+
+
 </head>
+<script type="text/javascript">
+function validCheck2(){
+		var rec_header = $('#rec_header').val();
+			if(rec_header.length < 1 || rec_header.length > 30){
+				alert('레시피의 제목을 입력해 주세요.');
+				$('#rec_header').focus() ;
+				return false ;
+		}
+		
+	var imageinput = $('#imageinput').val();
+		if(imageinput == ''){
+		    alert('이미지를 다시 넣어주세요.');
+		    return false ;
+	}
+      
+	var contents = $('#contents').val();
+		if(contents == ''){
+		    alert('레시피를 한 개 이상 적어주세요.');
+		    $('#contents').focus() ;
+		    return false ;
+	 }
+		return true;
+	}
+</script>
 <body>
 	<form action="<%=withFormTag%>" method="post"
 		enctype="multipart/form-data">
@@ -78,8 +75,8 @@
 		</div>
 
 		<div class="rec_file">
-			<input type="file" id="image-input" name="rec_photo" accept="image/*">
-			<img src="/eattogether/image/${bean.rec_photo}" id="image-preview"
+			<input type="file" id="imageinput" name="rec_photo" accept="image/*">
+			<img src="/eattogether/image/basicicon.png" id="image-preview"
 				alt="사진"> <input type="hidden" name="deleterec_photo"
 				value="${bean.rec_photo}">
 		</div>
@@ -145,7 +142,7 @@
 
 		<div class="button">
 			<button class="btn recipe_Update_button" type="submit"
-				id="update_btn01" onclick="return validCheck();">수정</button>
+				id="update_btn01" onclick="return validCheck2();">수정</button>
 			<button type="button"  class="btn recipe_Insert_button"
 						onclick="location.href='<%=notWithFormTag%>reList'" 
 				id="update_btn01">
@@ -277,7 +274,7 @@
 		});
 
 		// 파일 입력(input) 엘리먼트
-		const imageInput = document.getElementById('image-input');
+		const imageInput = document.getElementById('imageinput');
 
 		// 이미지 미리보기를 나타낼 이미지 엘리먼트
 		const imagePreview = document.getElementById('image-preview');

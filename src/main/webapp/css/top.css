@@ -15,7 +15,9 @@ header{
 	text-decoration: none;
 	color: inherit;
 }
-
+#topsearch{
+	width: 1500px;
+}
 #header_wrap {
 	background-color: #FFCD1D;
 	border-radius: 0 0 30px 30px;
@@ -72,7 +74,7 @@ header{
 	background-color: #FFCD1D;
 }
 @media screen and (max-width: 1000px) {
-	#header_span1,#manheader {
+	#header_span1,#manheader,#topsearch {
 		display: none;
 	}
 }

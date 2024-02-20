@@ -17,6 +17,16 @@
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="/eattogether/css/recipe.css">
+	<style type="text/css">
+	    #footer_butt {
+        width: 160px;
+        background-color: #FFCD1D;
+    }
+
+    #inquirybox {
+        margin-top: 130px;
+    }
+	</style>
 <script>
     /* 필드 검색시 체크한 콤보 박스 상태 보존 */
     var optionList = $('#mode option');

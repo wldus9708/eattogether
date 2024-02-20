@@ -75,8 +75,12 @@ if (cookie != null) {
 
 						<hr id="login_hr">
 						<div class="login_images">
+						<!-- 로컬호스트용 -->
 							<a class="login_image" href="https://kauth.kakao.com/oauth/authorize?client_id=5975a25df2fa8cac4ce9ba8863d45540&redirect_uri=http://localhost:8090<%=notWithFormTag%>meKakaoLogin&response_type=code"> <img
 								src="/eattogether/image/kakao_login_large_wide.png" alt="카카오 로그인"></a>
+						<!-- 노트북 아이피 주소   -->
+							<%-- <a class="login_image" href="https://kauth.kakao.com/oauth/authorize?client_id=5975a25df2fa8cac4ce9ba8863d45540&redirect_uri=http://192.168.0.248:8090<%=notWithFormTag%>meKakaoLogin&response_type=code"> <img
+								src="/eattogether/image/kakao_login_large_wide.png" alt="카카오 로그인"></a> --%>
 						</div>
 					</div>
 				</div>

@@ -42,9 +42,12 @@ body {
 		padding: 10px;
 		height:600px !important;
 		margin-right: 100px;
-		
-		
 	}
+/*	#mainrandom{
+		border-radius: 50%;
+		height: 350px;
+		width: 100px;
+	}*/
 .recipe_side0 {
 		margin:auto;
 		text-align : center;
@@ -117,15 +120,22 @@ body {
 #main_materialBox_left_1 img {
 	width: 30px;
 }
-
 #main_materialBox_left_2 {
 	width: 190px;
 	height: 220px;
 	border-radius: 50%;
 	background-color: #FFCD1D;
-	margin: 10px;
 }
-
+/*.carousel-item,.carousel-item_active{
+	width: 190px;
+	height: 220px;
+	border-radius: 50%;
+}*/
+#pic01,#pic02,#pic03,#pic04{
+	width: 190px;
+	height: 220px;
+	border-radius: 50%;
+}
 #main_materialBox_right_1 {
 	margin-top: 103px;
 	margin-left: -50px;

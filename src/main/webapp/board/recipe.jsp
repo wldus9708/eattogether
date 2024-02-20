@@ -276,7 +276,7 @@ $(document).ready(function() {
 									</a>
 								</div>
     							<div>
-        							${bean.rec_regdate.substring(0, 10)}
+        							등록일: ${bean.rec_regdate.substring(0, 10)}
     							</div>
 									<c:if test="${whologin == 1 }">
 										<c:if test="${sessionScope.loginfo.id == bean.mem_id}">

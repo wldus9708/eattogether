@@ -9,8 +9,7 @@ form { /* 섹션*/
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	padding-bottom: 270px;
-	margin: 30px 0;
+
 }
 
 #image-preview {

@@ -102,12 +102,8 @@ String notWithFormTag = withFormTag + "?command=";
 										</c:if>
 										<c:if test="${whologin eq 3}">
 											<!-- 카카오 회원인 경우 -->
-											<!-- 로컬 호스트용  -->
 											<li><a class="dropdown-item"
 												href="https://kauth.kakao.com/oauth/logout?client_id=5975a25df2fa8cac4ce9ba8863d45540&logout_redirect_uri=http://localhost:8090/eattogether/Eat?command=meKakaoLogout">카카오 로그아웃</a></li>
-											<!-- 노트북 아이피 주소   -->
-											<!-- <li><a class="dropdown-item"
-												href="https://kauth.kakao.com/oauth/logout?client_id=5975a25df2fa8cac4ce9ba8863d45540&logout_redirect_uri=http://192.168.0.248:8090/eattogether/Eat?command=meKakaoLogout">카카오 로그아웃</a></li> -->
 								</c:if>
 								</c:if>
 								<c:if test="${whologin eq 2 }">

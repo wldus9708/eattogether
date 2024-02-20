@@ -205,7 +205,7 @@ $(document).ready(function(){
 							</tr>
 							<c:if test="${test.getInq_groupno()==bean.getInq_groupno()}">
 								<tr>			
-							<td>답글 : ${test.inq_reply}</td>
+							<td>답변 : ${test.inq_reply}</td>
 								</tr>
 							</c:if>
 						</c:forEach>
@@ -223,7 +223,7 @@ $(document).ready(function(){
 										value="${bean.inq_content}">
 										<input type="hidden" name="inq_regdate" id="inq_regdate"
 										value="${bean.inq_content}">
-										<input type="text" name="inq_groupno"
+										<input type="hidden" name="inq_groupno"
 										id="inq_groupno" class="form-control"
 										value="${bean.inq_groupno}">
 										</td>

@@ -6,6 +6,7 @@ justify-content: center; /* 가운데 정렬을 위한 스타일 추가 */
     align-items: center; 
     margin-top: 50px;
       flex-direction: row;
+      margin-bottom: 300px;
 }
 
 #recipe {

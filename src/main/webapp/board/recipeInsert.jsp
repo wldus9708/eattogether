@@ -246,4 +246,4 @@
 	</script>
 </body>
 </html>
-<%@ include file="./../common/footer.jsp"%>
+<%@include file="./../common/mangerfooter.jsp"%>

@@ -188,7 +188,7 @@
     <div id="main_materialBox_left_2" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner" id="mainrandom">
             <c:if test="${pictureCheck eq 1}">
-                <div class="carousel-item_active" >
+                <div class="carousel-item active" >
                     <a href="<%=notWithFormTag%>reDetail&rec_no=${pictureDatalist[0].rec_no}&readhitUpdate=true">
                         <img src="/eattogether/image/${pictureDatalist[0].rec_photo}" class="d-block w-100" id="pic04">
                     </a>

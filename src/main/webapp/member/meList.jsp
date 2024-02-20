@@ -36,8 +36,8 @@
                   <td><span>${sessionScope.loginfo.taste}</span></td>
                <tr>
                <tr>
-                  <td id="subcoment" style="width: 25%">코멘트</td>
-                  <td><span>코멘트(나중에EL&JSTL쓸곳)</span></td>
+                  <td id="subcoment" style="width: 25%">생년월일</td>
+                  <td><span>${sessionScope.loginfo.birth}</span></td>
                <tr>
             </table>
 

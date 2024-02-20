@@ -9,6 +9,7 @@
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="/eattogether/css/main.css">
+
 <style>
     @keyframes moveLR {
         0% {
@@ -185,38 +186,38 @@
 				<div id="main_materialBox_left">
 					<div id="main_materialBox_left_1">
     <div id="main_materialBox_left_2" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
+        <div class="carousel-inner" id="mainrandom">
             <c:if test="${pictureCheck eq 1}">
-                <div class="carousel-item active">
+                <div class="carousel-item_active" >
                     <a href="<%=notWithFormTag%>reDetail&rec_no=${pictureDatalist[0].rec_no}&readhitUpdate=true">
-                        <img src="/eattogether/image/${pictureDatalist[0].rec_photo}" class="d-block w-100">
+                        <img src="/eattogether/image/${pictureDatalist[0].rec_photo}" class="d-block w-100" id="pic04">
                     </a>
                 </div>
                 <c:if test="${pictureDatalist.size()==2}">
-                <div class="carousel-item">
+                <div class="carousel-item" >
                     <a href="<%=notWithFormTag%>reDetail&rec_no=${pictureDatalist[1].rec_no}&readhitUpdate=true">
-                        <img src="/eattogether/image/${pictureDatalist[1].rec_photo}" class="d-block w-100">
+                        <img src="/eattogether/image/${pictureDatalist[1].rec_photo}" class="d-block w-100" id="pic01">
                     </a>
                 </div>
                 </c:if>
                 <c:if test="${pictureDatalist.size()==3}">
-                <div class="carousel-item">
+                <div class="carousel-item" >
                     <a href="<%=notWithFormTag%>reDetail&rec_no=${pictureDatalist[1].rec_no}&readhitUpdate=true">
-                        <img src="/eattogether/image/${pictureDatalist[1].rec_photo}" class="d-block w-100">
+                        <img src="/eattogether/image/${pictureDatalist[1].rec_photo}" class="d-block w-100" id="pic02">
                     </a>
                 </div>
-                <div class="carousel-item">
+                <div class="carousel-item" >
                     <a href="<%=notWithFormTag%>reDetail&rec_no=${pictureDatalist[2].rec_no}&readhitUpdate=true">
-                        <img src="/eattogether/image/${pictureDatalist[2].rec_photo}" class="d-block w-100">
+                        <img src="/eattogether/image/${pictureDatalist[2].rec_photo}" class="d-block w-100" id="pic03">
                     </a>
                 </div>
                 </c:if>
             </c:if>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#main_materialBox_left_2" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon"></span>
+    <span class="carousel-control-prev-icon" id="prev"></span>
 </button>
-<button class="carousel-control-next" type="button" data-bs-target="#main_materialBox_left_2" data-bs-slide="next">
+<button class="carousel-control-next" type="button" data-bs-target="#main_materialBox_left_2" data-bs-slide="next" id="next">
     <span class="carousel-control-next-icon"></span>
 </button>
     </div>

@@ -33,8 +33,10 @@ String notWithFormTag = withFormTag + "?command=";
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <link rel="stylesheet" type="text/css" href="/eattogether/css/top.css">
 <style type="text/css">
+
 </style>
 </head>
 <body>
@@ -46,9 +48,9 @@ String notWithFormTag = withFormTag + "?command=";
 			</a>
 			<c:if test="${whologin ne 2 }">
 				<form action="<%=withFormTag%>" method="get">
-				<div class="d-flex" style="flex: 0 0 60%;">
+				<div class="d-flex" >
 									<input type="hidden" name="command" value="reList">
-					<input class="form-control" type="text"  name="keyword">
+					<input class="form-control" type="text"  name="keyword" id="topsearch">
 					<button class="btn btn-light" id="header_button" type="submit">
 						<img src="/eattogether/image/search.png" alt="" id="header_img2">
 					</button>

@@ -6,8 +6,9 @@ body {
 }
 
 #main_wrap {
-	display: flex;
+	
 	margin-top: 100px;
+	display: flex;
 	align-items: center;
 	justify-content: center;
 }
@@ -37,11 +38,12 @@ body {
 		background-color: white;
 		border-radius: 10px;
 		width: 230px;
-		float: left;
 		border: 3px solid black;
 		padding: 10px;
 		height:600px !important;
-		margin-right: 50px;
+		margin-right: 100px;
+		
+		
 	}
 .recipe_side0 {
 		margin:auto;
@@ -64,7 +66,6 @@ body {
 		margin-right: 50px;
 	}
 #main_materialBox {
-	margin: 0 auto;
 	width: 925px;
 	height: 570px;
 	border-radius: 50%;

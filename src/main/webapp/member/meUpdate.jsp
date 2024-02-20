@@ -207,10 +207,10 @@ function resetPhoneCheckValue() {
 				<div class="myupdate_button">
 
 					<div id="update_binselt">
-						<button type="submit" id="update_od01" onclick="return validCheck();">수정</button>
+						<button type="submit" id="update_od01" onclick="return validCheck();">수정하기</button>
 					</div>
 					<div id="update_binselt">
-						<a href="<%=notWithFormTag%>meList&id=${sessionScope.loginfo.id}" id="update_od01">돌아가기</a>
+						<a href="<%=notWithFormTag%>meList&id=${sessionScope.loginfo.id}" id="update_od02">뒤로가기</a>
 					</div>
 				</div>
 			</form>

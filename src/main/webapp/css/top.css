@@ -18,6 +18,9 @@ header{
 #topsearch{
 	width: 1500px;
 }
+ #header_img3{
+	 border-radius: 50%;
+ }
 #header_wrap {
 	background-color: #FFCD1D;
 	border-radius: 0 0 30px 30px;

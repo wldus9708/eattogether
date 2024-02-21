@@ -230,7 +230,7 @@ $(document).ready(function() {
 											<button class="form-control-sm btn btn-warning"
 												type="button" onclick="searchAll();">초기화</button>
 												
-											<c:if test="${whologin == 1 }">
+											<c:if test="${whologin == 1 || whologin == 3}">
 												<button class="form-control-sm btn btn-info" type="button"
 													onclick="location.href='<%=notWithFormTag%>reInsert';">글쓰기</button> &nbsp;&nbsp;
 								            </c:if>
@@ -278,14 +278,14 @@ $(document).ready(function() {
     							<div>
         							등록일: ${bean.rec_regdate.substring(0, 10)}
     							</div>
-									<c:if test="${whologin == 1 }">
+									<c:if test="${whologin == 1 || whologin == 3}">
 										<c:if test="${sessionScope.loginfo.id == bean.mem_id}">
 											<div class="card-body03">
 												<a id="updateAnchor" class="recipe-sujoung"
 													href="<%=notWithFormTag%>reUpdate&rec_no=${bean.rec_no}${requestScope.paging.flowParameter}"> 수정 
 												</a> 
 												<a id="deleteAnchor_${bean.rec_no}"
-													class="recipe-sakgie" href="" data-rec_no="${bean.rec_no}"> 삭제 
+													class="recipe-sakgie" href="<%=notWithFormTag%>reDelete&rec_no=${bean.rec_no}${requestScope.paging.flowParameter}" data-rec_no="${bean.rec_no}"> 삭제 
 												</a>
 											</div>
 										</c:if>

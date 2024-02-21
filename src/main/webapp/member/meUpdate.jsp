@@ -44,12 +44,12 @@ function resetPhoneCheckValue() {
 		$('#join_DuplicateBtn2').click(function(){
 		 	var phone = $("#join_phone").val();
 	    	window.open("/eattogether/member/checkPhone.jsp?phone="+phone,"phonechk",
-	   	"width=450,height=300, location=yes,resizable=yes,top=100,left=50");
+	   	"width=600,height=300, location=yes,resizable=yes,top=100,left=50");
 	 	});
 		$('#join_DuplicateBtn3').click(function(){
 		 	var alias = $("#join_alias").val();
 	    	window.open("/eattogether/member/checkAlias.jsp?alias="+alias,"aliaschk",
-	   	"width=450,height=300, location=yes,resizable=yes,top=100,left=50");
+	   	"width=600,height=300, location=yes,resizable=yes,top=100,left=50");
 	 	});
 	});
 	

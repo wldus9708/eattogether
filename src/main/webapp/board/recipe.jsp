@@ -231,7 +231,7 @@ $(document).ready(function() {
 												type="button" onclick="searchAll();">초기화</button>
 												
 											<c:if test="${whologin == 1 || whologin == 3}">
-												<button class="form-control-sm btn btn-info" type="button"
+												<button class="form-control-sm btn btn-info" type="button" style="background:#ED6D35; border: none "
 													onclick="location.href='<%=notWithFormTag%>reInsert';">글쓰기</button> &nbsp;&nbsp;
 								            </c:if>
 							            <!-- 총 몇건인지 나타내는 명령어 -->

@@ -17,7 +17,7 @@
 		<div id="submypage_contain01">
 			<div id="submypage_box01">
 				<div class="custom-shape" id="submyicon">
-					<img src="/eattogether/image/steak_02.jpg" id="submypage_icon">
+					<img src="/eattogether/image/${mbean.picture }" id="submypage_icon">
 				</div>
 			</div>
 			<div id="submypage_box02">

@@ -34,7 +34,7 @@
 						<td><span>${mbean.taste}</span></td>
 					<tr>
 					<tr>
-						<td id="subcoment" style="width: 25%">코멘트</td>
+						<td id="submybirth" style="width: 25%">생일</td>
 						<td><span>${mbean.birth}</span></td>
 					<tr>
 				</table>

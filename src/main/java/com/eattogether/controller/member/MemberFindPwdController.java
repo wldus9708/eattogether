@@ -102,39 +102,46 @@ public class MemberFindPwdController extends Superclass {
 
 	// 이메일 전송 메서드
 	private boolean sendEmail(String recipient_id, String password, String recipient_email, String name,
-			String temporaryPassword) {
-		Properties props = new Properties();
-		props.put("mail.smtp.host", "smtp.naver.com");
-		props.put("mail.smtp.port", "465");
-		props.put("mail.smtp.auth", "true");
-		props.put("mail.smtp.ssl.enable", "true");
-		props.put("mail.smtp.starttls.enable", "true");
-		props.put("mail.smtp.ssl.protocols", "TLSv1.2");
+	        String temporaryPassword) {
+	    Properties props = new Properties();
+	    props.put("mail.smtp.host", "smtp.naver.com");
+	    props.put("mail.smtp.port", "465");
+	    props.put("mail.smtp.auth", "true");
+	    props.put("mail.smtp.ssl.enable", "true");
+	    props.put("mail.smtp.starttls.enable", "true");
+	    props.put("mail.smtp.ssl.protocols", "TLSv1.2");
 
-		Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
-			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(recipient_id, password);
-			}
-		});
+	    Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
+	        protected PasswordAuthentication getPasswordAuthentication() {
+	            return new PasswordAuthentication(recipient_id, password);
+	        }
+	    });
 
-		try {
-			MimeMessage msg = new MimeMessage(session);
-			msg.setFrom(new InternetAddress(recipient_id, "(주)오늘 뭐먹지?"));
-			msg.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient_email));
+	    try {
+	        MimeMessage msg = new MimeMessage(session);
+	        msg.setFrom(new InternetAddress(recipient_id, "(주)오늘 뭐먹지?"));
+	        msg.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient_email));
 
-			msg.setSubject("오늘 뭐먹지?에 요청하신 " + name + " 님의 임시비밀번호 입니다.");
+	        msg.setSubject("오늘 뭐먹지?에 요청하신 " + name + " 님의 임시비밀번호 입니다.");
 
-			String message = String.format("안녕하세요 %s 회원님!\n\n" + "비밀번호찾기 요청에 따라 임시 비밀번호를 발급해 드립니다.\n"
-					+ "임시 비밀번호는  %s  입니다.\n" + "임시 비밀번호로 로그인하시고 마이페이지에서 비밀번호 수정 부탁드립니다.\n\n"
-					+ "--------------------------------------------------------------------\n" + "감사합니다!\n"
-					+ "(주)오늘 뭐먹지?", name, temporaryPassword);
-			msg.setText(message);
+	        // HTML 형식의 이메일 내용 설정
+	        String htmlContent = "<html><body>"
+	                + "<p>안녕하세요 " + name + " 회원님!</p>"
+	                + "<p>비밀번호찾기 요청에 따라 임시 비밀번호를 발급해 드립니다.</p>"
+	                + "<p>임시 비밀번호는 <span style=\"font-size: 20px; color: blue; font-weight: bold;\">" + temporaryPassword + "</span> 입니다.</p>"
+	                + "<p>임시 비밀번호로 로그인하시고 마이페이지에서 비밀번호 수정 부탁드립니다.</p>"
+	                + "<br>--------------------------------------------------------------------<br>"
+	                + "<p>감사합니다!<br>(주)오늘 뭐먹지?</p>"
+	                + "</body></html>";
 
-			Transport.send(msg);
-			return true; // 이메일 전송 성공
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false; // 이메일 전송 실패
-		}
+	        // HTML 내용을 MimeMessage에 설정
+	        msg.setContent(htmlContent, "text/html; charset=utf-8");
+
+	        Transport.send(msg);
+	        return true; // 이메일 전송 성공
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return false; // 이메일 전송 실패
+	    }
 	}
 }

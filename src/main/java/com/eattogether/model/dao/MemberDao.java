@@ -886,7 +886,7 @@ public class MemberDao extends SuperDao {
 				e2.printStackTrace();
 			}
 		}
-		System.out.println("true : 성공, false: 실패,  결과: " + success);
+		System.out.println("임시 비밀번호로 업데이트 [true] : 성공, [false]: 실패,  결과: " + success);
 		return success;
 	}
 	public int insertKakaoData(Member bean) {

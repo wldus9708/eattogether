@@ -49,7 +49,7 @@ public class MemberFindPwdController extends Superclass {
 
 				String temporaryPassword = generateRandomPassword();
 				String hashedPassword = SHA256Encryption.encrypt(temporaryPassword);
-				// System.out.println("랜덤으로 생성된 임시 비밀번호 : " + temporaryPassword);
+				System.out.println("랜덤으로 생성된 임시 비밀번호 : " + temporaryPassword);
 				System.out.println("랜덤으로 생성된 암호화 된 임시 비밀번호 : " + hashedPassword);
 
 				// 이메일 전송

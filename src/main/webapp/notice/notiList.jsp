@@ -198,7 +198,7 @@ $( function() {
 							onclick="searchAll();">전체 검색</button>
 						<c:if test="${whologin == 2 }">
 							<button class="form-control-sm btn btn-info" type="button"
-								onclick="writeForm();">글쓰기</button>
+								onclick="writeForm();" style="background: #ED6D35; border: none; ">글쓰기</button>
 						</c:if>
 						&nbsp;&nbsp; <span class="label label-default" id="noti_result">
 							${requestScope.paging.pagingStatus} </span>

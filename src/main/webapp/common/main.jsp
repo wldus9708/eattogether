@@ -43,13 +43,21 @@
         animation: moveLR 0.5s ease infinite alternate;
     }
 
-    #footer_butt {
-        width: 160px;
+       #footer_butt {
+        width: 180px;
         background-color: #FFCD1D;
+        border-radius: 5px;
+        margin-left: 10px;
+        
     }
 
     #inquirybox {
         margin-top: 130px;
+    }
+    #inq_content{
+    	border-radius: 5px;
+    	margin-left: 10px;
+        
     }
 </style>
 

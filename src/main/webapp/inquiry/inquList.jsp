@@ -205,7 +205,7 @@ $(document).ready(function(){
 							</tr>
 							<c:if test="${test.getInq_groupno()==bean.getInq_groupno()}">
 								<tr>			
-							<td colspan="3">답변 : ${test.inq_reply}</td>
+							<td colspan="3" style="color: #FC7439; font-weight: bold;">답변 : ${test.inq_reply}</td>
 								</tr>
 							</c:if>
 						</c:forEach>

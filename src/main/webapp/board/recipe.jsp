@@ -19,12 +19,20 @@
 	href="/eattogether/css/recipe.css">
 	<style type="text/css">
 	    #footer_butt {
-        width: 160px;
+        width: 180px;
         background-color: #FFCD1D;
+        border-radius: 5px;
+        margin-left: 10px;
+        
     }
 
     #inquirybox {
         margin-top: 130px;
+    }
+    #inq_content{
+    	border-radius: 5px;
+    	margin-left: 10px;
+        
     }
 	</style>
 <script>
@@ -235,7 +243,7 @@ $(document).ready(function() {
 													onclick="location.href='<%=notWithFormTag%>reInsert';">글쓰기</button> &nbsp;&nbsp;
 								            </c:if>
 							            <!-- 총 몇건인지 나타내는 명령어 -->
-										<span class="label label-default"> 
+										<span class="label label-default" id="recipe_result"> 
 											${requestScope.paging.pagingStatus}
 										</span>
 										</div>
@@ -275,7 +283,7 @@ $(document).ready(function() {
 									<img src="/eattogether/image/eye3.png" style="width: 25px" height="25px">&nbsp
 									</a>
 								</div>
-    							<div>
+    							<div id="recipe_regdate">
         							등록일: ${bean.rec_regdate.substring(0, 10)}
     							</div>
 									<c:if test="${whologin == 1 || whologin == 3}">
@@ -298,6 +306,7 @@ $(document).ready(function() {
 						</c:if>
 					</c:forEach>
 			</table>
+			<br /> <br /> <br />
 			<!-- 페이징 표현 -->
 			${requestScope.paging.pagingHtml}
 		</div>

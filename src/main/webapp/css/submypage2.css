@@ -49,7 +49,9 @@ body{
 	   #submypage_Input{
 	   width: 550px; /* 테이블의 너비를 100%로 설정하여 부모 컨테이너에 맞춥니다. */
 	   height: 150px;
-    border-collapse: collapse; }
+    border-collapse: collapse;
+    font-weight: bold;
+     }
     
 	  #submypage_Input td{
 		  border-bottom: 3px solid #000;
@@ -80,6 +82,7 @@ body{
 		    justify-content: center; /* 가운데 정렬을 위한 스타일 추가 */
     align-items: center; 
     margin-bottom:20px;
+    font-weight: bold;
 	  }
 	  #subima{
 		   width: 350px; /* 도형의 너비 */

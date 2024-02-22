@@ -12,14 +12,22 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <style type="text/css">
-#footer_butt {
-	width: 160px;
-	background-color: #FFCD1D;
-}
+    #footer_butt {
+        width: 180px;
+        background-color: #FFCD1D;
+        border-radius: 5px;
+        margin-left: 10px;
+        
+    }
 
-#inquirybox {
-	margin-top: 130px;
-}
+    #inquirybox {
+        margin-top: 130px;
+    }
+    #inq_content{
+    	border-radius: 5px;
+    	margin-left: 10px;
+        
+    }
 </style>
 <script type="text/javascript">
 $( function() {
@@ -192,7 +200,7 @@ $( function() {
 							<button class="form-control-sm btn btn-info" type="button"
 								onclick="writeForm();">글쓰기</button>
 						</c:if>
-						&nbsp;&nbsp; <span class="label label-default">
+						&nbsp;&nbsp; <span class="label label-default" id="noti_result">
 							${requestScope.paging.pagingStatus} </span>
 					</div>
 				</div>

@@ -76,7 +76,7 @@ public class RecipeListController extends Superclass{
                     request.setAttribute("ww", 1);
                 } else {
                     // 키워드에 해당하는 정보가 없는 경우 경고 메시지 설정
-                    super.setAlertMessage("존재하지 않는 키워드입니다.");
+                    
                 }
             }
         } else {

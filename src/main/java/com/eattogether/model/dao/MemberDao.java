@@ -99,6 +99,43 @@ public class MemberDao extends SuperDao {
 	
 	}
 	
+	public List<combo02> getDataList6(String id) {
+	    PreparedStatement pstmt = null;
+	    ResultSet rs = null;
+	    String sql = "SELECT m.mem_id, r.rec_no, r.rec_photo";
+	    sql += " FROM recipe r";
+	    sql += " JOIN members m ON r.mem_id = m.mem_id";
+	    sql += " where r.mem_id =?";
+	    List<combo02> dataList = new ArrayList<>();
+	    super.conn = super.getConnection();
+
+	    try {
+	        pstmt = conn.prepareStatement(sql);
+	        pstmt.setString(1, id);
+	        rs = pstmt.executeQuery();
+
+	        // 요소들 읽어서 컬렉션에 담습니다.
+	        while (rs.next()) {
+	            dataList.add(this.makeBeanCombo01(rs));
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            if (rs != null) {
+	                rs.close();
+	            }
+	            if (pstmt != null) {
+	                pstmt.close(); // pstmt로 수정
+	            }
+	            super.closeConnection();
+	        } catch (Exception e2) {
+	            e2.printStackTrace();
+	        }
+	    }
+	    return dataList;
+	}
+	
 	public List<combo02> getDataList4(int rec_no) {
 	    PreparedStatement pstmt = null;
 	    ResultSet rs = null;

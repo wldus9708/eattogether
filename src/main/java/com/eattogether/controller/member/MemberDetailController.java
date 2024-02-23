@@ -20,7 +20,9 @@ public class MemberDetailController extends Superclass{
 		MemberDao dao = new MemberDao();
 		List<combo02> cdataList=dao.getDataList4(rec_no);
 		Member bean=dao.getData5(rec_no);
-		request.setAttribute("cdataList", cdataList);
+		String id= bean.getId();
+		List<combo02> ccdataList=dao.getDataList6(id);
+		request.setAttribute("cdataList", ccdataList);
 		request.setAttribute("mbean", bean);
 		super.gotoPage("member/Submypage2.jsp");
 	}
